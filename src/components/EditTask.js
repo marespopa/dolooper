@@ -6,11 +6,9 @@ class EditTask extends Component {
     super(props);
     const task = props.task;
     this.state = {
-      id: task.id,
-      title: task.title,
-      link: task.link,
-      description: task.description,
-      plan: task.plan
+      task,
+      isSaved: true,
+      saveMessage: ''
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -22,19 +20,42 @@ class EditTask extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      task: {
+        ...this.state.task,
+        [name]: value
+      },
+      isSaved: false,
+      hasErrorAtSave: false,
+      saveMessage: ''
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const task = this.state;
-    this.props.updateTask(task);
+    const task = this.state.task;
+    try {
+      this.props.updateTask(task);
+      this.setState({
+        isSaved: true,
+        hasErrorAtSave: false,
+        saveMessage: 'Task has been saved.'
+      });
+    } catch (error) {
+      this.setState({
+        hasErrorAtSave: true
+      });
+    }
   }
 
   render() {
-    const { title, link, description, plan } = this.state;
-
+    const { title, link, description, plan } = this.state.task;
+    const { isSaved, hasErrorAtSave, saveMessage } = this.state;
+    const errorMessage = hasErrorAtSave && (
+      <span className="message error">We could not save the task...</span>
+    );
+    const successMessage = isSaved && (
+      <span className="message success">{saveMessage}</span>
+    );
     return (
       <form className="form" onSubmit={this.handleSubmit} method="post">
         <FormField
@@ -69,9 +90,17 @@ class EditTask extends Component {
           handleChange={this.handleInputChange}
         />
 
-        <button className="btn success" onClick={this.handleSubmit}>
-          Save
-        </button>
+        <div className="form-row">
+          <button
+            disabled={isSaved}
+            className="btn success"
+            onClick={this.handleSubmit}
+          >
+            Save
+          </button>
+          {errorMessage}
+          {successMessage}
+        </div>
       </form>
     );
   }

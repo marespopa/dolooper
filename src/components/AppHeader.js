@@ -1,18 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import MainNavigation from "./MainNavigation";
 
 const AppHeader = () => (
   <header className="app__header">
-    <nav className="main-navigation">
-      <ul>
-        <li>
-          <NavLink to="/add-task">Create Task</NavLink>
-        </li>
-        <li>
-          <NavLink to="/tasks">Tasks</NavLink>
-        </li>
-      </ul>
-    </nav>
+    <h1 className="app__title">
+      <NavLink to="/">DailyDev</NavLink>
+    </h1>
+    <MainNavigation />
   </header>
 );
 

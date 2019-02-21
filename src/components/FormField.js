@@ -3,18 +3,21 @@ import React from "react";
 const FormField = ({ type, label, name, value, handleChange }) => {
   const textareaRef = React.createRef();
 
-  const handleTextareaChange = event => {
-    handleChange(event);
+  const resizeTextarea = () => {
     const textarea = textareaRef.current;
     const minHeightInPx = 200;
     textarea.style.height = "";
     textarea.style.height =
       Math.min(textarea.scrollHeight, minHeightInPx) + "px";
   };
+  const handleTextareaChange = event => {
+    handleChange(event);
+    resizeTextarea();
+  };
 
   return (
     <div className="form-row">
-      <label>{label}:</label>
+      <label>{label}</label>
       {type === "textarea" && (
         <textarea
           ref={textareaRef}
@@ -22,10 +25,16 @@ const FormField = ({ type, label, name, value, handleChange }) => {
           name={name}
           value={value}
           onChange={handleTextareaChange.bind(this)}
+          onFocus={resizeTextarea}
         />
       )}
       {type === "input" && (
-        <input type="text" name={name} value={value} onChange={handleChange} />
+        <input
+          type="text"
+          name={name}
+          value={value}
+          onChange={handleChange}
+        />
       )}
     </div>
   );

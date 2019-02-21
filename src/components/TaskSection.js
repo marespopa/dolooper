@@ -11,7 +11,7 @@ const TaskSection = ({ type, label, content }) => {
   const Content = type !== "link" && <p className={type}>{content}</p>;
   return (
     <div className="task__section">
-      <h2>{label}</h2>
+      <h3>{label}</h3>
       {LinkContent}
       {Content}
     </div>

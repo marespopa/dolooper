@@ -5,6 +5,7 @@
   color: $dark-text;
   font-size: 0.9em;
   padding: 8px 24px;
+  transition: all 0.25s ease-out;
   & + .btn {
     margin-left: 8px;
   }
@@ -12,8 +13,11 @@
     color: $dark-text;
     text-decoration: none;
   }
-  &:hover,
-  &:focus {
+  &:disabled {
+    opacity: 0.6;
+  }
+  &:not(:disabled):hover,
+  &:not(:disabled):focus {
     background: darken($btn--default-background, 5%);
     border-color: darken($btn--default-background, 10%);
     cursor: pointer;
@@ -22,14 +26,14 @@
   &.primary {
     background: $btn--primary-background;
     border-color: darken($btn--primary-background, 5%);
-    color: $light-text;
+    color: $dark-text;
     a {
-      color: $light-text;
+      color: $dark-text;
     }
-    &:hover,
-    &:focus {
-      background: lighten($btn--primary-background, 10%);
-      border-color: lighten($btn--primary-background, 5%);
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      background: darken($btn--primary-background, 5%);
+      border-color: darken($btn--primary-background, 8%);
     }
   }
   &.success {
@@ -39,10 +43,10 @@
     a {
       color: $light-text;
     }
-    &:hover,
-    &:focus {
-      background: lighten($btn--success-background, 10%);
-      border-color: lighten($btn--success-background, 5%);
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      background: darken($btn--success-background, 5%);
+      border-color: darken($btn--success-background, 8%);
     }
   }
   &.danger {
@@ -52,10 +56,10 @@
     a {
       color: $light-text;
     }
-    &:hover,
-    &:focus {
-      background: lighten($btn--danger-background, 10%);
-      border-color: lighten($btn--danger-background, 5%);
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      background: darken($btn--danger-background, 5%);
+      border-color: darken($btn--danger-background, 8%);
     }
   }
 }

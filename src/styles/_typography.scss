@@ -1,5 +1,5 @@
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: $content-font-family;
   font-size: 18px;
 }
 
@@ -13,18 +13,32 @@ p {
 h1,
 h2,
 h3 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: $heading-font-family;
+  white-space: nowrap;
 }
 
 h1 {
-  font-size: 3em;
-  line-height: 2.9em;
+  font-size: 2em;
+  line-height: 1.8em;
   font-weight: bold;
 }
 
-h2,
-h3 {
-  font-size: 1em;
+h2 {
+  font-size: 1.2em;
   line-height: 0.9em;
   font-weight: bold;
+}
+
+h3 {
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  padding: 8px 4px 8px 0;
+}
+
+a {
+  color: $link-color;
+  text-decoration: underline;
+  &:hover, &:focus {
+    color: darken($link-color, 5%);
+  }
 }

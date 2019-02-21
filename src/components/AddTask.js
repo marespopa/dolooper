@@ -1,15 +1,12 @@
 import React, { Component } from "react";
 import FormField from "./FormField";
+import tasksService from "../services/tasksService";
 
 class AddTask extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      title: "",
-      link: "",
-      description: "",
-      plan: ""
-    };
+    const blankTask = tasksService.getBlankTask();
+    this.state = blankTask;
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -35,7 +32,12 @@ class AddTask extends Component {
     const { title, link, description, plan } = this.state;
 
     return (
-      <form className="form" onSubmit={this.handleSubmit} method="post">
+      <form
+        className="form add-task"
+        onSubmit={this.handleSubmit}
+        method="post"
+      >
+        <h2 className="form-title">Add a task</h2>
         <FormField
           label="Title"
           name="title"
@@ -67,10 +69,11 @@ class AddTask extends Component {
           type="textarea"
           handleChange={this.handleInputChange}
         />
-
-        <button className="btn success" onClick={this.handleSubmit}>
-          Create
-        </button>
+        <div className="form-row">
+          <button className="btn success" onClick={this.handleSubmit}>
+            Create
+          </button>
+        </div>
       </form>
     );
   }

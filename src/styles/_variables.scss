@@ -1,9 +1,21 @@
 $light-text: #fefefe;
-$dark-text:#202020;
+$dark-text:#525252;
+$app-background: #e9e9e9;
+$link-color: #4067b3;
 
-$nav-background: #564f8f;
+$nav-background: #ffffff;
+$nav-text: $dark-text;
+$nav-active: #51bd8a;
 
-$btn--default-background: #fafafa;
-$btn--primary-background:#564f8f;
-$btn--success-background: #65b947;
-$btn--danger-background: #bd3131;
+$heading-font-family: 'Montserrat', sans-serif;
+$content-font-family: 'Roboto', sans-serif;
+
+$footer-background: #242424;
+$footer-color: #fefefe;
+
+$btn--default-background: #0c0a0a;
+$btn--primary-background:#f0f0f0;
+$btn--success-background: #51bd8a;
+$btn--danger-background: #b15c5c;
+
+$box-background: #ffffff;

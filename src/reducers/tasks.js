@@ -2,11 +2,11 @@ const tasks = (state = [], action) => {
   switch (action.type) {
     case "ADD_TASK":
       return [
-        ...state,
         {
           id: action.id,
           task: { id: action.id, ...action.task }
-        }
+        },
+        ...state
       ];
     case "REMOVE_TASK":
       return state.filter(task => task.id !== action.id);
