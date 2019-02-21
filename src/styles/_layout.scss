@@ -1,0 +1,22 @@
+.app {
+  background: #f5f5f5;
+  color: $dark-text;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+  &__header {
+    background: $nav-background;
+    border-bottom: 1px solid darken($nav-background, 5%);
+  }
+  &__body {
+    display: flex;
+    flex: 1;
+    margin: 0 auto;
+    padding: 1em 0;
+    width: 90%;
+  }
+  &__footer {
+    padding: 1em 0;
+  }
+}

@@ -1,0 +1,32 @@
+.form {
+  text-align: left;
+  width: 100%;
+}
+
+.form-row {
+  display: flex;
+  margin: 1em 0;
+  label {
+    flex: 1 0 120px;
+    font-size: 1em;
+    max-width: 120px;
+    padding: 8px 4px;
+    white-space: nowrap;
+  }
+  textarea {
+    transition: all 200ms ease-in;
+  }
+  input,
+  textarea {
+    align-content: center;
+    border: 1px solid #d8d8d8;
+    display: inline-block;
+    flex: 1;
+    font-size: 0.8em;
+    outline: none;
+    padding: 8px 4px;
+    &:focus {
+      border: 1px solid #8b8b8b;
+    }
+  }
+}

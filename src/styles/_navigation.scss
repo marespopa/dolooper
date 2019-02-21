@@ -1,0 +1,33 @@
+.main-navigation {
+  display: flex;
+  justify-content: center;
+  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    li {
+      background: $nav-background;
+      color: $light-text;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+      transition: all 0.25s ease-in-out;
+      &:hover,
+      &:focus {
+        a {
+          background: lighten($nav-background, 5%);
+        }
+      }
+      a {
+        color: $light-text;
+        display: block;
+        padding: 1rem 2rem;
+        transition: all 0.25s ease-in-out;
+        text-decoration: none;
+        &.active {
+          background: lighten($nav-background, 10%);
+        }
+      }
+    }
+  }
+}
