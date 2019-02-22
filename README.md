@@ -1,4 +1,4 @@
-## Day Work
+## Daily Developer Work
 Schedule your daily dev work
 
 
