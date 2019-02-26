@@ -1,5 +1,19 @@
-## Day Work
+## Daily Developer Work
 Schedule your daily dev work
+
+
+## Badges
+[![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-js.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
+
+## Deployed on Netlify
+[devwork.netlify.com](https://devwork.netlify.com)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/c47049f7-8d02-4082-8d52-63f2a40ca82d/deploy-status)](https://app.netlify.com/sites/devwork/deploys)
+
 
 ### `npm start`
 
