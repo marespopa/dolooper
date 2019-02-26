@@ -10,7 +10,7 @@ Schedule your daily dev work
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
 ## Deployed on Netlify
-[https://devwork.netlify.com](devwork.netlify.com)
+[devwork.netlify.com](https://devwork.netlify.com)
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c47049f7-8d02-4082-8d52-63f2a40ca82d/deploy-status)](https://app.netlify.com/sites/devwork/deploys)
 
