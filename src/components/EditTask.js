@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import FormField from "./FormField";
-
+import { Link } from "react-router-dom";
 class EditTask extends Component {
   constructor(props) {
     super(props);
@@ -8,7 +8,7 @@ class EditTask extends Component {
     this.state = {
       task,
       isSaved: true,
-      saveMessage: ''
+      hasBeenChanged: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +26,7 @@ class EditTask extends Component {
       },
       isSaved: false,
       hasErrorAtSave: false,
-      saveMessage: ''
+      hasBeenChanged: true
     });
   }
 
@@ -37,8 +37,7 @@ class EditTask extends Component {
       this.props.updateTask(task);
       this.setState({
         isSaved: true,
-        hasErrorAtSave: false,
-        saveMessage: 'Task has been saved.'
+        hasErrorAtSave: false
       });
     } catch (error) {
       this.setState({
@@ -49,12 +48,19 @@ class EditTask extends Component {
 
   render() {
     const { title, link, description, plan } = this.state.task;
-    const { isSaved, hasErrorAtSave, saveMessage } = this.state;
+    const { isSaved, hasErrorAtSave, hasBeenChanged } = this.state;
     const errorMessage = hasErrorAtSave && (
       <span className="message error">We could not save the task...</span>
     );
-    const successMessage = isSaved && (
-      <span className="message success">{saveMessage}</span>
+    const successMessage = isSaved && hasBeenChanged && (
+      <>
+        <span className="message success">Task has been saved.</span>
+      </>
+    );
+    const linkMessage = (
+      <span className="message link">
+        <Link to="/tasks">Back to Dashboard.</Link>
+      </span>
     );
     return (
       <form className="form" onSubmit={this.handleSubmit} method="post">
@@ -100,6 +106,7 @@ class EditTask extends Component {
           </button>
           {errorMessage}
           {successMessage}
+          {linkMessage}
         </div>
       </form>
     );

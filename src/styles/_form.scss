@@ -1,7 +1,8 @@
 .form {
   background: $box-background;
   border: 1px solid darken($box-background, 15%);
-  box-shadow: 0px 1px 15px darken($box-background, 12%);  margin: 0 auto;
+  box-shadow: 0px 1px 15px darken($box-background, 12%);
+  margin: 0 auto;
   padding: 1em 0;
   text-align: left;
   width: 100%;
@@ -49,12 +50,19 @@
   .message {
     border-radius: 4px;
     color: white;
-    padding: 8px 24px;
+    padding: 8px 0;
+    margin-left: 1em;
+    vertical-align: middle;
     &.error {
       color: #f99c36;
     }
     &.success {
       color: $btn--success-background;
+    }
+    &.link {
+      font-size: 0.8em;
+      line-height: 1.2em;
+      margin-left: auto;
     }
   }
 }
