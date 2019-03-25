@@ -1,28 +1,33 @@
 .main-navigation {
   margin-left: auto;
   margin-right: calc(5% - 1em);
+
   ul {
     display: flex;
     list-style: none;
     padding: 0;
+
     li {
       color: $nav-text;
       display: block;
       text-align: center;
       text-decoration: none;
       padding: 1em;
+
       &:hover,
       &:focus {
         a {
           border-color: lighten($nav-active, 25%);
         }
       }
+
       a {
         border-bottom: 1px solid transparent;
         color: $nav-text;
         display: block;
         padding: 4px 2px;
         text-decoration: none;
+  
         &.active {
           border-color: $nav-active;
         }
