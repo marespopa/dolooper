@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import FormField from "./FormField";
 import tasksService from "../services/tasksService";
+import { Link } from "react-router-dom";
 
 class AddTask extends Component {
   constructor(props) {
@@ -30,6 +31,12 @@ class AddTask extends Component {
 
   render() {
     const { title, link, description, plan } = this.state;
+
+    const linkMessage = (
+      <span className="message link">
+        <Link to="/tasks">Back to Dashboard.</Link>
+      </span>
+    );
 
     return (
       <form
@@ -73,6 +80,7 @@ class AddTask extends Component {
           <button className="btn success" onClick={this.handleSubmit}>
             Create
           </button>
+          {linkMessage}
         </div>
       </form>
     );

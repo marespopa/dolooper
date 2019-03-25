@@ -5,12 +5,11 @@ const FormField = ({ type, label, name, value, handleChange }) => {
 
   const resizeTextarea = () => {
     const textarea = textareaRef.current;
-    const minHeightInPx = 200;
-    console.dir(textarea.scrollHeight);
+ 
     textarea.style.height = "";
-    textarea.style.height =
-      Math.min(textarea.scrollHeight, minHeightInPx) + "px";
+    textarea.style.height = textarea.scrollHeight + "px";
   };
+  
   const handleTextareaChange = event => {
     handleChange(event);
     resizeTextarea();
