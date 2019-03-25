@@ -5,33 +5,41 @@
   flex-direction: column;
   min-height: 100vh;
   text-align: center;
+
   &__header {
     display: flex;
     align-items: center;
     background: $nav-background;
+    box-shadow: $app-box-shadow;
+
     a {
       transition: all 0.25s ease-in-out;
     }
   }
+
   &__title {
     padding: 0 1em;
     color: $nav-active;
+
     a {
       color: $nav-text;
       text-decoration: none;
       border-bottom: 2px solid $nav-active;
+
       &:hover {
         border-bottom: 2px solid $nav-text;
         padding: 0 3px;
       }
     }
   }
+
   &__body {
     flex: 1;
     margin: 0 auto;
     padding: 2em 0 1em;
     width: 90%;
   }
+
   &__footer {
     background: $footer-background;
     border-top: 1px solid darken($footer-background, 5%);
@@ -39,10 +47,13 @@
     font-size: 0.8em;
     padding: 1em 5%;
     display: flex;
+
     .suggestions-link {
       color: $footer-color;
       margin-left: auto;
-      &:focus, &:hover {
+
+      &:focus, 
+      &:hover {
         color: $footer-color;
       }
     }

@@ -4,8 +4,8 @@
 
 .task {
   background: $box-background;
-  border: 1px solid darken($box-background, 15%);
-  box-shadow: 0px 1px 15px darken($box-background, 12%);
+  border: 1px solid darken($box-background, 5%);
+  box-shadow: $app-box-shadow;
   color: $dark-text;
   margin-bottom: 2em;
   text-align: left;

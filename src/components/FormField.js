@@ -5,9 +5,11 @@ const FormField = ({ type, label, name, value, handleChange }) => {
 
   const resizeTextarea = () => {
     const textarea = textareaRef.current;
+ 
     textarea.style.height = "";
     textarea.style.height = textarea.scrollHeight + "px";
   };
+  
   const handleTextareaChange = event => {
     handleChange(event);
     resizeTextarea();
@@ -27,12 +29,7 @@ const FormField = ({ type, label, name, value, handleChange }) => {
         />
       )}
       {type === "input" && (
-        <input
-          type="text"
-          name={name}
-          value={value}
-          onChange={handleChange}
-        />
+        <input type="text" name={name} value={value} onChange={handleChange} />
       )}
     </div>
   );
