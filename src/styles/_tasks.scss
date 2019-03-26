@@ -12,6 +12,7 @@
   transition: all 250ms ease-out;
   padding: 1em;
   position: relative;
+
   &:before {
     content: "";
     position: absolute;
@@ -22,20 +23,24 @@
     border-right: 0.5em solid #fff;
     z-index: 3;
   }
+
   .remove-task {
     float: right;
   }
+
   &__section {
+    margin: 1em 0;
+
     h3 {
       color: lighten($dark-text, 10%);
     }
+
     p {
       &.long-text {
         padding-right: 1em;
-        white-space: pre-line;
+        white-space: pre-wrap;
       }
     }
-    margin: 1em 0;
   }
 }
 
