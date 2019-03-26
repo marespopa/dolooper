@@ -1,5 +1,5 @@
 ## Daily Developer Work
-Schedule your daily dev work
+Task manager for your daily dev work
 
 
 ## Badges
