@@ -7,7 +7,8 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 const persistedState = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : {'tasks': []}
-const store = createStore(rootReducer, persistedState)
+const store = createStore(rootReducer, persistedState);
+
 store.subscribe(()=>{
   localStorage.setItem('tasks', JSON.stringify(store.getState()))
 })

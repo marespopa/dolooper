@@ -10,6 +10,8 @@ class AddTask extends Component {
     this.state = blankTask;
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyboardSave = this.handleKeyboardSave.bind(this);
+    this.addTask = this.addTask.bind(this);
   }
 
   handleInputChange(event) {
@@ -22,9 +24,23 @@ class AddTask extends Component {
     });
   }
 
+  handleKeyboardSave(event) {
+    let charCode = String.fromCharCode(event.which).toLowerCase();
+
+    if (event.metaKey && charCode === 's') {
+      event.preventDefault();
+      const task = this.state;
+      this.addTask(task);
+    }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const task = this.state;
+    this.addTask(task);
+  }
+
+  addTask (task) {
     this.props.addTask(task);
     this.props.history.push("/tasks");
   }
@@ -41,6 +57,7 @@ class AddTask extends Component {
     return (
       <form
         className="form add-task"
+        onKeyDown={this.handleKeyboardSave}
         onSubmit={this.handleSubmit}
         method="post"
       >
@@ -77,7 +94,7 @@ class AddTask extends Component {
           handleChange={this.handleInputChange}
         />
         <div className="form-row">
-          <button className="btn success" onClick={this.handleSubmit}>
+          <button className="btn success">
             Create
           </button>
           {linkMessage}

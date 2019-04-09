@@ -26,10 +26,11 @@ const FormField = ({ type, label, name, value, handleChange }) => {
           value={value}
           onChange={handleTextareaChange.bind(this)}
           onFocus={resizeTextarea}
+          required
         />
       )}
       {type === "input" && (
-        <input type="text" name={name} value={value} onChange={handleChange} />
+        <input type="text" name={name} value={value} onChange={handleChange} required />
       )}
     </div>
   );
