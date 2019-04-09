@@ -12,6 +12,8 @@ class EditTask extends Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyboardSave = this.handleKeyboardSave.bind(this);
+    this.saveTask = this.saveTask.bind(this);
   }
 
   handleInputChange(event) {
@@ -30,9 +32,24 @@ class EditTask extends Component {
     });
   }
 
+
+  handleKeyboardSave(event) {
+    let charCode = String.fromCharCode(event.which).toLowerCase();
+
+    if (event.metaKey && charCode === 's') {
+      event.preventDefault();
+      const task = this.state.task;
+      this.saveTask(task);
+    }
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     const task = this.state.task;
+    this.saveTask(task);
+  }
+
+  saveTask(task) {
     try {
       this.props.updateTask(task);
       this.setState({
@@ -63,7 +80,7 @@ class EditTask extends Component {
       </span>
     );
     return (
-      <form className="form" onSubmit={this.handleSubmit} method="post">
+      <form className="form" onSubmit={this.handleSubmit} method="post" onKeyDown={this.handleKeyboardSave}>
         <FormField
           label="Title"
           name="title"
@@ -100,7 +117,6 @@ class EditTask extends Component {
           <button
             disabled={isSaved}
             className="btn success"
-            onClick={this.handleSubmit}
           >
             Save
           </button>
