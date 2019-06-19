@@ -3,29 +3,26 @@ import React from "react";
 const FormField = ({ type, label, name, value, handleChange }) => {
   const textareaRef = React.createRef();
 
-  const addAdditionalPadding = scrollHeight => {
-    //If height is large, we need to add additional padding to show more content
-    if (scrollHeight > 500) {
-      return scrollHeight + 64;
-    } else {
-      return scrollHeight;
-    }
-  };
   const resizeTextarea = () => {
     const textarea = textareaRef.current;
 
-    textarea.style.height = "";
-    textarea.style.height = addAdditionalPadding(textarea.scrollHeight) + "px";
-  };
+    textarea.style.height = textarea.scrollHeight + 2 + "px";
 
+    let textareaHeight = textarea.style.height.substring(
+      0,
+      textarea.style.height.length - 2
+    );
+
+    if (textareaHeight >= 300) {
+      textarea.style.overflow = "auto";
+    } else {
+      textarea.style.overflow = "hidden";
+    }
+  }
+  
   const handleTextareaChange = event => {
     handleChange(event);
     resizeTextarea();
-  };
-
-  const resetTextareaHeight = event => {
-    const textarea = textareaRef.current;
-    textarea.style.height = 64 + "px";
   };
 
   return (
@@ -39,7 +36,6 @@ const FormField = ({ type, label, name, value, handleChange }) => {
           value={value}
           onChange={handleTextareaChange.bind(this)}
           onFocus={resizeTextarea}
-          onBlur={resetTextareaHeight}
           required
         />
       )}
