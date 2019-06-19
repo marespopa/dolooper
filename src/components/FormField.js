@@ -12,14 +12,14 @@ const FormField = ({ type, label, name, value, handleChange }) => {
       0,
       textarea.style.height.length - 2
     );
-    console.log(textareaHeight);
+
     if (textareaHeight >= 300) {
       textarea.style.overflow = "auto";
     } else {
       textarea.style.overflow = "hidden";
     }
-  };
-
+  }
+  
   const handleTextareaChange = event => {
     handleChange(event);
     resizeTextarea();
