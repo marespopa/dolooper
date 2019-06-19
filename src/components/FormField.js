@@ -5,11 +5,21 @@ const FormField = ({ type, label, name, value, handleChange }) => {
 
   const resizeTextarea = () => {
     const textarea = textareaRef.current;
- 
-    textarea.style.height = "";
-    textarea.style.height = textarea.scrollHeight + "px";
+
+    textarea.style.height = textarea.scrollHeight + 2 + "px";
+
+    let textareaHeight = textarea.style.height.substring(
+      0,
+      textarea.style.height.length - 2
+    );
+    console.log(textareaHeight);
+    if (textareaHeight >= 300) {
+      textarea.style.overflow = "auto";
+    } else {
+      textarea.style.overflow = "hidden";
+    }
   };
-  
+
   const handleTextareaChange = event => {
     handleChange(event);
     resizeTextarea();
@@ -30,7 +40,13 @@ const FormField = ({ type, label, name, value, handleChange }) => {
         />
       )}
       {type === "input" && (
-        <input type="text" name={name} value={value} onChange={handleChange} required />
+        <input
+          type="text"
+          name={name}
+          value={value}
+          onChange={handleChange}
+          required
+        />
       )}
     </div>
   );
