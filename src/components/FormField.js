@@ -9,12 +9,11 @@ const FormField = ({ type, label, name, value, handleChange }) => {
     let computed = window.getComputedStyle(textarea);
 
     // Calculate the height
-    let height =
-      parseInt(computed.getPropertyValue("border-top-width"), 10) +
-      parseInt(computed.getPropertyValue("padding-top"), 10) +
-      textarea.scrollHeight +
-      parseInt(computed.getPropertyValue("padding-bottom"), 10) +
-      parseInt(computed.getPropertyValue("border-bottom-width"), 10);
+    let height = parseInt(computed.getPropertyValue("border-top-width"), 10) +
+                 parseInt(computed.getPropertyValue("padding-top"), 10) +
+                 textarea.scrollHeight +
+                 parseInt(computed.getPropertyValue("padding-bottom"), 10) +
+                 parseInt(computed.getPropertyValue("border-bottom-width"), 10);
 
     textarea.style.height = height + "px";
   };
