@@ -5,21 +5,19 @@ const FormField = ({ type, label, name, value, handleChange }) => {
 
   const resizeTextarea = () => {
     const textarea = textareaRef.current;
+    textarea.style.height = "inherit";
+    let computed = window.getComputedStyle(textarea);
 
-    textarea.style.height = textarea.scrollHeight + 2 + "px";
+    // Calculate the height
+    let height = parseInt(computed.getPropertyValue("border-top-width"), 10) +
+                 parseInt(computed.getPropertyValue("padding-top"), 10) +
+                 textarea.scrollHeight +
+                 parseInt(computed.getPropertyValue("padding-bottom"), 10) +
+                 parseInt(computed.getPropertyValue("border-bottom-width"), 10);
 
-    let textareaHeight = textarea.style.height.substring(
-      0,
-      textarea.style.height.length - 2
-    );
+    textarea.style.height = height + "px";
+  };
 
-    if (textareaHeight >= 300) {
-      textarea.style.overflow = "auto";
-    } else {
-      textarea.style.overflow = "hidden";
-    }
-  }
-  
   const handleTextareaChange = event => {
     handleChange(event);
     resizeTextarea();
