@@ -1,5 +1,15 @@
-.task-list {
+.tasks-list {
   width: 100%;
+
+  .no-tasks {
+    margin: 16px auto;
+    text-align: center;
+
+    h1 {
+      color: #fff;
+      font-size: 4em;
+    }
+  }
 }
 
 .task {
@@ -43,7 +53,7 @@
       font-size: 11px;
       padding: 4px;
 
-      &+.tag {
+      & + .tag {
         margin-left: 4px;
       }
     }
@@ -69,6 +79,6 @@
   }
 }
 
-.task__section+.task__section {
+.task__section + .task__section {
   margin-top: 2em;
 }
