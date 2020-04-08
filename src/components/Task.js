@@ -15,7 +15,7 @@ const EditButton = withRouter(({ history, linkRef }) => (
   </button>
 ))
 
-const Task = ({ removeHandler, task }) => {
+const Task = ({ removeHandler, pinHandler, task }) => {
   const linkRef = 'task/' + task.id
   return (
     <div className="task">
@@ -30,11 +30,18 @@ const Task = ({ removeHandler, task }) => {
       <TaskSection label="Description" content={task.description} />
       <TaskSection label="The Plan" content={task.plan} />
       <EditButton linkRef={linkRef} />
+      <button
+        className={`btn highlight ${task.isPinned ? 'highlight--active' : ''}`}
+        onClick={pinHandler}
+      >
+        {task.isPinned ? 'Unpin' : 'Pin'} Task
+      </button>
     </div>
   )
 }
 
 Task.propTypes = {
+  pinHandler: PropTypes.func,
   removeHandler: PropTypes.func,
   task: PropTypes.object,
 }

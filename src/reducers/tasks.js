@@ -4,7 +4,7 @@ const tasks = (state = [], action) => {
       return [
         {
           id: action.id,
-          task: { id: action.id, ...action.task },
+          ...action.task,
         },
         ...state,
       ]
@@ -12,8 +12,7 @@ const tasks = (state = [], action) => {
       return state.filter(task => task.id !== action.id)
     case 'UPDATE_TASK': {
       const updatedTask = {
-        id: action.task.id,
-        task: action.task,
+        ...action.task,
       }
       return state.map(task => {
         let isIdMatching = task.id.trim() === updatedTask.id.trim()

@@ -44,6 +44,33 @@
     }
   }
 
+  &.highlight {
+    background: $btn--highlight-background;
+    border-color: darken($btn--highlight-background, 5%);
+    color: $dark-text;
+
+    &:not(:disabled):hover,
+    &:not(:disabled):focus {
+      background: darken($btn--highlight-background, 5%);
+      border-color: darken($btn--highlight-background, 8%);
+    }
+
+    a {
+      color: $dark-text;
+    }
+
+    &--active {
+      background: $btn--highlight-active-background;
+      border-color: lighten($btn--highlight-active-background, 5%);
+
+      &:not(:disabled):hover,
+      &:not(:disabled):focus {
+        background: lighten($btn--highlight-active-background, 5%);
+        border-color: lighten($btn--highlight-active-background, 8%);
+      }
+    }
+  }
+
   &.success {
     background: $btn--success-background;
     border-color: darken($btn--success-background, 3%);
