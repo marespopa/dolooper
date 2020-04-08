@@ -48,7 +48,7 @@ class AddTask extends Component {
   }
 
   render() {
-    const { title, link, description, plan } = this.state
+    const { title, link, tags, description, plan } = this.state
 
     const linkMessage = (
       <span className="message link">
@@ -63,7 +63,7 @@ class AddTask extends Component {
         onSubmit={this.handleSubmit}
         method="post"
       >
-        <h2 className="form-title">Add a task</h2>
+        <h2 className="form-title">Create a task</h2>
         <FormField
           label="Title"
           name="title"
@@ -77,6 +77,14 @@ class AddTask extends Component {
           name="link"
           value={link}
           type="link"
+          handleChange={this.handleInputChange}
+        />
+
+        <FormField
+          label="Tags"
+          name="tags"
+          value={tags}
+          type="input"
           handleChange={this.handleInputChange}
         />
 

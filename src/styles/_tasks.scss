@@ -7,7 +7,7 @@
   border: 1px solid darken($box-background, 5%);
   box-shadow: $app-box-shadow;
   color: $dark-text;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   text-align: left;
   transition: all 250ms ease-out;
   padding: 1em;
@@ -29,7 +29,28 @@
   }
 
   .pin-task {
-    float:right;
+    float: right;
+  }
+
+  .tags {
+    align-self: center;
+    display: flex;
+    margin-left: auto;
+
+    .tag {
+      background: $tag-background;
+      color: $light-text;
+      font-size: 11px;
+      padding: 4px;
+
+      &+.tag {
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .actions-section {
+    display: flex;
   }
 
   &__section {
@@ -48,6 +69,6 @@
   }
 }
 
-.task__section + .task__section {
+.task__section+.task__section {
   margin-top: 2em;
 }
