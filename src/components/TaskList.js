@@ -3,12 +3,8 @@ import Task from './Task'
 import PropTypes from 'prop-types'
 
 const TaskList = ({ tasks, pinTask, removeTask }) => {
-  console.dir(tasks)
   const hasTasks = tasks.length > 0
-  /**
-   *
-   * @param {number} taskId
-   */
+
   const removeHandler = taskId => {
     var confirmDialog = window.confirm('Are you sure you want to remove task?')
     if (confirmDialog === true) {
@@ -16,10 +12,6 @@ const TaskList = ({ tasks, pinTask, removeTask }) => {
     }
   }
 
-  /**
-   *
-   * @param {object} task
-   */
   const pinHandler = task => {
     pinTask(task)
   }

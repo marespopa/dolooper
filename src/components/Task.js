@@ -1,5 +1,6 @@
 import React from 'react'
 import TaskSection from './TaskSection'
+import Tags from './Tags'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
@@ -29,13 +30,18 @@ const Task = ({ removeHandler, pinHandler, task }) => {
       </h2>
       <TaskSection label="Description" content={task.description} />
       <TaskSection label="The Plan" content={task.plan} />
-      <EditButton linkRef={linkRef} />
-      <button
-        className={`btn highlight ${task.isPinned ? 'highlight--active' : ''}`}
-        onClick={pinHandler}
-      >
-        {task.isPinned ? 'Unpin' : 'Pin'} Task
-      </button>
+      <div className="actions-section">
+        <EditButton linkRef={linkRef} />
+        <button
+          className={`btn highlight ${
+            task.isPinned ? 'highlight--active' : ''
+          }`}
+          onClick={pinHandler}
+        >
+          {task.isPinned ? 'Unpin' : 'Pin'} Task
+        </button>
+        <Tags tags={task.tags}></Tags>
+      </div>
     </div>
   )
 }

@@ -4,6 +4,7 @@ const tasksService = {
     link: '',
     description: '',
     plan: '',
+    tags: '',
     isPinned: false
   }),
 }

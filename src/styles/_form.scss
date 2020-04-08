@@ -14,6 +14,37 @@
   text-align: center;
 }
 
+.search-row {
+  align-items: center;
+  background: $search-row-background;
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  font-size: 12px;
+  margin-bottom: 1em;
+  margin-left: auto;
+  min-width: 250px;
+  padding: 8px 16px;
+  width: 30%;
+  z-index: 1;
+
+  input {
+    outline: none;
+    flex: 0 0 calc(100% - 130px);
+    padding: 8px 20px;
+  }
+
+  label {
+    flex: 0 0 72px;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    padding: 8px 4px 8px 0
+  }
+
+  &.focus {
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15);
+  }
+}
+
 .form-row {
   display: flex;
   margin: 2em;

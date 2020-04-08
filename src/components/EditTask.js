@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 class EditTask extends Component {
   constructor(props) {
     super(props)
-    const task = props;
+    const task = props
     this.state = {
       task,
       isSaved: true,
@@ -65,7 +65,7 @@ class EditTask extends Component {
   }
 
   render() {
-    const { title, link, description, plan } = this.state.task
+    const { title, link, tags, description, plan } = this.state.task
     const { isSaved, hasErrorAtSave, hasBeenChanged } = this.state
     const errorMessage = hasErrorAtSave && (
       <span className="message error">We could not save the task...</span>
@@ -87,6 +87,7 @@ class EditTask extends Component {
         method="post"
         onKeyDown={this.handleKeyboardSave}
       >
+        <h2 className="form-title">Edit a task</h2>
         <FormField
           label="Title"
           name="title"
@@ -100,6 +101,14 @@ class EditTask extends Component {
           name="link"
           value={link}
           type="link"
+          handleChange={this.handleInputChange}
+        />
+
+        <FormField
+          label="Tags"
+          name="tags"
+          value={tags}
+          type="input"
           handleChange={this.handleInputChange}
         />
 
