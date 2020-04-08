@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 class EditTask extends Component {
   constructor(props) {
     super(props)
-    const task = props.task
+    const task = props;
     this.state = {
       task,
       isSaved: true,
