@@ -1,4 +1,5 @@
 .app {
+  background: $app-background--fallback;
   background: $app-background;
   color: $dark-text;
   display: flex;
@@ -7,10 +8,15 @@
   text-align: center;
 
   &__header {
-    display: flex;
-    align-items: center;
     background: $nav-background;
     box-shadow: $app-box-shadow;
+
+    .content {
+      display: flex;
+      align-items: center;
+      max-width: 1036px;
+      margin: 0 auto;
+    }
 
     a {
       transition: all 0.25s ease-in-out;
@@ -18,7 +24,7 @@
   }
 
   &__title {
-    padding: 0 1em;
+    padding: 0 1em 0 0;
     color: $nav-active;
 
     a {
@@ -52,7 +58,7 @@
       color: $footer-color;
       margin-left: auto;
 
-      &:focus, 
+      &:focus,
       &:hover {
         color: $footer-color;
       }

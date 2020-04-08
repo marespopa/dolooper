@@ -37,8 +37,9 @@ h3 {
 a {
   color: $link-color;
   text-decoration: underline;
-  
-  &:hover, &:focus {
+
+  &:hover,
+  &:focus {
     color: darken($link-color, 5%);
   }
 }

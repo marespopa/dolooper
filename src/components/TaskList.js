@@ -1,14 +1,15 @@
-import React from "react";
-import Task from "./Task";
+import React from 'react'
+import Task from './Task'
+import PropTypes from 'prop-types'
 
 const TaskList = ({ tasks, removeTask }) => {
-  const hasTasks = tasks.length > 0;
+  const hasTasks = tasks.length > 0
   const removeHandler = taskId => {
-    var confirmDialog = window.confirm("Are you sure you want to remove task?");
+    var confirmDialog = window.confirm('Are you sure you want to remove task?')
     if (confirmDialog === true) {
-      removeTask(taskId);
+      removeTask(taskId)
     }
-  };
+  }
   const ListRender =
     hasTasks &&
     tasks.map(task => (
@@ -17,14 +18,19 @@ const TaskList = ({ tasks, removeTask }) => {
         {...task}
         removeHandler={() => removeHandler(task.id)}
       />
-    ));
-  const BlankState = !hasTasks && <h2>No tasks. Enjoy! :)</h2>;
+    ))
+  const BlankState = !hasTasks && <h2>No tasks. Enjoy! :)</h2>
   return (
     <div className="task-list">
       {BlankState}
       {ListRender}
     </div>
-  );
-};
+  )
+}
 
-export default TaskList;
+TaskList.propTypes = {
+  tasks: PropTypes.array,
+  removeTask: PropTypes.func,
+}
+
+export default TaskList

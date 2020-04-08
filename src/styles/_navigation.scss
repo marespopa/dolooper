@@ -1,6 +1,5 @@
 .main-navigation {
   margin-left: auto;
-  margin-right: calc(5% - 1em);
 
   ul {
     display: flex;
@@ -13,6 +12,10 @@
       text-align: center;
       text-decoration: none;
       padding: 1em;
+
+      &:last-of-type {
+        padding-right: 0;
+      }
 
       &:hover,
       &:focus {
@@ -27,7 +30,7 @@
         display: block;
         padding: 4px 2px;
         text-decoration: none;
-  
+
         &.active {
           border-color: $nav-active;
         }

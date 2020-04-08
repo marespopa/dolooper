@@ -1,32 +1,34 @@
-import React from "react";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const FormField = ({ type, label, name, value, handleChange }) => {
-  const textareaRef = React.createRef();
+  const textareaRef = React.createRef()
 
   const resizeTextarea = () => {
-    const textarea = textareaRef.current;
-    textarea.style.height = "inherit";
-    let computed = window.getComputedStyle(textarea);
+    const textarea = textareaRef.current
+    textarea.style.height = 'inherit'
+    let computed = window.getComputedStyle(textarea)
 
     // Calculate the height
-    let height = parseInt(computed.getPropertyValue("border-top-width"), 10) +
-                 parseInt(computed.getPropertyValue("padding-top"), 10) +
-                 textarea.scrollHeight +
-                 parseInt(computed.getPropertyValue("padding-bottom"), 10) +
-                 parseInt(computed.getPropertyValue("border-bottom-width"), 10);
+    let height =
+      parseInt(computed.getPropertyValue('border-top-width'), 10) +
+      parseInt(computed.getPropertyValue('padding-top'), 10) +
+      textarea.scrollHeight +
+      parseInt(computed.getPropertyValue('padding-bottom'), 10) +
+      parseInt(computed.getPropertyValue('border-bottom-width'), 10)
 
-    textarea.style.height = height + "px";
-  };
+    textarea.style.height = height + 'px'
+  }
 
   const handleTextareaChange = event => {
-    handleChange(event);
-    resizeTextarea();
-  };
+    handleChange(event)
+    resizeTextarea()
+  }
 
   return (
     <div className="form-row">
       <label>{label}</label>
-      {type === "textarea" && (
+      {type === 'textarea' && (
         <textarea
           ref={textareaRef}
           type="text"
@@ -37,7 +39,7 @@ const FormField = ({ type, label, name, value, handleChange }) => {
           required
         />
       )}
-      {type === "input" && (
+      {type === 'input' && (
         <input
           type="text"
           name={name}
@@ -46,8 +48,25 @@ const FormField = ({ type, label, name, value, handleChange }) => {
           required
         />
       )}
+      {type === 'link' && (
+        <input
+          type="url"
+          name={name}
+          value={value}
+          onChange={handleChange}
+          required
+        />
+      )}
     </div>
-  );
-};
+  )
+}
 
-export default FormField;
+FormField.propTypes = {
+  name: PropTypes.string,
+  handleChange: PropTypes.func,
+  label: PropTypes.string,
+  type: PropTypes.string,
+  value: PropTypes.string,
+}
+
+export default FormField

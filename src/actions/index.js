@@ -1,23 +1,23 @@
-import utils from "../services/utils";
+import utils from '../services/utils'
 
 export const addTask = task => {
   return {
-    type: "ADD_TASK",
+    type: 'ADD_TASK',
     id: utils.generateUUID(),
-    task
-  };
-};
+    task,
+  }
+}
 
 export const removeTask = id => {
   return {
-    type: "REMOVE_TASK",
-    id
-  };
-};
+    type: 'REMOVE_TASK',
+    id,
+  }
+}
 
 export const updateTask = task => {
   return {
-    type: "UPDATE_TASK",
-    task
+    type: 'UPDATE_TASK',
+    task,
   }
 }

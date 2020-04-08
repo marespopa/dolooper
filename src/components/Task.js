@@ -1,36 +1,42 @@
-import React from "react";
-import TaskSection from "./TaskSection";
-import { withRouter } from "react-router-dom";
+import React from 'react'
+import TaskSection from './TaskSection'
+import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const EditButton = withRouter(({ history, linkRef }) => (
   <button
     type="button"
     className="btn primary"
     onClick={() => {
-      history.push(linkRef);
+      history.push(linkRef)
     }}
   >
     Edit Task
   </button>
-));
+))
 
 const Task = ({ removeHandler, task }) => {
-  const linkRef = "task/" + task.id;
+  const linkRef = 'task/' + task.id
   return (
     <div className="task">
       <button className="btn danger remove-task" onClick={removeHandler}>
         Remove
       </button>
-      <h2>{task.title}</h2>
-      <TaskSection type="link" label="Link" content={task.link} />
-      <TaskSection
-        type="long-text"
-        label="Description"
-        content={task.description}
-      />
-      <TaskSection type="long-text" label="The Plan" content={task.plan} />
+      <h2>
+        <a href={task.link} target="_blank" rel="noopener noreferrer">
+          {task.title}
+        </a>
+      </h2>
+      <TaskSection label="Description" content={task.description} />
+      <TaskSection label="The Plan" content={task.plan} />
       <EditButton linkRef={linkRef} />
     </div>
-  );
-};
-export default Task;
+  )
+}
+
+Task.propTypes = {
+  removeHandler: PropTypes.func,
+  task: PropTypes.object,
+}
+
+export default Task

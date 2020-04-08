@@ -1,10 +1,10 @@
 const tasksService = {
   getBlankTask: () => ({
-    title: "",
-    link: "",
-    description: "",
-    plan: ""
-  })
-};
+    title: '',
+    link: '',
+    description: '',
+    plan: '',
+  }),
+}
 
-export default tasksService;
+export default tasksService

@@ -32,7 +32,7 @@
     background: $btn--primary-background;
     border-color: darken($btn--primary-background, 5%);
     color: $dark-text;
-    
+
     &:not(:disabled):hover,
     &:not(:disabled):focus {
       background: darken($btn--primary-background, 5%);

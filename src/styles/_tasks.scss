@@ -14,7 +14,7 @@
   position: relative;
 
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     width: 0;
     left: -1em;
@@ -44,6 +44,6 @@
   }
 }
 
-.task__section+.task__section {
+.task__section + .task__section {
   margin-top: 2em;
 }

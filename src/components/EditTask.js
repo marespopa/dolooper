@@ -1,86 +1,92 @@
-import React, { Component } from "react";
-import FormField from "./FormField";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react'
+import FormField from './FormField'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+
 class EditTask extends Component {
   constructor(props) {
-    super(props);
-    const task = props.task;
+    super(props)
+    const task = props.task
     this.state = {
       task,
       isSaved: true,
-      hasBeenChanged: false
-    };
-    this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleKeyboardSave = this.handleKeyboardSave.bind(this);
-    this.saveTask = this.saveTask.bind(this);
+      hasBeenChanged: false,
+    }
+    this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleKeyboardSave = this.handleKeyboardSave.bind(this)
+    this.saveTask = this.saveTask.bind(this)
   }
 
   handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
+    const target = event.target
+    const value = target.value
+    const name = target.name
 
     this.setState({
       task: {
         ...this.state.task,
-        [name]: value
+        [name]: value,
       },
       isSaved: false,
       hasErrorAtSave: false,
-      hasBeenChanged: true
-    });
+      hasBeenChanged: true,
+    })
   }
 
-
   handleKeyboardSave(event) {
-    let charCode = String.fromCharCode(event.which).toLowerCase();
+    let charCode = String.fromCharCode(event.which).toLowerCase()
 
     if (event.metaKey && charCode === 's') {
-      event.preventDefault();
-      const task = this.state.task;
-      this.saveTask(task);
+      event.preventDefault()
+      const task = this.state.task
+      this.saveTask(task)
     }
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    const task = this.state.task;
-    this.saveTask(task);
+    event.preventDefault()
+    const task = this.state.task
+    this.saveTask(task)
   }
 
   saveTask(task) {
     try {
-      this.props.updateTask(task);
+      this.props.updateTask(task)
       this.setState({
         isSaved: true,
-        hasErrorAtSave: false
-      });
+        hasErrorAtSave: false,
+      })
     } catch (error) {
       this.setState({
-        hasErrorAtSave: true
-      });
+        hasErrorAtSave: true,
+      })
     }
   }
 
   render() {
-    const { title, link, description, plan } = this.state.task;
-    const { isSaved, hasErrorAtSave, hasBeenChanged } = this.state;
+    const { title, link, description, plan } = this.state.task
+    const { isSaved, hasErrorAtSave, hasBeenChanged } = this.state
     const errorMessage = hasErrorAtSave && (
       <span className="message error">We could not save the task...</span>
-    );
+    )
     const successMessage = isSaved && hasBeenChanged && (
       <>
         <span className="message success">Task has been saved.</span>
       </>
-    );
+    )
     const linkMessage = (
       <span className="message link">
         <Link to="/tasks">Back to Dashboard.</Link>
       </span>
-    );
+    )
     return (
-      <form className="form" onSubmit={this.handleSubmit} method="post" onKeyDown={this.handleKeyboardSave}>
+      <form
+        className="form"
+        onSubmit={this.handleSubmit}
+        method="post"
+        onKeyDown={this.handleKeyboardSave}
+      >
         <FormField
           label="Title"
           name="title"
@@ -93,7 +99,7 @@ class EditTask extends Component {
           label="Link"
           name="link"
           value={link}
-          type="input"
+          type="link"
           handleChange={this.handleInputChange}
         />
 
@@ -114,10 +120,7 @@ class EditTask extends Component {
         />
 
         <div className="form-row">
-          <button
-            disabled={isSaved}
-            className="btn success"
-          >
+          <button disabled={isSaved} className="btn success">
             Save
           </button>
           {errorMessage}
@@ -125,8 +128,13 @@ class EditTask extends Component {
           {linkMessage}
         </div>
       </form>
-    );
+    )
   }
 }
 
-export default EditTask;
+EditTask.propTypes = {
+  task: PropTypes.array,
+  updateTask: PropTypes.func,
+}
+
+export default EditTask

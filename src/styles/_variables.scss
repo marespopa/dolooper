@@ -1,6 +1,7 @@
 $light-text: #fefefe;
 $dark-text:#525252;
-$app-background: linear-gradient(110deg, #DCEAB2 40%, transparent 30%), radial-gradient(farthest-corner at 0% 0%, #B3D6C6 70%, #A8CCC9 70%);
+$app-background: linear-gradient(to right, #ff9966, #ff5e62);
+$app-background--fallback: ff9966;
 $app-box-shadow: 0px 1px 2px 0 rgba(192, 192, 192, 0.3);
 $link-color: #4067b3;
 

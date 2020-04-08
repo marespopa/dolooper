@@ -1,9 +1,9 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-import TaskList from "../containers/TaskList";
-import AddTask from "../containers/AddTask";
-import EditTask from "../containers/EditTask";
+import TaskList from '../containers/TaskList'
+import AddTask from '../containers/AddTask'
+import EditTask from '../containers/EditTask'
 
 const MainContainer = () => (
   <div className="app__body">
@@ -14,6 +14,6 @@ const MainContainer = () => (
       <Route path="/add-task" component={AddTask} />
     </Switch>
   </div>
-);
+)
 
-export default MainContainer;
+export default MainContainer

@@ -3,7 +3,7 @@ import { addTask } from '../actions'
 import AddTask from '../components/AddTask'
 
 const mapDispatchToProps = dispatch => ({
-  addTask: task => dispatch(addTask(task))
+  addTask: task => dispatch(addTask(task)),
 })
 
 export default connect(
