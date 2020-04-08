@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-import AppHeader from "./components/AppHeader";
-import AppBody from "./components/AppBody";
-import AppFooter from "./components/AppFooter";
+import Header from "./components/Header";
+import MainContainer from "./components/MainContainer";
 
 import "./styles/index.scss";
 
@@ -12,9 +11,8 @@ class App extends Component {
       <div className="app">
         <Router>
           <>
-            <AppHeader />
-            <AppBody />
-            <AppFooter />
+            <Header />
+            <MainContainer />
           </>
         </Router>
       </div>

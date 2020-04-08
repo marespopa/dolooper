@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import MainNavigation from "./MainNavigation";
 
-const AppHeader = () => (
+const Header = () => (
   <header className="app__header">
     <h1 className="app__title">
       <NavLink to="/">DevWork</NavLink>
@@ -11,4 +11,4 @@ const AppHeader = () => (
   </header>
 );
 
-export default AppHeader;
+export default Header;

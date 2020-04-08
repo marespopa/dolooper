@@ -5,7 +5,7 @@ import TaskList from "../containers/TaskList";
 import AddTask from "../containers/AddTask";
 import EditTask from "../containers/EditTask";
 
-const AppBody = () => (
+const MainContainer = () => (
   <div className="app__body">
     <Switch>
       <Route exact path="/" component={AddTask} />
@@ -16,4 +16,4 @@ const AppBody = () => (
   </div>
 );
 
-export default AppBody;
+export default MainContainer;
