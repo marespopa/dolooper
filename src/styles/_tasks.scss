@@ -1,14 +1,52 @@
-.tasks-list {
+.tasks {
   width: 100%;
 
   .no-tasks {
-    margin: 16px auto;
-    text-align: center;
+    //background-color: #2a2a72;
+    //background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
+    border-radius: 16px;
+    position: relative;
+    color: $light-text;
+    font-size: 24px;
+    margin: 10% auto 16px;
 
-    h1 {
-      color: #fff;
-      font-size: 4em;
+    .circle {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border-radius: 100%;
+      background-color: $app-background--fallback;
+      animation-name: move-the-circle;
+      animation-iteration-count: infinite;
+      animation-duration: 2s;
+      animation-timing-function: cubic-bezier(.4,1.21,.83,1.16);
+      transform-origin: center center;
     }
+
+    @for $num from 1 through 8 {
+      .circle:nth-child(#{$num}) {
+        left: ($num + 1) * 48px;
+        animation-delay: $num * .1s;
+      }
+    }
+  }
+}
+
+@keyframes move-the-circle {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+    background-color: $app-background--fallback;
+  }
+  50% {
+    transform: translate(0, 50px) scale(.4);
+    opacity: .5;
+    background-color: darken($light-text, 5%);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+    background-color: darken($light-text, 10%);
   }
 }
 

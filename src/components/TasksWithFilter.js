@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Task from './Task'
 import PropTypes from 'prop-types'
+import Tooltip from './widgets/Tooltip'
 
 class TasksWithFilter extends Component {
   constructor(props) {
@@ -63,6 +64,7 @@ class TasksWithFilter extends Component {
               onChange={this.handleChange}
               required
             />
+            <Tooltip text="Search for multiple tags by using comma: tag1, tag2"></Tooltip>
           </div>
         )}
         {tasks
