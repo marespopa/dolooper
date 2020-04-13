@@ -17,6 +17,7 @@
 .actions-row {
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
 
   &:nth-child() {
     flex: 50%;
@@ -35,7 +36,6 @@
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
   display: flex;
   font-size: 12px;
-  margin-bottom: 1em;
   margin-left: auto;
   min-width: 250px;
   padding: 8px 16px;
