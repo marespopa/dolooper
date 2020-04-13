@@ -33,7 +33,7 @@
 .search-bar {
   align-items: center;
   background: $search-row-background;
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: $app-box-shadow;
   display: flex;
   font-size: 12px;
   margin-left: auto;

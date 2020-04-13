@@ -2,7 +2,7 @@ $light-text: #fefefe;
 $dark-text:#525252;
 $app-background: linear-gradient(to right, #ff9966, #ff5e62);
 $app-background--fallback: #ff9966;
-$app-box-shadow: 0px 1px 2px 0 rgba(192, 192, 192, 0.3);
+$app-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 $link-color: #4067b3;
 $highlight: #ffd900;
 
@@ -29,7 +29,7 @@ $search-row-background: #f0f0f0;
 
 $tag-background: #4067b3;
 $box-background: #ffffff;
-$tq-tooltip__icon-background: #a0a0a0;
-$tq-tooltip__icon-color: #ffffff;
-$tq-tooltip__text-background: #222222;
-$tq-tooltip__text-color: #ffffff;
+$tooltip__icon-background: #a0a0a0;
+$tooltip__icon-color: #ffffff;
+$tooltip__text-background: #222222;
+$tooltip__text-color: #ffffff;
