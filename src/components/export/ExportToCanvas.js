@@ -23,7 +23,7 @@ const ExportToCanvas = () => {
       pdfHeight = pdfWidth * 1.5 + topLeftMargin * 2,
       canvasWidth = htmlWidth,
       canvasHeight = htmlHeight,
-      totalPDFPages = Math.ceil(htmlHeight / htmlWidth) - 1
+      totalPDFPages = Math.ceil(canvasHeight / pdfHeight) - 1
 
     const getDate = separator => {
       separator = separator || '/'
@@ -68,7 +68,7 @@ const ExportToCanvas = () => {
             imgData,
             'JPG',
             topLeftMargin,
-            -(pdfHeight * i) + topLeftMargin * 4,
+            -(pdfHeight * i) + topLeftMargin * 4 + 96,
             canvasWidth,
             canvasHeight
           )
