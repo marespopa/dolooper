@@ -14,7 +14,22 @@
   text-align: center;
 }
 
-.search-row {
+.actions-row {
+  display: flex;
+  align-items: center;
+
+  &:nth-child() {
+    flex: 50%;
+  }
+}
+
+.actions-bar {
+  display: flex;
+  font-size: 0.8em;
+  padding: 8px 16px 8px 0;
+}
+
+.search-bar {
   align-items: center;
   background: $search-row-background;
   box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
@@ -25,7 +40,6 @@
   min-width: 250px;
   padding: 8px 16px;
   width: 30%;
-  z-index: 1;
 
   input {
     outline: none;

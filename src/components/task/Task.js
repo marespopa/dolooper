@@ -20,7 +20,11 @@ const Task = ({ removeHandler, pinHandler, task }) => {
   const linkRef = 'task/' + task.id
   return (
     <div className="task">
-      <button className="btn danger remove-task" onClick={removeHandler}>
+      <button
+        className="btn danger remove-task"
+        onClick={removeHandler}
+        data-html2canvas-ignore="true"
+      >
         Remove
       </button>
       <h2>
@@ -30,7 +34,7 @@ const Task = ({ removeHandler, pinHandler, task }) => {
       </h2>
       <TaskSection label="Description" content={task.description} />
       <TaskSection label="The Plan" content={task.plan} />
-      <div className="actions-section">
+      <div className="actions-section" data-html2canvas-ignore="true">
         <EditButton linkRef={linkRef} />
         <button
           className={`btn highlight ${
