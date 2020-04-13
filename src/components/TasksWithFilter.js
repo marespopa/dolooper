@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Task from './Task'
 import PropTypes from 'prop-types'
+import Tooltip from './widgets/Tooltip'
 
 class TasksWithFilter extends Component {
   constructor(props) {
@@ -23,10 +24,12 @@ class TasksWithFilter extends Component {
 
   render() {
     const tasks = this.props.tasks
+    const hasTasks = tasks.length > 0
     const pinTask = this.props.pinTask
     const removeTask = this.props.removeTask
     const query = this.state.query
     const queryTags = query.indexOf(',') > 0 ? query.split(',') : [query]
+
     const hasTags = function(task) {
       if (query.length === 0) {
         return true
@@ -43,20 +46,27 @@ class TasksWithFilter extends Component {
     }
 
     return (
-      <>
-        <div
-          className="search-row"
-          title="You can use a semicolon to search for multiple tags"
-        >
-          <label>Limit by tags</label>
-          <input
-            type="text"
-            value={this.state.query}
-            onChange={this.handleChange}
-            required
-          />
-        </div>
-
+      <div className="tasks-list">
+        {!hasTasks && (
+          <div className="no-tasks">
+            <h1>No tasks. Enjoy :)</h1>
+          </div>
+        )}
+        {hasTasks && (
+          <div
+            className="search-row"
+            title="You can use a semicolon to search for multiple tags"
+          >
+            <label>Limit by tags</label>
+            <input
+              type="text"
+              value={this.state.query}
+              onChange={this.handleChange}
+              required
+            />
+            <Tooltip text="Search for multiple tags by using comma: tag1, tag2"></Tooltip>
+          </div>
+        )}
         {tasks
           .filter(function(task) {
             return hasTags(task)
@@ -73,7 +83,7 @@ class TasksWithFilter extends Component {
               removeHandler={() => removeTask(task.id)}
             />
           ))}
-      </>
+      </div>
     )
   }
 }
