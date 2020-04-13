@@ -91,7 +91,7 @@
       font-size: 11px;
       padding: 4px;
 
-      &+.tag {
+      & + .tag {
         margin-left: 4px;
       }
     }
@@ -117,6 +117,6 @@
   }
 }
 
-.task__section+.task__section {
+.task__section + .task__section {
   margin-top: 2em;
 }

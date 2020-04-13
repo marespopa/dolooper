@@ -30,7 +30,7 @@ class TasksWithFilter extends Component {
     const query = this.state.query
     const queryTags = query.indexOf(',') > 0 ? query.split(',') : [query]
 
-    const hasTags = function(task) {
+    const hasTags = function (task) {
       if (query.length === 0) {
         return true
       }
@@ -68,14 +68,14 @@ class TasksWithFilter extends Component {
           </div>
         )}
         {tasks
-          .filter(function(task) {
+          .filter(function (task) {
             return hasTags(task)
           })
-          .sort(function(a, b) {
+          .sort(function (a, b) {
             // true values first
             return a.isPinned === b.isPinned ? 0 : a.isPinned ? -1 : 1
           })
-          .map(task => (
+          .map((task) => (
             <Task
               key={task.id}
               task={task}
