@@ -63,17 +63,6 @@
   padding: 1em;
   position: relative;
 
-  &:before {
-    content: '';
-    position: absolute;
-    width: 0;
-    left: -1em;
-    top: 1em;
-    border: 0.5em solid transparent;
-    border-right: 0.5em solid #fff;
-    z-index: 3;
-  }
-
   .remove-task {
     float: right;
   }

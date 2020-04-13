@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="341" height="100.29" version="1.1" viewBox="0 0 90.223 26.534" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="translate(-15.61 -119.59)" stroke-width=".26458">
+  <text x="43.920837" y="138.94402" fill="#363c3c" font-family="sans-serif" font-size="10.583px" style="line-height:1.25" xml:space="preserve"><tspan x="43.920837" y="138.94402" fill="#363c3c" font-family="'Roboto Condensed'" font-size="16.933px" font-weight="bold" stroke-width=".26458" style="font-variant-caps:normal;font-variant-east-asian:normal;font-variant-ligatures:normal;font-variant-numeric:normal">DevWork</tspan></text>
+  <g fill="#51bd8a">
+   <path transform="matrix(.37824 0 0 -.38462 21.316 170.26)" d="m41.577 96.762 17.022 29.482h-34.044l8.5108-14.741z"/>
+   <path transform="matrix(.37824 0 0 -.38462 8.4391 170.26)" d="m41.577 96.762 17.022 29.482h-34.044l8.5108-14.741z"/>
+   <path d="m30.604 144.01 6.4384-10.97h-12.877l3.2191 5.485z" stroke-width=".099258"/>
+   <path d="m30.604 121.7-6.4384 11.339h12.877l-3.2191-5.6697z" fill="#fff" stroke-width=".38142"/>
+  </g>
+ </g>
+</svg>

@@ -31,17 +31,19 @@ body {
   }
 
   &__title {
-    padding: 0 1em 0 0;
     color: $nav-active;
+
+    &:hover {
+      background: darken($nav-background, 3%);
+    }
 
     a {
       color: $nav-text;
       text-decoration: none;
-      border-bottom: 2px solid $nav-active;
 
-      &:hover {
-        border-bottom: 2px solid $nav-text;
-        padding: 0 3px;
+      img {
+        height: 32px;
+        vertical-align: middle;
       }
     }
   }

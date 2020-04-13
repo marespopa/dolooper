@@ -53,7 +53,7 @@ const Task = ({ removeHandler, pinHandler, task }) => {
 Task.propTypes = {
   pinHandler: PropTypes.func,
   removeHandler: PropTypes.func,
-  task: PropTypes.object,
+  task: PropTypes.object
 }
 
 export default Task
