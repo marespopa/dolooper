@@ -12,7 +12,7 @@ const ExportToCanvas = () => {
         left: htmlWidth / 2,
         top: 54,
         title: 'Tasks Report',
-        height: 96,
+        height: 100,
         font: {
           family: 'helvetica',
           type: 'bold',
