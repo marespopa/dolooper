@@ -1,6 +1,6 @@
+![DevWork](https://github.com/xkrromania/devwork/blob/master/src/assets/logo.png)
 ## Daily Developer Work
 Task manager for your daily dev work
-
 
 ## Badges
 [![forthebadge](https://forthebadge.com/images/badges/powered-by-electricity.svg)](https://forthebadge.com)
