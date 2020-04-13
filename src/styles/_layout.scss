@@ -1,3 +1,7 @@
+body {
+  overscroll-behavior: none;
+}
+
 .app {
   background: $app-background--fallback;
   background: $app-background;
@@ -10,6 +14,9 @@
   &__header {
     background: $nav-background;
     box-shadow: $app-box-shadow;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 
     .content {
       display: flex;
@@ -41,7 +48,7 @@
 
   &__body {
     flex: 1;
-    margin: 0 auto;
+    margin: 64px auto 0;
     padding: 1em 0;
     width: 90%;
   }
