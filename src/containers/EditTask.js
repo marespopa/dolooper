@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { updateTask } from '../actions'
-import EditTask from '../components/EditTask'
+import EditTask from '../components/task/EditTask'
 
 const mapStateToProps = (state, ownProps) => {
   const paramTaskId = ownProps.match.params.id

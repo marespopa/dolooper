@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { addTask } from '../actions'
-import AddTask from '../components/AddTask'
+import AddTask from '../components/task/AddTask'
 
 const mapDispatchToProps = dispatch => ({
   addTask: task => dispatch(addTask(task)),

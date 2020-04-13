@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 import { pinTask } from '../actions'
 import { removeTask } from '../actions'
-import TasksWithFilter from '../components/TasksWithFilter'
+import TasksWithFilter from '../components/task/TasksWithFilter'
 
 const mapStateToProps = state => {
   return {

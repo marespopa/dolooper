@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Task from './Task'
 import PropTypes from 'prop-types'
-import Tooltip from './widgets/Tooltip'
+import Tooltip from './../widgets/Tooltip'
 
 class TasksWithFilter extends Component {
   constructor(props) {

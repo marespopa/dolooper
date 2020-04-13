@@ -19,7 +19,7 @@
       animation-name: move-the-circle;
       animation-iteration-count: infinite;
       animation-duration: 2s;
-      animation-timing-function: cubic-bezier(.4,1.21,.83,1.16);
+      animation-timing-function: cubic-bezier(.4, 1.21, .83, 1.16);
       transform-origin: center center;
     }
 
@@ -38,11 +38,13 @@
     opacity: 1;
     background-color: $app-background--fallback;
   }
+
   50% {
     transform: translate(0, 50px) scale(.4);
     opacity: .5;
     background-color: darken($light-text, 5%);
   }
+
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 1;
@@ -91,7 +93,7 @@
       font-size: 11px;
       padding: 4px;
 
-      & + .tag {
+      &+.tag {
         margin-left: 4px;
       }
     }
@@ -117,6 +119,6 @@
   }
 }
 
-.task__section + .task__section {
+.task__section+.task__section {
   margin-top: 2em;
 }

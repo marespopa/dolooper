@@ -1,6 +1,6 @@
 import React from 'react'
 import TaskSection from './TaskSection'
-import Tags from './Tags'
+import Tags from './../widgets/Tags'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 

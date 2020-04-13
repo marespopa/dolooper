@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import FormField from './FormField'
-import tasksService from '../services/tasksService'
+import FormField from '../FormField'
+import tasksService from '../../services/tasksService'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
