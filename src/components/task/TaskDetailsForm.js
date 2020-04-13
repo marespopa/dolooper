@@ -1,13 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import FormField from '../FormField'
+import Tooltip from '../widgets/Tooltip'
 
 const TaskDetailsForm = ({
   action,
   task,
   handleKeyboardSave,
   handleInputChange,
-  handleSubmit,
+  handleSubmit
 }) => (
   <form
     className="form"
@@ -33,7 +34,12 @@ const TaskDetailsForm = ({
     />
 
     <FormField
-      label="Tags"
+      label={
+        <span>
+          Tags
+          <Tooltip text="You can add multiple tags by using comma: tag1, tag2"></Tooltip>
+        </span>
+      }
       name="tags"
       value={task.tags}
       type="input"
@@ -56,7 +62,7 @@ const TaskDetailsForm = ({
       handleChange={handleInputChange}
     />
     <div className="form-row">
-      <button disabled={action.isSaved} className="btn success">
+      <button disabled={!action.isChanged || action.isSaved} className="btn success">
         Save
       </button>
       {action.messages.error}
@@ -71,7 +77,7 @@ TaskDetailsForm.propTypes = {
   action: PropTypes.object,
   handleKeyboardSave: PropTypes.func,
   handleInputChange: PropTypes.func,
-  handleSubmit: PropTypes.func,
+  handleSubmit: PropTypes.func
 }
 
 export default TaskDetailsForm

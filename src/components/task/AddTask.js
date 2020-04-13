@@ -10,6 +10,7 @@ class AddTask extends Component {
 
     const blankTask = tasksService.getBlankTask()
     this.state = blankTask
+    this.isSaved = false
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleKeyboardSave = this.handleKeyboardSave.bind(this)
@@ -43,6 +44,7 @@ class AddTask extends Component {
   }
 
   addTask(task) {
+    this.isSaved = true
     this.props.addTask(task)
     this.props.history.push('/tasks')
   }
@@ -56,7 +58,9 @@ class AddTask extends Component {
             <Link to="/tasks">Back to Dashboard.</Link>
           </span>
         )
-      }
+      },
+      isChanged: true,
+      isSaved: this.isSaved
     }
     const task =  this.state;
 

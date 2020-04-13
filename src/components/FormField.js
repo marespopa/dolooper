@@ -64,7 +64,7 @@ const FormField = ({ type, label, name, value, handleChange }) => {
 FormField.propTypes = {
   name: PropTypes.string,
   handleChange: PropTypes.func,
-  label: PropTypes.string,
+  label: PropTypes.any,
   type: PropTypes.string,
   value: PropTypes.string,
 }

@@ -10,7 +10,7 @@ class EditTask extends Component {
     this.state = {
       task,
       isSaved: true,
-      hasBeenChanged: false,
+      isChanged: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -30,7 +30,7 @@ class EditTask extends Component {
       },
       isSaved: false,
       hasErrorAtSave: false,
-      hasBeenChanged: true,
+      isChanged: true,
     })
   }
 
@@ -65,7 +65,7 @@ class EditTask extends Component {
   }
 
   render() {
-    const { isSaved, hasErrorAtSave, hasBeenChanged } = this.state
+    const { isSaved, hasErrorAtSave, isChanged } = this.state
     const action = {
       title: 'Edit',
       messages: {
@@ -74,7 +74,7 @@ class EditTask extends Component {
             <Link to="/tasks">Back to Dashboard.</Link>
           </span>
         ),
-        success: isSaved && hasBeenChanged && (
+        success: isSaved && isChanged && (
           <>
             <span className="message success">Task has been saved.</span>
           </>
@@ -82,7 +82,9 @@ class EditTask extends Component {
         error: hasErrorAtSave && (
           <span className="message error">We could not save the task...</span>
         )
-      }
+      },
+      isChanged: isChanged,
+      isSaved: isSaved
     }
     const task =  this.state.task;
 

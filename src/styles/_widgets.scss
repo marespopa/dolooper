@@ -5,6 +5,7 @@
     color: $tq-tooltip__icon-color;
     cursor: help;
     background: $tq-tooltip__icon-background;
+    font-size: 12px;
     padding: 2px 4px;
     border-radius: 50%;
     transition: all .2s ease;
@@ -23,6 +24,22 @@
 }
 
 .tooltip-text {
+    visibility: hidden;
+    width: 120px;
+    color: $tq-tooltip__text-color;
+    background: $tq-tooltip__text-background;
+    text-align: center;
+    border-radius: 6px;
+    padding: 4px 8px;
+    white-space: pre-wrap;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 10px);
+    left: calc(50% - 8px);
+    margin-left: -60px;
+
     &::before {
         content: " ";
         position: absolute;
@@ -34,19 +51,4 @@
         border-right: 8px solid transparent;
         border-bottom: 8px solid $tq-tooltip__text-background;
     }
-
-    visibility: hidden;
-    width: 120px;
-    color: $tq-tooltip__text-color;
-    background: $tq-tooltip__text-background;
-    text-align: center;
-    border-radius: 6px;
-    padding: 4px 8px;
-
-    /* Position the tooltip */
-    position: absolute;
-    z-index: 1;
-    top: calc(100% + 10px);
-    left: 50%;
-    margin-left: -60px;
 }
