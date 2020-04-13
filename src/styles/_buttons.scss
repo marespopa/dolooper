@@ -108,13 +108,13 @@
     padding: 10px 24px 10px 36px;
     text-align: center;
     background: $btn--action-background;
-    border-color: lighten($btn--action-background, 3%);
+    border-color: lighten($btn--action-background, 5%);
     color: $light-text;
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
-      background: lighten($btn--action-background, 5%);
-      border-color: $btn--action-hover-border;
+      background: lighten($btn--action-background, 8%);
+      border-color: lighten($btn--action-background, 10%);
     }
 
     a {
