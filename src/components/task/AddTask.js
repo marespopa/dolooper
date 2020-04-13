@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FormField from '../FormField'
+import TaskDetailsForm from './TaskDetailsForm'
 import tasksService from '../../services/tasksService'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -48,66 +48,26 @@ class AddTask extends Component {
   }
 
   render() {
-    const { title, link, tags, description, plan } = this.state
-
-    const linkMessage = (
-      <span className="message link">
-        <Link to="/tasks">Back to Dashboard.</Link>
-      </span>
-    )
+    const action = {
+      title: 'Create',
+      messages: {
+        link:  (
+          <span className="message link">
+            <Link to="/tasks">Back to Dashboard.</Link>
+          </span>
+        )
+      }
+    }
+    const task =  this.state;
 
     return (
-      <form
-        className="form add-task"
-        onKeyDown={this.handleKeyboardSave}
-        onSubmit={this.handleSubmit}
-        method="post"
-      >
-        <h2 className="form-title">Create a task</h2>
-        <FormField
-          label="Title"
-          name="title"
-          value={title}
-          type="input"
-          handleChange={this.handleInputChange}
-        />
-
-        <FormField
-          label="Link"
-          name="link"
-          value={link}
-          type="link"
-          handleChange={this.handleInputChange}
-        />
-
-        <FormField
-          label="Tags"
-          name="tags"
-          value={tags}
-          type="input"
-          handleChange={this.handleInputChange}
-        />
-
-        <FormField
-          label="Description"
-          name="description"
-          value={description}
-          type="textarea"
-          handleChange={this.handleInputChange}
-        />
-
-        <FormField
-          label="The Plan"
-          name="plan"
-          value={plan}
-          type="textarea"
-          handleChange={this.handleInputChange}
-        />
-        <div className="form-row">
-          <button className="btn success">Create</button>
-          {linkMessage}
-        </div>
-      </form>
+      <TaskDetailsForm
+        action={action}
+        task={task}
+        handleKeyboardSave={this.handleKeyboardSave}
+        handleInputChange={this.handleInputChange}
+        handleSubmit={this.handleSubmit}
+      ></TaskDetailsForm>
     )
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import FormField from '../FormField'
+import TaskDetailsForm from './TaskDetailsForm'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
@@ -65,78 +65,35 @@ class EditTask extends Component {
   }
 
   render() {
-    const { title, link, tags, description, plan } = this.state.task
     const { isSaved, hasErrorAtSave, hasBeenChanged } = this.state
-    const errorMessage = hasErrorAtSave && (
-      <span className="message error">We could not save the task...</span>
-    )
-    const successMessage = isSaved && hasBeenChanged && (
-      <>
-        <span className="message success">Task has been saved.</span>
-      </>
-    )
-    const linkMessage = (
-      <span className="message link">
-        <Link to="/tasks">Back to Dashboard.</Link>
-      </span>
-    )
+    const action = {
+      title: 'Create',
+      messages: {
+        link:  (
+          <span className="message link">
+            <Link to="/tasks">Back to Dashboard.</Link>
+          </span>
+        ),
+        success: isSaved && hasBeenChanged && (
+          <>
+            <span className="message success">Task has been saved.</span>
+          </>
+        ),
+        error: hasErrorAtSave && (
+          <span className="message error">We could not save the task...</span>
+        )
+      }
+    }
+    const task =  this.state.task;
+
     return (
-      <form
-        className="form"
-        onSubmit={this.handleSubmit}
-        method="post"
-        onKeyDown={this.handleKeyboardSave}
-      >
-        <h2 className="form-title">Edit a task</h2>
-        <FormField
-          label="Title"
-          name="title"
-          value={title}
-          type="input"
-          handleChange={this.handleInputChange}
-        />
-
-        <FormField
-          label="Link"
-          name="link"
-          value={link}
-          type="link"
-          handleChange={this.handleInputChange}
-        />
-
-        <FormField
-          label="Tags"
-          name="tags"
-          value={tags}
-          type="input"
-          handleChange={this.handleInputChange}
-        />
-
-        <FormField
-          label="Description"
-          name="description"
-          value={description}
-          type="textarea"
-          handleChange={this.handleInputChange}
-        />
-
-        <FormField
-          label="The Plan"
-          name="plan"
-          value={plan}
-          type="textarea"
-          handleChange={this.handleInputChange}
-        />
-
-        <div className="form-row">
-          <button disabled={isSaved} className="btn success">
-            Save
-          </button>
-          {errorMessage}
-          {successMessage}
-          {linkMessage}
-        </div>
-      </form>
+      <TaskDetailsForm
+        action={action}
+        task={task}
+        handleKeyboardSave={this.handleKeyboardSave}
+        handleInputChange={this.handleInputChange}
+        handleSubmit={this.handleSubmit}
+      ></TaskDetailsForm>
     )
   }
 }

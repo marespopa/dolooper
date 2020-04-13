@@ -8,7 +8,7 @@ import TasksWithFilter from '../containers/TasksWithFilter';
 const MainContainer = () => (
   <div className="app__body">
     <Switch>
-      <Route exact path="/" component={AddTask} />
+      <Route exact path="/" component={TasksWithFilter} />
       <Route path="/tasks" component={TasksWithFilter} />
       <Route path="/task/:id" render={props => <EditTask {...props} />} />
       <Route path="/add-task" component={AddTask} />
