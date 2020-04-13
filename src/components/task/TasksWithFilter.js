@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Task from './Task'
 import PropTypes from 'prop-types'
 import Tooltip from './../widgets/Tooltip'
+import ExportToCanvas from './../export/ExportToCanvas'
 
 class TasksWithFilter extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class TasksWithFilter extends Component {
     const query = this.state.query
     const queryTags = query.indexOf(',') > 0 ? query.split(',') : [query]
 
-    const hasTags = function (task) {
+    const hasTags = function(task) {
       if (query.length === 0) {
         return true
       }
@@ -53,36 +54,40 @@ class TasksWithFilter extends Component {
           </div>
         )}
         {hasTasks && (
-          <div
-            className="search-row"
-            title="You can use a semicolon to search for multiple tags"
-          >
-            <label>Limit by tags</label>
-            <input
-              type="text"
-              value={this.state.query}
-              onChange={this.handleChange}
-              required
-            />
-            <Tooltip text="Search for multiple tags by using comma: tag1, tag2"></Tooltip>
+          <div className="actions-row">
+            <div className="actions-bar">
+              <ExportToCanvas></ExportToCanvas>
+            </div>
+            <div className="search-bar">
+              <label>Limit by tags</label>
+              <input
+                type="text"
+                value={this.state.query}
+                onChange={this.handleChange}
+                required
+              />
+              <Tooltip text="Search for multiple tags by using comma: tag1, tag2"></Tooltip>
+            </div>
           </div>
         )}
-        {tasks
-          .filter(function (task) {
-            return hasTags(task)
-          })
-          .sort(function (a, b) {
-            // true values first
-            return a.isPinned === b.isPinned ? 0 : a.isPinned ? -1 : 1
-          })
-          .map((task) => (
-            <Task
-              key={task.id}
-              task={task}
-              pinHandler={() => pinTask(task)}
-              removeHandler={() => removeTask(task.id)}
-            />
-          ))}
+        <div id="tasks">
+          {tasks
+            .filter(function(task) {
+              return hasTags(task)
+            })
+            .sort(function(a, b) {
+              // true values first
+              return a.isPinned === b.isPinned ? 0 : a.isPinned ? -1 : 1
+            })
+            .map(task => (
+              <Task
+                key={task.id}
+                task={task}
+                pinHandler={() => pinTask(task)}
+                removeHandler={() => removeTask(task.id)}
+              />
+            ))}
+        </div>
       </div>
     )
   }
