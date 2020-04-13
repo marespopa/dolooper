@@ -67,7 +67,7 @@ class EditTask extends Component {
   render() {
     const { isSaved, hasErrorAtSave, hasBeenChanged } = this.state
     const action = {
-      title: 'Create',
+      title: 'Edit',
       messages: {
         link:  (
           <span className="message link">
