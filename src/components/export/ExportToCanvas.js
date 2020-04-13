@@ -5,8 +5,8 @@ import jsPDF from 'jspdf'
 const ExportToCanvas = () => {
   const doExport = () => {
     let element = document.getElementById('tasks'),
-      htmlWidth = element.offsetWidth,
-      htmlHeight = element.offsetHeight,
+      htmlWidth = element.clientWidth,
+      htmlHeight = element.clientHeight,
       topLeftMargin = 15,
       header = {
         left: htmlWidth / 2,
