@@ -75,12 +75,13 @@ const ExportToCanvas = () => {
         )
 
         for (var i = 1; i <= totalPDFPages; i++) {
+          let topPosition = -(pdfHeight * i) + topLeftMargin * 4 + header.top;
           doc.addPage(pdfWidth, pdfHeight)
           doc.addImage(
             imgData,
             'JPG',
             topLeftMargin,
-            -(pdfHeight * i) + topLeftMargin * 4 + 32,
+            topPosition,
             canvasWidth,
             canvasHeight
           )
