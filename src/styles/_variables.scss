@@ -5,7 +5,7 @@ $app-background--fallback: #ff9966;
 $app-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.10);
 $app-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 $link-color: #4067b3;
-$highlight: #ffd900;
+$app-highlight: #ffd900;
 
 $nav-background: #ffffff;
 $nav-text: $dark-text;
@@ -22,7 +22,7 @@ $btn--primary-background:#f0f0f0;
 $btn--success-background: #51bd8a;
 $btn--danger-background: #b15c5c;
 $btn--highlight-background: #f0f0f0;
-$btn--highlight-active-background: $highlight;
+$btn--highlight-active-background: $app-highlight;
 $btn--action-background: #333;
 $btn--action-hover-border: #f0f0f0;
 

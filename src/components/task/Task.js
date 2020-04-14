@@ -28,6 +28,7 @@ const Task = ({ removeHandler, pinHandler, task }) => {
         Remove
       </button>
       <h2>
+        { task.isPinned && <i data-html2canvas-ignore="true" className='pin'></i>}
         <a href={task.link} target="_blank" rel="noopener noreferrer">
           {task.title}
         </a>
