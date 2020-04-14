@@ -59,7 +59,7 @@
   color: $dark-text;
   margin-bottom: 1em;
   text-align: left;
-  transition: all 250ms ease-out;
+  transition: $app-transition;
   padding: 1em;
   position: relative;
 

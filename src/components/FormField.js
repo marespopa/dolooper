@@ -20,11 +20,6 @@ const FormField = ({ type, label, name, value, handleChange }) => {
     textarea.style.height = height + 'px'
   }
 
-  const handleTextareaChange = event => {
-    handleChange(event)
-    resizeTextarea()
-  }
-
   return (
     <div className="form-row">
       <label>{label}</label>
@@ -34,7 +29,7 @@ const FormField = ({ type, label, name, value, handleChange }) => {
           type="text"
           name={name}
           value={value}
-          onChange={handleTextareaChange.bind(this)}
+          onChange={handleChange}
           onFocus={resizeTextarea}
           required
         />

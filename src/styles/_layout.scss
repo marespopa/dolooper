@@ -26,7 +26,7 @@ body {
     }
 
     a {
-      transition: all 0.25s ease-in-out;
+      transition: $app-transition;
     }
   }
 

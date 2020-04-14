@@ -2,7 +2,8 @@ $light-text: #fefefe;
 $dark-text:#525252;
 $app-background: linear-gradient(to right, #ff9966, #ff5e62);
 $app-background--fallback: #ff9966;
-$app-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+$app-box-shadow: 0 3px 4px rgba(0, 0, 0, 0.10);
+$app-transition: all 0.5s cubic-bezier(.25,.8,.25,1);
 $link-color: #4067b3;
 $highlight: #ffd900;
 

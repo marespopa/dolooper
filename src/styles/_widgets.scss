@@ -8,7 +8,7 @@
     font-size: 12px;
     padding: 2px 4px;
     border-radius: 50%;
-    transition: all .2s ease;
+    transition: $app-transition;
 
     i {
         font-weight: bold;
