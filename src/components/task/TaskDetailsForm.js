@@ -47,7 +47,12 @@ const TaskDetailsForm = ({
     />
 
     <FormField
-      label="Description"
+      label={
+        <span>
+          Description
+          <Tooltip text="You can use markup syntax for the description."></Tooltip>
+        </span>
+      }
       name="description"
       value={task.description}
       type="textarea"
@@ -55,7 +60,12 @@ const TaskDetailsForm = ({
     />
 
     <FormField
-      label="The Plan"
+      label={
+        <span>
+          The Plan
+          <Tooltip text="You can use markup syntax for the plan."></Tooltip>
+        </span>
+      }
       name="plan"
       value={task.plan}
       type="textarea"

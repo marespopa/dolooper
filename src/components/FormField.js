@@ -49,7 +49,6 @@ const FormField = ({ type, label, name, value, handleChange }) => {
           name={name}
           value={value}
           onChange={handleChange}
-          required
         />
       )}
     </div>
