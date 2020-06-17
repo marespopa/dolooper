@@ -120,4 +120,16 @@
   strong {
     font-weight: bold;
   }
+
+  p {
+    margin-top: 8px;
+  }
+
+  ul {
+    list-style-type: circle;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
 }
