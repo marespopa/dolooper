@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ReactMarkdown from 'react-markdown';
 
 const TaskSection = ({ label, content }) => {
-  const Content = <p className="long-text">{content}</p>
   return (
     <div className="task__section">
       <h3>{label}</h3>
-      {Content}
+      <ReactMarkdown className="markdown-container" source={content} />
     </div>
   )
 }

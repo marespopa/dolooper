@@ -111,3 +111,13 @@
 .task__section+.task__section {
   margin-top: 2em;
 }
+
+.markdown-container {
+  em {
+    font-style: italic;
+  }
+
+  strong {
+    font-weight: bold;
+  }
+}
