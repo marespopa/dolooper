@@ -46,11 +46,10 @@ const ExportToCanvas = () => {
     }
 
     const addHeader = (doc) => {
-      doc.setFont(header.font.family)
-      doc.setFontType(header.font.type)
-      doc.setFontSize(header.font.size)
+      doc.setFont(header.font.family, header.font.type);
+      doc.setFontSize(header.font.size);
       doc.setTextColor(64, 64, 64);
-      doc.text(header.left, header.top, header.title, 'center')
+      doc.text(header.left, header.top, header.title, 'center');
     }
 
     html2canvas(document.querySelector('#tasks'), { allowTaint: true }).then(
@@ -58,7 +57,7 @@ const ExportToCanvas = () => {
         canvas.getContext('2d')
 
         let imgData = canvas.toDataURL('image/jpeg', 1.0),
-          doc = new jsPDF('p', 'pt', [pdfWidth, pdfHeight]),
+          doc = new jsPDF('p', 'px', [pdfWidth, pdfHeight]),
           filename = 'tasks-' + getDate('-')
 
         addLogo(doc)

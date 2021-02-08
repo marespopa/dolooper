@@ -4,17 +4,17 @@ const tasks = (state = [], action) => {
       return [
         {
           id: action.id,
-          ...action.task,
+          ...action.task
         },
-        ...state,
+        ...state
       ]
     case 'REMOVE_TASK':
-      return state.filter(task => task.id !== action.id)
+      return state.filter((task) => task.id !== action.id)
     case 'UPDATE_TASK': {
       const updatedTask = {
-        ...action.task,
+        ...action.task
       }
-      return state.map(task => {
+      return state.map((task) => {
         let isIdMatching = task.id.trim() === updatedTask.id.trim()
 
         if (!isIdMatching) {
@@ -23,7 +23,7 @@ const tasks = (state = [], action) => {
 
         return {
           ...task,
-          ...updatedTask,
+          ...updatedTask
         }
       })
     }
