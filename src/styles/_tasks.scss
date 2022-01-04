@@ -2,11 +2,9 @@
   width: 100%;
 
   .no-tasks {
-    //background-color: #2a2a72;
-    //background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);
     border-radius: 16px;
     position: relative;
-    color: $light-text;
+    color: var(--light-text);
     font-size: 24px;
     margin: 10% auto 16px;
 
@@ -15,7 +13,7 @@
       width: 20px;
       height: 20px;
       border-radius: 100%;
-      background-color: $app-background--fallback;
+      background-color: var(--app-background);
       animation-name: move-the-circle;
       animation-iteration-count: infinite;
       animation-duration: 2s;
@@ -36,19 +34,19 @@
   0% {
     transform: translate(0, 0) scale(1);
     opacity: 1;
-    background-color: $app-background--fallback;
+    background-color: var(--app-background);
   }
 
   50% {
     transform: translate(0, 50px) scale(.4);
     opacity: .5;
-    background-color: darken($light-text, 5%);
+    background-color: var(--light-text-darker);
   }
 
   100% {
     transform: translate(0, 0) scale(1);
     opacity: 1;
-    background-color: darken($light-text, 10%);
+    background-color: var(--light-text-darkest);
   }
 }
 
@@ -56,7 +54,7 @@
   background: $box-background;
   border: 1px solid darken($box-background, 5%);
   box-shadow: $app-box-shadow;
-  color: $dark-text;
+  color: var(--dark-text);
   margin-bottom: 1em;
   text-align: left;
   transition: $app-transition;
@@ -78,7 +76,7 @@
 
     .tag {
       background: $tag-background;
-      color: $light-text;
+      color: var(--light-text);
       font-size: 11px;
       padding: 4px;
 
@@ -96,7 +94,7 @@
     margin: 1em 0;
 
     h3 {
-      color: lighten($dark-text, 10%);
+      color: var(--dark-text-lighter);
     }
 
     p {

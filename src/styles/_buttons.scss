@@ -2,7 +2,7 @@
   background: $btn--default-background;
   border: 1px solid darken($btn--default-background, 5%);
   border-radius: 4px;
-  color: $dark-text;
+  color: var(--dark-text);
   font-size: 0.9em;
   padding: 8px 24px;
   transition: $app-transition;
@@ -12,7 +12,7 @@
   }
 
   a {
-    color: $dark-text;
+    color: var(--dark-text);
     text-decoration: none;
   }
 
@@ -31,7 +31,7 @@
   &.primary {
     background: $btn--primary-background;
     border-color: darken($btn--primary-background, 5%);
-    color: $dark-text;
+    color: var(--dark-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
@@ -40,14 +40,14 @@
     }
 
     a {
-      color: $dark-text;
+      color: var(--dark-text);
     }
   }
 
   &.highlight {
     background: $btn--highlight-background;
     border-color: darken($btn--highlight-background, 5%);
-    color: $dark-text;
+    color: var(--dark-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
@@ -56,7 +56,7 @@
     }
 
     a {
-      color: $dark-text;
+      color: var(--dark-text);
     }
 
     &--active {
@@ -74,7 +74,7 @@
   &.success {
     background: $btn--success-background;
     border-color: darken($btn--success-background, 3%);
-    color: $light-text;
+    color: var(--light-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
@@ -83,14 +83,14 @@
     }
 
     a {
-      color: $light-text;
+      color: var(--light-text);
     }
   }
 
   &.danger {
     background: $btn--danger-background;
     border-color: darken($btn--danger-background, 5%);
-    color: $light-text;
+    color: var(--light-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
@@ -99,7 +99,7 @@
     }
 
     a {
-      color: $light-text;
+      color: var(--light-text);
     }
   }
 
@@ -109,7 +109,7 @@
     text-align: center;
     background: $btn--action-background;
     border-color: lighten($btn--action-background, 5%);
-    color: $light-text;
+    color: var(--light-text);
 
     &:not(:disabled):hover,
     &:not(:disabled):focus {
@@ -118,7 +118,7 @@
     }
 
     a {
-      color: $light-text;
+      color: var(--light-text);
     }
 
     &:before,

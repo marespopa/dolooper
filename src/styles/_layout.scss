@@ -3,9 +3,8 @@ body {
 }
 
 .app {
-  background: $app-background--fallback;
-  background: $app-background;
-  color: $dark-text;
+  background: var(--app-background);
+  color: var(--dark-text);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -13,7 +12,6 @@ body {
 
   &__header {
     background: $nav-background;
-    box-shadow: $app-box-shadow;
     position: fixed;
     width: 100%;
     z-index: 1;
@@ -32,6 +30,7 @@ body {
 
   &__title {
     color: $nav-active;
+    padding: 4px;
 
     &:hover {
       background: darken($nav-background, 3%);

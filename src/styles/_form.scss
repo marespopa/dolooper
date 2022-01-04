@@ -72,7 +72,7 @@
     flex: 1 0 120px;
     font-size: 0.8em;
     letter-spacing: 1px;
-    color: lighten($dark-text, 10%);
+    color: var(--dark-text-lighter);
     max-width: 120px;
     padding: 8px 4px 8px 0;
     white-space: nowrap;
@@ -83,7 +83,7 @@
     align-content: center;
     border: 1px solid #d8d8d8;
     border-radius: 4px;
-    color: $dark-text;
+    color: var(--dark-text);
     display: inline-block;
     flex: 1;
     font-size: 0.8em;
