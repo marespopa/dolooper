@@ -1,4 +1,4 @@
-![DevWork](https://github.com/xkrromania/devwork/blob/master/src/assets/logo.png)
+![DevWork](https://github.com/xkrromania/devwork/blob/master/src/assets/logo.svg)
 ## Daily Developer Work
 Task manager for your daily dev work
 
