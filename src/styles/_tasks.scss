@@ -53,6 +53,7 @@
 .task {
   background: $box-background;
   border: 1px solid darken($box-background, 5%);
+  border-radius: 6px;
   box-shadow: $app-box-shadow;
   color: var(--dark-text);
   margin-bottom: 1em;
