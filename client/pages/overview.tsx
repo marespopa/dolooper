@@ -1,17 +1,17 @@
 import type { NextPage } from 'next'
+import OverviewSection from '../components/overview'
 import PublicLayout from '../components/layouts/PublicLayout'
-import LandingSection from '../components/landing/LandingSection.component'
 import Seo from '../components/Seo'
 
-const Home: NextPage = () => {
+const Journey: NextPage = () => {
   return (
     <>
       <Seo />
       <PublicLayout>
-        <LandingSection />
+        <OverviewSection />
       </PublicLayout>
     </>
   )
 }
 
-export default Home
+export default Journey
