@@ -1,70 +1,55 @@
 import { useEffect, useMemo, useState } from 'react'
 import { MINUTE, SECOND } from '../../../utils/constants'
-import { formatTime } from '../../../utils/functions'
 import Seo, { defaultMeta } from '../../Seo'
 import TimerComponent from './Timer.component'
 import { MIN_TIME_FOR_EXTENSION } from '../../../utils/constants'
+import { toast } from 'react-toastify'
+import { useCountdown } from '../../../hooks/useCountdown'
+import moment from 'moment'
 interface Props {
   deadline: string
-  handleTimeAdd: () => void
+  handleTimeAdd: (timeleft: number) => void
 }
 
 export const Timer = ({
   deadline = new Date().toString(),
   handleTimeAdd,
 }: Props) => {
-  const parsedDeadline = useMemo(() => Date.parse(deadline), [deadline])
+  const parsedDeadline = useMemo(() => new Date(deadline), [deadline])
   const [isNotificationShown, setIsNotificationShown] = useState(false)
-  const [timeLeft, setTimeLeft] = useState(parsedDeadline - Date.now())
+  const timeLeft = useCountdown(parsedDeadline)
 
+  //TODO Refactor the way a notification is shown again.
   useEffect(() => {
-    const interval = setInterval(
-      () => setTimeLeft(parsedDeadline - Date.now()),
-      1000,
-    )
-
-    return () => clearInterval(interval)
-  }, [parsedDeadline])
-
-  useEffect(() => {
-    if (!isNotificationShown && timeLeft <= 0) {
+    if (!isNotificationShown && timeLeft.time <= 0) {
       triggerNotification()
-      setIsNotificationShown(true)
     }
   }, [timeLeft, isNotificationShown])
 
-  function triggerNotification() {
-    navigator.serviceWorker.register('sw.js')
-    Notification.requestPermission(function (result) {
-      if (result === 'granted') {
-        navigator.serviceWorker.ready.then(function (registration) {
-          registration.showNotification('Focus time has expired.')
-        })
-      }
-    })
-  }
-
-  function getTimerValue(value: number) {
-    if (value <= 0) {
-      return '00'
+  useEffect(() => {
+    if (timeLeft.time > 0) {
+      setIsNotificationShown(false)
     }
+  }, [timeLeft])
 
-    return formatTime(value)
+  function triggerNotification() {
+    toast.error('Time is up!')
+    setIsNotificationShown(true)
   }
-
-  const minutesLeft = formatTime((timeLeft / MINUTE) % 60)
-  const secondsLeft = formatTime((timeLeft / SECOND) % 60)
 
   const pageTitle =
-    timeLeft < 0
+    timeLeft.time <= 0
       ? 'Time Expired - Devxloper'
-      : `(${minutesLeft}:${secondsLeft}) - Devxloper`
+      : `(${timeLeft.parsed.minutes}:${timeLeft.parsed.seconds}) - Devxloper`
 
   const needMoreTimeNotification = (
     <div className="mb-2 p-4 bg-blue-100 flex">
       <span className="text-xs">
         {`Need more time? `}
-        <button className="text-gray-800 underline" onClick={handleTimeAdd}>
+        <button
+          className="text-gray-800 underline"
+          onClick={() => handleTimeAdd(timeLeft.time)}
+        >
           Add 15 more minutes
         </button>
       </span>
@@ -74,7 +59,7 @@ export const Timer = ({
   return (
     <>
       <Seo title={pageTitle} />
-      {timeLeft < MIN_TIME_FOR_EXTENSION && needMoreTimeNotification}
+      {timeLeft.time < MIN_TIME_FOR_EXTENSION && needMoreTimeNotification}
       <TimerComponent timeLeft={timeLeft}></TimerComponent>
     </>
   )

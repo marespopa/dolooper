@@ -36,25 +36,25 @@ const OverviewSection = () => {
     })
   }, [])
 
-  useEffect(() => {
-    if (!('Notification' in window)) {
-      console.log('Browser does not support desktop notification')
-    } else {
-      Notification.requestPermission()
-    }
-  })
-
   function handleNotesChange(value: string) {
     setNotes(value)
   }
 
-  function handleTimeAdd() {
-    const newDeadline = moment(deadline).add(15, 'm').toDate()
+  function handleTimeAdd(timeLeft: number) {
+    const newDeadline = timeLeft < 0 ? moment() : moment(deadline)
 
+    newDeadline.add(15, 'm').toDate()
     setDeadline(newDeadline.toISOString())
     service.setDeadline(newDeadline.toISOString())
   }
 
+  /**
+  function handleTimeDecrease() {
+    const newDeadline = moment().add(0.1, 'm').toDate()
+    setDeadline(newDeadline.toISOString())
+    service.setDeadline(newDeadline.toISOString())
+  }
+ */
   function handleReset() {
     service.resetAll()
     router.push('/journey')
@@ -63,6 +63,7 @@ const OverviewSection = () => {
   return (
     <Container>
       <section>
+        {/* for testing only <button onClick={handleTimeDecrease}>Remove time</button>*/}
         {!isLoading && (
           <Timer deadline={deadline} handleTimeAdd={handleTimeAdd} />
         )}
