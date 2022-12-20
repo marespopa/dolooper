@@ -11,7 +11,7 @@ const GlobalFooter = () => {
             <li>
               <Link
                 href="/privacy-policy"
-                className="text-sm font-medium text-center capitalize"
+                className="text-sm font-medium text-center capitalize underline"
               >
                 Privacy Policy
               </Link>
@@ -21,7 +21,16 @@ const GlobalFooter = () => {
       </Container>
       <Container>
         <p className="text-sm font-medium text-center capitalize">
-          copyright Mares Popa © {new Date().getFullYear()}. All rights reserved
+          copyright{' '}
+          <a
+            className="underline"
+            href="https://marespopa.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Mares Popa
+          </a>{' '}
+          © {new Date().getFullYear()}. All rights reserved
         </p>
       </Container>
     </footer>
