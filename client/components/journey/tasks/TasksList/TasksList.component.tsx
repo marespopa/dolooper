@@ -42,7 +42,7 @@ const TasksListComponent = ({
 
                 {!isTaskTogglable && (
                   <span className="text-sm font-medium text-gray-900">
-                    task.value
+                    {task.value}
                   </span>
                 )}
 
