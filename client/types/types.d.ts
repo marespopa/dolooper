@@ -1,7 +1,7 @@
 export type Task = {
   key: string
-  isDone: boolean
   value: string
+  isDone: boolean
 }
 
 const test = Object.entries({
@@ -10,3 +10,4 @@ const test = Object.entries({
 })
 
 export type Time = typeof test
+export type TaskArea = 'overview' | 'journey'
