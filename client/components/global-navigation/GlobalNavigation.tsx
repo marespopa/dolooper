@@ -1,18 +1,23 @@
 import React from 'react'
 import Link from 'next/link'
 import Container from '../container/Container.component'
+import logo from '../../public/logo.svg'
+import Image from 'next/image'
 
 const GlobalNavigation = () => {
-  const logoHeight = 156
+  const logoHeight = 24
 
   return (
-    <header className="flex items-center h-14 text-white bg-indigo-800">
+    <header className="flex items-center h-14 text-white bg-amber-50">
       <Container>
         <nav>
           <ul>
             <li>
-              <Link href="/" className="text-sm font-medium text-center">
-                dev<span className="text-indigo-100">x</span>loper
+              <Link
+                href="/"
+                className="flex items-center text-sm font-medium text-left"
+              >
+                <Image src={logo} alt="Devxloper" height={logoHeight} />
               </Link>
             </li>
           </ul>

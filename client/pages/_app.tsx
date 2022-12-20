@@ -1,8 +1,8 @@
 import '../styles/globals.scss'
-import { Inter } from '@next/font/google'
+import { Montserrat } from '@next/font/google'
 import type { AppProps } from 'next/app'
 
-const inter = Inter({ subsets: ['latin'] })
+const defaultFont = Montserrat({ subsets: ['latin'] })
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <style jsx global>
         {`
           :root {
-            --inter-font: ${inter.style.fontFamily};
+            --default-font: ${defaultFont.style.fontFamily};
           }
         `}
       </style>

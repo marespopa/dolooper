@@ -52,18 +52,23 @@ const TasksSection = () => {
   }
 
   return (
-    <section className="mb-9">
+    <section className="mt-10">
+      <div className=" w-full ">
+        <h2 className="text-3xl font-bold mt-3 mb-3">{`Tasks!`}</h2>
+        <p className="my-5 mx-auto text-xl">{`What are the tasks that need to be done, so we can call this a success?`}</p>
+      </div>
       <div className="mb-3">
         <form onSubmit={handleSubmit}>
-          <label
-            htmlFor="exampleFormControlInput1"
-            className="form-label inline-block font-bold mt-0 mb-3"
-          >
-            Tasks
-          </label>
-          <Input value={task} action={setTask} placeholder="Enter a new task" />
+          <Input
+            id="task"
+            type={'text'}
+            value={task}
+            action={setTask}
+            label="Define your task"
+          />
+
           <button
-            className="h-full px-5 py-2 bg-blue-600 text-white font-medium rounded-md shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg
+            className="mx-2 mt-2 h-full px-5 py-2 bg-blue-600 text-white font-medium rounded-md shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg
                     focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg disabled:opacity-25 transition duration-150 ease-in-out"
             onClick={() => handleAddTask(task)}
             disabled={isDisabled}

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import service from '../../../services/service'
-import Textarea from '../../forms/input/Textarea.component'
+import Input from '../../forms/input/Input.component'
 
 const PlanSection = () => {
   const [plan, setPlan] = useState('')
@@ -21,19 +21,21 @@ const PlanSection = () => {
   }
 
   return (
-    <div className="mb-9">
-      <label
-        htmlFor="exampleFormControlInput1"
-        className="form-label inline-block font-bold mt-0 mb-3"
-      >
-        Plan
-      </label>
-      <Textarea
-        placeholder="Describe it as clearly as you can"
-        action={updatePlan}
-        value={plan}
-      />
-    </div>
+    <section>
+      <div className=" w-full ">
+        <h2 className="text-3xl font-bold mt-3 mb-3">{`Plan!`}</h2>
+        <p className="my-5 mx-auto text-xl">{`What's your plan for this coding session?`}</p>
+      </div>
+      <div className="relative z-0">
+        <Input
+          action={updatePlan}
+          id={'plan'}
+          label={'Define your plan'}
+          value={plan}
+          type="textarea"
+        />
+      </div>
+    </section>
   )
 }
 

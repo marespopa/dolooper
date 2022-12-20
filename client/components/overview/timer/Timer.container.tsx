@@ -40,7 +40,10 @@ export const Timer = ({ deadline = new Date().toString() }) => {
   const minutesLeft = formatTime((timeLeft / MINUTE) % 60)
   const secondsLeft = formatTime((timeLeft / SECOND) % 60)
 
-  const pageTitle = `(${minutesLeft}:${secondsLeft})`
+  const pageTitle =
+    timeLeft < 0
+      ? 'Time Expired - Devxloper'
+      : `(${minutesLeft}:${secondsLeft}) - Devxloper`
 
   return (
     <>
