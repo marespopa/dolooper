@@ -12,7 +12,7 @@ const LandingSection = () => {
   return (
     <section className="my-5">
       <Container>
-        <div className="text-center  text-gray-800 py-20 px-6">
+        <div className="text-center  text-gray-700 py-20 px-6">
           <h1 className="text-5xl font-bold mt-0 mb-6">Welcome</h1>
           <p className={paragraphStyle}>
             {`Some hard truth. Multitasking doesn't work. You probably know the

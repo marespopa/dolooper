@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 export const defaultMeta = {
-  title: 'Devxloper',
+  title: 'Devxloper - Plan. Focus. Execute.',
   siteName: 'Devxloper',
   description: `Devxloper - Plan. Focus. Execute. Define your plan to tackle the task, set aside some time, focus and get things done.`,
   url: 'https://devwork.netlify.com',
