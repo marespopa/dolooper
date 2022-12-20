@@ -3,8 +3,16 @@ import { MINUTE, SECOND } from '../../../utils/constants'
 import { formatTime } from '../../../utils/functions'
 import Seo, { defaultMeta } from '../../Seo'
 import TimerComponent from './Timer.component'
+import { MIN_TIME_FOR_EXTENSION } from '../../../utils/constants'
+interface Props {
+  deadline: string
+  handleTimeAdd: () => void
+}
 
-export const Timer = ({ deadline = new Date().toString() }) => {
+export const Timer = ({
+  deadline = new Date().toString(),
+  handleTimeAdd,
+}: Props) => {
   const parsedDeadline = useMemo(() => Date.parse(deadline), [deadline])
   const [isNotificationShown, setIsNotificationShown] = useState(false)
   const [timeLeft, setTimeLeft] = useState(parsedDeadline - Date.now())
@@ -52,9 +60,21 @@ export const Timer = ({ deadline = new Date().toString() }) => {
       ? 'Time Expired - Devxloper'
       : `(${minutesLeft}:${secondsLeft}) - Devxloper`
 
+  const needMoreTimeNotification = (
+    <div className="mb-2 p-4 bg-blue-100 flex">
+      <span className="text-xs">
+        {`Need more time? `}
+        <button className="text-gray-800 underline" onClick={handleTimeAdd}>
+          Add 15 more minutes
+        </button>
+      </span>
+    </div>
+  )
+
   return (
     <>
       <Seo title={pageTitle} />
+      {timeLeft < MIN_TIME_FOR_EXTENSION && needMoreTimeNotification}
       <TimerComponent timeLeft={timeLeft}></TimerComponent>
     </>
   )

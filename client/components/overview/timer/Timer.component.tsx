@@ -1,4 +1,4 @@
-import { MINUTE, SECOND } from '../../../utils/constants'
+import { HOUR, MINUTE, SECOND } from '../../../utils/constants'
 
 interface Props {
   timeLeft: number
@@ -6,6 +6,7 @@ interface Props {
 
 const TimerComponent = ({ timeLeft }: Props) => {
   const deadlineToString = Object.entries({
+    hour: (timeLeft / HOUR) % 24,
     min: (timeLeft / MINUTE) % 60,
     sec: (timeLeft / SECOND) % 60,
   })
@@ -25,19 +26,25 @@ const TimerComponent = ({ timeLeft }: Props) => {
       </h1>
       <div className="text-6xl text-center flex w-full items-center justify-center">
         <div className="text-2xl mr-1 font-extralight">Time left:</div>
-        {deadlineToString.map(([label, value]) => (
-          <div
-            key={label}
-            className="w-24 mx-1 p-2 bg-white text-gray-700 rounded-lg"
-          >
-            <div className="font-mono leading-none" x-text="days">
-              {getTimerValue(value)}
+        {deadlineToString.map(([label, value]) => {
+          if (value < 1) {
+            return
+          }
+
+          return (
+            <div
+              key={label}
+              className="w-24 mx-1 p-2 bg-white text-gray-700 rounded-lg"
+            >
+              <div className="font-mono leading-none" x-text="days">
+                {getTimerValue(value)}
+              </div>
+              <div className="font-mono uppercase text-sm leading-none">
+                {label}
+              </div>
             </div>
-            <div className="font-mono uppercase text-sm leading-none">
-              {label}
-            </div>
-          </div>
-        ))}
+          )
+        })}
       </div>
     </div>
   )
