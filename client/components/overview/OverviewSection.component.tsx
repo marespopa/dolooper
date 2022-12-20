@@ -3,6 +3,7 @@ import service from '../../services/service'
 import { Task } from '../../types/types'
 import Container from '../container/Container.component'
 import Input from '../forms/input/Input.component'
+import TasksList from '../journey/tasks/TasksList'
 import Timer from './timer'
 
 const OverviewSection = () => {
@@ -55,45 +56,17 @@ const OverviewSection = () => {
     setNotes(value)
   }
 
-  function handleTaskUpdate(key: string) {
-    const nextTasks = tasks.map((task) => {
-      console.log(task.isDone)
-      if (task.key === key) {
-        return { ...task, isDone: !task.isDone }
-      }
-
-      return task
-    })
-
-    setTasks(nextTasks)
-    service.setTasks(nextTasks)
-  }
-
   return (
     <Container>
       <section>
         {!isLoading && <Timer deadline={deadline} />}
-        <div className="flex">
-          <div className="flex-auto my-9 mr-3 px-2 py-3 bg-white">
+        <div className="flex my-9">
+          <div className="flex-auto mr-3 px-2 py-3 bg-white">
             <h2 className="font-bold mt-0 mb-3">Plan</h2>
             <p>{plan}</p>
           </div>
-          <div className="flex-auto my-9 ml-3 px-2 py-3 bg-white">
-            <h2 className="font-bold mt-0 mb-3">Tasks</h2>
-            <ul className="ml-8 list-decimal">
-              {tasks.map((task) => (
-                <li
-                  key={task.key}
-                  onClick={() => handleTaskUpdate(task.key)}
-                  className={taskStyle(task.isDone)}
-                >
-                  <span>{task.value}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <TasksList area="overview" />
         </div>
-
         <div className="my-9">
           <label
             htmlFor="exampleFormControlInput1"
@@ -114,9 +87,4 @@ const OverviewSection = () => {
   )
 }
 
-const taskStyle = (isDone: boolean) => {
-  const style = `hover:cursor-pointer focus:cursor-pointer hover:bg-gray-100 hover:text-b-900 transition-all duration-300 ease-in-out`
-
-  return `${style} ${isDone && 'line-through'}`
-}
 export default OverviewSection
