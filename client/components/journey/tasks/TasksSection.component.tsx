@@ -4,6 +4,7 @@ import Input from '../../forms/input/Input.component'
 import uuid from 'react-uuid'
 import TasksList from './TasksList.component'
 import service from '../../../services/service'
+import SectionHeading from '../common/SectionHeading.component'
 
 const TasksSection = () => {
   const [tasks, setTasks] = useState<Task[]>([])
@@ -53,10 +54,10 @@ const TasksSection = () => {
 
   return (
     <section className="mt-10">
-      <div className=" w-full ">
-        <h2 className="text-3xl font-bold mt-3 mb-3">{`Tasks!`}</h2>
-        <p className="my-5 mx-auto text-xl">{`What are the tasks that need to be done, so we can call this a success?`}</p>
-      </div>
+      <SectionHeading
+        title="Tasks"
+        description="What are the tasks that need to be done, so we can call this a success?"
+      />
       <div className="mb-3">
         <form onSubmit={handleSubmit}>
           <Input
