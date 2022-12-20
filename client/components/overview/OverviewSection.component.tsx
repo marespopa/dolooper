@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import service from '../../services/service'
 import { Task } from '../../types/types'
-import Textarea from '../forms/input/Textarea.component'
 import Container from '../container/Container.component'
+import Input from '../forms/input/Input.component'
 import Timer from './timer'
 
 const OverviewSection = () => {
@@ -80,7 +80,7 @@ const OverviewSection = () => {
           </div>
           <div className="flex-auto my-9 ml-3 px-2 py-3 bg-white">
             <h2 className="font-bold mt-0 mb-3">Tasks</h2>
-            <ul className="overflow-hidden">
+            <ul className="ml-8 list-decimal">
               {tasks.map((task) => (
                 <li
                   key={task.key}
@@ -101,8 +101,10 @@ const OverviewSection = () => {
           >
             Notes
           </label>
-          <Textarea
-            placeholder="Jot down notes"
+          <Input
+            id="notes"
+            type="textarea"
+            label="Jot down notes"
             action={handleNotesChange}
             value={notes}
           />
@@ -113,8 +115,7 @@ const OverviewSection = () => {
 }
 
 const taskStyle = (isDone: boolean) => {
-  const style =
-    'flex justify-between align-middle px-4 py-2 bg-white hover:cursor-pointer focus:cursor-pointer hover:bg-gray-100 hover:text-b-900 transition-all duration-300 ease-in-out'
+  const style = `hover:cursor-pointer focus:cursor-pointer hover:bg-gray-100 hover:text-b-900 transition-all duration-300 ease-in-out`
 
   return `${style} ${isDone && 'line-through'}`
 }

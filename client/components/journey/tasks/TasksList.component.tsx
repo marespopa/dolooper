@@ -9,19 +9,19 @@ interface Props {
 const TasksList = ({ tasks, handleDelete }: Props) => {
   return (
     <div>
-      <ul className="border border-gray-100 rounded overflow-hidden shadow-md">
+      <ul className="flexspace-y-1 list-disc list-inside text-gray-700">
         {tasks.map((task) => (
           <li
             key={task.key}
-            className="flex justify-between align-middle border-gray-100 px-4 py-2 bg-white hover:bg-gray-100 hover:text-b-900 border-b last:border-none transition-all duration-300 ease-in-out"
+            className="flex justify-between px-2 py-4 hover:bg-amber-100 hover:text-b-900 transition-all duration-300 ease-in-out"
           >
             <span>{task.value}</span>
 
             <button
-              className=" text-red-600 px-2 font-medium rounded-md flex-end text-sm hover:underline"
+              className=" text-red-600 mr-2 font-medium rounded-md flex-end text-sm hover:underline"
               onClick={() => handleDelete(task.key)}
             >
-              Delete
+              remove task
             </button>
           </li>
         ))}
