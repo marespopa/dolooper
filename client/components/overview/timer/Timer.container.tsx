@@ -26,7 +26,14 @@ export const Timer = ({ deadline = new Date().toString() }) => {
   }, [timeLeft, isNotificationShown])
 
   function triggerNotification() {
-    new Notification('Focus time has expired.')
+    navigator.serviceWorker.register('sw.js')
+    Notification.requestPermission(function (result) {
+      if (result === 'granted') {
+        navigator.serviceWorker.ready.then(function (registration) {
+          registration.showNotification('Focus time has expired.')
+        })
+      }
+    })
   }
 
   function getTimerValue(value: number) {
