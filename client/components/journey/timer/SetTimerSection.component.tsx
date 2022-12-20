@@ -2,6 +2,7 @@ import moment from 'moment'
 import React, { useState } from 'react'
 import service from '../../../services/service'
 import Input from '../../forms/input/Input.component'
+import SectionHeading from '../common/SectionHeading.component'
 
 interface Props {
   time: number
@@ -16,35 +17,38 @@ const SetTimerSection = ({ time, handleTimeChange }: Props) => {
   } //minutes
 
   return (
-    <div className="my-9">
-      <label
-        htmlFor="timer"
-        className="form-label inline-block font-bold mt-0 mb-3"
-      >
-        Duration
-      </label>
-
-      <div className="w-full">
-        <div className="price-range">
-          <span className="text-strong">{time} minutes</span>
-          <input
-            id="timer"
-            type="range"
-            min={sessionLength.min}
-            max={sessionLength.max}
-            value={time}
-            step={sessionLength.step}
-            placeholder="30"
-            onChange={(e) => handleTimeChange(e.target.value)}
-            className="w-full accent-blue-500"
-          />
-          <div className="-mt-2 flex w-full justify-between">
-            <span className="text-sm text-gray-400">{sessionLength.min}m</span>
-            <span className="text-sm text-gray-400">{sessionLength.max}m</span>
+    <section className="mt-10">
+      <SectionHeading
+        title="Duration"
+        description="Having this layed out, how long will this session last?"
+      />
+      <div className="mb-3">
+        <div className="w-full md:w-1/2">
+          <div className="price-range">
+            <span className="text-strong">{time} minutes</span>
+            <input
+              id="timer"
+              type="range"
+              min={sessionLength.min}
+              max={sessionLength.max}
+              value={time}
+              step={sessionLength.step}
+              placeholder="30"
+              onChange={(e) => handleTimeChange(e.target.value)}
+              className="w-full accent-blue-500"
+            />
+            <div className="-mt-2 flex w-full justify-between">
+              <span className="text-sm text-gray-400">
+                {sessionLength.min}m
+              </span>
+              <span className="text-sm text-gray-400">
+                {sessionLength.max}m
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   )
 }
 
