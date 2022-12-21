@@ -67,16 +67,16 @@ const OverviewSection = () => {
         {!isLoading && (
           <Timer deadline={deadline} handleTimeAdd={handleTimeAdd} />
         )}
-        <div className="flex flex-col md:flex-row my-9">
-          <div className="flex-auto w-full md:w-1/2 mr-3 px-2 py-3 bg-white rounded">
+        <div className="flex flex-col md:flex-row mt-9 mb-3 md:md-0">
+          <div className="flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3 bg-white rounded shadow-sm">
             <h2 className="font-bold mt-0 mb-3">Plan</h2>
             <p>{plan}</p>
           </div>
-          <div className="flex-auto w-full md:w-1/2 px-2 py-3 bg-white rounded">
+          <div className="flex-auto w-full md:w-1/2 px-2 md:px-4 py-3 bg-white rounded shadow-sm">
             <TasksList area="overview" />
           </div>
         </div>
-        <div className="mt-9 mb-4">
+        <div className="mt-3 mb-4 px-2 md:px-4 pt-3 pb-6 bg-white rounded shadow-sm">
           <label
             htmlFor="exampleFormControlInput1"
             className="form-label inline-block font-bold mt-0 mb-3"

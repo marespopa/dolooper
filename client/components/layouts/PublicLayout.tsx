@@ -10,7 +10,9 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
       <div className="flex flex-col min-h-screen font-primary bg-gradient-to-r from-gray-100 to-gray-200">
         <Notification />
         <GlobalNavigation />
-        <main className="flex-grow bg-amber-100">{children}</main>
+        <main className="flex-grow bg-amber-100 px-4 sm:px-2 lg:px-0">
+          {children}
+        </main>
         <GlobalFooter />
         <CookieConsent />
       </div>
