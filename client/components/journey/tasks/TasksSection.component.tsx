@@ -9,7 +9,9 @@ const TasksSection = () => {
         title="Tasks"
         description="What are the tasks that need to be done, so we can call this a success?"
       />
-      <TasksList area="journey" />
+      <div className="w-full md:w-1/2">
+        <TasksList area="journey" />
+      </div>
     </section>
   )
 }

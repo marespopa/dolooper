@@ -66,7 +66,7 @@ const textareaStyle = `block rounded-t-lg px-2.5 pb-2.5 pt-6 w-full text-sm text
                     border-0 border-b-2 border-gray-300 appearance-none
                     focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:opacity-25 disabled:cursor-none`
 
-const inputStyle = `${textareaStyle} md:w-1/2`
+const inputStyle = `${textareaStyle}`
 
 const labelStyles = `absolute text-sm text-gray-500 duration-300 transform
                      -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-gray-400
