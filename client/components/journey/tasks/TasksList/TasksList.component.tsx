@@ -1,5 +1,6 @@
 import React from 'react'
 import { Task, TaskArea } from '../../../../types/types'
+import ButtonDropdown from '../../../forms/buttons/ButtonDropdown/ButtonDropdown.component'
 import Checkbox from '../../../forms/input/Checkbox.component'
 
 interface Props {
@@ -26,7 +27,7 @@ const TasksListComponent = ({
       {showHeading && <h2 className="font-bold mt-0 mb-3">Tasks</h2>}
       {tasks.length > 0 && (
         <ul className="list-none">
-          {tasks.map((task) => {
+          {tasks.map((task, index) => {
             return (
               <li key={task.key} className={taskStyle}>
                 {isTaskTogglable && (
@@ -45,14 +46,19 @@ const TasksListComponent = ({
                     {task.value}
                   </span>
                 )}
-
-                <button
-                  className="ml-auto text-red-600 mr-2 font-medium rounded-md flex-end text-xs
-                             hover:underline"
-                  onClick={() => actions.handleDelete(task.key)}
-                >
-                  Remove task
-                </button>
+                <div className="ml-auto flex-end text-xs">
+                  <ButtonDropdown
+                    name={`task-${task.key}-dropdownMenu`}
+                    label={''}
+                    menuItems={[
+                      {
+                        id: task.key,
+                        label: 'Remove Task',
+                        action: actions.handleDelete,
+                      },
+                    ]}
+                  />
+                </div>
               </li>
             )
           })}
@@ -63,6 +69,10 @@ const TasksListComponent = ({
   )
 }
 
-const taskStyle = `flex align-middle py-4 px-2 hover:cursor-pointer focus:cursor-pointer hover:bg-gray-100 hover:text-b-900 transition-all duration-300 ease-in-out`
+const taskStyle = `flex align-middle py-4 px-2 mb-2
+                  hover:cursor-pointer
+                  hover:bg-gray-100 hover:text-b-900
+                  focus:cursor-pointer
+                  transition-all duration-300 ease-in-out`
 
 export default TasksListComponent
