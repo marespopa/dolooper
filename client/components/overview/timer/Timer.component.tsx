@@ -17,7 +17,7 @@ const TimerComponent = ({ timeLeft }: Props) => {
   }
 
   return (
-    <div className="bg-white flex items-center justify-center px-5 py-5 my-5 rounded shadow-sm">
+    <div className="bg-white flex items-center justify-center px-5 py-5 my-5 rounded">
       <h1 className="text-3xl text-center mb-3 font-extralight">
         {`Let's execute!`}
       </h1>

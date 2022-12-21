@@ -35,7 +35,7 @@ const SetTimerSection = ({ time, handleTimeChange }: Props) => {
               step={sessionLength.step}
               placeholder="30"
               onChange={(e) => handleTimeChange(e.target.value)}
-              className="w-full accent-blue-500"
+              className="w-full accent-gray-800"
             />
             <div className="-mt-2 flex w-full justify-between">
               <span className="text-sm text-gray-400">

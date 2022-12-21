@@ -27,7 +27,7 @@ const PlanSection = () => {
         title="Plan"
         description="What's your plan for this coding session?"
       />
-      <div className="relative z-0">
+      <div className="relative z-0 p-4 bg-white rounded h-56 min-h-full border">
         <Input
           action={updatePlan}
           id={'plan'}
