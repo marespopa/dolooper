@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 import service from '../../../../services/service'
 import { Task, TaskArea } from '../../../../types/types'
+import ButtonCircle from '../../../forms/buttons/ButtonCircle'
 import Input from '../../../forms/input/Input.component'
 import TasksListComponent from './TasksList.component'
 
@@ -108,7 +109,7 @@ const TasksList = ({ area }: Props) => {
   )
 
   return (
-    <div className="w-full px-2 py-3 bg-white">
+    <div className="w-full">
       <TasksListComponent
         tasks={tasks}
         actions={{
@@ -121,12 +122,7 @@ const TasksList = ({ area }: Props) => {
       />
       {showToggleAddForm && (
         <div className="pt-4 flex">
-          <button
-            className="mx-auto -mb-10 shadow-md w-8 h-8 rounded-full bg-blue-500 hover:bg-blue-600 focus:bg-blue-600 text-white"
-            onClick={toggleShowAddForm}
-          >
-            +
-          </button>
+          <ButtonCircle text={'+'} action={toggleShowAddForm} />
         </div>
       )}
       {showAddForm && AddTaskForm}

@@ -8,7 +8,7 @@ const GlobalNavigation = () => {
   const logoHeight = 24
 
   return (
-    <header className="flex items-center h-14 text-white bg-amber-50">
+    <header className="flex items-center h-14 text-gray-800 bg-amber-100">
       <Container>
         <nav>
           <ul>

@@ -69,7 +69,7 @@ const TasksListComponent = ({
   )
 }
 
-const taskStyle = `flex align-middle py-4 px-2 mb-2
+const taskStyle = `flex align-middle p-2 my-2
                   hover:cursor-pointer
                   hover:bg-gray-100 hover:text-b-900
                   focus:cursor-pointer

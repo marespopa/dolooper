@@ -7,10 +7,10 @@ import Notification from '../notification/Notification'
 const PublicLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      <div className="flex flex-col min-h-screen font-primary bg-white">
+      <div className="flex flex-col min-h-screen font-primary bg-gradient-to-r from-gray-100 to-gray-200">
         <Notification />
         <GlobalNavigation />
-        <main className="flex-grow bg-amber-50">{children}</main>
+        <main className="flex-grow bg-amber-100">{children}</main>
         <GlobalFooter />
         <CookieConsent />
       </div>

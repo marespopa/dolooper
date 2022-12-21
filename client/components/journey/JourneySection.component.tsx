@@ -3,7 +3,7 @@ import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import service from '../../services/service'
 import Container from '../container'
-import ButtonPrimary from '../forms/buttons/ButtonPrimary'
+import ButtonText from '../forms/buttons/ButtonText'
 import PlanSection from './plan/PlanSection.component'
 import TasksSection from './tasks/TasksSection.component'
 import SetTimerSection from './timer/SetTimerSection.component'
@@ -55,13 +55,13 @@ const JourneySection = () => {
           <SetTimerSection time={time} handleTimeChange={handleTimeChange} />
         )}
         <div className="inline-flex mt-5" role="group">
-          <ButtonPrimary
+          <ButtonText
             isDisabled={step === 0}
             action={goToLastStep}
             text="Back"
             style={'mr-4'}
           />
-          <ButtonPrimary action={goToNextStep} text={nextActionText} />
+          <ButtonText action={goToNextStep} text={nextActionText} />
         </div>
       </Container>
     </div>
