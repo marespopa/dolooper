@@ -1,9 +1,10 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: "feat(overview|journey|landing|all)"
+about: Suggest an idea for this projectCancel changes
+title: "feat(all): Title"
 labels: feat
 assignees: ''
 
 ---
+**Description**
 - Add details here
