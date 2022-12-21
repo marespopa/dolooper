@@ -3,6 +3,7 @@ import uuid from 'react-uuid'
 import service from '../../../../services/service'
 import { Task, TaskArea } from '../../../../types/types'
 import ButtonCircle from '../../../forms/buttons/ButtonCircle'
+import ButtonText from '../../../forms/buttons/ButtonText'
 import Input from '../../../forms/input/Input.component'
 import TasksListComponent from './TasksList.component'
 
@@ -89,22 +90,29 @@ const TasksList = ({ area }: Props) => {
 
   const AddTaskForm = (
     <form onSubmit={handleSubmit}>
-      <Input
-        id="task"
-        type={'text'}
-        value={task}
-        action={setTask}
-        label="Define your task"
-      />
-
-      <button
-        className="mx-2 mt-2 h-full px-5 py-2 bg-blue-600 text-white font-medium rounded-md shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg
-              focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg disabled:opacity-25 transition duration-150 ease-in-out"
-        onClick={() => handleAdd(task)}
-        disabled={isDisabled}
-      >
-        Add Task
-      </button>
+      <div className="flex">
+        <div className="flex-auto">
+          <Input
+            id="task"
+            type={'text'}
+            value={task}
+            action={setTask}
+            label="Define your task"
+          />
+        </div>
+        <button
+          className="inline-block px-6 py-2.5 text-white font-medium text-md leading-tight
+                    border border-gray-600 bg-gray-600
+                    hover:bg-gray-800 hover:text-white
+                    focus:bg-gray-800 focus:text-white
+                    active:shadow-lg
+                    cursor-pointer disabled:opacity-25 transition duration-150 ease-in-out"
+          onClick={() => handleAdd(task)}
+          disabled={isDisabled}
+        >
+          Add
+        </button>
+      </div>
     </form>
   )
 

@@ -62,9 +62,10 @@ const Input = ({
   )
 }
 
-const textareaStyle = `bg-gray-100 block rounded-t-lg px-2.5 pb-2.5 pt-6 w-full text-sm text-gray-600
-                    border-0 border-b-2 border-gray-300 appearance-none
-                    focus:outline-none focus:ring-0 focus:border-blue-600 peer disabled:opacity-25 disabled:cursor-none`
+const textareaStyle = `bg-gray-100 block px-2.5 pb-2.5 pt-6 w-full text-sm text-gray-800
+                    border border-gray-600 appearance-none
+                    focus:outline-none focus:ring-0 focus:border-gray-800
+                    peer disabled:opacity-25 disabled:cursor-none`
 
 const inputStyle = `${textareaStyle}`
 

@@ -43,7 +43,7 @@ export const Timer = ({
       : `(${timeLeft.parsed.minutes}:${timeLeft.parsed.seconds}) - Devxloper`
 
   const needMoreTimeNotification = (
-    <div className="mb-2 p-4 bg-blue-100 flex">
+    <div className="my-2 p-4 bg-blue-100 flex">
       <span className="text-xs">
         {`Need more time? `}
         <button

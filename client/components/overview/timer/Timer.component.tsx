@@ -6,7 +6,11 @@ interface Props {
 }
 
 const TimerComponent = ({ timeLeft }: Props) => {
-  const deadlineToString = Object.entries(timeLeft.parsed)
+  const deadlineToString = Object.entries({
+    hrs: timeLeft.parsed.hours,
+    min: timeLeft.parsed.minutes,
+    sec: timeLeft.parsed.seconds,
+  })
 
   function getTimerValue(value: number) {
     if (value <= 0) {
@@ -17,12 +21,14 @@ const TimerComponent = ({ timeLeft }: Props) => {
   }
 
   return (
-    <div className="bg-white flex items-center justify-center px-5 py-5 my-5 rounded">
+    <div className="bg-white flex flex-col md:flex-row items-center justify-center px-2 md:px-4 py-5 my-5 rounded shadow-sm">
       <h1 className="text-3xl text-center mb-3 font-extralight">
         {`Let's execute!`}
       </h1>
       <div className="text-6xl text-center flex w-full items-center justify-center">
-        <div className="text-2xl mr-1 font-extralight">Time left:</div>
+        <span className="text-2xl mr-1 font-extralight hidden sm:inline">
+          Time left:
+        </span>
         {deadlineToString.map(([label, value]) => {
           return (
             <div
