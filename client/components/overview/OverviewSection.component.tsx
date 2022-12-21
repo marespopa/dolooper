@@ -67,12 +67,14 @@ const OverviewSection = () => {
         {!isLoading && (
           <Timer deadline={deadline} handleTimeAdd={handleTimeAdd} />
         )}
-        <div className="flex my-9">
-          <div className="flex-auto mr-3 px-2 py-3 bg-white">
+        <div className="flex flex-col md:flex-row my-9">
+          <div className="flex-auto w-full md:w-1/2 mr-3 px-2 py-3 bg-white">
             <h2 className="font-bold mt-0 mb-3">Plan</h2>
             <p>{plan}</p>
           </div>
-          <TasksList area="overview" />
+          <div className="flex-auto w-full md:w-1/2 px-2 py-3 bg-white">
+            <TasksList area="overview" />
+          </div>
         </div>
         <div className="mt-9 mb-4">
           <label

@@ -108,7 +108,7 @@ const TasksList = ({ area }: Props) => {
   )
 
   return (
-    <div className="flex-1 px-2 py-3 bg-white">
+    <div className="w-full px-2 py-3 bg-white">
       <TasksListComponent
         tasks={tasks}
         actions={{
