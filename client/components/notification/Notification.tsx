@@ -12,7 +12,7 @@ const Notification = () => {
       rtl={false}
       pauseOnFocusLoss
       draggable
-      theme="colored"
+      theme="light"
     />
   )
 }

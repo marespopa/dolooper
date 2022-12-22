@@ -1,6 +1,6 @@
 import moment from 'moment'
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
+import React, { use, useEffect, useState } from 'react'
 import service from '../../services/service'
 import { boxStyles } from '../common/common'
 import { Task } from '../../types/types'
@@ -8,6 +8,7 @@ import Container from '../container/Container.component'
 import Input from '../forms/input/Input.component'
 import TasksList from '../journey/tasks/TasksList'
 import Timer from './timer'
+import { toast } from 'react-toastify'
 
 const OverviewSection = () => {
   const [plan, setPlan] = useState('')
@@ -60,6 +61,24 @@ const OverviewSection = () => {
     service.resetAll()
     router.push('/journey')
   }
+
+  const CustomToastWithLink = () => (
+    <p>
+      Have an idea for the app? <br />
+      <a
+        className="underline"
+        target="_blank"
+        href="mailto:contact@marespopa.com"
+        rel="noreferrer"
+      >
+        Send an email
+      </a>
+    </p>
+  )
+
+  useEffect(() => {
+    toast.info(CustomToastWithLink)
+  }, [])
 
   return (
     <Container>
