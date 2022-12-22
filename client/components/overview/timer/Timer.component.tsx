@@ -1,4 +1,5 @@
 import { CountdownData } from '../../../hooks/useCountdown'
+import { boxStyles } from '../../common/common'
 import { HOUR, MINUTE, SECOND } from '../../../utils/constants'
 
 interface Props {
@@ -21,7 +22,9 @@ const TimerComponent = ({ timeLeft }: Props) => {
   }
 
   return (
-    <div className="bg-white flex flex-col md:flex-row items-center justify-center px-2 md:px-4 py-5 my-5 rounded shadow-sm">
+    <div
+      className={`${boxStyles} flex flex-col md:flex-row items-center justify-center px-2 md:px-4 py-5 my-5`}
+    >
       <h1 className="text-3xl text-center mb-3 font-extralight">
         {`Let's execute!`}
       </h1>
@@ -31,10 +34,7 @@ const TimerComponent = ({ timeLeft }: Props) => {
         </span>
         {deadlineToString.map(([label, value]) => {
           return (
-            <div
-              key={label}
-              className="w-24 mx-1 p-2 bg-white text-gray-700 rounded-lg"
-            >
+            <div key={label} className="w-24 mx-1 p-2 text-gray-700 rounded-lg">
               <div className="font-mono leading-none" x-text="days">
                 {value}
               </div>
