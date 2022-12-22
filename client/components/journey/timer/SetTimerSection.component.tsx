@@ -1,6 +1,7 @@
 import moment from 'moment'
 import React, { useState } from 'react'
 import service from '../../../services/service'
+import { boxStyles } from '../../common/common'
 import Input from '../../forms/input/Input.component'
 import SectionHeading from '../common/SectionHeading.component'
 
@@ -23,7 +24,7 @@ const SetTimerSection = ({ time, handleTimeChange }: Props) => {
         description="Having this layed out, how long will this session last?"
       />
       <div className="mb-3">
-        <div className="px-6 py-3 w-full md:w-1/2 bg-white rounded min-h-full">
+        <div className={`${boxStyles} px-6 py-3 w-full md:w-1/2 min-h-full`}>
           <div className="price-range">
             <span className="text-strong">{time} minutes</span>
             <input

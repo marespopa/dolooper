@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import service from '../../../services/service'
+import { boxStyles } from '../../common/common'
 import Input from '../../forms/input/Input.component'
 import SectionHeading from '../common/SectionHeading.component'
 
@@ -27,7 +28,7 @@ const PlanSection = () => {
         title="Plan"
         description="What's your plan for this coding session?"
       />
-      <div className="relative z-0 p-4 bg-white rounded h-56 min-h-full border">
+      <div className={`${boxStyles} relative z-0 h-56 min-h-full p-4`}>
         <Input
           action={updatePlan}
           id={'plan'}

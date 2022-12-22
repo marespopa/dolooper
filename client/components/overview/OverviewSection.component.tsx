@@ -2,6 +2,7 @@ import moment from 'moment'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import service from '../../services/service'
+import { boxStyles } from '../common/common'
 import { Task } from '../../types/types'
 import Container from '../container/Container.component'
 import Input from '../forms/input/Input.component'
@@ -67,16 +68,20 @@ const OverviewSection = () => {
         {!isLoading && (
           <Timer deadline={deadline} handleTimeAdd={handleTimeAdd} />
         )}
-        <div className="flex flex-col md:flex-row mt-9 mb-3 md:md-0">
-          <div className="flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3 bg-white rounded shadow-sm">
+        <div className="flex flex-col md:flex-row mt-6 md:md-0">
+          <div
+            className={`${boxStyles} flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
+          >
             <h2 className="font-bold mt-0 mb-3">Plan</h2>
             <p>{plan}</p>
           </div>
-          <div className="flex-auto w-full md:w-1/2 px-2 md:px-4 py-3 bg-white rounded shadow-sm">
+          <div
+            className={`${boxStyles} flex-auto w-full md:w-1/2 px-2 md:px-4 py-3`}
+          >
             <TasksList area="overview" />
           </div>
         </div>
-        <div className="mt-3 mb-4 px-2 md:px-4 pt-3 pb-6 bg-white rounded shadow-sm">
+        <div className={`${boxStyles} mt-6 mb-4 px-2 md:px-4 pt-3 pb-6`}>
           <label
             htmlFor="exampleFormControlInput1"
             className="form-label inline-block font-bold mt-0 mb-3"
