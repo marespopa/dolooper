@@ -27,6 +27,6 @@ const buttonStyles = `mx-auto w-8 h-8 rounded-full text-white font-medium text-x
                       border border-gray-800 bg-gray-600
                       hover:bg-gray-800 hover:shadow-lg hover:outline-none hover:ring-0
                       focus:bg-gray-800 focus:shadow-lg focus:outline-none focus:ring-0
-                      active:bg-gray-800 active:shadow-lg disabled:opacity-25 transition duration-150 ease-in-out`
+                      disabled:pointer-events-none active:bg-gray-800 active:shadow-lg disabled:opacity-25 transition duration-150 ease-in-out`
 
 export default ButtonCircle

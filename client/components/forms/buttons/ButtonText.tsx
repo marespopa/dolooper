@@ -27,6 +27,6 @@ export const buttonStyles = `inline-block px-6 py-2.5 text-gray-800 font-medium 
                         hover:bg-gray-800 hover:text-white
                         focus:bg-gray-800 focus:text-white
                         active:shadow-lg
-                        cursor-pointer disabled:opacity-25 transition duration-150 ease-in-out`
+                        disabled:pointer-events-none cursor-pointer disabled:opacity-25 transition duration-150 ease-in-out`
 
 export default ButtonText

@@ -24,6 +24,7 @@ const ButtonPrimary = ({ text, action, isDisabled, style = '' }: Props) => {
 
 const buttonStyles = `inline-block px-6 py-2.5 bg-blue-500 text-white font-medium text-xl leading-tight
   uppercase rounded shadow-md hover:bg-blue-600 cursor-pointer hover:shadow-lg focus:bg-blue-600 focus:shadow-lg
-  focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg disabled:opacity-25 transition duration-150 ease-in-out`
+  focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg disabled:opacity-25 transition duration-150 
+  disabled:pointer-events-none ease-in-out`
 
 export default ButtonPrimary

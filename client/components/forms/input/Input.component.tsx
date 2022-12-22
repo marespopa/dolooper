@@ -10,7 +10,7 @@ interface Props {
   customStyles?: string
   isDisabled?: boolean
 }
-const DEFAULT_TEXTAREA_ROWS = 2
+const DEFAULT_TEXTAREA_ROWS = 3
 
 const Input = ({
   action,
