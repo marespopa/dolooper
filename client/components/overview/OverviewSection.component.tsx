@@ -62,23 +62,10 @@ const OverviewSection = () => {
     router.push('/journey')
   }
 
-  const CustomToastWithLink = () => (
-    <p>
-      Have an idea for the app? <br />
-      <a
-        className="underline"
-        target="_blank"
-        href="mailto:contact@marespopa.com"
-        rel="noreferrer"
-      >
-        Send an email
-      </a>
-    </p>
-  )
-
-  useEffect(() => {
-    toast.info(CustomToastWithLink)
-  }, [])
+  function updatePlan(value: string) {
+    setPlan(value)
+    service.setPlan(value)
+  }
 
   return (
     <Container>
@@ -92,7 +79,15 @@ const OverviewSection = () => {
             className={`${boxStyles} flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
           >
             <h2 className="font-bold mt-0 mb-3">Plan</h2>
-            <p>{plan}</p>
+            <div>
+              <Input
+                action={updatePlan}
+                id={'plan'}
+                label={'Refine your plan'}
+                value={plan}
+                type="textarea"
+              />
+            </div>
           </div>
           <div
             className={`${boxStyles} flex-auto w-full md:w-1/2 px-2 md:px-4 py-3`}
