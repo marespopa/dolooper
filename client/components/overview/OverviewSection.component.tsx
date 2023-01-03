@@ -49,10 +49,6 @@ const OverviewSection = () => {
     router.push('/journey')
   }
 
-  function handleRevert() {
-    router.push('/journey')
-  }
-
   function updatePlan(value: string) {
     setPlan(value)
     service.setPlan(value)
@@ -98,12 +94,6 @@ const OverviewSection = () => {
             value={notes}
           />
         </div>
-        <Alert style="warning">
-          {`Things didn't go as planned? `}
-          <button className="text-gray-800 underline" onClick={handleRevert}>
-            Back to the drawing board.
-          </button>
-        </Alert>
         <Alert style="success">
           {`Completed this task? `}
           <button className="text-gray-800 underline" onClick={handleReset}>
