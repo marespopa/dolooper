@@ -15,9 +15,6 @@ const TasksList = ({ area }: Props) => {
   const [tasks, setTasks] = useState<Task[]>([])
   const [task, setTask] = useState<string>('')
   const [showAddForm, setShowAddForm] = useState(area === 'journey')
-  const [showToggleAddForm, setShowToggleAddForm] = useState(
-    area === 'overview',
-  )
   const showHeading = area === 'overview'
   const showNoTasksInfo = area === 'overview'
 
@@ -36,11 +33,6 @@ const TasksList = ({ area }: Props) => {
   }, [])
 
   const handleAdd = (taskMessage: string) => {
-    if (area === 'overview') {
-      setShowAddForm(false)
-      setShowToggleAddForm(true)
-    }
-
     const updatedTasks = [
       ...tasks,
       {
@@ -74,11 +66,6 @@ const TasksList = ({ area }: Props) => {
 
     setTasks(nextTasks)
     service.setTasks(nextTasks)
-  }
-
-  function toggleShowAddForm() {
-    setShowAddForm(!showAddForm)
-    setShowToggleAddForm(false)
   }
 
   const isDisabled = task.length === 0
@@ -128,12 +115,7 @@ const TasksList = ({ area }: Props) => {
         showNoTasksInfo={showNoTasksInfo}
         area={area}
       />
-      {showToggleAddForm && (
-        <div className="pt-4 flex">
-          <ButtonCircle text={'+'} action={toggleShowAddForm} />
-        </div>
-      )}
-      {showAddForm && AddTaskForm}
+      {AddTaskForm}
     </div>
   )
 }
