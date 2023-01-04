@@ -1,16 +1,13 @@
-import moment from 'moment'
-import React, { useState } from 'react'
-import service from '../../../services/service'
+import React from 'react'
 import { boxStyles } from '../../common/common'
-import Input from '../../forms/input/Input.component'
 import SectionHeading from '../common/SectionHeading.component'
 
 interface Props {
-  time: number
+  countdownInterval: number
   handleTimeChange: (value: string) => void
 }
 
-const SetTimerSection = ({ time, handleTimeChange }: Props) => {
+const SetTimerSection = ({ countdownInterval, handleTimeChange }: Props) => {
   const sessionLength = {
     min: 30,
     max: 60 * 2,
@@ -21,18 +18,18 @@ const SetTimerSection = ({ time, handleTimeChange }: Props) => {
     <section className="mt-10">
       <SectionHeading
         title="Duration"
-        description="Having this layed out, how long will this session last?"
+        description="Having this layed out, how long will it take?"
       />
       <div className="mb-3">
         <div className={`${boxStyles} px-6 py-3 w-full md:w-1/2 min-h-full`}>
           <div className="price-range">
-            <span className="text-strong">{time} minutes</span>
+            <span className="text-strong">{countdownInterval} minutes</span>
             <input
               id="timer"
               type="range"
               min={sessionLength.min}
               max={sessionLength.max}
-              value={time}
+              value={countdownInterval}
               step={sessionLength.step}
               placeholder="30"
               onChange={(e) => handleTimeChange(e.target.value)}

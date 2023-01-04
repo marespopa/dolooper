@@ -13,19 +13,18 @@ const JourneySection = () => {
   const goToNext = () => {
     router.push('/overview')
 
-    const date = moment().add(time, 'm').toDate()
-    service.setDeadline(date.toISOString())
+    service.setEstimation(estimation)
   }
 
   const maxStep = 2
 
-  const [time, setTime] = useState<number>(30)
+  const [estimation, setEstimation] = useState<number>(30)
   const [step, setStep] = useState<number>(0)
 
   function handleTimeChange(value: string) {
     const parsedValue = parseInt(value, 10)
 
-    setTime(isNaN(parsedValue) ? 0 : parsedValue)
+    setEstimation(isNaN(parsedValue) ? 0 : parsedValue)
   }
 
   function goToNextStep() {
@@ -52,7 +51,10 @@ const JourneySection = () => {
         {step === 0 && <PlanSection />}
         {step === 1 && <TasksSection />}
         {step === 2 && (
-          <SetTimerSection time={time} handleTimeChange={handleTimeChange} />
+          <SetTimerSection
+            countdownInterval={estimation}
+            handleTimeChange={handleTimeChange}
+          />
         )}
         <div className="inline-flex mt-5" role="group">
           <ButtonText
