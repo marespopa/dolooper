@@ -9,11 +9,13 @@ import Input from '../forms/input/Input.component'
 import TasksList from '../journey/tasks/TasksList'
 import Timer from './timer'
 import { toast } from 'react-toastify'
+import Alert from '../banners/Alert'
+import ButtonText from '../forms/buttons/ButtonText'
 
 const OverviewSection = () => {
   const [plan, setPlan] = useState('')
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [deadline, setDeadline] = useState<string>('')
+  const [time, setTime] = useState<number>(30)
   const [notes, setNotes] = useState('')
   const router = useRouter()
 
@@ -28,12 +30,12 @@ const OverviewSection = () => {
   }, [])
 
   useEffect(() => {
-    service.getDeadline().then((results) => {
+    service.getEstimation().then((results) => {
       if (!results) {
         return
       }
 
-      setDeadline(results)
+      setTime(results)
       setIsLoading(false)
     })
   }, [])
@@ -42,57 +44,38 @@ const OverviewSection = () => {
     setNotes(value)
   }
 
-  function handleTimeAdd(timeLeft: number) {
-    const newDeadline = timeLeft < 0 ? moment() : moment(deadline)
-
-    newDeadline.add(15, 'm').toDate()
-    setDeadline(newDeadline.toISOString())
-    service.setDeadline(newDeadline.toISOString())
-  }
-
-  /**
-  function handleTimeDecrease() {
-    const newDeadline = moment().add(0.1, 'm').toDate()
-    setDeadline(newDeadline.toISOString())
-    service.setDeadline(newDeadline.toISOString())
-  }
- */
   function handleReset() {
     service.resetAll()
     router.push('/journey')
   }
 
-  const CustomToastWithLink = () => (
-    <p>
-      Have an idea for the app? <br />
-      <a
-        className="underline"
-        target="_blank"
-        href="mailto:contact@marespopa.com"
-        rel="noreferrer"
-      >
-        Send an email
-      </a>
-    </p>
-  )
+  function handleRevert() {
+    router.push('/journey')
+  }
 
-  useEffect(() => {
-    toast.info(CustomToastWithLink)
-  }, [])
+  function updatePlan(value: string) {
+    setPlan(value)
+    service.setPlan(value)
+  }
 
   return (
     <Container>
       <section>
-        {/* for testing only <button onClick={handleTimeDecrease}>Remove time</button>*/}
-        {!isLoading && (
-          <Timer deadline={deadline} handleTimeAdd={handleTimeAdd} />
-        )}
+        {!isLoading && <Timer initialEstimation={time} />}
         <div className="flex flex-col md:flex-row mt-6 md:md-0">
           <div
             className={`${boxStyles} flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
           >
             <h2 className="font-bold mt-0 mb-3">Plan</h2>
-            <p>{plan}</p>
+            <div>
+              <Input
+                action={updatePlan}
+                id={'plan'}
+                label={'Refine your plan'}
+                value={plan}
+                type="textarea"
+              />
+            </div>
           </div>
           <div
             className={`${boxStyles} flex-auto w-full md:w-1/2 px-2 md:px-4 py-3`}
@@ -115,14 +98,18 @@ const OverviewSection = () => {
             value={notes}
           />
         </div>
-        <div className="mb-6 p-4 bg-amber-200 flex">
-          <span className="text-xs">
-            {`Things didn't go as planned? `}
-            <button className="text-gray-800 underline" onClick={handleReset}>
-              Back to the drawing board.
-            </button>
-          </span>
-        </div>
+        <Alert style="warning">
+          {`Things didn't go as planned? `}
+          <button className="text-gray-800 underline" onClick={handleRevert}>
+            Back to the drawing board.
+          </button>
+        </Alert>
+        <Alert style="success">
+          {`Completed this task? `}
+          <button className="text-gray-800 underline" onClick={handleReset}>
+            Start a new one
+          </button>
+        </Alert>
       </section>
     </Container>
   )

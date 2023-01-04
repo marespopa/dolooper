@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 import service from '../../../../services/service'
 import { Task, TaskArea } from '../../../../types/types'
-import ButtonCircle from '../../../forms/buttons/ButtonCircle'
-import ButtonText from '../../../forms/buttons/ButtonText'
 import Input from '../../../forms/input/Input.component'
 import TasksListComponent from './TasksList.component'
 
@@ -14,10 +12,10 @@ interface Props {
 const TasksList = ({ area }: Props) => {
   const [tasks, setTasks] = useState<Task[]>([])
   const [task, setTask] = useState<string>('')
-  const [showAddForm, setShowAddForm] = useState(area === 'journey')
   const showHeading = area === 'overview'
   const showNoTasksInfo = area === 'overview'
-
+  const taskAddLabel =
+    area === 'overview' ? 'Add another task' : 'Define your task'
   const resetTask = () => {
     setTask('')
   }
@@ -84,7 +82,7 @@ const TasksList = ({ area }: Props) => {
             type={'text'}
             value={task}
             action={setTask}
-            label="Define your task"
+            label={taskAddLabel}
           />
         </div>
         <button
