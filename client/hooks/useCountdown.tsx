@@ -1,71 +1,48 @@
-import { useEffect, useState } from 'react'
-import { HOUR, MINUTE, SECOND, DAY } from '../utils/constants'
+import { useEffect, useRef, useState } from 'react'
 
 export type CountdownData = {
-  time: number
-  numeric: {
-    days: number
-    hours: number
-    minutes: number
-    seconds: number
-  }
-  parsed: {
-    days: string
-    hours: string
-    minutes: string
-    seconds: string
-  }
+  counter: number
+  start: () => void
+  pause: () => void
+  reset: () => void
+  isRunning: boolean
 }
 
-export const useCountdown = (deadline: Date) => {
-  // Time is in seconds
-  const [time, setTime] = useState(computeTimeLeft(deadline))
-
-  const decrement = () =>
-    setTime((prevTime) => {
-      return prevTime === 0 ? 0 : prevTime - 1000
-    })
+export const useCountdown = (total: number, ms: number = 1000) => {
+  const [counter, setCountDown] = useState(total)
+  const [isTimerRunning, setIsTimerRunning] = useState(false)
+  // Store the created interval
+  const intervalId = useRef<number>()
+  const start: () => void = () => setIsTimerRunning(true)
+  const pause: () => void = () => setIsTimerRunning(false)
+  const reset: () => void = () => {
+    clearInterval(intervalId.current)
+    setIsTimerRunning(false)
+    setCountDown(total)
+  }
 
   useEffect(() => {
-    const id = setInterval(decrement, 1000)
-    return () => clearInterval(id)
-  }, [])
+    intervalId.current = window.setInterval(() => {
+      isTimerRunning && counter > 0 && setCountDown((counter) => counter - 1)
+    }, ms)
+    // Clear interval when count to zero
+    if (counter === 0) clearInterval(intervalId.current)
+    // Clear interval when unmount
+    return () => clearInterval(intervalId.current)
+  }, [isTimerRunning, counter, ms])
 
-  useEffect(() => {
-    setTime(computeTimeLeft(deadline))
-  }, [deadline])
-
-  function formatTime(value: number) {
-    if (value <= 0) {
-      return '00'
-    }
-
-    return `${Math.floor(value)}`.padStart(2, '0')
+  const extendWith = (interval: number) => {
+    setCountDown(counter + interval)
   }
 
-  function computeTimeLeft(deadline: Date) {
-    return Math.max(0, Math.floor(deadline.getTime() - Date.now()))
+  const timer = {
+    counter,
+    start,
+    pause,
+    reset,
+    extendWith,
+    isRunning: isTimerRunning,
   }
 
-  const numericData = {
-    days: Math.floor(time / DAY),
-    hours: Math.floor((time / HOUR) % 24),
-    minutes: Math.floor((time / MINUTE) % 60),
-    seconds: (time / SECOND) % 60,
-  }
-
-  const parsedData = {
-    days: formatTime(numericData.days),
-    hours: formatTime(numericData.hours),
-    minutes: formatTime(numericData.minutes),
-    seconds: formatTime(numericData.seconds),
-  }
-
-  const result: CountdownData = {
-    time: time,
-    numeric: numericData,
-    parsed: parsedData,
-  }
-
-  return result
+  return timer
 }
