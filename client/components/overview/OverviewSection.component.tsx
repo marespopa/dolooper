@@ -1,16 +1,12 @@
-import moment from 'moment'
 import { useRouter } from 'next/router'
 import React, { use, useEffect, useState } from 'react'
 import service from '../../services/service'
 import { boxStyles } from '../common/common'
-import { Task } from '../../types/types'
 import Container from '../container/Container.component'
 import Input from '../forms/input/Input.component'
 import TasksList from '../journey/tasks/TasksList'
 import Timer from './timer'
-import { toast } from 'react-toastify'
 import Alert from '../banners/Alert'
-import ButtonText from '../forms/buttons/ButtonText'
 
 const OverviewSection = () => {
   const [plan, setPlan] = useState('')
@@ -46,6 +42,10 @@ const OverviewSection = () => {
 
   function handleReset() {
     service.resetAll()
+    router.push('/journey')
+  }
+
+  function handleRevert() {
     router.push('/journey')
   }
 
