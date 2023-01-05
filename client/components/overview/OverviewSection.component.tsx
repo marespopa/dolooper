@@ -11,7 +11,8 @@ import Alert from '../banners/Alert'
 const OverviewSection = () => {
   const [plan, setPlan] = useState('')
   const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [time, setTime] = useState<number>(30)
+  const [estimation, setEstimation] = useState<number>(30)
+  const [time, setTime] = useState<number>(0)
   const [notes, setNotes] = useState('')
   const router = useRouter()
 
@@ -31,6 +32,17 @@ const OverviewSection = () => {
         return
       }
 
+      setEstimation(results)
+      setIsLoading(false)
+    })
+  }, [])
+
+  useEffect(() => {
+    service.getTimer().then((results) => {
+      if (!results) {
+        return
+      }
+
       setTime(results)
       setIsLoading(false)
     })
@@ -45,10 +57,6 @@ const OverviewSection = () => {
     router.push('/journey')
   }
 
-  function handleRevert() {
-    router.push('/journey')
-  }
-
   function updatePlan(value: string) {
     setPlan(value)
     service.setPlan(value)
@@ -57,7 +65,9 @@ const OverviewSection = () => {
   return (
     <Container>
       <section>
-        {!isLoading && <Timer initialEstimation={time} />}
+        {!isLoading && (
+          <Timer initialEstimation={estimation} previousTime={time} />
+        )}
         <div className="flex flex-col md:flex-row mt-6 md:md-0">
           <div
             className={`${boxStyles} flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
