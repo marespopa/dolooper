@@ -57,10 +57,6 @@ const OverviewSection = () => {
     router.push('/journey')
   }
 
-  function handleRevert() {
-    router.push('/journey')
-  }
-
   function updatePlan(value: string) {
     setPlan(value)
     service.setPlan(value)
