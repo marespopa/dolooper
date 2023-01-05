@@ -3,7 +3,8 @@ import { type Task } from '../types/types'
 
 const tasksKey = 'tasks'
 const planKey = 'plan'
-const timerKey = 'estimation'
+const estimationKey = 'estimationKey'
+const timerKey = 'timer'
 
 async function setPlan(plan: string) {
   try {
@@ -41,13 +42,31 @@ async function getTasks() {
 
 async function setEstimation(interval: number) {
   try {
-    return await localforage.setItem(timerKey, interval)
+    return await localforage.setItem(estimationKey, interval)
   } catch (err) {
     console.log(err)
   }
 }
 
 async function getEstimation() {
+  try {
+    const value = await localforage.getItem(estimationKey)
+
+    return value as number
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+async function setTimer(interval: number) {
+  try {
+    return await localforage.setItem(timerKey, interval)
+  } catch (err) {
+    console.log(err)
+  }
+}
+
+async function getTimer() {
   try {
     const value = await localforage.getItem(timerKey)
 
@@ -68,6 +87,8 @@ const service = {
   getTasks,
   setEstimation,
   getEstimation,
+  setTimer,
+  getTimer,
   resetAll,
 }
 

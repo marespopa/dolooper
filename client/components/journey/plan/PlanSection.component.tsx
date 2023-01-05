@@ -28,7 +28,7 @@ const PlanSection = () => {
         title="Plan"
         description="What's your plan for this coding session?"
       />
-      <div className={`${boxStyles} relative z-0 h-56 min-h-full p-4`}>
+      <div className={`${boxStyles} relative z-0 min-h-full p-4`}>
         <Input
           action={updatePlan}
           id={'plan'}

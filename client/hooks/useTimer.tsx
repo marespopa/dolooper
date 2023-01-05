@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import service from '../services/service'
 
 export type CountdownData = {
   counter: number
@@ -8,8 +9,8 @@ export type CountdownData = {
   isRunning: boolean
 }
 
-export const useCountdown = (total: number, ms: number = 1000) => {
-  const [counter, setCountDown] = useState(total)
+export const useTimer = (initialTime: number = 0, ms: number = 1000) => {
+  const [counter, setCounter] = useState(initialTime)
   const [isTimerRunning, setIsTimerRunning] = useState(false)
   // Store the created interval
   const intervalId = useRef<number>()
@@ -18,21 +19,23 @@ export const useCountdown = (total: number, ms: number = 1000) => {
   const reset: () => void = () => {
     clearInterval(intervalId.current)
     setIsTimerRunning(false)
-    setCountDown(total)
+    setCounter(0)
   }
 
   useEffect(() => {
     intervalId.current = window.setInterval(() => {
-      isTimerRunning && counter > 0 && setCountDown((counter) => counter - 1)
+      isTimerRunning && setCounter((counter) => counter + 1)
     }, ms)
-    // Clear interval when count to zero
-    if (counter === 0) clearInterval(intervalId.current)
+
     // Clear interval when unmount
-    return () => clearInterval(intervalId.current)
+    return () => {
+      service.setTimer(counter)
+      clearInterval(intervalId.current)
+    }
   }, [isTimerRunning, counter, ms])
 
   const extendWith = (interval: number) => {
-    setCountDown(counter + interval)
+    setCounter(counter + interval)
   }
 
   const timer = {
