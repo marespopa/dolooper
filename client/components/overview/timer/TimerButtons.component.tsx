@@ -8,21 +8,12 @@ interface Props {
 
 const TimerButtons = ({ actions, isRunning }: Props) => {
   const actionButton = isRunning ? (
-    <ButtonText text="Pause" action={actions.pause}></ButtonText>
+    <ButtonText text="Take a break" action={actions.pause}></ButtonText>
   ) : (
     <ButtonText text="Start" action={actions.start}></ButtonText>
   )
 
-  return (
-    <div>
-      {actionButton}
-      <ButtonText
-        text="Reset"
-        action={actions.reset}
-        style={'ml-4'}
-      ></ButtonText>
-    </div>
-  )
+  return <div>{actionButton}</div>
 }
 
 export default TimerButtons
