@@ -1,7 +1,6 @@
 import { CountdownData } from '../../../hooks/useTimer'
 import { getFormattedTime } from '../../../utils/functions'
 import { boxStyles } from '../../common/common'
-import ButtonText from '../../forms/buttons/ButtonText'
 import TimerButtons from './TimerButtons.component'
 import TimerPanel from './TimerPanel.component'
 
@@ -12,7 +11,12 @@ interface Props {
 
 const TimerComponent = ({ countdownTimer, estimation }: Props) => {
   const formattedTime = getFormattedTime(countdownTimer.counter)
-  const timePanel = <TimerPanel parsedTime={formattedTime.parsed} />
+  const timePanel = (
+    <TimerPanel
+      parsedTime={formattedTime.parsed}
+      isRunning={countdownTimer.isRunning}
+    />
+  )
 
   return (
     <div

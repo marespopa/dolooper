@@ -13,6 +13,7 @@ const JourneySection = () => {
   const goToNext = () => {
     router.push('/overview')
 
+    service.setTimer(0)
     service.setEstimation(estimation)
   }
 
@@ -43,7 +44,7 @@ const JourneySection = () => {
     setStep(lastStep)
   }
 
-  const nextActionText = step < maxStep ? 'Next' : 'Start Session!'
+  const nextActionText = step < maxStep ? 'Next' : 'Complete Planning'
 
   return (
     <div className="py-5 text-gray-700">
