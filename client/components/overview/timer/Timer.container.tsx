@@ -1,4 +1,4 @@
-import Seo, { defaultMeta } from '../../Seo'
+import Seo from '../../Seo'
 import TimerComponent from './Timer.component'
 import { useTimer } from '../../../hooks/useTimer'
 import { getFormattedTime } from '../../../utils/functions'
@@ -17,11 +17,6 @@ export const Timer = ({ initialEstimation = 30, previousTime = 0 }: Props) => {
 
     const message = `${hoursSpace}${timeAsObject.parsed.minutes}:${timeAsObject.parsed.seconds} - Devxloper`
 
-    // Counter is not started
-    if (countdownTimer.counter === 0) {
-      return defaultMeta.title
-    }
-
     // Counter is running
     if (countdownTimer.isRunning) {
       return message
@@ -36,7 +31,6 @@ export const Timer = ({ initialEstimation = 30, previousTime = 0 }: Props) => {
   return (
     <>
       <Seo title={pageTitle} />
-
       <TimerComponent
         countdownTimer={countdownTimer}
         estimation={initialEstimation}

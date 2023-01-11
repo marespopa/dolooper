@@ -22,7 +22,7 @@ const ButtonCircle = ({ text, action, isDisabled, style = '' }: Props) => {
   )
 }
 
-const buttonStyles = `mx-auto w-8 h-8 rounded-full text-white font-medium text-xl leading-tight
+const buttonStyles = `mx-auto w-6 h-6 rounded-full text-white font-medium text-xs leading-tight
                       uppercase shadow-md cursor-pointer
                       border border-gray-800 bg-gray-600
                       hover:bg-gray-800 hover:shadow-lg hover:outline-none hover:ring-0

@@ -13,7 +13,7 @@ const JourneySection = () => {
   const goToNext = () => {
     router.push('/overview')
 
-    service.setTimer(0)
+    service.setTimestamps([])
     service.setEstimation(estimation)
   }
 
