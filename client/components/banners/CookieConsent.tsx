@@ -4,8 +4,7 @@ import { MouseEvent, useCallback, useEffect, useState } from 'react'
 import Container from '../container'
 
 const USER_CONSENT_COOKIE_KEY = 'cookie_consent_is_true'
-const USER_CONSENT_COOKIE_EXPIRE_DATE =
-  new Date().getTime() + 365 * 24 * 60 * 60
+const USER_CONSENT_COOKIE_EXPIRE_DAYS = 7
 
 const CookieConsent = () => {
   const [cookieConsentIsTrue, setCookieConsentIsTrue] = useState(true)
@@ -20,7 +19,7 @@ const CookieConsent = () => {
 
     if (!cookieConsentIsTrue) {
       Cookies.set(USER_CONSENT_COOKIE_KEY, 'true', {
-        expires: USER_CONSENT_COOKIE_EXPIRE_DATE,
+        expires: USER_CONSENT_COOKIE_EXPIRE_DAYS,
       })
       setCookieConsentIsTrue(true)
     }

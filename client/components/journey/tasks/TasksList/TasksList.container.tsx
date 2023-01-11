@@ -46,7 +46,6 @@ const TasksList = ({ area }: Props) => {
   }
 
   const handleDelete = (taskUUID: string) => {
-    console.log(`Delete ${taskUUID}`)
     const arr = tasks.filter((item) => item.key !== taskUUID)
 
     setTasks(arr)
