@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const padTo2Digits = (value: number) => {
   if (value <= 0) {
     return '00'
@@ -23,4 +25,8 @@ export const getFormattedTime = (time: number) => {
     numeric,
     parsed,
   }
+}
+
+export const formatTimeFromMS = (time: number) => {
+  return moment(time).format('DD/MM/YYYY hh:mm')
 }

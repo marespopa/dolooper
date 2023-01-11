@@ -1,78 +1,81 @@
 import localforage from 'localforage'
-import { type Task } from '../types/types'
+import { TimestampList, type Task } from '../types/types'
 
-const tasksKey = 'tasks'
-const planKey = 'plan'
-const estimationKey = 'estimationKey'
-const timerKey = 'timer'
+const keys = {
+  tasks: 'tasks',
+  plan: 'plan',
+  estimation: 'estimation',
+  timestamp: 'timelog',
+}
 
 async function setPlan(plan: string) {
   try {
-    return await localforage.setItem(planKey, plan)
+    return await localforage.setItem(keys.plan, plan)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
 async function getPlan() {
   try {
-    const value = await localforage.getItem(planKey)
+    const value = await localforage.getItem(keys.plan)
     return value as string
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
 async function setTasks(tasks: Task[]) {
   try {
-    return await localforage.setItem(tasksKey, tasks)
+    return await localforage.setItem(keys.tasks, tasks)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
 async function getTasks() {
   try {
-    const value = await localforage.getItem(tasksKey)
+    const value = await localforage.getItem(keys.tasks)
     return value as Task[]
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
 async function setEstimation(interval: number) {
   try {
-    return await localforage.setItem(estimationKey, interval)
+    return await localforage.setItem(keys.estimation, interval)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
 async function getEstimation() {
   try {
-    const value = await localforage.getItem(estimationKey)
+    const value = await localforage.getItem(keys.estimation)
 
     return value as number
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
-async function setTimer(interval: number) {
+async function setTimestamps(timeStamps: TimestampList) {
+  console.dir(timeStamps)
   try {
-    return await localforage.setItem(timerKey, interval)
+    return await localforage.setItem(keys.timestamp, timeStamps)
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
-async function getTimer() {
+async function getTimestamps() {
   try {
-    const value = await localforage.getItem(timerKey)
+    const value = await localforage.getItem(keys.timestamp)
 
-    return value as number
+    return value as TimestampList
   } catch (err) {
-    console.log(err)
+    console.error(err)
   }
 }
 
@@ -87,8 +90,8 @@ const service = {
   getTasks,
   setEstimation,
   getEstimation,
-  setTimer,
-  getTimer,
+  setTimestamps,
+  getTimestamps,
   resetAll,
 }
 

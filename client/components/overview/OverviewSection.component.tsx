@@ -7,12 +7,16 @@ import Input from '../forms/input/Input.component'
 import TasksList from '../journey/tasks/TasksList'
 import Timer from './timer'
 import Alert from '../banners/Alert'
+import { Timestamp, TimestampList, TimestampType } from '../../types/types'
+import Timelog from './timelog/Timelog.container'
+import moment from 'moment'
+import uuid from 'react-uuid'
 
 const OverviewSection = () => {
   const [plan, setPlan] = useState('')
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [estimation, setEstimation] = useState<number>(30)
-  const [time, setTime] = useState<number>(0)
+  const [timestampList, setTimestampList] = useState<TimestampList>([])
   const [notes, setNotes] = useState('')
   const router = useRouter()
 
@@ -38,18 +42,39 @@ const OverviewSection = () => {
   }, [])
 
   useEffect(() => {
-    service.getTimer().then((results) => {
+    service.getTimestamps().then((results) => {
       if (!results) {
         return
       }
 
-      setTime(results)
+      setTimestampList(results)
       setIsLoading(false)
     })
   }, [])
 
   function handleNotesChange(value: string) {
     setNotes(value)
+  }
+
+  function handleTimeEntryAdd(type: TimestampType) {
+    const arr = [
+      ...timestampList,
+      {
+        id: uuid(),
+        type: type,
+        value: moment.now(),
+      },
+    ]
+    setTimestampList(arr)
+    service.setTimestamps(arr)
+    console.dir(arr)
+  }
+
+  function handleTimeEntryDelete(key: string) {
+    const arr = timestampList.filter((item) => item.id !== key)
+
+    setTimestampList(arr)
+    service.setTimestamps(arr)
   }
 
   function handleReset() {
@@ -66,7 +91,14 @@ const OverviewSection = () => {
     <Container>
       <section>
         {!isLoading && (
-          <Timer initialEstimation={estimation} previousTime={time} />
+          <Timelog
+            initialEstimation={estimation}
+            timestampList={timestampList}
+            actions={{
+              onAdd: handleTimeEntryAdd,
+              onDelete: handleTimeEntryDelete,
+            }}
+          />
         )}
         <div className="flex flex-col md:flex-row mt-6 md:md-0">
           <div

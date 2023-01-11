@@ -11,3 +11,11 @@ const test = Object.entries({
 
 export type Time = typeof test
 export type TaskArea = 'overview' | 'journey'
+export type TimestampType = 'work' | 'break'
+export type Timestamp = {
+  id: string
+  type: TimestampType
+  value: number
+}
+
+export type TimestampList = Timestamp[] | []
