@@ -100,4 +100,3 @@ const Timelog = ({ initialEstimation, timestampList, actions }: Props) => {
 }
 
 export default Timelog
-8

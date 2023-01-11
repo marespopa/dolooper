@@ -9,7 +9,7 @@ import Alert from '../banners/Alert'
 import { TimestampList, TimestampType } from '../../types/types'
 import moment from 'moment'
 import uuid from 'react-uuid'
-import Timelog from './timelog/TimelogContainer'
+import Timelog from './timelog'
 
 const OverviewSection = () => {
   const [plan, setPlan] = useState('')
