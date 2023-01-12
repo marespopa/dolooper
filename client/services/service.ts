@@ -8,6 +8,8 @@ const keys = {
   timestamp: 'timelog',
 }
 
+const MIN_VALID_FIELDS = 2
+
 async function setPlan(plan: string) {
   try {
     return await localforage.setItem(keys.plan, plan)
@@ -79,6 +81,16 @@ async function getTimestamps() {
   }
 }
 
+async function hasEntries() {
+  try {
+    const length = await localforage.length()
+
+    return length >= MIN_VALID_FIELDS
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 function resetAll() {
   localforage.clear()
 }
@@ -93,6 +105,7 @@ const service = {
   setTimestamps,
   getTimestamps,
   resetAll,
+  hasEntries,
 }
 
 export default service

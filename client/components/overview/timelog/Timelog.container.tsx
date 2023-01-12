@@ -31,7 +31,6 @@ const Timelog = ({ initialEstimation, timestampList, actions }: Props) => {
     }
 
     for (let i = 0; i <= minLength - 1; i++) {
-      console.log(breakEntries[i].value - workEntries[i].value)
       diffTime += breakEntries[i].value - workEntries[i].value
     }
 

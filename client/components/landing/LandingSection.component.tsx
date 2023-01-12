@@ -1,13 +1,25 @@
 import { useRouter } from 'next/router'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Container from '../container'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
+import service from '../../services/service'
 
 const LandingSection = () => {
   const router = useRouter()
-  const goToNext = () => {
+  const [hasTaskInProgress, setHasTaskInProgress] = useState(false)
+  const goToJourney = () => {
     router.push('/journey')
   }
+
+  const goToOverview = () => {
+    router.push('/overview')
+  }
+
+  useEffect(() => {
+    service.hasEntries().then((isInProgress) => {
+      setHasTaskInProgress(isInProgress ? true : false)
+    })
+  }, [])
 
   return (
     <section className="my-5">
@@ -24,7 +36,11 @@ const LandingSection = () => {
           </p>
           <p className={paragraphStyle}>{`Devxloper comes out to help you.`}</p>
 
-          <ButtonPrimary text={`Let's start!`} action={goToNext} />
+          {hasTaskInProgress ? (
+            <ButtonPrimary text={`Continue`} action={goToOverview} />
+          ) : (
+            <ButtonPrimary text={`Start!`} action={goToJourney} />
+          )}
         </div>
       </Container>
     </section>

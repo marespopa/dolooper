@@ -66,7 +66,6 @@ const OverviewSection = () => {
     ]
     setTimestampList(arr)
     service.setTimestamps(arr)
-    console.dir(arr)
   }
 
   function handleTimeEntryDelete(key: string) {
