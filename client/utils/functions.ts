@@ -1,5 +1,11 @@
 import moment from 'moment'
 
 export const formatTimeFromMS = (time: number) => {
-  return moment(time).format('DD/MM/YYYY hh:mm')
+  const date = moment(time)
+
+  const formatString = date.isSame(moment(), 'day')
+    ? 'hh:mm'
+    : 'DD/MM/YYYY hh:mm'
+
+  return moment(time).format(formatString)
 }

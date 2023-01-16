@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import service from '../../services/service'
 import { boxStyles } from '../common/common'
 import Container from '../container/Container.component'
@@ -60,7 +60,6 @@ const OverviewSection = () => {
             timestampList={timestampList}
             actions={{
               onAdd: handleTimeEntryAdd,
-              onDelete: handleTimeEntryDelete,
             }}
           />
         )}
@@ -123,13 +122,6 @@ const OverviewSection = () => {
         value: moment.now(),
       },
     ]
-    setTimestampList(arr)
-    service.setTimestamps(arr)
-  }
-
-  function handleTimeEntryDelete(key: string) {
-    const arr = timestampList.filter((item) => item.id !== key)
-
     setTimestampList(arr)
     service.setTimestamps(arr)
   }

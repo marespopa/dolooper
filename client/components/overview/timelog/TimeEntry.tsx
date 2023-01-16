@@ -1,23 +1,18 @@
 import React from 'react'
 import { TimestampType } from '../../../types/types'
 import { formatTimeFromMS } from '../../../utils/functions'
-import ButtonCircle from '../../forms/buttons/ButtonCircle'
 
 interface Props {
   type: TimestampType
   value: number
-  action: () => void
 }
-const TimeEntry = ({ type, value, action }: Props) => {
+const TimeEntry = ({ type, value }: Props) => {
   const time = formatTimeFromMS(value)
   const messageByType = type === 'work' ? 'Work Start' : 'Work End'
   return (
     <tr>
       <td className={tableCellStyle}>{`${time}`} </td>
       <td className={tableCellStyle}>{`${messageByType}`}</td>
-      <td className={tableCellStyle}>
-        <ButtonCircle text="x" action={action}></ButtonCircle>
-      </td>
     </tr>
   )
 }

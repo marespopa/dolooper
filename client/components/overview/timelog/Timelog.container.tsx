@@ -1,70 +1,42 @@
-import moment from 'moment'
-import React, { useState } from 'react'
-import { Timestamp, TimestampList, TimestampType } from '../../../types/types'
+import moment, { Moment } from 'moment'
+import React from 'react'
+import { TimestampList, TimestampType } from '../../../types/types'
+import { formatTimeFromMS } from '../../../utils/functions'
 import { boxStyles } from '../../common/common'
 import ButtonText from '../../forms/buttons/ButtonText'
-import Seo, { defaultMeta } from '../../Seo'
-import TimeEntry from './TimeEntry'
+import Seo from '../../Seo'
+import Dashboard from './dashboard/Dashboard'
+import Greeting from './greeting/Greeting.component'
+import TimelogComponent from './Timelog.component'
 
 interface Props {
   initialEstimation: number
   timestampList: TimestampList
   actions: {
     onAdd: (entry: TimestampType) => void
-    onDelete: (entryKey: string) => void
   }
 }
 
 const Timelog = ({ initialEstimation, timestampList, actions }: Props) => {
   const totalWorkTime = getTotalWorkTime()
-  const hasWorkedTime = !!totalWorkTime
   const pageTitle = formatPageTitle()
+  const lastBreak = getLastBreak(timestampList)
 
   return (
     <>
       <Seo title={pageTitle} />
-      <div
-        className={`${boxStyles} flex flex-col items-center justify-center px-2 md:px-4 py-5 my-5`}
-      >
-        <span className="mt-4 mb-2 text-xs">
-          Initial estimation was {initialEstimation} minutes.
-        </span>
+      <div className={`${boxStyles} px-2 md:px-4 py-5 my-5`}>
+        <Greeting />
+        <Dashboard
+          initialEstimation={initialEstimation}
+          totalWorkTime={totalWorkTime}
+          lastBreak={lastBreak}
+        />
+
         {timestampList.length > 0 && (
-          <>
-            <div className="bg-gray-100 my-2 overflow-x-auto w-full sm:w-1/2">
-              <table className="items-center w-full border-collapse">
-                <tbody>
-                  {timestampList.map((timeEntry) => {
-                    return (
-                      <TimeEntry
-                        key={timeEntry.id}
-                        type={timeEntry.type}
-                        value={timeEntry.value}
-                        action={() => actions.onDelete(timeEntry.id)}
-                      />
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-            {hasWorkedTime && (
-              <div className="bg-amber-100 p-6 my-4 relative rounded-xl w-full sm:w-1/2">
-                <div className="flex items-center justify-between">
-                  <p className="font-medium ">{`Work time`}</p>
-                </div>
-                <div className="flex items-center justify-between md:flex-col md:items-start">
-                  <p className="text-xl text-center font-light md:text-3xl">
-                    {totalWorkTime}
-                  </p>
-                  <p className="text-xs text-center text-text-200">
-                    Time spent on this task
-                  </p>
-                </div>
-              </div>
-            )}
-          </>
+          <TimelogComponent timestampList={timestampList} />
         )}
-        <div className="text-center">
+        <div className="text-center mt-4">
           <ButtonText
             action={() => handleTimeEntryAdd()}
             text="Punch timer"
@@ -102,6 +74,18 @@ const Timelog = ({ initialEstimation, timestampList, actions }: Props) => {
     const dayString = timeFormat.day > 0 ? `${timeFormat.day}d ` : ''
 
     return `${dayString}${timeFormat.hrs}h ${timeFormat.mins}m`
+  }
+
+  function getLastBreak(timestampList: TimestampList) {
+    let sortedArray = timestampList
+      .filter((time) => time.type === 'break')
+      .sort((a, b) => a.value.valueOf() - b.value.valueOf())
+
+    if (sortedArray.length === 0) {
+      return 'None yet'
+    }
+
+    return formatTimeFromMS(sortedArray[sortedArray.length - 1].value)
   }
 
   function handleTimeEntryAdd() {
