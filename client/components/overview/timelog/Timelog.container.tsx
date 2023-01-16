@@ -16,6 +16,64 @@ interface Props {
 }
 
 const Timelog = ({ initialEstimation, timestampList, actions }: Props) => {
+  const totalWorkTime = getTotalWorkTime()
+  const hasWorkedTime = !!totalWorkTime
+  const pageTitle = formatPageTitle()
+
+  return (
+    <>
+      <Seo title={pageTitle} />
+      <div
+        className={`${boxStyles} flex flex-col items-center justify-center px-2 md:px-4 py-5 my-5`}
+      >
+        <span className="mt-4 mb-2 text-xs">
+          Initial estimation was {initialEstimation} minutes.
+        </span>
+        {timestampList.length > 0 && (
+          <>
+            <div className="bg-gray-100 my-2 overflow-x-auto w-full sm:w-1/2">
+              <table className="items-center w-full border-collapse">
+                <tbody>
+                  {timestampList.map((timeEntry) => {
+                    return (
+                      <TimeEntry
+                        key={timeEntry.id}
+                        type={timeEntry.type}
+                        value={timeEntry.value}
+                        action={() => actions.onDelete(timeEntry.id)}
+                      />
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+            {hasWorkedTime && (
+              <div className="bg-amber-100 p-6 my-4 relative rounded-xl w-full sm:w-1/2">
+                <div className="flex items-center justify-between">
+                  <p className="font-medium ">{`Work time`}</p>
+                </div>
+                <div className="flex items-center justify-between md:flex-col md:items-start">
+                  <p className="text-xl text-center font-light md:text-3xl">
+                    {totalWorkTime}
+                  </p>
+                  <p className="text-xs text-center text-text-200">
+                    Time spent on this task
+                  </p>
+                </div>
+              </div>
+            )}
+          </>
+        )}
+        <div className="text-center">
+          <ButtonText
+            action={() => handleTimeEntryAdd()}
+            text="Punch timer"
+          ></ButtonText>
+        </div>
+      </div>
+    </>
+  )
+
   function formatPageTitle() {
     return `Work - Devxloper`
   }
@@ -36,11 +94,14 @@ const Timelog = ({ initialEstimation, timestampList, actions }: Props) => {
 
     var duration = moment.duration(diffTime)
     const timeFormat = {
+      day: duration.days(),
       hrs: duration.hours(),
       mins: duration.minutes(),
     }
 
-    return `${timeFormat.hrs}h ${timeFormat.mins}m logged`
+    const dayString = timeFormat.day > 0 ? `${timeFormat.day}d ` : ''
+
+    return `${dayString}${timeFormat.hrs}h ${timeFormat.mins}m`
   }
 
   function handleTimeEntryAdd() {
@@ -53,49 +114,6 @@ const Timelog = ({ initialEstimation, timestampList, actions }: Props) => {
 
     return actions.onAdd(nextType)
   }
-  const totalWorkTime = getTotalWorkTime()
-
-  const pageTitle = formatPageTitle()
-
-  return (
-    <>
-      <Seo title={pageTitle} />
-      <div
-        className={`${boxStyles} flex flex-col items-center justify-center px-2 md:px-4 py-5 my-5`}
-      >
-        <span className="mt-4 mb-2 text-xs">
-          Initial estimation was {initialEstimation} minutes.
-        </span>
-        {timestampList.length > 0 && (
-          <>
-            <div className="bg-gray-100 my-2 overflow-x-auto">
-              <table className="items-center w-full border-collapse">
-                <tbody>
-                  {timestampList.map((timeEntry) => {
-                    return (
-                      <TimeEntry
-                        key={timeEntry.id}
-                        type={timeEntry.type}
-                        value={timeEntry.value}
-                        action={() => actions.onDelete(timeEntry.id)}
-                      />
-                    )
-                  })}
-                </tbody>
-              </table>
-            </div>
-            <span className="my-2 text-xs">{totalWorkTime}</span>
-          </>
-        )}
-        <div className="text-center">
-          <ButtonText
-            action={() => handleTimeEntryAdd()}
-            text="Punch timer"
-          ></ButtonText>
-        </div>
-      </div>
-    </>
-  )
 }
 
 export default Timelog

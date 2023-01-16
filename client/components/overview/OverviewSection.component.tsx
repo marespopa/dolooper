@@ -51,40 +51,6 @@ const OverviewSection = () => {
     })
   }, [])
 
-  function handleNotesChange(value: string) {
-    setNotes(value)
-  }
-
-  function handleTimeEntryAdd(type: TimestampType) {
-    const arr = [
-      ...timestampList,
-      {
-        id: uuid(),
-        type: type,
-        value: moment.now(),
-      },
-    ]
-    setTimestampList(arr)
-    service.setTimestamps(arr)
-  }
-
-  function handleTimeEntryDelete(key: string) {
-    const arr = timestampList.filter((item) => item.id !== key)
-
-    setTimestampList(arr)
-    service.setTimestamps(arr)
-  }
-
-  function handleReset() {
-    service.resetAll()
-    router.push('/journey')
-  }
-
-  function updatePlan(value: string) {
-    setPlan(value)
-    service.setPlan(value)
-  }
-
   return (
     <Container>
       <section>
@@ -143,6 +109,40 @@ const OverviewSection = () => {
       </section>
     </Container>
   )
+
+  function handleNotesChange(value: string) {
+    setNotes(value)
+  }
+
+  function handleTimeEntryAdd(type: TimestampType) {
+    const arr = [
+      ...timestampList,
+      {
+        id: uuid(),
+        type: type,
+        value: moment.now(),
+      },
+    ]
+    setTimestampList(arr)
+    service.setTimestamps(arr)
+  }
+
+  function handleTimeEntryDelete(key: string) {
+    const arr = timestampList.filter((item) => item.id !== key)
+
+    setTimestampList(arr)
+    service.setTimestamps(arr)
+  }
+
+  function handleReset() {
+    service.resetAll()
+    router.push('/journey')
+  }
+
+  function updatePlan(value: string) {
+    setPlan(value)
+    service.setPlan(value)
+  }
 }
 
 export default OverviewSection
