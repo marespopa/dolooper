@@ -6,7 +6,7 @@ import SectionHeading from '../common/SectionHeading.component'
 
 interface Props {
   countdownInterval: number
-  handleTimeChange: (value: string) => void
+  handleTimeChange: (_value: string) => void
 }
 
 const EstimationSection = ({ countdownInterval, handleTimeChange }: Props) => {

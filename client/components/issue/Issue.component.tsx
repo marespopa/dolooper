@@ -4,7 +4,7 @@ import Input from '../forms/input/Input.component'
 type Props = {
   isEdit: boolean
   value: string
-  action: (arg: string) => void
+  action: (_arg: string) => void
 }
 
 const Issue = ({ isEdit, value, action }: Props) => {

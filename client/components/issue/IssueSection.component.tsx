@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import service from '../../services/service'
 import { boxStyles } from '../common/common'
-import Input from '../forms/input/Input.component'
 import SectionHeading from '../journey/common/SectionHeading.component'
 import Issue from './Issue.component'
 

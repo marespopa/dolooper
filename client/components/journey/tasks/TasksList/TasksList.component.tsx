@@ -6,8 +6,8 @@ import Checkbox from '../../../forms/input/Checkbox.component'
 interface Props {
   tasks: Task[]
   actions: {
-    handleDelete: (key: string) => void
-    handleToggle: (key: string) => void
+    handleDelete: (_key: string) => void
+    handleToggle: (_key: string) => void
   }
   showHeading?: boolean
   showNoTasksInfo?: boolean
@@ -27,7 +27,7 @@ const TasksListComponent = ({
       {showHeading && <h2 className="font-bold mt-0 mb-3">Tasks</h2>}
       {tasks.length > 0 && (
         <ul className="list-none">
-          {tasks.map((task, index) => {
+          {tasks.map((task) => {
             return (
               <li key={task.key} className={taskStyle}>
                 {isTaskTogglable && (

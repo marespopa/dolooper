@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Cookies from 'js-cookie'
-import { MouseEvent, useCallback, useEffect, useState } from 'react'
+import { MouseEvent, useEffect, useState } from 'react'
 import Container from '../container'
 
 const USER_CONSENT_COOKIE_KEY = 'cookie_consent_is_true'

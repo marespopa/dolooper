@@ -5,7 +5,7 @@ import ThreeDotsSVG from '../../../../icons/ThreeDotsSVG'
 export type menuItem = {
   id: string
   label: string
-  action: (key: string) => void
+  action: (_key: string) => void
 }
 
 interface Props {

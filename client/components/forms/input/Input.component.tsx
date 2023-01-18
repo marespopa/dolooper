@@ -2,7 +2,7 @@ import React from 'react'
 
 type InputType = 'text' | 'textarea'
 interface Props {
-  action: (arg: string) => void
+  action: (_arg: string) => void
   id: string
   label: string
   value: string
