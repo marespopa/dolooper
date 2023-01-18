@@ -5,7 +5,6 @@ const ThreeDotsSVG = () => {
       width="16"
       height="16"
       fill="currentColor"
-      className="bi bi-three-dots-vertical"
       viewBox="0 0 16 16"
     >
       {' '}

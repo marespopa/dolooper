@@ -9,23 +9,31 @@ import Alert from '../banners/Alert'
 import { TimestampList, TimestampType } from '../../types/types'
 import moment from 'moment'
 import uuid from 'react-uuid'
-import Timelog from './timelog'
+import DashboardContainer from './dashboard'
+import Issue from '../issue/Issue.component'
+import ButtonIcon from '../forms/buttons/ButtonIcon'
+import Greeting from './greeting/Greeting.component'
+import TimelogContainer from './timelog'
+import ButtonLink from '../forms/buttons/ButtonLink'
 
 const OverviewSection = () => {
-  const [plan, setPlan] = useState('')
+  const [issue, setIssue] = useState('')
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [estimation, setEstimation] = useState<number>(30)
-  const [timestampList, setTimestampList] = useState<TimestampList>([])
+  const [isIssueEditable, setIsIssueEditable] = useState(false)
+  const [timeEntries, setTimeEntries] = useState<TimestampList>([])
   const [notes, setNotes] = useState('')
+  const hasTimeEntries = timeEntries.length > 0
+
   const router = useRouter()
 
   useEffect(() => {
-    service.getPlan().then((results) => {
+    service.getDescription().then((results) => {
       if (!results) {
         return
       }
 
-      setPlan(results)
+      setIssue(results)
     })
   }, [])
 
@@ -46,7 +54,7 @@ const OverviewSection = () => {
         return
       }
 
-      setTimestampList(results)
+      setTimeEntries(results)
       setIsLoading(false)
     })
   }, [])
@@ -54,10 +62,11 @@ const OverviewSection = () => {
   return (
     <Container>
       <section>
+        <Greeting />
         {!isLoading && (
-          <Timelog
+          <DashboardContainer
             initialEstimation={estimation}
-            timestampList={timestampList}
+            timestampList={timeEntries}
             actions={{
               onAdd: handleTimeEntryAdd,
             }}
@@ -65,17 +74,19 @@ const OverviewSection = () => {
         )}
         <div className="flex flex-col md:flex-row mt-6 md:md-0">
           <div
-            className={`${boxStyles} flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
+            className={`${boxStyles} relative flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
           >
-            <h2 className="font-bold mt-0 mb-3">Plan</h2>
-            <div>
-              <Input
-                action={updatePlan}
-                id={'plan'}
-                label={'Refine your plan'}
-                value={plan}
-                type="textarea"
-              />
+            <h2 className="font-bold mt-0 mb-3">Issue</h2>
+            <Issue
+              action={updateIssue}
+              value={issue}
+              isEdit={isIssueEditable}
+            />
+            <div className="absolute -top-2 -right-2 opacity-90">
+              <ButtonIcon
+                variant="edit"
+                action={() => setIsIssueEditable(!isIssueEditable)}
+              ></ButtonIcon>
             </div>
           </div>
           <div
@@ -101,10 +112,18 @@ const OverviewSection = () => {
         </div>
         <Alert style="success">
           {`Completed this task? `}
-          <button className="text-gray-800 underline" onClick={handleReset}>
-            Start a new one
-          </button>
+          <ButtonLink
+            action={handleReset}
+            text={'Start a new one'}
+          ></ButtonLink>
         </Alert>
+
+        {hasTimeEntries && (
+          <Alert style="info">
+            {`Want to see a list of all your time entries? `}
+            <TimelogContainer entries={timeEntries} />
+          </Alert>
+        )}
       </section>
     </Container>
   )
@@ -115,14 +134,14 @@ const OverviewSection = () => {
 
   function handleTimeEntryAdd(type: TimestampType) {
     const arr = [
-      ...timestampList,
+      ...timeEntries,
       {
         id: uuid(),
         type: type,
         value: moment.now(),
       },
     ]
-    setTimestampList(arr)
+    setTimeEntries(arr)
     service.setTimestamps(arr)
   }
 
@@ -131,9 +150,9 @@ const OverviewSection = () => {
     router.push('/journey')
   }
 
-  function updatePlan(value: string) {
-    setPlan(value)
-    service.setPlan(value)
+  function updateIssue(value: string) {
+    setIssue(value)
+    service.setDescription(value)
   }
 }
 

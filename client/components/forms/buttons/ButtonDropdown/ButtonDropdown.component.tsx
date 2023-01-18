@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ButtonDropdownMenu from './ButtonDropdownMenu.component'
-import ThreeDotsSVG from './ThreeDotsSVG'
+import ThreeDotsSVG from '../../../../icons/ThreeDotsSVG'
 
 export type menuItem = {
   id: string

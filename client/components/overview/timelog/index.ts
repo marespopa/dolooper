@@ -1,3 +1,3 @@
-import Timelog from './Timelog.container'
+import TimelogContainer from './Timelog.container'
 
-export default Timelog
+export default TimelogContainer

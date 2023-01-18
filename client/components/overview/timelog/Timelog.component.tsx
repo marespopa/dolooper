@@ -6,9 +6,9 @@ interface Props {
   timestampList: TimestampList
 }
 
-const TimelogComponent = ({ timestampList }: Props) => {
+const Timelog = ({ timestampList }: Props) => {
   return (
-    <div className="bg-gray-100 my-2 overflow-x-auto w-full sm:w-1/2 rounded-xl mx-auto">
+    <div className="bg-gray-100 my-2 overflow-x-auto w-full rounded-xl mx-auto">
       <table className="items-center w-full border-collapse">
         <tbody>
           {timestampList.map((timeEntry) => {
@@ -26,6 +26,4 @@ const TimelogComponent = ({ timestampList }: Props) => {
   )
 }
 
-const rowStyle = 'mt-4 mb-2 text-xs'
-
-export default TimelogComponent
+export default Timelog
