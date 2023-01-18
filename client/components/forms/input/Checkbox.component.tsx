@@ -2,7 +2,7 @@ interface Props {
   uuid: string
   label: string
   isChecked: boolean
-  setIsChecked: (key: string) => void
+  setIsChecked: (_key: string) => void
   isDisabled?: boolean
 }
 
@@ -10,7 +10,7 @@ const Checkbox = ({ uuid, label, isChecked, setIsChecked }: Props) => {
   const elementId = `checkbox-${uuid}`
 
   return (
-    <div className="inline-flex align-middle cursor-pointer">
+    <div className="inline-flex items-center justify-center cursor-pointer">
       <input
         className={inputStyle}
         id={elementId}

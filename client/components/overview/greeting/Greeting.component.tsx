@@ -21,8 +21,8 @@ const Greeting = () => {
   const greetingMessage = getGreetingMessage()
 
   return (
-    <div className="my-2 text-xl font-bold">
-      <h2>{greetingMessage}</h2>
+    <div className="w-full">
+      <h2 className="text-3xl font-bold mt-3 mb-3">{greetingMessage}</h2>
     </div>
   )
 }

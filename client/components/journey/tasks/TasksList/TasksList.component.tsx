@@ -53,7 +53,7 @@ const TasksListComponent = ({
                     menuItems={[
                       {
                         id: task.key,
-                        label: 'Remove Task',
+                        label: 'Remove',
                         action: actions.handleDelete,
                       },
                     ]}
@@ -64,7 +64,7 @@ const TasksListComponent = ({
           })}
         </ul>
       )}
-      {tasks.length === 0 && showNoTasksInfo && <p>No tasks.</p>}
+      {tasks.length === 0 && showNoTasksInfo && <p>No subtasks.</p>}
     </>
   )
 }

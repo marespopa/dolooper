@@ -1,14 +1,15 @@
 import { boxStyles } from '../../common/common'
-import Input from '../../forms/input/Input.component'
 import SectionHeading from '../common/SectionHeading.component'
 import TasksList from './TasksList'
 
 const TasksSection = () => {
   return (
-    <section className="mt-10">
+    <section>
       <SectionHeading
-        title="Tasks"
-        description="What are the tasks that need to be done, so we can call this a success?"
+        title="Subtasks"
+        description={`Usually, a task can be split into multiple smaller ones, so it gets
+            completed easier.`}
+        subHeading={'* You can always add subtasks later'}
       />
       <div
         className={`${boxStyles} relative z-0 p-4 min-h-full w-full md:w-1/2`}

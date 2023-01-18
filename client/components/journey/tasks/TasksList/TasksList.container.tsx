@@ -15,7 +15,7 @@ const TasksList = ({ area }: Props) => {
   const showHeading = area === 'overview'
   const showNoTasksInfo = area === 'overview'
   const taskAddLabel =
-    area === 'overview' ? 'Add another task' : 'Define your task'
+    area === 'overview' ? 'Add another subtask' : 'Define your subtask'
   const resetTask = () => {
     setTask('')
   }

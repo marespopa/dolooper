@@ -3,24 +3,24 @@ import { TimestampList, type Task } from '../types/types'
 
 const keys = {
   tasks: 'tasks',
-  plan: 'plan',
+  issue: 'issue',
   estimation: 'estimation',
   timestamp: 'timelog',
 }
 
 const MIN_VALID_FIELDS = 2
 
-async function setPlan(plan: string) {
+async function setDescription(description: string) {
   try {
-    return await localforage.setItem(keys.plan, plan)
+    return await localforage.setItem(keys.issue, description)
   } catch (err) {
     console.error(err)
   }
 }
 
-async function getPlan() {
+async function getDescription() {
   try {
-    const value = await localforage.getItem(keys.plan)
+    const value = await localforage.getItem(keys.issue)
     return value as string
   } catch (err) {
     console.error(err)
@@ -96,8 +96,8 @@ function resetAll() {
 }
 
 const service = {
-  getPlan,
-  setPlan,
+  getDescription,
+  setDescription,
   setTasks,
   getTasks,
   setEstimation,
