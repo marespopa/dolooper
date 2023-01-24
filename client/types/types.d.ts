@@ -10,7 +10,7 @@ const test = Object.entries({
 })
 
 export type Time = typeof test
-export type TaskArea = 'overview' | 'journey'
+export type TaskArea = 'overview' | 'planning'
 export type TimestampType = 'work' | 'break'
 export type Timestamp = {
   id: string

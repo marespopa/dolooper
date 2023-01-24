@@ -7,8 +7,8 @@ import service from '../../services/service'
 const LandingSection = () => {
   const router = useRouter()
   const [hasTaskInProgress, setHasTaskInProgress] = useState(false)
-  const goToJourney = () => {
-    router.push('/journey')
+  const goToPlanning = () => {
+    router.push('/planning')
   }
 
   const goToOverview = () => {
@@ -39,7 +39,7 @@ const LandingSection = () => {
           {hasTaskInProgress ? (
             <ButtonPrimary text={`Continue`} action={goToOverview} />
           ) : (
-            <ButtonPrimary text={`Start!`} action={goToJourney} />
+            <ButtonPrimary text={`Start!`} action={goToPlanning} />
           )}
         </div>
       </Container>

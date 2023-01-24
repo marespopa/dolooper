@@ -1,5 +1,5 @@
 import React from 'react'
-import Input from '../forms/input/Input.component'
+import Input from '../../forms/input/Input.component'
 
 type Props = {
   isEdit: boolean

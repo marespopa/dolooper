@@ -22,11 +22,13 @@ const TasksListComponent = ({
   area,
 }: Props) => {
   const isTaskTogglable = area === 'overview'
+  const hasBackground = area === 'planning'
+
   return (
     <>
       {showHeading && <h2 className="font-bold mt-0 mb-3">Tasks</h2>}
       {tasks.length > 0 && (
-        <ul className="list-none">
+        <ul className={`list-none ${hasBackground ? 'bg-white' : ''}`}>
           {tasks.map((task) => {
             return (
               <li key={task.key} className={taskStyle}>

@@ -1,7 +1,6 @@
 import React from 'react'
 import { SESSION_LENGTH } from '../../../utils/constants'
 import { formatTimeFromMinutes } from '../../../utils/functions'
-import { boxStyles } from '../../common/common'
 import SectionHeading from '../common/SectionHeading.component'
 
 interface Props {
@@ -17,13 +16,14 @@ const EstimationSection = ({ countdownInterval, handleTimeChange }: Props) => {
   }
 
   return (
-    <section className="mt-10">
+    <section>
       <SectionHeading
         title="Estimation"
         description="Having this layed out, how long will it take?"
+        subHeading="Time-boxing can help you fight procrastination, reclaim lost productivity, and focus on the work that matters."
       />
       <div className="mb-3">
-        <div className={`${boxStyles} px-6 py-3 w-full md:w-1/2 min-h-full`}>
+        <div className={`relative z-0 md:w-1/2 min-h-full py-4`}>
           <div className="price-range">
             <span className="text-strong">{formattedTime.selected}</span>
             <input

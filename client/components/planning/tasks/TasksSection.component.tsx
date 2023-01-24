@@ -1,4 +1,3 @@
-import { boxStyles } from '../../common/common'
 import SectionHeading from '../common/SectionHeading.component'
 import TasksList from './TasksList'
 
@@ -11,10 +10,8 @@ const TasksSection = () => {
             completed easier.`}
         subHeading={'* You can always add subtasks later'}
       />
-      <div
-        className={`${boxStyles} relative z-0 p-4 min-h-full w-full md:w-1/2`}
-      >
-        <TasksList area="journey" />
+      <div className={`relative z-0 py-4 min-h-full w-full md:w-1/2`}>
+        <TasksList area="planning" />
       </div>
     </section>
   )

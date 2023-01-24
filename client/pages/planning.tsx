@@ -1,17 +1,17 @@
 import type { NextPage } from 'next'
-import JourneySection from '../components/journey/JourneySection.component'
+import PlanningPage from '../components/planning/PlanningPage'
 import PublicLayout from '../components/layouts/PublicLayout'
 import Seo from '../components/Seo'
 
-const Journey: NextPage = () => {
+const Planning: NextPage = () => {
   return (
     <>
       <Seo />
       <PublicLayout>
-        <JourneySection />
+        <PlanningPage />
       </PublicLayout>
     </>
   )
 }
 
-export default Journey
+export default Planning

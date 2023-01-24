@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import service from '../../services/service'
-import { boxStyles } from '../common/common'
-import SectionHeading from '../journey/common/SectionHeading.component'
+import service from '../../../services/service'
+import SectionHeading from '../common/SectionHeading.component'
 import Issue from './Issue.component'
 
 const IssueSection = () => {
@@ -26,10 +25,10 @@ const IssueSection = () => {
     <section>
       <SectionHeading
         title="Issue"
-        description="What are you trying to accomplish (feature/bugfix)"
+        description="What are you trying to accomplish? (feature/bugfix)"
         subHeading={'* You can always change the description later'}
       />
-      <div className={`${boxStyles} relative z-0 min-h-full p-4`}>
+      <div className={`relative z-0 min-h-full py-4`}>
         <Issue isEdit={true} value={issue} action={updateDescription} />
       </div>
     </section>

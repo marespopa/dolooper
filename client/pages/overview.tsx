@@ -3,7 +3,7 @@ import OverviewSection from '../components/overview'
 import PublicLayout from '../components/layouts/PublicLayout'
 import Seo from '../components/Seo'
 
-const Journey: NextPage = () => {
+const Planning: NextPage = () => {
   return (
     <>
       <Seo />
@@ -14,4 +14,4 @@ const Journey: NextPage = () => {
   )
 }
 
-export default Journey
+export default Planning

@@ -3,12 +3,12 @@ import React, { useState } from 'react'
 import service from '../../services/service'
 import Container from '../container'
 import ButtonText from '../forms/buttons/ButtonText'
-import IssueSection from '../issue/IssueSection.component'
+import IssueSection from './issue/IssueSection.component'
 import TasksSection from './tasks/TasksSection.component'
 import EstimationSection from './estimation/EstimationSection'
 import { SESSION_LENGTH } from '../../utils/constants'
 
-const JourneySection = () => {
+const PlanningPage = () => {
   const router = useRouter()
   const goToNext = () => {
     router.push('/overview')
@@ -72,4 +72,4 @@ const JourneySection = () => {
   )
 }
 
-export default JourneySection
+export default PlanningPage

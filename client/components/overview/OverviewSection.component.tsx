@@ -4,13 +4,13 @@ import service from '../../services/service'
 import { boxStyles } from '../common/common'
 import Container from '../container/Container.component'
 import Input from '../forms/input/Input.component'
-import TasksList from '../journey/tasks/TasksList'
+import TasksList from '../planning/tasks/TasksList'
 import Alert from '../banners/Alert'
 import { TimestampList, TimestampType } from '../../types/types'
 import moment from 'moment'
 import uuid from 'react-uuid'
 import DashboardContainer from './dashboard'
-import Issue from '../issue/Issue.component'
+import Issue from '../planning/issue/Issue.component'
 import ButtonIcon from '../forms/buttons/ButtonIcon'
 import Greeting from './greeting/Greeting.component'
 import TimelogContainer from './timelog'
@@ -147,7 +147,7 @@ const OverviewSection = () => {
 
   function handleReset() {
     service.resetAll()
-    router.push('/journey')
+    router.push('/planning')
   }
 
   function updateIssue(value: string) {
