@@ -3,35 +3,34 @@ import React from 'react'
 import Container from '../container'
 
 const GlobalFooter = () => {
+  const currentYear = new Date().getFullYear()
+
   return (
-    <footer className="py-5 bg-gray-800 text-gray-100">
+    <footer className="py-5 bg-gray-800">
       <Container>
-        <nav className="my-5">
-          <ul>
-            <li>
-              <Link
-                href="/privacy-policy"
-                className="text-sm font-medium text-center capitalize underline"
+        <div className="text-gray-200">
+          <p className="text-2xl mt-4">Devxloper. Plan. Focus. Execute. </p>
+          <div className="my-4 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
+            <p className="order-2 md:order-1 md:mt-0">
+              &copy;{' '}
+              <a
+                href="https://www.marespopa.com/"
+                className="hover:underline focus:underline"
               >
-                Privacy Policy
-              </Link>
-            </li>
-          </ul>
-        </nav>
-      </Container>
-      <Container>
-        <p className="text-sm font-medium text-center capitalize">
-          copyright{' '}
-          <a
-            className="underline"
-            href="https://marespopa.com"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Mares Popa
-          </a>{' '}
-          © {new Date().getFullYear()}. All rights reserved
-        </p>
+                Mares Popa
+              </a>{' '}
+              {currentYear}. All rights reserved
+            </p>
+            <div className="order-1 md:order-2">
+              <span className="px-2 hover:underline focus:underline">
+                <a href="mailto:hello@marespopa.com">Contact</a>
+              </span>
+              <span className="px-2 border-l hover:underline focus:underline">
+                <Link href="/privacy-policy">Privacy Policy</Link>
+              </span>
+            </div>
+          </div>
+        </div>
       </Container>
     </footer>
   )
