@@ -9,7 +9,7 @@ const GlobalFooter = () => {
     <footer className="py-5 bg-gray-800">
       <Container>
         <div className="text-gray-200">
-          <p className="text-2xl mt-4">Devxloper. Plan. Focus. Execute. </p>
+          <p className="text-2xl mt-4">Plan. Focus. Execute. </p>
           <div className="my-4 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
             <p className="order-2 md:order-1 md:mt-0">
               &copy;{' '}
