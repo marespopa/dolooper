@@ -7,6 +7,7 @@ import IssueSection from './issue/IssueSection.component'
 import TasksSection from './tasks/TasksSection.component'
 import EstimationSection from './estimation/EstimationSection'
 import { SESSION_LENGTH } from '../../utils/constants'
+import { pagePadding } from '../common/common'
 
 const PlanningPage = () => {
   const router = useRouter()
@@ -47,7 +48,7 @@ const PlanningPage = () => {
   const nextActionText = step < maxStep + 1 ? 'Next' : 'Complete Planning'
 
   return (
-    <div className="py-5 text-gray-700">
+    <div className={`py-5 text-gray-700 ${pagePadding}`}>
       <Container>
         <h2>{`Step ${step}/${maxStep}`}</h2>
         {step === 1 && <IssueSection />}

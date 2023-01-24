@@ -63,7 +63,6 @@ async function getEstimation() {
 }
 
 async function setTimestamps(timeStamps: TimestampList) {
-  console.dir(timeStamps)
   try {
     return await localforage.setItem(keys.timestamp, timeStamps)
   } catch (err) {

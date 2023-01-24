@@ -12,6 +12,7 @@ const DashboardEntry = ({ title, text, variant, subtitle }: Props) => {
     gray: 'bg-gray-100',
     blue: 'bg-blue-100',
     amber: 'bg-amber-100',
+    yellow: 'bg-yellow-100',
   }
 
   return (

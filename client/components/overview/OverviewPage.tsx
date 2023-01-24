@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import service from '../../services/service'
-import { boxStyles } from '../common/common'
+import { boxStyles, pagePadding } from '../common/common'
 import Container from '../container/Container.component'
 import Input from '../forms/input/Input.component'
 import TasksList from '../planning/tasks/TasksList'
@@ -16,7 +16,7 @@ import Greeting from './greeting/Greeting.component'
 import TimelogContainer from './timelog'
 import ButtonLink from '../forms/buttons/ButtonLink'
 
-const OverviewSection = () => {
+const OverviewPage = () => {
   const [issue, setIssue] = useState('')
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [estimation, setEstimation] = useState<number>(30)
@@ -61,7 +61,7 @@ const OverviewSection = () => {
 
   return (
     <Container>
-      <section>
+      <section className={`${pagePadding}`}>
         <Greeting />
         {!isLoading && (
           <DashboardContainer
@@ -156,4 +156,4 @@ const OverviewSection = () => {
   }
 }
 
-export default OverviewSection
+export default OverviewPage

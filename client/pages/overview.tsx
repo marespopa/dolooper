@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import OverviewSection from '../components/overview'
+import OverviewPage from '../components/overview/OverviewPage'
 import PublicLayout from '../components/layouts/PublicLayout'
 import Seo from '../components/Seo'
 
@@ -8,7 +8,7 @@ const Planning: NextPage = () => {
     <>
       <Seo />
       <PublicLayout>
-        <OverviewSection />
+        <OverviewPage />
       </PublicLayout>
     </>
   )
