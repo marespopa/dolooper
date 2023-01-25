@@ -27,6 +27,8 @@ const DashboardContainer = ({
   const lastWork = getLastWorkEnd(timestampList)
   const status = getStatus(timestampList)
   const [currentTime, setCurrentTime] = useState('')
+  const isWorking = status === STATUSES.work
+  const actionButtonText = isWorking ? 'Take a break' : 'Start working'
   const dashboardProps = {
     currentTime,
     status,
@@ -53,7 +55,7 @@ const DashboardContainer = ({
         <div className="text-center mt-4">
           <ButtonText
             action={() => handleTimeEntryAdd()}
-            text="Punch timer"
+            text={actionButtonText}
           ></ButtonText>
         </div>
       </div>
