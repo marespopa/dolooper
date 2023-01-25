@@ -7,7 +7,6 @@ import Input from '../forms/input/Input.component'
 import TasksList from '../planning/tasks/TasksList'
 import Alert from '../banners/Alert'
 import { TimestampList, TimestampType } from '../../types/types'
-import moment from 'moment'
 import uuid from 'react-uuid'
 import DashboardContainer from './dashboard'
 import Issue from '../planning/issue/Issue.component'
@@ -138,7 +137,7 @@ const OverviewPage = () => {
       {
         id: uuid(),
         type: type,
-        value: moment.now(),
+        value: new Date(),
       },
     ]
     setTimeEntries(arr)

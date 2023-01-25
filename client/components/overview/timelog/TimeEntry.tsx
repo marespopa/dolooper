@@ -1,13 +1,13 @@
 import React from 'react'
 import { TimestampType } from '../../../types/types'
-import { formatTimeFromMS } from '../../../utils/functions'
+import { formatTimeFromDate } from '../../../utils/functions'
 
 interface Props {
   type: TimestampType
-  value: number
+  value: Date
 }
 const TimeEntry = ({ type, value }: Props) => {
-  const time = formatTimeFromMS(value)
+  const time = formatTimeFromDate(value)
   const messageByType = type === 'work' ? 'Work Start' : 'Work End'
   return (
     <tr>

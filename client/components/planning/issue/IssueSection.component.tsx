@@ -24,8 +24,8 @@ const IssueSection = () => {
   return (
     <section>
       <SectionHeading
-        title="Issue"
-        description="What are you trying to accomplish? (feature/bugfix)"
+        title="Task"
+        description="What are you trying to accomplish?"
         subHeading={'* You can always change the description later'}
       />
       <div className={`relative z-0 min-h-full py-4`}>

@@ -1,14 +1,62 @@
-import moment from 'moment'
+import {
+  format,
+  formatDuration,
+  intervalToDuration,
+  isDate,
+  isSameMonth,
+  isSameYear,
+  isToday,
+} from 'date-fns'
+
+function getDateFormat(date: Date) {
+  const today = Date.now()
+
+  if (!isDate(date)) {
+    console.dir(date)
+    return 'hh:mm'
+  }
+
+  if (isToday(date)) {
+    return 'hh:mm bbb'
+  }
+
+  if (isSameMonth(date, today)) {
+    return 'do hh:mm bbb'
+  }
+
+  if (isSameYear(date, today)) {
+    return 'MMM do hh:mm bbb'
+  }
+
+  return 'YYYY MMM do hh:mm bbb'
+}
+
+export const formatTimeFromDate = (date: Date) => {
+  if (!date) {
+    return ''
+  }
+
+  const dateFormat = getDateFormat(date)
+  const formattedDate = format(date, dateFormat)
+
+  return formattedDate
+}
 
 export const formatTimeFromMS = (time: number) => {
-  const date = moment(time)
+  const duration = intervalToDuration({ start: 0, end: time })
 
-  const formatString = date.isSame(moment(), 'day')
-    ? 'hh:mm a'
-    : 'DD/MM/YYYY hh:mm a'
+  if (!duration) {
+    return ''
+  }
 
-  return moment(time).format(formatString)
+  const formattedString = formatDuration(duration, {
+    format: ['days', 'hours', 'minutes'],
+  })
+
+  return formattedString
 }
+
+export const zeroPad = (num: number | string) => String(num).padStart(2, '0')
 
 export const formatTimeFromMinutes = (time: number) => {
   if (isNaN(time)) {

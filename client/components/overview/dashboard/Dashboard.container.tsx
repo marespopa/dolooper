@@ -1,8 +1,8 @@
-import moment from 'moment'
+import { differenceInMilliseconds } from 'date-fns'
 import React, { useEffect, useState } from 'react'
 import { TimestampList, TimestampType } from '../../../types/types'
 import { STATUSES } from '../../../utils/constants'
-import { formatTimeFromMS } from '../../../utils/functions'
+import { formatTimeFromDate, formatTimeFromMS } from '../../../utils/functions'
 import { boxStyles } from '../../common/common'
 import ButtonText from '../../forms/buttons/ButtonText'
 import Seo from '../../Seo'
@@ -37,7 +37,7 @@ const DashboardContainer = ({
   }
   useEffect(() => {
     var timer = setInterval(
-      () => setCurrentTime(formatTimeFromMS(moment.now())),
+      () => setCurrentTime(formatTimeFromDate(new Date())),
       1000,
     )
     return function cleanup() {
@@ -85,19 +85,15 @@ const DashboardContainer = ({
     }
 
     for (let i = 0; i <= minLength - 1; i++) {
-      diffTime += breakEntries[i].value - workEntries[i].value
+      diffTime += differenceInMilliseconds(
+        breakEntries[i].value,
+        workEntries[i].value,
+      )
     }
 
-    var duration = moment.duration(diffTime)
-    const timeFormat = {
-      day: duration.days(),
-      hrs: duration.hours(),
-      mins: duration.minutes(),
-    }
+    const formattedTime = formatTimeFromMS(diffTime)
 
-    const dayString = timeFormat.day > 0 ? `${timeFormat.day}d ` : ''
-
-    return `${dayString}${timeFormat.hrs}h ${timeFormat.mins}m`
+    return formattedTime
   }
 
   function getLastTimeEntryOfType(
@@ -116,7 +112,7 @@ const DashboardContainer = ({
       return 'None yet'
     }
 
-    return formatTimeFromMS(sortedArray[sortedArray.length - 1].value)
+    return formatTimeFromDate(sortedArray[sortedArray.length - 1].value)
   }
 
   function getLastWorkEnd(list: TimestampList) {

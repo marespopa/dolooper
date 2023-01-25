@@ -28,10 +28,10 @@ const HeroSection = () => {
           <p className="text-lg font-medium leading-8 text-gray-500">
             Get your tasks done
           </p>
-          <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[4rem] tracking-tight text-black">
-            Productivity tool for software engineers
+          <h1 className="my-3 sm:my-4 md:my-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-10 tracking-tight text-black">
+            Productivity tool for <span className="text-blue-700">doers</span>
           </h1>
-          <p className="mt-3 text-lg leading-relaxed text-slate-500">
+          <p className="text-lg leading-relaxed text-slate-500">
             Devxloper helps you streamline your workflow by planning,
             time-boxing and executing one task at a time.
           </p>

@@ -15,7 +15,7 @@ export type TimestampType = 'work' | 'break'
 export type Timestamp = {
   id: string
   type: TimestampType
-  value: number
+  value: Date
 }
 
 export type TimestampList = Timestamp[] | []
