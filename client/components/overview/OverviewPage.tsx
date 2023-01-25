@@ -75,7 +75,7 @@ const OverviewPage = () => {
           <div
             className={`${boxStyles} relative flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
           >
-            <h2 className="font-bold mt-0 mb-3">Issue</h2>
+            <h2 className="font-bold mt-0 mb-3">Task</h2>
             <Issue
               action={updateIssue}
               value={issue}

@@ -4,6 +4,12 @@ export type Task = {
   isDone: boolean
 }
 
+export type TaskActions = {
+  handleDelete: (_key: string) => void
+  handleEdit: (_key: string, newValue: string) => void
+  handleToggle: (_key: string) => void
+}
+
 const test = Object.entries({
   sec: 12,
   min: 12,

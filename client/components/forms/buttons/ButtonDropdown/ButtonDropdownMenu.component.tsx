@@ -23,7 +23,7 @@ const ButtonDropdownMenu = ({
             <li
               key={item.id}
               onClick={() => item.action(item.id)}
-              className="text-gray-700 block px-4 py-2 text-sm"
+              className="text-gray-700 block px-4 py-2 text-sm hover:font-bold"
               role="menuitem"
               id={`${labelledBy}-item-${index}`}
             >

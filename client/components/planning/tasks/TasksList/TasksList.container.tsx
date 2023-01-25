@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 import service from '../../../../services/service'
 import { Task, TaskArea } from '../../../../types/types'
+import ButtonDark from '../../../forms/buttons/ButtonDark'
 import Input from '../../../forms/input/Input.component'
 import TasksListComponent from './TasksList.component'
 
@@ -45,6 +46,18 @@ const TasksList = ({ area }: Props) => {
     resetTask()
   }
 
+  const handleEdit = (taskUUID: string, newValue: string) => {
+    const nextTasks = tasks.map((task) => {
+      if (task.key === taskUUID) {
+        return { ...task, value: newValue }
+      }
+
+      return task
+    })
+
+    setTasks(nextTasks)
+    service.setTasks(nextTasks)
+  }
   const handleDelete = (taskUUID: string) => {
     const arr = tasks.filter((item) => item.key !== taskUUID)
 
@@ -84,18 +97,11 @@ const TasksList = ({ area }: Props) => {
             label={taskAddLabel}
           />
         </div>
-        <button
-          className="inline-block px-6 py-2.5 text-white font-medium text-md leading-tight
-                    border border-gray-600 bg-gray-600
-                    hover:bg-gray-800 hover:text-white
-                    focus:bg-gray-800 focus:text-white
-                    active:shadow-lg
-                    cursor-pointer disabled:opacity-25 transition duration-150 ease-in-out"
-          onClick={() => handleAdd(task)}
-          disabled={isDisabled}
-        >
-          Add
-        </button>
+        <ButtonDark
+          action={() => handleAdd(task)}
+          text="Add"
+          isDisabled={isDisabled}
+        />
       </div>
     </form>
   )
@@ -105,8 +111,9 @@ const TasksList = ({ area }: Props) => {
       <TasksListComponent
         tasks={tasks}
         actions={{
-          handleDelete: handleDelete,
-          handleToggle: handleToggle,
+          handleEdit,
+          handleDelete,
+          handleToggle,
         }}
         showHeading={showHeading}
         showNoTasksInfo={showNoTasksInfo}
