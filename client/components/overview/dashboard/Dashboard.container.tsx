@@ -4,7 +4,7 @@ import { TimestampList, TimestampType } from '../../../types/types'
 import { STATUSES } from '../../../utils/constants'
 import { formatTimeFromDate, formatTimeFromMS } from '../../../utils/functions'
 import { boxStyles } from '../../common/common'
-import ButtonText from '../../forms/buttons/ButtonText'
+import ButtonDark from '../../forms/buttons/ButtonDark'
 import Seo from '../../Seo'
 import Dashboard from './Dashboard.component'
 
@@ -53,10 +53,10 @@ const DashboardContainer = ({
       <div className={`${boxStyles} px-2 md:px-4 py-5 my-5`}>
         <Dashboard {...dashboardProps} />
         <div className="text-center mt-4">
-          <ButtonText
+          <ButtonDark
             action={() => handleTimeEntryAdd()}
             text={actionButtonText}
-          ></ButtonText>
+          ></ButtonDark>
         </div>
       </div>
     </>
