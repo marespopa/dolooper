@@ -32,8 +32,8 @@ const HeroSection = () => {
             Productivity tool for <span className="text-blue-700">doers</span>
           </h1>
           <p className="text-lg leading-relaxed text-slate-500">
-            Devxloper helps you streamline your workflow by planning,
-            time-boxing and executing one task at a time.
+            Doloper helps you streamline your workflow by planning, time-boxing
+            and executing one task at a time.
           </p>
         </div>
 
