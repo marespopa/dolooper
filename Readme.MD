@@ -8,4 +8,4 @@ Doloper comes out to help you. Start by **clearly** describe what you are trying
 
 ## Deploy Status
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a888e568-62da-4e53-89fd-390680e71c5b/deploy-status)](https://app.netlify.com/sites/devxloper/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7850deb9-d846-4a0f-a4a8-3d358c40e2e3/deploy-status)](https://app.netlify.com/sites/doloper/deploys)

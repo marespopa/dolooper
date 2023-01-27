@@ -63,7 +63,7 @@ const DashboardContainer = ({
   )
 
   function formatPageTitle() {
-    return `Work - Devxloper`
+    return `Work - Doloper`
   }
 
   function getStatus(list: TimestampList) {

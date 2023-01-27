@@ -17,7 +17,7 @@ const GlobalNavigation = () => {
                 href="/"
                 className="flex items-center text-sm font-medium text-left"
               >
-                <Image src={logo} alt="Devxloper" height={logoHeight} />
+                <Image src={logo} alt="Doloper" height={logoHeight} />
               </Link>
             </li>
           </ul>
