@@ -3,7 +3,7 @@ import React from 'react'
 interface Props {
   title: string
   text: string
-  variant: 'gray' | 'amber' | 'blue'
+  variant: 'gray' | 'amber' | 'blue' | 'green'
   subtitle?: string
 }
 
@@ -13,6 +13,7 @@ const DashboardEntry = ({ title, text, variant, subtitle }: Props) => {
     blue: 'bg-blue-100',
     amber: 'bg-amber-100',
     yellow: 'bg-yellow-100',
+    green: 'bg-green-100',
   }
 
   return (

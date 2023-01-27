@@ -34,20 +34,20 @@ const Dashboard = ({
       <>
         <DashboardEntry
           variant="blue"
-          title={'Last break'}
-          text={`${lastBreak}`}
-          subtitle={'The last time you took a pause'}
-        />
-        <DashboardEntry
-          variant="amber"
           title={'Working since'}
           text={`${lastWork}`}
           subtitle={'Keep the focus.'}
         />
+        <DashboardEntry
+          variant="gray"
+          title={'Last break'}
+          text={`${lastBreak}`}
+          subtitle={'The last time you took a pause'}
+        />
       </>
     ) : (
       <DashboardEntry
-        variant="blue"
+        variant="green"
         title={'Break since'}
         text={`${lastBreak}`}
         subtitle={'Taking a breather, are we?'}
@@ -56,7 +56,7 @@ const Dashboard = ({
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 my-2 w-full md:grid-cols-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 my-2 w-full">
       <DashboardEntry
         variant="amber"
         title={'Current time'}
