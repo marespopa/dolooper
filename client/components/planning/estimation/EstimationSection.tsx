@@ -23,7 +23,7 @@ const EstimationSection = ({ countdownInterval, handleTimeChange }: Props) => {
         subHeading="Time-boxing can help you fight procrastination, reclaim lost productivity, and focus on the work that matters."
       />
       <div className="mb-3">
-        <div className={`relative z-0 md:w-1/2 min-h-full py-4`}>
+        <div className={`relative z-0 md:w-1/2 min-h-full`}>
           <div className="price-range">
             <span className="text-strong">{formattedTime.selected}</span>
             <input

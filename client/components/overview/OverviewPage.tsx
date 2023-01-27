@@ -62,15 +62,6 @@ const OverviewPage = () => {
     <Container>
       <section className={`${pagePadding}`}>
         <Greeting />
-        {!isLoading && (
-          <DashboardContainer
-            initialEstimation={estimation}
-            timestampList={timeEntries}
-            actions={{
-              onAdd: handleTimeEntryAdd,
-            }}
-          />
-        )}
         <div className="flex flex-col md:flex-row mt-6 md:md-0">
           <div
             className={`${boxStyles} relative flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
@@ -109,6 +100,15 @@ const OverviewPage = () => {
             value={notes}
           />
         </div>
+        {!isLoading && (
+          <DashboardContainer
+            initialEstimation={estimation}
+            timestampList={timeEntries}
+            actions={{
+              onAdd: handleTimeEntryAdd,
+            }}
+          />
+        )}
         <Alert style="success">
           {`Completed this task? `}
           <ButtonLink

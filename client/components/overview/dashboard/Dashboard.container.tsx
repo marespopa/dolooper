@@ -50,14 +50,14 @@ const DashboardContainer = ({
   return (
     <>
       <Seo title={pageTitle} />
-      <div className={`${boxStyles} px-2 md:px-4 py-5 my-5`}>
-        <Dashboard {...dashboardProps} />
-        <div className="text-center mt-4">
+      <div className={`${boxStyles} px-2 md:px-4 py-5 mb-8`}>
+        <div className="text-center mt-4 mb-8">
           <ButtonDark
             action={() => handleTimeEntryAdd()}
             text={actionButtonText}
           ></ButtonDark>
         </div>
+        <Dashboard {...dashboardProps} />
       </div>
     </>
   )

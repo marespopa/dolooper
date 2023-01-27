@@ -22,7 +22,7 @@ const ButtonDark = ({ text, action, isDisabled, style = '' }: Props) => {
   )
 }
 
-const buttonStyles = `inline-block px-6 py-2.5 text-white font-medium text-md leading-tight
+const buttonStyles = `inline-block px-6 py-2.5 text-white font-medium text-lg leading-tight
                       border border-gray-600 bg-gray-600
                       hover:bg-gray-800 hover:text-white
                       focus:bg-gray-800 focus:text-white
