@@ -14,7 +14,7 @@ const CookieConsent = () => {
     setCookieConsentIsTrue(consentIsTrue)
   }, [])
 
-  const onClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleAccept = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault()
 
     if (!cookieConsentIsTrue) {
@@ -30,7 +30,7 @@ const CookieConsent = () => {
   }
 
   return (
-    <section className="fixed bottom-0 left-0 w-full py-2 md:py-4">
+    <section className="fixed bottom-0 right-0 w-full md:w-1/2 py-2 md:py-4">
       <Container>
         <div className="flex flex-col items-start px-5 py-3 space-y-2 bg-gray-200 md:flex-row md:space-y-0 md:items-stretch md:space-x-2">
           <div className="flex items-center flex-grow text-gray-900">
@@ -47,12 +47,9 @@ const CookieConsent = () => {
               .
             </p>
           </div>
-          <div className="flex items-center">
-            <button
-              className="p-3 text-sm font-bold text-white uppercase bg-gray-700 whitespace-nowrap"
-              onClick={onClick}
-            >
-              Got it
+          <div className="flex items-center justify-center md:justify-end">
+            <button className={buttonStyle} onClick={handleAccept}>
+              Accept all
             </button>
           </div>
         </div>
@@ -60,5 +57,8 @@ const CookieConsent = () => {
     </section>
   )
 }
+
+const buttonStyle = `p-3 text-xs font-bold text-white bg-gray-600
+                     hover:bg-gray-700 focus:bg-gray-700 whitespace-nowrap`
 
 export default CookieConsent
