@@ -13,7 +13,7 @@ const GlobalFooter = () => {
             Plan. Focus. Execute.{' '}
           </p>
           <div className="my-4 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
-            <p className="order-2 md:order-1 md:mt-0">
+            <p className="mt-2 order-2 md:order-1 md:mt-0">
               &copy;{' '}
               <a
                 href="https://www.marespopa.com/"
@@ -23,17 +23,22 @@ const GlobalFooter = () => {
               </a>{' '}
               {currentYear}. All rights reserved
             </p>
-            <div className="order-1 md:order-2">
+            <div className="order-1 md:order-2 flex flex-col sm:flex-row">
               <FeedbackFish projectId="e7c32c4a4bc27d">
                 <span
                   className={footerLinkStyle}
                   onClick={(e) => e.preventDefault()}
                 >
-                  Send feedback
+                  Feedback
                 </span>
               </FeedbackFish>
               <span className={footerLinkWithBorderStyle}>
-                <a href="mailto:hello@marespopa.com">Mail</a>
+                <a href="https://www.buymeacoffee.com/swToNMmfVh">
+                  Buy me a coffee
+                </a>
+              </span>
+              <span className={footerLinkWithBorderStyle}>
+                <a href="mailto:hello@marespopa.com">Email</a>
               </span>
               <span className={footerLinkWithBorderStyle}>
                 <Link href="/privacy-policy">Privacy Policy</Link>
@@ -46,7 +51,7 @@ const GlobalFooter = () => {
   )
 }
 
-const footerLinkStyle = `px-2 cursor-pointer hover:underline focus:underline`
+const footerLinkStyle = `border-l sm:border-0 my-2 sm:my-0 px-2 cursor-pointer hover:underline focus:underline`
 const footerLinkWithBorderStyle = `${footerLinkStyle} border-l`
 
 export default GlobalFooter
