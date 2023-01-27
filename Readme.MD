@@ -1,4 +1,4 @@
-# Doloper (previously named Devxloper)
+# Doloper
 
 ## Why does this app exist?
 
