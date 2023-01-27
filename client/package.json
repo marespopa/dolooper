@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@feedback-fish/react": "^1.2.1",
     "@next/font": "^13.1.5",
     "date-fns": "^2.29.3",
     "js-cookie": "^3.0.1",

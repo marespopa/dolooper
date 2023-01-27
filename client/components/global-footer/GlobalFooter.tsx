@@ -1,10 +1,10 @@
+import { FeedbackFish } from '@feedback-fish/react'
 import Link from 'next/link'
 import React from 'react'
 import Container from '../container'
 
 const GlobalFooter = () => {
   const currentYear = new Date().getFullYear()
-
   return (
     <footer className="py-5 bg-gray-800">
       <Container>
@@ -24,10 +24,18 @@ const GlobalFooter = () => {
               {currentYear}. All rights reserved
             </p>
             <div className="order-1 md:order-2">
-              <span className="px-2 hover:underline focus:underline">
-                <a href="mailto:hello@marespopa.com">Contact</a>
+              <FeedbackFish projectId="e7c32c4a4bc27d">
+                <span
+                  className={footerLinkStyle}
+                  onClick={(e) => e.preventDefault()}
+                >
+                  Send feedback
+                </span>
+              </FeedbackFish>
+              <span className={footerLinkWithBorderStyle}>
+                <a href="mailto:hello@marespopa.com">Mail</a>
               </span>
-              <span className="px-2 border-l hover:underline focus:underline">
+              <span className={footerLinkWithBorderStyle}>
                 <Link href="/privacy-policy">Privacy Policy</Link>
               </span>
             </div>
@@ -37,5 +45,8 @@ const GlobalFooter = () => {
     </footer>
   )
 }
+
+const footerLinkStyle = `px-2 cursor-pointer hover:underline focus:underline`
+const footerLinkWithBorderStyle = `${footerLinkStyle} border-l`
 
 export default GlobalFooter
