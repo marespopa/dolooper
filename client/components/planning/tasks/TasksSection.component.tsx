@@ -6,9 +6,8 @@ const TasksSection = () => {
     <section className="my-8 sm:my-16 md:my-20">
       <SectionHeading
         title="Subtasks"
-        description={`Usually, a task can be split into multiple smaller ones, so it gets
-            completed easier.`}
-        subHeading={'* You can always add subtasks later'}
+        description={`Breaking a task into smaller chunks, gives a clear way to progress.`}
+        subHeading={'* You can always change this later'}
       />
       <div className={`relative z-0 min-h-full w-full md:w-1/2`}>
         <TasksList area="planning" />
