@@ -51,7 +51,7 @@ const GlobalFooter = () => {
   )
 }
 
-const footerLinkStyle = `border-l sm:border-0 my-2 sm:my-0 px-2 cursor-pointer hover:underline focus:underline`
-const footerLinkWithBorderStyle = `${footerLinkStyle} border-l`
+const footerLinkStyle = `my-2 sm:my-0 sm:border-0 px-2 cursor-pointer hover:underline focus:underline`
+const footerLinkWithBorderStyle = `${footerLinkStyle} sm:border-l`
 
 export default GlobalFooter
