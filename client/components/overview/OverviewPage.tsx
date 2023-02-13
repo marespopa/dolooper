@@ -5,6 +5,7 @@ import service from '../../services/service'
 import Container from '../container/Container.component'
 import { TimestampList, TimestampType } from '../../types/types'
 import OverviewSection from './OverviewSection'
+import WorkManager from '../../services/workManager'
 
 const OverviewPage = () => {
   const [issue, setIssue] = useState('')
@@ -17,33 +18,27 @@ const OverviewPage = () => {
 
   useEffect(() => {
     service.getDescription().then((results) => {
-      if (!results) {
-        return
+      if (results) {
+        setIssue(results)
       }
-
-      setIssue(results)
     })
   }, [])
 
   useEffect(() => {
     service.getEstimation().then((results) => {
-      if (!results) {
-        return
+      if (results) {
+        setEstimation(results)
+        setIsLoading(false)
       }
-
-      setEstimation(results)
-      setIsLoading(false)
     })
   }, [])
 
   useEffect(() => {
-    service.getTimestamps().then((results) => {
-      if (!results) {
-        return
+    WorkManager.getTimeline().then((results) => {
+      if (results) {
+        setTimeEntries(results)
+        setIsLoading(false)
       }
-
-      setTimeEntries(results)
-      setIsLoading(false)
     })
   }, [])
 

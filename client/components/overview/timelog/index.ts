@@ -1,3 +1,3 @@
-import TimelogContainer from './Timelog.container'
+import OverviewSummary from '../OverviewSummary'
 
-export default TimelogContainer
+export default OverviewSummary

@@ -1,11 +1,10 @@
 import React from 'react'
 import { STATUSES } from '../../../utils/constants'
 import { formatTimeFromMinutes } from '../../../utils/functions'
-import DashboardEntry from './dashboard-entry/DashboardEntry'
+import DashboardEntry from './DashboardEntry'
 
 interface Props {
   status: string
-  currentTime: string
   totalWorkTime: string | null
   initialEstimation: number
   lastBreak: string | null
@@ -14,7 +13,6 @@ interface Props {
 
 const Dashboard = ({
   status,
-  currentTime,
   totalWorkTime,
   initialEstimation,
   lastBreak,
@@ -32,52 +30,23 @@ const Dashboard = ({
 
     return isWorking ? (
       <>
-        <DashboardEntry
-          variant="blue"
-          title={'Working since'}
-          text={`${lastWork}`}
-          subtitle={'Keep the focus.'}
-        />
-        <DashboardEntry
-          variant="gray"
-          title={'Last break'}
-          text={`${lastBreak}`}
-          subtitle={'The last time you took a pause'}
-        />
+        <DashboardEntry text={`Haven't took a break since ${lastBreak}`} />
+        <DashboardEntry text={`Been working since ${lastWork}`} />
       </>
     ) : (
-      <DashboardEntry
-        variant="green"
-        title={'Break since'}
-        text={`${lastBreak}`}
-        subtitle={'Taking a breather, are we?'}
-      />
+      <DashboardEntry text={`Taking a breather since ${lastBreak}`} />
     )
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 my-2 w-full">
-      <DashboardEntry
-        variant="amber"
-        title={'Current time'}
-        text={`${currentTime}`}
-      />
+    <div className="bg-gray-100 rounded-xl px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 mt-4">
       {stateDashboardEntry()}
-
       {hasWorkedTime && (
         <DashboardEntry
-          variant="gray"
-          title={'Worked time'}
-          text={totalWorkTime}
-          subtitle={'Total clocked time for this task'}
+          text={`You've clocked ${totalWorkTime} for this issue`}
         />
       )}
-      <DashboardEntry
-        variant="gray"
-        title={'Estimated at'}
-        text={estimationText}
-        subtitle={'Initial estimation for this task'}
-      />
+      <DashboardEntry text={`Initial estimation was ${estimationText}`} />
     </div>
   )
 }

@@ -8,8 +8,8 @@ const GlobalNavigation = () => {
   const logoHeight = 24
 
   return (
-    <header>
-      <nav className="w-full text-gray-800 bg-amber-100">
+    <header className="w-full text-gray-800 bg-amber-100 sticky top-0 z-10">
+      <nav>
         <Container>
           <div className="justify-between mx-auto lg:max-w-7xl md:items-center md:flex">
             <div>

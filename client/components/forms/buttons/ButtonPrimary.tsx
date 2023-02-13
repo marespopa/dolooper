@@ -1,7 +1,7 @@
 import React from 'react'
 
 interface Props {
-  text: string
+  text: string | React.ReactNode
   action: () => void
   isDisabled?: boolean
   style?: string

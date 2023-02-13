@@ -8,11 +8,9 @@ const IssueSection = () => {
 
   useEffect(() => {
     service.getDescription().then((results) => {
-      if (!results) {
-        return
+      if (results) {
+        setDescription(results)
       }
-
-      setDescription(results)
     })
   }, [])
 
