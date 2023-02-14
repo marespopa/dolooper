@@ -22,7 +22,7 @@ const GlobalNavigation = () => {
                 </Link>
               </div>
             </div>
-            <div>
+            <div className="flex justify-center lg:justify-between py-3 md:py-5">
               <a href={twitterLink} target="_blank" rel="noreferrer">
                 <TwitterSVG />
               </a>
