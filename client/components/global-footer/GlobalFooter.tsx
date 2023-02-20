@@ -33,11 +33,6 @@ const GlobalFooter = () => {
                 </span>
               </FeedbackFish>
               <span className={footerLinkWithBorderStyle}>
-                <a href="https://www.buymeacoffee.com/swToNMmfVh">
-                  Buy me a coffee
-                </a>
-              </span>
-              <span className={footerLinkWithBorderStyle}>
                 <a href="mailto:hello@marespopa.com">Email</a>
               </span>
               <span className={footerLinkWithBorderStyle}>
