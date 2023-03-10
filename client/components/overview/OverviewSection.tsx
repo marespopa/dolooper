@@ -122,16 +122,8 @@ const OverviewSection = ({
         ></ButtonPrimary>
         <Scratchpad value={scratchpad.value} action={scratchpad.action} />
 
-        <Alert style="success">
-          {`Completed this task? `}
-          <ButtonLink
-            action={handleReset}
-            text={'Start a new one'}
-          ></ButtonLink>
-        </Alert>
-
         {hasTimeEntries && (
-          <Alert style="info">
+          <Alert style="success">
             {`Want to see a summary of your progress on this task? `}
             <OverviewSummary
               entries={dashboard.timeEntries}
@@ -140,6 +132,14 @@ const OverviewSection = ({
             />
           </Alert>
         )}
+
+        <Alert style="info">
+          {`Completed this task? `}
+          <ButtonLink
+            action={handleReset}
+            text={'Start a new one'}
+          ></ButtonLink>
+        </Alert>
       </section>
     </>
   )
