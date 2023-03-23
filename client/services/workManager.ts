@@ -1,7 +1,7 @@
-import { TimestampList, TimestampType } from './../types/types.d'
-import { STATUSES } from '../utils/constants'
+import { TimestampList, TimestampType } from '@/types/types'
+import { STATUSES } from '@/utils/constants'
 import { differenceInMilliseconds } from 'date-fns'
-import { formatTimeFromMS, formatTimeFromDate } from '../utils/functions'
+import { formatTimeFromMS, formatTimeFromDate } from '@/utils/functions'
 import service from './service'
 
 async function getTimeline() {

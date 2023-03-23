@@ -13,5 +13,6 @@
         "argsIgnorePattern": "^_"
       }
     ]
-  }
+  },
+  "ignorePatterns": ["*.config.js", "*.setup.js"]
 }

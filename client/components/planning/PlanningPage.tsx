@@ -5,7 +5,7 @@ import Container from '../container'
 import IssueSection from './issue/IssueSection.component'
 import TasksSection from './tasks/TasksSection.component'
 import EstimationSection from './estimation/EstimationSection'
-import { SESSION_LENGTH } from '../../utils/constants'
+import { SESSION_LENGTH } from '@/utils/constants'
 import { pagePadding } from '../common/common'
 import ButtonDark from '../forms/buttons/ButtonDark'
 

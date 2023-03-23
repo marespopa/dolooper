@@ -1,6 +1,6 @@
 import React from 'react'
-import { STATUSES } from '../../../utils/constants'
-import { formatTimeFromMinutes } from '../../../utils/functions'
+import { STATUSES } from '@/utils/constants'
+import { formatTimeFromMinutes } from '@/utils/functions'
 import DashboardEntry from './DashboardEntry'
 
 interface Props {
