@@ -18,7 +18,7 @@ const EstimationSection = ({ countdownInterval, handleTimeChange }: Props) => {
   return (
     <section>
       <SectionHeading
-        title="Estimation"
+        title="Deadline"
         description="Having this layed out, how long will it take?"
         subHeading="Time-boxing can help you fight procrastination, reclaim lost productivity, and focus on the work that matters."
       />

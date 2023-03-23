@@ -15,6 +15,7 @@ import Seo from '../Seo'
 import Greeting from './greeting/Greeting.component'
 import Scratchpad from './scratchpad/Scratchpad.component'
 import OverviewSummary from './timelog'
+import { formatTimeFromMinutes } from '@/utils/functions'
 
 type Props = {
   issue: {
@@ -52,6 +53,7 @@ const OverviewSection = ({
   const timestampList = dashboard.timeEntries
   const status = WorkManager.getStatus(timestampList)
   const isWorking = status === STATUSES.work
+  const estimationTime = formatTimeFromMinutes(dashboard.estimation)
   const actionButtonText = (
     <div className="flex items-center">
       {isWorking ? (
@@ -88,7 +90,10 @@ const OverviewSection = ({
       <div
         className={`${boxStyles} relative flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
       >
-        <h2 className="font-bold mt-0 mb-3">Task</h2>
+        <h2 className="font-bold mt-0 mb-1">Task</h2>
+        <h3 className="mt-0 mb-3">
+          <span className="text-xs">Estimated at {estimationTime}</span>
+        </h3>
         <Issue
           action={issue.action.onUpdate}
           value={issue.value}
@@ -120,6 +125,7 @@ const OverviewSection = ({
           action={() => handleTimeEntryAdd()}
           text={actionButtonText}
         ></ButtonPrimary>
+
         <Scratchpad value={scratchpad.value} action={scratchpad.action} />
 
         {hasTimeEntries && (
