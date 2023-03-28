@@ -8,7 +8,7 @@ interface Props {
 }
 const TimeEntry = ({ type, value }: Props) => {
   const time = formatTimeFromDate(value)
-  const messageByType = type === 'work' ? 'Work Start' : 'Work End'
+  const messageByType = type === 'work' ? 'Session started' : 'Session Ended'
   return (
     <tr>
       <td className={tableCellStyle}>{`${time}`} </td>

@@ -13,12 +13,14 @@ type Props = {
 const OverviewSummary = ({ entries, estimation, isLoading }: Props) => {
   const [isTimelineVisible, setIsTimelineVisible] = useState(false)
 
+  const showTimeline = () => {
+    setIsTimelineVisible(!isTimelineVisible)
+  }
+
   return (
-    <>
-      <ButtonLink
-        text="Click here"
-        action={() => setIsTimelineVisible(!isTimelineVisible)}
-      ></ButtonLink>
+    <div className="cursor-pointer" onClick={showTimeline}>
+      <span>{`Want to see a summary of your progress on this task? `}</span>
+      <ButtonLink text="Click here" action={showTimeline}></ButtonLink>
       {isTimelineVisible && (
         <>
           {!isLoading && (
@@ -30,7 +32,7 @@ const OverviewSummary = ({ entries, estimation, isLoading }: Props) => {
           <Timelog timestampList={entries} />
         </>
       )}
-    </>
+    </div>
   )
 }
 

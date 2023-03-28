@@ -12,7 +12,6 @@ const OverviewPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const [estimation, setEstimation] = useState<number>(30)
   const [timeEntries, setTimeEntries] = useState<TimestampList>([])
-  const [scratchpad, setNotes] = useState('')
 
   const router = useRouter()
 
@@ -49,12 +48,6 @@ const OverviewPage = () => {
         onUpdate: handleUpdateIssue,
       },
     },
-    scratchpad: {
-      value: scratchpad,
-      action: {
-        onUpdate: handleUpdateScratchpad,
-      },
-    },
     dashboard: {
       isLoading: isLoading,
       estimation: estimation,
@@ -71,11 +64,6 @@ const OverviewPage = () => {
       <OverviewSection {...sectionProps} />
     </Container>
   )
-
-  function handleUpdateScratchpad(value: string) {
-    setNotes(value)
-  }
-
   function handleAddTimeEntry(type: TimestampType) {
     const arr = [
       ...timeEntries,

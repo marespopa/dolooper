@@ -5,8 +5,8 @@ export const DAY = HOUR * 24
 export const MIN_TIME_FOR_EXTENSION = MINUTE * 15
 
 export const SESSION_LENGTH = {
-  min: 30, //minutes
-  max: 60 * 1.5, //hours
+  min: 15, //minutes
+  max: 60 * 2, //hours
   step: 15,
   default: 60,
 }

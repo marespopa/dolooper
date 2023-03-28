@@ -8,23 +8,15 @@ import Alert from '../banners/Alert'
 import { pagePadding, boxStyles } from '../common/common'
 import ButtonIcon from '../forms/buttons/ButtonIcon'
 import ButtonLink from '../forms/buttons/ButtonLink'
-import ButtonPrimary from '../forms/buttons/ButtonPrimary'
 import Issue from '../planning/issue/Issue.component'
 import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
 import Greeting from './greeting/Greeting.component'
-import Scratchpad from './scratchpad/Scratchpad.component'
 import OverviewSummary from './timelog'
-import { formatTimeFromMinutes } from '@/utils/functions'
+import ButtonPrimary from '../forms/buttons/ButtonPrimary'
 
 type Props = {
   issue: {
-    value: string
-    action: {
-      onUpdate: (_arg: string) => void
-    }
-  }
-  scratchpad: {
     value: string
     action: {
       onUpdate: (_arg: string) => void
@@ -41,19 +33,14 @@ type Props = {
   handleReset: () => void
 }
 
-const OverviewSection = ({
-  issue,
-  scratchpad,
-  dashboard,
-  handleReset,
-}: Props) => {
+const OverviewSection = ({ issue, dashboard, handleReset }: Props) => {
   const [isIssueEditable, setIsIssueEditable] = useState(false)
   const hasTimeEntries = dashboard.timeEntries.length > 0
   const pageTitle = formatPageTitle()
   const timestampList = dashboard.timeEntries
   const status = WorkManager.getStatus(timestampList)
   const isWorking = status === STATUSES.work
-  const estimationTime = formatTimeFromMinutes(dashboard.estimation)
+  const sectionHeading = 'Currently working on'
   const actionButtonText = (
     <div className="flex items-center">
       {isWorking ? (
@@ -86,14 +73,14 @@ const OverviewSection = ({
   }
 
   const taskDashboard = (
-    <div className="flex flex-col md:flex-row my-6 md:md-0">
+    <div className="flex flex-col my-6 md:md-0">
       <div
-        className={`${boxStyles} relative flex-auto w-full mb-3 md:mb-0 md:w-1/2 mr-3 px-2 md:px-4 py-3`}
+        className={`${boxStyles} relative flex-auto w-full mb-3 px-2 md:px-4 py-3`}
+        onDoubleClick={() => setIsIssueEditable(!isIssueEditable)}
       >
-        <h2 className="font-bold mt-0 mb-1">Task</h2>
-        <h3 className="mt-0 mb-3">
-          <span className="text-xs">Estimated at {estimationTime}</span>
-        </h3>
+        <h2 className="text-xs mt-0 mb-1 flex justify-between">
+          {sectionHeading}
+        </h2>
         <Issue
           action={issue.action.onUpdate}
           value={issue.value}
@@ -106,10 +93,14 @@ const OverviewSection = ({
           ></ButtonIcon>
         </div>
       </div>
-      <div
-        className={`${boxStyles} flex-auto w-full md:w-1/2 px-2 md:px-4 py-3`}
-      >
+      <div className={`${boxStyles} flex-auto w-full px-2 md:px-4 py-3`}>
         <TasksList area="overview" />
+      </div>
+      <div className="w-128 my-3 flex">
+        <ButtonPrimary
+          action={() => handleTimeEntryAdd()}
+          text={actionButtonText}
+        ></ButtonPrimary>
       </div>
     </div>
   )
@@ -119,18 +110,11 @@ const OverviewSection = ({
       <Seo title={pageTitle} />
       <section className={`${pagePadding}`}>
         <Greeting />
+
         {taskDashboard}
-
-        <ButtonPrimary
-          action={() => handleTimeEntryAdd()}
-          text={actionButtonText}
-        ></ButtonPrimary>
-
-        <Scratchpad value={scratchpad.value} action={scratchpad.action} />
 
         {hasTimeEntries && (
           <Alert style="success">
-            {`Want to see a summary of your progress on this task? `}
             <OverviewSummary
               entries={dashboard.timeEntries}
               estimation={dashboard.estimation}

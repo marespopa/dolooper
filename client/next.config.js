@@ -8,7 +8,6 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: 'producthunt.com',
-        port: '',
         pathname: '/widgets/embed-image/**',
       },
     ],
