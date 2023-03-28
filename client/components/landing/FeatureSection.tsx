@@ -15,7 +15,12 @@ const FEATURES = [
   {
     id: 3,
     title: 'Time-Boxing',
-    description: `Set time estimates for tasks to fight procrastination, prioritize work, and accomplish more in less time. Plus, our app supports markdown for easy formatting and organization.`,
+    description: `Set time estimates for tasks to fight procrastination, prioritize work, and accomplish more in less time.`,
+  },
+  {
+    id: 4,
+    title: 'Markdown support',
+    description: `Plus, our app supports markdown for easy formatting and organization.`,
   },
 ]
 const FeatureSection = () => {

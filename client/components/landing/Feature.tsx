@@ -21,7 +21,7 @@ const Feature = ({ title, description }: Props) => {
   )
 }
 
-const containerStyle = `w-full md:w-4/12 px-4 text-center`
+const containerStyle = `w-full md:w-1/2 px-4 text-center`
 const divStyle = `${boxStyles} relative flex flex-col
                     min-w-0 break-words w-full mb-8 `
 export default Feature
