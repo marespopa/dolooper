@@ -12,7 +12,6 @@ function getDateFormat(date: Date) {
   const today = Date.now()
 
   if (!isDate(date)) {
-    console.dir(date)
     return 'hh:mm'
   }
 

@@ -1,4 +1,5 @@
-import React from 'react'
+import useAutoResizeTextArea from 'hooks/use-autoresize'
+import React, { useRef } from 'react'
 
 interface Props {
   action: (_arg: string) => void
@@ -8,8 +9,10 @@ interface Props {
   customStyles?: string
   isDisabled?: boolean
 }
+const DEFAULT_TEXTAREA_ROWS = 4
 
-const Input = ({ action, id, label, value, isDisabled = false }: Props) => {
+const Textarea = ({ action, id, label, value, isDisabled = false }: Props) => {
+  const textAreaRef = useRef<HTMLTextAreaElement>(null)
   const commonProps = {
     id,
     disabled: isDisabled,
@@ -17,14 +20,18 @@ const Input = ({ action, id, label, value, isDisabled = false }: Props) => {
     value,
   }
 
+  useAutoResizeTextArea(textAreaRef.current, commonProps.value)
+
   return (
     <div className="relative z-0 ">
-      <input
+      <textarea
+        ref={textAreaRef}
         {...commonProps}
         className={inputStyle}
-        onChange={(e: React.FormEvent<HTMLInputElement>) => {
+        onChange={(e: React.FormEvent<HTMLTextAreaElement>) => {
           action(e.currentTarget.value)
         }}
+        rows={DEFAULT_TEXTAREA_ROWS}
       />
       <label htmlFor={id} className={labelStyles}>
         {label}
@@ -42,4 +49,4 @@ const labelStyles = `absolute text-sm text-gray-500 duration-300 transform
                      -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-gray-400
                      peer-placeholder-shown:scale-100 cursor: text; peer-placeholder-shown:translate-y-0
                      peer-focus:scale-75 peer-focus:-translate-y-4`
-export default Input
+export default Textarea

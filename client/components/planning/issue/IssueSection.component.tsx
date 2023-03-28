@@ -4,7 +4,7 @@ import SectionHeading from '../common/SectionHeading.component'
 import Issue from './Issue.component'
 
 const IssueSection = () => {
-  const [issue, setDescription] = useState('')
+  const [issue, setDescription] = useState(``)
 
   useEffect(() => {
     service.getDescription().then((results) => {

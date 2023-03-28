@@ -33,7 +33,7 @@ const UsedBySection = () => {
   )
 }
 
-const sectionStyles = `border-t dark:bg-gray-900 my-4 py-4`
+const sectionStyles = `border-t my-4 py-4`
 const containerStyles = `flex justify-center`
 
 export default UsedBySection

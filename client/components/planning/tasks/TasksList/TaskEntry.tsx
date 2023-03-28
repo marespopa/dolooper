@@ -1,9 +1,9 @@
+import Input from '@/components/forms/input/Input.component'
 import React, { useState } from 'react'
 import { Task, TaskActions } from '../../../../types/types'
 import ButtonDark from '../../../forms/buttons/ButtonDark'
 import ButtonDropdown from '../../../forms/buttons/ButtonDropdown'
 import Checkbox from '../../../forms/input/Checkbox.component'
-import Input from '../../../forms/input/Input.component'
 
 type Props = {
   task: Task
@@ -71,7 +71,6 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
       <span className="flex-auto">
         <Input
           id={`task-${task.key}`}
-          type={'text'}
           value={editValue}
           action={handleEditValue}
           label={'Edit Task'}

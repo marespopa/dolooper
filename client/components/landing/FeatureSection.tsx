@@ -3,7 +3,7 @@ import Feature from './Feature'
 
 const FeatureSection = () => {
   return (
-    <section className="pb-10 mt-2">
+    <section className="pb-10">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap">
           <Feature

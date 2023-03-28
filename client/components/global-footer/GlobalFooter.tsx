@@ -9,10 +9,8 @@ const GlobalFooter = () => {
     <footer className="py-5 bg-gray-800">
       <Container>
         <div className="text-gray-200">
-          <p className="text-2xl mt-4 text-center sm:text-left">
-            Plan. Focus. Execute.{' '}
-          </p>
-          <div className="my-4 flex flex-col md:flex-row md:justify-between items-center text-sm text-gray-400">
+          <p className="text-2xl mt-4 text-left">Plan. Focus. Execute. </p>
+          <div className="my-4 flex flex-col md:flex-row md:justify-between items-left text-sm text-gray-400">
             <p className="mt-2 order-2 md:order-1 md:mt-0">
               &copy;{' '}
               <a
@@ -46,7 +44,7 @@ const GlobalFooter = () => {
   )
 }
 
-const footerLinkStyle = `my-2 sm:my-0 sm:border-0 px-2 cursor-pointer hover:underline focus:underline`
+const footerLinkStyle = `my-2 sm:my-0 sm:border-0 sm:px-2 cursor-pointer hover:underline focus:underline`
 const footerLinkWithBorderStyle = `${footerLinkStyle} sm:border-l`
 
 export default GlobalFooter

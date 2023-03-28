@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 
 const ALERT_STYLE_TYPE_MAP = {
-  error: 'bg-red-500',
+  error: 'bg-red-500 text-white',
   info: 'bg-blue-100',
   warning: 'bg-amber-200',
   success: 'bg-teal-200',

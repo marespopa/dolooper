@@ -8,7 +8,7 @@ const keys = {
   timestamp: 'timelog',
 }
 
-const MIN_VALID_FIELDS = 2
+const MIN_VALID_FIELDS = 1
 
 async function setDescription(description: string) {
   try {
@@ -80,6 +80,16 @@ async function getTimestamps() {
   }
 }
 
+async function hasDescription() {
+  try {
+    const value = await localforage.getItem(keys.issue)
+
+    return !!value
+  } catch (err) {
+    console.error(err)
+  }
+}
+
 async function hasEntries() {
   try {
     const length = await localforage.length()
@@ -105,6 +115,7 @@ const service = {
   getTimestamps,
   resetAll,
   hasEntries,
+  hasDescription,
 }
 
 export default service

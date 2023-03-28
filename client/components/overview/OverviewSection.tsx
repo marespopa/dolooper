@@ -76,9 +76,14 @@ const OverviewSection = ({ issue, dashboard, handleReset }: Props) => {
     <div className="flex flex-col my-6 md:md-0">
       <div
         className={`${boxStyles} relative flex-auto w-full mb-3 px-2 md:px-4 py-3`}
-        onDoubleClick={() => setIsIssueEditable(!isIssueEditable)}
+        onDoubleClick={() => {
+          if (isIssueEditable) {
+            return
+          }
+          setIsIssueEditable(!isIssueEditable)
+        }}
       >
-        <h2 className="text-xs mt-0 mb-1 flex justify-between">
+        <h2 className="text-xs text-gray-600 mt-0 mb-1 flex justify-between">
           {sectionHeading}
         </h2>
         <Issue

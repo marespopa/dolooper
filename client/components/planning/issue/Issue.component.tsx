@@ -1,6 +1,6 @@
+import Textarea from '@/components/forms/input/Textarea.component'
 import React from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-import Input from '../../forms/input/Input.component'
 
 type Props = {
   isEdit: boolean
@@ -10,16 +10,15 @@ type Props = {
 
 const Issue = ({ isEdit, value, action }: Props) => {
   const editField = (
-    <Input
+    <Textarea
       action={action}
       id={'issue'}
       label={'Description'}
       value={value}
-      type="textarea"
     />
   )
   const displayField = (
-    <div className="prose">
+    <div className="prose prose-neutral prose-sm prose-h1:mb-4 prose-h2:my-2">
       <ReactMarkdown>{value}</ReactMarkdown>
     </div>
   )

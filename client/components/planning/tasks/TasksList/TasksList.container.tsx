@@ -1,9 +1,9 @@
+import Input from '@/components/forms/input/Input.component'
 import React, { useEffect, useState } from 'react'
 import uuid from 'react-uuid'
 import service from '../../../../services/service'
 import { Task, TaskArea } from '../../../../types/types'
 import ButtonDark from '../../../forms/buttons/ButtonDark'
-import Input from '../../../forms/input/Input.component'
 import TasksListComponent from './TasksList.component'
 
 interface Props {
@@ -89,13 +89,7 @@ const TasksList = ({ area }: Props) => {
     <form onSubmit={handleSubmit}>
       <div className="flex">
         <div className="flex-auto">
-          <Input
-            id="task"
-            type={'text'}
-            value={task}
-            action={setTask}
-            label={taskAddLabel}
-          />
+          <Input id="task" value={task} action={setTask} label={taskAddLabel} />
         </div>
         <ButtonDark
           action={() => handleAdd(task)}
