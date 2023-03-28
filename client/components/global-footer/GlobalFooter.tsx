@@ -1,4 +1,3 @@
-import { FeedbackFish } from '@feedback-fish/react'
 import Link from 'next/link'
 import React from 'react'
 import Container from '../container'
@@ -22,14 +21,6 @@ const GlobalFooter = () => {
               {currentYear}. All rights reserved
             </p>
             <div className="order-1 md:order-2 flex flex-col sm:flex-row">
-              <FeedbackFish projectId="e7c32c4a4bc27d">
-                <span
-                  className={footerLinkStyle}
-                  onClick={(e) => e.preventDefault()}
-                >
-                  Feedback
-                </span>
-              </FeedbackFish>
               <span className={footerLinkWithBorderStyle}>
                 <a href="mailto:hello@marespopa.com">Email</a>
               </span>
