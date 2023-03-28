@@ -1,33 +1,31 @@
 import React from 'react'
 import Feature from './Feature'
 
+const FEATURES = [
+  {
+    id: 1,
+    title: 'One Task Focus',
+    description: `Work on only one task at a time for improved concentration and productivity`,
+  },
+  {
+    id: 2,
+    title: 'Clear Planning',
+    description: `Break down complex tasks into manageable pieces for easier prioritization and success`,
+  },
+  {
+    id: 3,
+    title: 'Time-Boxing',
+    description: `Set time estimates for tasks to fight procrastination, prioritize work, and accomplish more in less time. Plus, our app supports markdown for easy formatting and organization.`,
+  },
+]
 const FeatureSection = () => {
   return (
     <section className="pb-10">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap">
-          <Feature
-            title="One task"
-            description={`You are allowed to work on only one task at a time.
-                        So-called multitasking divides our attention. For example, in studies,
-                        attempting to complete additional tasks during a driving simulation led to
-                        poorer driving performance.`}
-          />
-
-          <Feature
-            title="Clear plan"
-            description={`
-                It helps break down the issue into smaller pieces and distribute tasks when applicable.
-                Even if you're the only one facing the dilemma, planning turns a larger,  more abstract thing
-                into bite-sized activities.`}
-          />
-
-          <Feature
-            title="Time-box"
-            description={`It forces you to set an estimation to your task. By defining upfront how long a task
-                          will take, you fight procrastination, which helps with focusing on the task at hand.
-                          It also helps ignore distractions and prioritize it since there is a deadline to be met.`}
-          />
+          {FEATURES.map(({ id, title, description }) => (
+            <Feature key={id} title={title} description={description} />
+          ))}
         </div>
       </div>
     </section>
