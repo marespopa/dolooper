@@ -2,9 +2,9 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 
 export const defaultMeta = {
-  title: 'Doloper - Plan. Focus. Execute.',
-  siteName: 'Doloper',
-  description: `Doloper - Plan. Focus. Execute. Define your plan to tackle the task, set aside some time, focus and get things done.`,
+  title: 'Dolooper - Plan. Focus. Execute.',
+  siteName: 'Dolooper',
+  description: `Dolooper - Say goodbye to multitasking and hello to streamlined productivity with Dolooper. Streamline your productivity with One Task Focus, Clear Planning, Time-Boxing, and Markdown support.`,
   url: 'https://doloper.netlify.app',
   type: 'website',
   robots: 'follow, index',
