@@ -11,7 +11,7 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
         <Notification />
         <GlobalNavigation />
 
-        <main className="flex-grow bg-gradient-to-b from-amber-100 via-stone-200 to-gray-200">
+        <main className="flex-grow bg-gradient-to-b from-amber-50 via-stone-100 to-amber-100">
           {children}
         </main>
         <GlobalFooter />

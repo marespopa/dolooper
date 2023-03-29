@@ -40,7 +40,7 @@ const PlanningPage = () => {
   }
 
   return (
-    <div className={`py-5 text-gray-700 ${pagePadding}`}>
+    <div className={`py-5 text-gray-800 ${pagePadding}`}>
       <Container>
         <IssueSection />
         <TasksSection />

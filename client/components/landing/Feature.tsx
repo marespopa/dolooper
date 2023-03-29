@@ -12,7 +12,7 @@ const Feature = ({ title, description }: Props) => {
       <div className={divStyle}>
         <div className="px-4 py-5 flex-auto">
           <h6 className="text-xl my-4 sm:my-6 font-semibold">{title}</h6>
-          <p className="mt-2 mb-4 text-gray-500 text-center px-2">
+          <p className="mt-2 mb-4 text-gray-800 text-center px-2">
             {description}
           </p>
         </div>

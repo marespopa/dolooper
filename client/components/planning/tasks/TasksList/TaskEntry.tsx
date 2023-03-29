@@ -99,7 +99,7 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
     >
       {isTogglable && taskWithCheckbox}
       {!isTogglable && (
-        <span className="text-sm font-medium text-gray-900">{task.value}</span>
+        <span className="text-sm font-medium text-gray-800">{task.value}</span>
       )}
       {controlPanel}
     </li>
