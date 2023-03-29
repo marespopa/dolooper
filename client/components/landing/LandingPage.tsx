@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '../container'
 import FeatureSection from './FeatureSection'
 import HeroSection from './HeroSection'
+import UsedBySection from './UsedBySection'
 
 const LandingPage = () => {
   return (
@@ -9,6 +10,7 @@ const LandingPage = () => {
       <Container>
         <HeroSection />
         <FeatureSection />
+        <UsedBySection />
       </Container>
     </section>
   )
