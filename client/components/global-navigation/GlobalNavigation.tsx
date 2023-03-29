@@ -7,8 +7,8 @@ import TwitterSVG from '../../icons/TwitterSVG'
 
 const GlobalNavigation = () => {
   const logoHeight = 24
-  const twitterLink = `https://twitter.com/intent/tweet?text=Get%20productive%20with%20doloper!%20%20&url=
-                      https%3A%2F%2Fdoloper.netlify.com%2F`
+  const twitterLink = `https://twitter.com/intent/tweet?text=Get%20productive%20with%20dolooper!%20%20&url=
+                      https%3A%2F%2Fdolooper.netlify.com%2F`
 
   return (
     <header className="w-full text-gray-800 bg-amber-100 sticky top-0 z-10">
