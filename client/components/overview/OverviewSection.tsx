@@ -3,7 +3,6 @@ import PauseSVG from '../../icons/PauseSVG'
 import PlaySVG from '../../icons/PlaySVG'
 import WorkManager from '../../services/workManager'
 import { TimestampList, TimestampType } from '../../types/types'
-import { STATUSES } from '@/utils/constants'
 import Alert from '../banners/Alert'
 import { pagePadding, boxStyles } from '../common/common'
 import ButtonIcon from '../forms/buttons/ButtonIcon'
@@ -14,6 +13,7 @@ import Seo from '../Seo'
 import Greeting from './greeting/Greeting.component'
 import OverviewSummary from './timelog'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
+import { STATUSES } from 'utils/constants'
 
 type Props = {
   issue: {

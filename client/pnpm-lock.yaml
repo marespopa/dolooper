@@ -1,9 +1,6 @@
 lockfileVersion: '6.0'
 
 dependencies:
-  '@feedback-fish/react':
-    specifier: ^1.2.1
-    version: 1.2.1(react@18.2.0)
   '@next/font':
     specifier: ^13.1.5
     version: 13.1.5
@@ -16,8 +13,11 @@ dependencies:
   localforage:
     specifier: ^1.10.0
     version: 1.10.0
+  nanoid:
+    specifier: ^4.0.2
+    version: 4.0.2
   next:
-    specifier: ^13.0.5
+    specifier: ^13.1.5
     version: 13.2.4(@babel/core@7.21.3)(react-dom@18.2.0)(react@18.2.0)(sass@1.54.0)
   react:
     specifier: 18.2.0
@@ -31,9 +31,6 @@ dependencies:
   react-toastify:
     specifier: ^9.1.1
     version: 9.1.1(react-dom@18.2.0)(react@18.2.0)
-  react-uuid:
-    specifier: ^2.0.0
-    version: 2.0.0
 
 devDependencies:
   '@tailwindcss/typography':
@@ -431,15 +428,6 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
-
-  /@feedback-fish/react@1.2.1(react@18.2.0):
-    resolution: {integrity: sha512-4YFD2hE93xBIT/Ko0x0l6UB0OyaxJcWKLGrnznsUVoLE5Q9vB8I1LEbMySYyuvbU9ul3yM3FjGkVZhYVPdwEyA==}
-    engines: {node: '>=10.16.0'}
-    peerDependencies:
-      react: ^16.8.0
-    dependencies:
-      react: 18.2.0
-    dev: false
 
   /@humanwhocodes/config-array@0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}
@@ -4111,6 +4099,12 @@ packages:
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
 
+  /nanoid@4.0.2:
+    resolution: {integrity: sha512-7ZtY5KTCNheRGfEFxnedV5zFiORN1+Y1N6zvPTnHQd8ENUvfaDBeuJDZb2bN/oXwXxu3qkTXDzy57W5vAmDTBw==}
+    engines: {node: ^14 || ^16 || >=18}
+    hasBin: true
+    dev: false
+
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
@@ -4629,11 +4623,6 @@ packages:
       clsx: 1.2.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-    dev: false
-
-  /react-uuid@2.0.0:
-    resolution: {integrity: sha512-FNUH/8WR/FEtx0Bu6gmt1eONfc413hhvrEXFWUSFGvznUhI4dYoVZA09p7JHoTpnM4WC2D/bG2YSxGKXF4oVLg==}
-    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dev: false
 
   /react@18.2.0:

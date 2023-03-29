@@ -1,6 +1,6 @@
 import React from 'react'
-import { SESSION_LENGTH } from '@/utils/constants'
-import { formatTimeFromMinutes } from '@/utils/functions'
+import { SESSION_LENGTH } from 'utils/constants'
+import { formatTimeFromMinutes } from 'utils/functions'
 import SectionHeading from '../common/SectionHeading.component'
 
 interface Props {

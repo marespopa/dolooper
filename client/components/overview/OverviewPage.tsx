@@ -1,11 +1,11 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import uuid from 'react-uuid'
 import service from '../../services/service'
 import Container from '../container/Container.component'
 import { TimestampList, TimestampType } from '../../types/types'
 import OverviewSection from './OverviewSection'
 import WorkManager from '../../services/workManager'
+import { nanoid } from 'nanoid'
 
 const OverviewPage = () => {
   const [issue, setIssue] = useState('')
@@ -68,7 +68,7 @@ const OverviewPage = () => {
     const arr = [
       ...timeEntries,
       {
-        id: uuid(),
+        id: nanoid(),
         type: type,
         value: new Date(),
       },

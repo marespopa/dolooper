@@ -1,6 +1,6 @@
 import React from 'react'
-import { TimestampType } from '../../../types/types'
-import { formatTimeFromDate } from '@/utils/functions'
+import { TimestampType } from 'types/types'
+import { formatTimeFromDate } from 'utils/functions'
 
 interface Props {
   type: TimestampType

@@ -1,4 +1,4 @@
-import Textarea from '@/components/forms/input/Textarea.component'
+import Textarea from '@/components/forms/input/Textarea'
 import React from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 

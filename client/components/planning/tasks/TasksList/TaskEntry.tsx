@@ -1,9 +1,9 @@
-import Input from '@/components/forms/input/Input.component'
+import ButtonDark from '@/components/forms/buttons/ButtonDark'
+import ButtonDropdown from '@/components/forms/buttons/ButtonDropdown'
+import Checkbox from '@/components/forms/input/Checkbox'
+import Input from '@/components/forms/input/Input'
 import React, { useState } from 'react'
-import { Task, TaskActions } from '../../../../types/types'
-import ButtonDark from '../../../forms/buttons/ButtonDark'
-import ButtonDropdown from '../../../forms/buttons/ButtonDropdown'
-import Checkbox from '../../../forms/input/Checkbox.component'
+import { Task, TaskActions } from 'types/types'
 
 type Props = {
   task: Task

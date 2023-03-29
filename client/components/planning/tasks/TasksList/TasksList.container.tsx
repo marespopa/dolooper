@@ -1,6 +1,6 @@
-import Input from '@/components/forms/input/Input.component'
+import Input from '@/components/forms/input/Input'
+import { nanoid } from 'nanoid'
 import React, { useEffect, useState } from 'react'
-import uuid from 'react-uuid'
 import service from '../../../../services/service'
 import { Task, TaskArea } from '../../../../types/types'
 import ButtonDark from '../../../forms/buttons/ButtonDark'
@@ -35,7 +35,7 @@ const TasksList = ({ area }: Props) => {
     const updatedTasks = [
       ...tasks,
       {
-        key: uuid(),
+        key: nanoid(),
         value: taskMessage,
         isDone: false,
       },
