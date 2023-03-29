@@ -10,7 +10,8 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
       <div className="flex flex-col min-h-screen font-primary">
         <Notification />
         <GlobalNavigation />
-        <main className="flex-grow bg-gradient-to-b from-amber-50 to-gray-50">
+
+        <main className="flex-grow bg-gradient-to-b from-amber-100 via-stone-200 to-gray-200">
           {children}
         </main>
         <GlobalFooter />
