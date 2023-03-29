@@ -1,5 +1,5 @@
-import useAutoResizeTextArea from 'hooks/use-autoresize'
 import React, { useRef } from 'react'
+import useAutoResizeTextArea from '../../../hooks/use-autoresize'
 
 interface Props {
   action: (_arg: string) => void
