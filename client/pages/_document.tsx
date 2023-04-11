@@ -4,11 +4,11 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-} from "next/document";
+} from 'next/document'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
-    const originalRenderPage = ctx.renderPage;
+    const originalRenderPage = ctx.renderPage
 
     // Run the React rendering logic synchronously
     ctx.renderPage = async () => {
@@ -16,22 +16,22 @@ class MyDocument extends Document {
         // Useful for wrapping the whole react tree
         enhanceApp: (App) =>
           function enhanceApp(props) {
-            return <App {...props} />;
+            return <App {...props} />
           },
         // Useful for wrapping in a per-page basis
         enhanceComponent: (Component) => Component,
-      });
-    };
+      })
+    }
 
     // Run the parent `getInitialProps`, it now includes the custom `renderPage`
-    const initialProps = await Document.getInitialProps(ctx);
+    const initialProps = await Document.getInitialProps(ctx)
 
-    return initialProps;
+    return initialProps
   }
 
   render() {
     return (
-      <Html>
+      <Html lang="en">
         <Head>
           <meta charSet="utf-8" />
           <link rel="icon" type="image/svg+xml" href="favicon.svg" />
@@ -41,8 +41,8 @@ class MyDocument extends Document {
           <NextScript />
         </body>
       </Html>
-    );
+    )
   }
 }
 
-export default MyDocument;
+export default MyDocument
