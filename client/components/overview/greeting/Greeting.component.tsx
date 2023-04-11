@@ -1,19 +1,39 @@
 import React from 'react'
 
+type HourlyMessage = {
+  startingHour: number
+  message: string
+}
+
 const Greeting = () => {
   function getGreetingMessage() {
-    const data = [
-        [22, 'Working late'],
-        [18, 'Good evening'],
-        [12, 'Good afternoon'],
-        [7, 'Good morning'],
-        [4, 'Whoa, early bird'],
+    const data: HourlyMessage[] = [
+        {
+          startingHour: 22,
+          message: 'Working late 🌙',
+        },
+        {
+          startingHour: 18,
+          message: 'Good evening 🌇',
+        },
+        {
+          startingHour: 11,
+          message: 'Great day! ☀️',
+        },
+        {
+          startingHour: 8,
+          message: 'Good morning 🌞',
+        },
+        {
+          startingHour: 4,
+          message: 'Whoa, early bird 🌅',
+        },
       ],
       hour = new Date().getHours()
 
-    for (var i = 0; i < data.length; i++) {
-      if (hour >= data[i][0]) {
-        return data[i][1]
+    for (const entry of data) {
+      if (hour >= entry.startingHour) {
+        return entry.message
       }
     }
   }
@@ -21,8 +41,10 @@ const Greeting = () => {
   const greetingMessage = getGreetingMessage()
 
   return (
-    <div className="w-full">
-      <h2 className="text-3xl font-bold mt-3 mb-3">{greetingMessage}</h2>
+    <div className="w-full text-center sm:text-left sm:pl-4">
+      <h2 className="text-lg text-gray-700 font-bold mt-3 mb-3">
+        {greetingMessage}
+      </h2>
     </div>
   )
 }

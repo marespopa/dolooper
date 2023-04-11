@@ -22,7 +22,7 @@ const IssueSection = () => {
   return (
     <section>
       <SectionHeading
-        title="To do"
+        title="Let's start!"
         description="What are you trying to achieve today?"
         subHeading={'* You can use markdown for writing the description'}
       />
