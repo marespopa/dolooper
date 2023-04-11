@@ -22,9 +22,9 @@ const IssueSection = () => {
   return (
     <section>
       <SectionHeading
-        title="Task"
-        description="What are you trying to accomplish?"
-        subHeading={'* You should use markdown for writing the description'}
+        title="To do"
+        description="What are you trying to achieve today?"
+        subHeading={'* You can use markdown for writing the description'}
       />
       <div className={`relative z-0 min-h-full py-2`}>
         <Issue isEdit={true} value={issue} action={updateDescription} />

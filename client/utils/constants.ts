@@ -6,9 +6,9 @@ export const MIN_TIME_FOR_EXTENSION = MINUTE * 15
 
 export const SESSION_LENGTH = {
   min: 15, //minutes
-  max: 60 * 2, //hours
+  max: 60 * 5, //hours
   step: 15,
-  default: 60,
+  default: 60 * 2.5,
 }
 
 export const STATUSES = {

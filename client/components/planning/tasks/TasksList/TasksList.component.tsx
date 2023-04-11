@@ -21,7 +21,7 @@ const TasksListComponent = ({
 
   return (
     <>
-      {showHeading && <h2 className="font-bold mt-0 mb-3">Subtasks</h2>}
+      {showHeading && <h2 className="font-bold mt-0 mb-3">Tasks</h2>}
       {tasks.length > 0 && (
         <ul className={`list-none`}>
           {tasks.map((task) => {
@@ -37,7 +37,7 @@ const TasksListComponent = ({
         </ul>
       )}
       {tasks.length === 0 && showNoTasksInfo && (
-        <p className="py-2 sm:py-4">No subtasks.</p>
+        <p className="py-2 sm:py-4">No tasks.</p>
       )}
     </>
   )
