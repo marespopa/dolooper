@@ -9,6 +9,7 @@ import { pagePadding } from '../common/common'
 import ButtonDark from '../forms/buttons/ButtonDark'
 import Alert from '../banners/Alert'
 import { SESSION_LENGTH } from 'utils/constants'
+import Greeting from '../overview/greeting/Greeting.component'
 
 const PlanningPage = () => {
   const router = useRouter()
@@ -42,6 +43,7 @@ const PlanningPage = () => {
   return (
     <div className={`py-5 text-gray-800 ${pagePadding}`}>
       <Container>
+        <Greeting />
         <IssueSection />
         <TasksSection />
         <EstimationSection

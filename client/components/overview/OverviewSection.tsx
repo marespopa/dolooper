@@ -10,7 +10,6 @@ import ButtonLink from '../forms/buttons/ButtonLink'
 import Issue from '../planning/issue/Issue.component'
 import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
-import Greeting from './greeting/Greeting.component'
 import OverviewSummary from './timelog'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
 import { STATUSES } from 'utils/constants'
@@ -114,8 +113,6 @@ const OverviewSection = ({ issue, dashboard, handleReset }: Props) => {
     <>
       <Seo title={pageTitle} />
       <section className={`${pagePadding}`}>
-        <Greeting />
-
         {taskDashboard}
 
         {hasTimeEntries && (
