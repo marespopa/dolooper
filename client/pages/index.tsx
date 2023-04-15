@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
-import PublicLayout from '../components/layouts/PublicLayout'
 import LandingPage from '../components/landing/LandingPage'
 import Seo from '../components/Seo'
+import PublicLayout from '@/components/layouts/PublicLayout'
 
 const Home: NextPage = () => {
   return (

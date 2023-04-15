@@ -9,7 +9,7 @@ import { pagePadding } from '../common/common'
 import ButtonDark from '../forms/buttons/ButtonDark'
 import Alert from '../banners/Alert'
 import { SESSION_LENGTH } from 'utils/constants'
-import Greeting from '../overview/greeting/Greeting.component'
+import Greeting from './greeting/Greeting.component'
 
 const PlanningPage = () => {
   const router = useRouter()
@@ -23,7 +23,6 @@ const PlanningPage = () => {
       setError('')
       router.push('/overview')
 
-      service.setTimestamps([])
       service.setEstimation(estimation)
 
       return

@@ -28,6 +28,10 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
     return actions.handleEdit(key, value)
   }
 
+  function handleEditToggle() {
+    setIsEditMode(!isEditMode)
+  }
+
   const taskWithCheckbox = (
     <span className={task.isDone ? 'line-through' : ''}>
       <Checkbox
@@ -48,7 +52,7 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
           {
             id: task.key,
             label: 'Edit',
-            action: () => setIsEditMode(!isEditMode),
+            action: handleEditToggle,
           },
           {
             id: task.key,
@@ -107,18 +111,18 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
 }
 
 const taskEditStyle = `flex align-middle p-0 my-2
-                       transition-all duration-300 ease-in-out`
+                       transition-all duration-400 ease-in-out`
 
 const taskStyleOverview = `flex align-middle p-4
                   hover:cursor-pointer
                   hover:bg-gray-100 hover:text-b-900
                   focus:cursor-pointer
-                  transition-all duration-300 ease-in-out`
+                  transition-all duration-400 ease-in-out`
 
 const taskStylePlanning = `flex align-middle p-4
                   hover:text-b-900
                   focus:cursor-pointer
-                  transition-all duration-300 ease-in-out rounded-md
+                  transition-all duration-400 ease-in-out rounded-md
                   first:mt-0 my-2 bg-white border border-gray-200`
 
 export default TaskEntry
