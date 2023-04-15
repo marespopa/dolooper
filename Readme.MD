@@ -16,4 +16,4 @@ In conclusion, if you're a software engineer looking to improve your focus and p
 
 ## Deploy Status
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/7850deb9-d846-4a0f-a4a8-3d358c40e2e3/deploy-status)](https://app.netlify.com/sites/doloper/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/7850deb9-d846-4a0f-a4a8-3d358c40e2e3/deploy-status)](https://app.netlify.com/sites/dolooper/deploys)

@@ -18,7 +18,7 @@ const GlobalNavigation = () => {
             <div>
               <div className="flex items-center justify-center lg:justify-between py-3 md:py-5 md:block">
                 <Link href="/">
-                  <Image src={logo} alt="Doloper" height={logoHeight} />
+                  <Image src={logo} alt="Dolooper" height={logoHeight} />
                 </Link>
               </div>
             </div>

@@ -5,7 +5,7 @@ export const defaultMeta = {
   title: 'Dolooper - Plan. Focus. Execute.',
   siteName: 'Dolooper',
   description: `Dolooper - Say goodbye to multitasking and hello to streamlined productivity with Dolooper. Streamline your productivity with One Task Focus, Clear Planning, Time-Boxing, and Markdown support.`,
-  url: 'https://doloper.netlify.app',
+  url: 'https://dolooper.netlify.app',
   type: 'website',
   robots: 'follow, index',
 }
