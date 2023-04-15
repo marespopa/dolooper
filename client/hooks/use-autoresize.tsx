@@ -1,19 +1,18 @@
-import { useEffect } from 'react'
+import { MutableRefObject, useLayoutEffect } from 'react'
 
 // Updates the height of a <textarea> when the value changes.
 const useAutoResizeTextArea = (
-  textAreaRef: HTMLTextAreaElement | null,
+  textAreaRef: MutableRefObject<HTMLTextAreaElement>,
   value: string,
 ) => {
-  useEffect(() => {
-    if (textAreaRef) {
-      // We need to reset the height momentarily to get the correct scrollHeight for the textarea
-      textAreaRef.style.height = 'auto'
-      const scrollHeight = textAreaRef.scrollHeight
+  function resize(textAreaRef: HTMLTextAreaElement) {
+    textAreaRef.style.height = '64px'
+    textAreaRef.style.height = `${textAreaRef.scrollHeight}px`
+  }
 
-      // We then set the height directly, outside of the render loop
-      // Trying to set this with state or a ref will product an incorrect value.
-      textAreaRef.style.height = scrollHeight + 'px'
+  useLayoutEffect(() => {
+    if (textAreaRef?.current) {
+      resize(textAreaRef.current)
     }
   }, [textAreaRef, value])
 }

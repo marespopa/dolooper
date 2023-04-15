@@ -1,13 +1,13 @@
 import type { NextPage } from 'next'
 import PlanningPage from '../components/planning/PlanningPage'
-import PublicLayout from '../components/layouts/PublicLayout'
 import Seo from '../components/Seo'
+import PublicLayout from '@/components/layouts/PublicLayout'
 
 const Planning: NextPage = () => {
   return (
     <>
       <Seo />
-      <PublicLayout>
+      <PublicLayout hasFlatBg={true}>
         <PlanningPage />
       </PublicLayout>
     </>

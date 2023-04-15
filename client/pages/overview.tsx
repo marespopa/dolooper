@@ -7,7 +7,7 @@ const Planning: NextPage = () => {
   return (
     <>
       <Seo />
-      <PublicLayout>
+      <PublicLayout hasFlatBg={true}>
         <OverviewPage />
       </PublicLayout>
     </>

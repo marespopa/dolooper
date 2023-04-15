@@ -29,11 +29,10 @@ const OverviewSection = ({
   const pageTitle = 'Work - Dolooper'
   const sectionHeading = 'Currently working on'
   const estimationText = formatTimeFromMinutes(estimation)
-
   const taskDashboard = (
     <div className="flex flex-col mb-6 md:md-0">
       <div
-        className={`${boxStyles} relative flex-auto w-full mb-3 px-2 md:px-4 py-3`}
+        className={`${boxStyles} relative flex-auto w-full my-3 px-2 md:px-4 py-3`}
         onDoubleClick={() => {
           if (isIssueEditable) {
             return
@@ -59,6 +58,14 @@ const OverviewSection = ({
       <div className={`${boxStyles} flex-auto w-full px-2 md:px-4 py-3`}>
         <TasksList area="overview" />
       </div>
+
+      {!isLoading && (
+        <div
+          className={`flex-auto w-full px-2 md:px-4 py-3 text-xs text-right`}
+        >
+          <p>Estimated at {estimationText}</p>
+        </div>
+      )}
     </div>
   )
 
@@ -66,13 +73,6 @@ const OverviewSection = ({
     <>
       <Seo title={pageTitle} />
       <section className={`${pagePadding}`}>
-        {!isLoading && (
-          <div
-            className={`flex-auto w-full px-2 md:px-4 py-3 text-xs text-right`}
-          >
-            <p>Estimated at {estimationText}</p>
-          </div>
-        )}
         {taskDashboard}
 
         <Alert style="info">

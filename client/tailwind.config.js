@@ -11,6 +11,9 @@ module.exports = {
       fontFamily: {
         primary: ['var(--default-font)', ...fontFamily.sans],
       },
+      transitionProperty: {
+        height: 'height',
+      },
     },
   },
   plugins: [require('@tailwindcss/typography')],
