@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import PublicLayout from '../components/layouts/PublicLayout'
+import LandingPageLayout from '../components/layouts/LandingPageLayout'
 import LandingPage from '../components/landing/LandingPage'
 import Seo from '../components/Seo'
 
@@ -7,9 +7,9 @@ const Home: NextPage = () => {
   return (
     <>
       <Seo />
-      <PublicLayout>
+      <LandingPageLayout>
         <LandingPage />
-      </PublicLayout>
+      </LandingPageLayout>
     </>
   )
 }

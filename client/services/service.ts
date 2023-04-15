@@ -1,11 +1,10 @@
 import localforage from 'localforage'
-import { TimestampList, type Task } from '../types/types'
+import { type Task } from '../types/types'
 
 const keys = {
   tasks: 'tasks',
   issue: 'issue',
   estimation: 'estimation',
-  timestamp: 'timelog',
 }
 
 const MIN_VALID_FIELDS = 1
@@ -62,24 +61,6 @@ async function getEstimation() {
   }
 }
 
-async function setTimestamps(timeStamps: TimestampList) {
-  try {
-    return await localforage.setItem(keys.timestamp, timeStamps)
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-async function getTimestamps() {
-  try {
-    const value = await localforage.getItem(keys.timestamp)
-
-    return value as TimestampList
-  } catch (err) {
-    console.error(err)
-  }
-}
-
 async function hasDescription() {
   try {
     const value = await localforage.getItem(keys.issue)
@@ -111,10 +92,9 @@ const service = {
   getTasks,
   setEstimation,
   getEstimation,
-  setTimestamps,
-  getTimestamps,
   resetAll,
   hasEntries,
+
   hasDescription,
 }
 

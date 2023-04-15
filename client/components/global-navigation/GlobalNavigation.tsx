@@ -11,7 +11,7 @@ const GlobalNavigation = () => {
                       https%3A%2F%2Fdolooper.netlify.com%2F`
 
   return (
-    <header className="w-full text-gray-800 bg-amber-100 sticky top-0 z-10">
+    <header className="w-full text-gray-800 bg-amber-100 z-10">
       <nav>
         <Container>
           <div className="justify-between mx-auto lg:max-w-7xl md:items-center md:flex">
