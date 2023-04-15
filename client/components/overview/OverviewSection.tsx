@@ -97,7 +97,9 @@ const OverviewSection = ({ issue, dashboard, handleReset }: Props) => {
           ></ButtonIcon>
         </div>
       </div>
-      <div className={`${boxStyles} flex-auto w-full px-2 md:px-4 py-3`}>
+      <div
+        className={`${boxStyles} bg-amber-100 flex-auto w-full px-2 md:px-4 py-3`}
+      >
         <TasksList area="overview" />
       </div>
       <div className="w-128 my-3 flex">
