@@ -18,7 +18,7 @@ const Issue = ({ isEdit, value, action }: Props) => {
     />
   )
   const displayField = (
-    <div className="prose prose-neutral prose-sm prose-h1:mb-4 prose-h2:my-2 max-w-fit dark:prose-invert">
+    <div className="prose prose-neutral prose-sm prose-h1:mb-4 prose-h2:my-2 prose-p:px-0 max-w-fit dark:prose-invert">
       <ReactMarkdown>{value}</ReactMarkdown>
     </div>
   )
