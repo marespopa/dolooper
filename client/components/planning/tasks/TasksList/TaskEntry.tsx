@@ -103,7 +103,7 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
     >
       {isTogglable && taskWithCheckbox}
       {!isTogglable && (
-        <span className="text-sm font-medium text-gray-800">{task.value}</span>
+        <span className="text-sm font-medium">{task.value}</span>
       )}
       {controlPanel}
     </li>
@@ -117,12 +117,14 @@ const taskStyleOverview = `flex align-middle p-4
                   hover:cursor-pointer
                   hover:bg-gray-100 hover:text-b-900
                   focus:cursor-pointer
-                  transition-all duration-400 ease-in-out`
+                  transition-all duration-400 ease-in-out
+                  dark:hover:bg-gray-700`
 
 const taskStylePlanning = `flex align-middle p-4
                   hover:text-b-900
                   focus:cursor-pointer
                   transition-all duration-400 ease-in-out rounded-md
-                  first:mt-0 my-2 bg-white border border-gray-200`
+                  first:mt-0 my-2 bg-white border border-gray-200
+                  dark:bg-gray-700 dark:border-gray-600`
 
 export default TaskEntry

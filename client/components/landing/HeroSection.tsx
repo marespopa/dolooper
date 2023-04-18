@@ -25,13 +25,17 @@ const HeroSection = () => {
     <section className="py-8 sm:py-16 md:py-24 flex items-center justify-center">
       <div className="mx-auto max-w-[43rem]">
         <div className="text-center">
-          <p className="text-lg font-medium leading-8 text-gray-600">
+          <p className="text-lg font-medium leading-8 text-gray-600 dark:text-gray-200">
             Do one thing at a time, do it well with Dolooper.
           </p>
-          <h1 className="my-3 sm:my-4 md:my-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-10 tracking-tight text-black">
-            Productivity tool for <span className="text-blue-700">doers</span>
+          <h1
+            className="my-3 sm:my-4 md:my-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-10 tracking-tight 
+          text-black dark:text-white"
+          >
+            Productivity tool for{' '}
+            <span className="text-blue-700 dark:text-blue-500">doers</span>
           </h1>
-          <p className="text-lg leading-relaxed text-gray-800">
+          <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-100">
             Say goodbye to multitasking and hello to streamlined productivity
             with Dolooper. Streamline your productivity with{' '}
             <span className="font-bold">One Task Focus</span>,{' '}

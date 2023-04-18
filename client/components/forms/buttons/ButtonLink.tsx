@@ -20,6 +20,6 @@ const ButtonLink = ({ text, action, isDisabled, style = '' }: Props) => {
   )
 }
 
-const buttonStyles = `text-gray-800 underline`
+const buttonStyles = `text-gray-800 underline dark:text-gray-300`
 
 export default ButtonLink

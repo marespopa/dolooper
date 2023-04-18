@@ -1,6 +1,7 @@
 import '../styles/globals.scss'
 import { Montserrat } from '@next/font/google'
 import type { AppProps } from 'next/app'
+import { ThemeProvider } from 'next-themes'
 import Script from 'next/script'
 
 const defaultFont = Montserrat({ subsets: ['latin'] })
@@ -29,7 +30,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         });
     `}
       </Script>
-      <Component {...pageProps} />
+      <ThemeProvider attribute="class">
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   )
 }

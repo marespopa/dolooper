@@ -5,6 +5,8 @@ const useAutoResizeTextArea = (
   textAreaRef: MutableRefObject<HTMLTextAreaElement>,
   value: string,
 ) => {
+  const PADDING_BOTTOM = 32
+
   function resize(textAreaRef: HTMLTextAreaElement) {
     textAreaRef.style.height = '64px'
     textAreaRef.style.height = `${textAreaRef.scrollHeight}px`

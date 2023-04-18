@@ -35,7 +35,7 @@ const EstimationSection = ({ countdownInterval, handleTimeChange }: Props) => {
               step={SESSION_LENGTH.step}
               placeholder={'Add time'}
               onChange={(e) => handleTimeChange(e.target.value)}
-              className="w-full accent-gray-800"
+              className="w-full accent-gray-800 dark:accent-gray-600"
             />
             <div className="-mt-2 flex w-full justify-between">
               <span className="text-sm text-gray-400">{formattedTime.min}</span>

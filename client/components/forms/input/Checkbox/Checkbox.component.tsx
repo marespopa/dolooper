@@ -18,7 +18,10 @@ const Checkbox = ({ uuid, label, isChecked, setIsChecked }: Props) => {
         checked={isChecked}
         onChange={() => setIsChecked(uuid)}
       />
-      <label className={labelStyle} htmlFor={elementId}>
+      <label
+        className={`${labelStyle} ${isChecked && 'line-through'}`}
+        htmlFor={elementId}
+      >
         {label}
       </label>
     </div>
@@ -26,7 +29,7 @@ const Checkbox = ({ uuid, label, isChecked, setIsChecked }: Props) => {
 }
 
 const inputStyle = `w-4 h-4 text-gray-600 bg-gray-100 rounded border-gray-300 focus:ring-gray-500
-                    focus:ring-2 accent-gray-700 `
-const labelStyle = `cursor-pointer ml-2 text-sm font-medium text-gray-800`
+                    focus:ring-2 accent-gray-700 dark:bg-gray-700 dark:text-white`
+const labelStyle = `cursor-pointer ml-2 text-sm font-medium text-gray-800 dark:text-gray-300`
 
 export default Checkbox

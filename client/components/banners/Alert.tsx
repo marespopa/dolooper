@@ -2,9 +2,9 @@ import React, { ReactNode } from 'react'
 
 const ALERT_STYLE_TYPE_MAP = {
   error: 'bg-red-500 text-white',
-  info: '',
-  warning: 'bg-amber-200',
-  success: 'bg-teal-200',
+  info: 'dark:text-white',
+  warning: 'bg-amber-200 dark:bg-amber-600 dark:text-white',
+  success: 'bg-teal-200 dark:bg-teal-600 dark:text-white',
 } as const
 
 type AlertType = 'error' | 'info' | 'success' | 'warning'

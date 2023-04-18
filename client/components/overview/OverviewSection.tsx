@@ -40,7 +40,7 @@ const OverviewSection = ({
           setIsIssueEditable(!isIssueEditable)
         }}
       >
-        <h2 className="text-xs text-gray-600 mt-0 mb-1 flex justify-between">
+        <h2 className="text-xs mt-0 mb-1 flex justify-between">
           {sectionHeading}
         </h2>
         <Issue
