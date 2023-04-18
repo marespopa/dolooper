@@ -120,6 +120,7 @@ const taskStyleOverview = `flex align-middle p-4
                   transition-all duration-400 ease-in-out
                   dark:hover:bg-gray-700`
 
+
 const taskStylePlanning = `flex align-middle p-4
                   hover:text-b-900
                   focus:cursor-pointer
