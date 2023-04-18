@@ -32,8 +32,8 @@ const CookieConsent = () => {
   return (
     <section className="fixed bottom-0 right-0 w-full md:w-1/2 py-2 md:py-4">
       <Container>
-        <div className="flex flex-col items-start px-5 py-3 space-y-2 bg-gray-200 md:flex-row md:space-y-0 md:items-stretch md:space-x-2">
-          <div className="flex items-center flex-grow text-gray-900">
+        <div className="flex flex-col items-start px-5 py-3 space-y-2 bg-gray-200 dark:bg-gray-700 md:flex-row md:space-y-0 md:items-stretch md:space-x-2">
+          <div className="flex items-center flex-grow text-gray-900 dark:text-gray-200">
             <p className="text-sm font-medium">
               This site uses services that uses cookies to deliver better
               experience and analyze traffic. You can learn more about the

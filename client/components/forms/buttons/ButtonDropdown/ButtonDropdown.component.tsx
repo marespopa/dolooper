@@ -51,6 +51,7 @@ const ButtonDropdownComponent = ({ name, label, menuItems }: Props) => {
 const dropdownButtonStyle = `inline-block px-1 py-1.5 bg-gray-600 text-white font-medium text-xs
                             leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg
                             focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800
-                            active:shadow-lg transition duration-150 ease-in-out items-center whitespace-nowrap`
+                            active:shadow-lg transition duration-150 ease-in-out items-center whitespace-nowrap
+                            dark:bg-gray-300 dark:hover:bg-gray-400 dark:focus:bg-gray-400 dark:text-gray-700`
 
 export default ButtonDropdownComponent

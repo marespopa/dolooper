@@ -4,6 +4,8 @@ import PublicLayout from '../components/layouts/PublicLayout'
 import Container from '../components/container'
 
 const PrivacyPolicy: NextPage = () => {
+  const lastUpdated = '18 April 2023'
+
   return (
     <>
       <Head>
@@ -13,7 +15,7 @@ const PrivacyPolicy: NextPage = () => {
 
       <PublicLayout>
         <Container>
-          <section className="bg-white p-4">
+          <section className="py-4 px-4 md:px-0 md:py-8">
             <h1 className={mainHeadingStyle}>Privacy Policy</h1>
             <p className={paragraphStyle}>
               MARES POPA PFA (referred as the “Company”) is committed to
@@ -165,7 +167,7 @@ const PrivacyPolicy: NextPage = () => {
               If you have any questions regarding this Privacy Policy or the
               practices of this Site, please contact us by sending an email to
               contact@marespopa.com. Last Updated: This Privacy Policy was last
-              updated on 27 November 2022.
+              updated on {lastUpdated}.
             </p>
           </section>
         </Container>
