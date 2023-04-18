@@ -2,8 +2,9 @@ import React from 'react'
 import { useTheme } from 'next-themes'
 
 const ThemeToggle = () => {
-  const { theme, setTheme } = useTheme()
-  const isDarkMode = theme === 'dark'
+  const { systemTheme, theme, setTheme } = useTheme()
+  const currentTheme = theme === 'system' ? systemTheme : theme
+  const isDarkMode = currentTheme === 'dark'
   const toggleTheme = () => (isDarkMode ? setTheme('light') : setTheme('dark'))
 
   return (
