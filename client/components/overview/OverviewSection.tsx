@@ -40,8 +40,8 @@ const OverviewSection = ({
           setIsIssueEditable(!isIssueEditable)
         }}
       >
-        <h2 className="text-xs mt-0 mb-1 flex justify-between">
-          {sectionHeading}
+        <h2 className="text-xs mt-0 mb-1 flex justify-between text-gray-500 dark:text-gray-300">
+          <em className="italic">{sectionHeading}</em>
         </h2>
         <Issue
           action={issue.action.onUpdate}
