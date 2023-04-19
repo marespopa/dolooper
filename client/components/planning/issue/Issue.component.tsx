@@ -18,11 +18,15 @@ const Issue = ({ isEdit, value, action }: Props) => {
     />
   )
   const displayField = (
-    <div className="prose prose-neutral prose-sm prose-h1:mb-4 prose-h2:my-2 prose-p:px-0 max-w-fit dark:prose-invert">
+    <div className={fieldStyle}>
       <ReactMarkdown>{value}</ReactMarkdown>
     </div>
   )
   return <div>{isEdit ? editField : displayField}</div>
 }
+
+const fieldStyle = `prose prose-neutral prose-sm prose-h1:mb-4 prose-h2:my-2 
+   prose-p:px-0 max-w-fit prose-li:marker:text-amber-500
+   dark:prose-invert dark:prose-li:marker:text-amber-200`
 
 export default Issue
