@@ -5,22 +5,23 @@ const FEATURES = [
   {
     id: 1,
     title: 'One Task Focus',
-    description: `Work on only one task at a time for improved concentration and productivity`,
+    description: `Work on only one issue at a time for improved concentration and productivity`,
   },
   {
     id: 2,
-    title: 'Clear Planning',
-    description: `Break down complex tasks into manageable pieces for easier prioritization and success`,
-  },
-  {
-    id: 3,
     title: 'Time-Boxing',
     description: `Set time estimates for tasks to fight procrastination, prioritize work, and accomplish more in less time.`,
   },
   {
-    id: 4,
+    id: 3,
     title: 'Markdown support',
-    description: `Plus, our app supports markdown for easy formatting and organization.`,
+    description: `It also supports markdown for easy formatting and organization.`,
+  },
+  {
+    id: 4,
+    title: 'Enhanced privacy and security',
+    description: `Because your data is stored locally, it's less vulnerable to online attacks or data breaches.
+      Plus, you have complete control over your data and can choose to delete it at any time.`,
   },
 ]
 const FeatureSection = () => {
