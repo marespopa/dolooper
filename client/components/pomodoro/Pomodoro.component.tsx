@@ -128,7 +128,7 @@ const Pomodoro = () => {
 
   function triggerNotification() {
     if (window.Notification && Notification.permission !== 'denied') {
-      Notification.requestPermission(function (status) {
+      Notification.requestPermission(function (_status) {
         // status is "granted", if accepted by user
         new Notification('Pomodoro Timer', {
           body: isWorking
