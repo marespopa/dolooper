@@ -39,3 +39,7 @@ yarn-error.log*
 # firebase
 serviceAccountKey.json
 secrets
+
+**/public/workbox-*.js
+**/public/sw.js
+**/public/worker-*.js
