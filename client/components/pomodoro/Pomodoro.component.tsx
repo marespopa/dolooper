@@ -1,47 +1,44 @@
 import React, { useEffect, useState } from 'react'
 import ButtonSecondary from '../forms/buttons/ButtonSecondary'
-import PomodoroConfigSection from './ConfigSection'
 import { POMODORO_CONFIG } from 'utils/constants'
 import { toast } from 'react-toastify'
 import useCountdown from 'hooks/use-countdown'
-import { getPomodoroTime } from 'utils/functions'
+import { formatTimeFromMinutes, getPomodoroTime } from 'utils/functions'
+import PomodoroConfigSection from './ConfigSection'
+import service from 'services/service'
 
 const Pomodoro = () => {
-  const [minutes, setMinutes] = useState<number>(
-    POMODORO_CONFIG.workTime.default,
-  )
   const [showConfig, setShowConfig] = useState(false)
-  const [isWorking, setIsWorking] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
-  const [workTime, setWorkTime] = useState(POMODORO_CONFIG.workTime.default)
-  const [breakTime, setBreakTime] = useState(POMODORO_CONFIG.breakTime.default)
+  const [workTime, setWorkTime] = useState(POMODORO_CONFIG.default)
 
-  const [count, { startCountdown, stopCountdown, resetCountdown }] =
-    useCountdown({
-      countStart: minutes * 60,
-    })
+  const [count, { startCountdown, resetCountdown }] = useCountdown({
+    countStart: workTime * 60,
+  })
 
   useEffect(() => {
-    if (count === 0) {
+    service.getPomodoroTimer().then((results) => {
+      if (results) {
+        setWorkTime(parseInt(results))
+      }
+    })
+  }, [])
+
+  function updateTimerValue(value: string) {
+    service.setPomodoroTimer(value)
+  }
+
+  useEffect(() => {
+    if (isRunning && count === 0) {
       triggerNotification()
       setIsRunning(false)
-      /* TODO Reset minutes */
-      setMinutes(isWorking ? breakTime : workTime)
-      setIsWorking(!isWorking)
+      resetCountdown()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [count])
 
-  const statusLabel = isRunning
-    ? isWorking
-      ? 'Working'
-      : 'On a break'
-    : `Let's start`
-  const statusBg = isRunning
-    ? isWorking
-      ? 'bg-red-400'
-      : 'bg-teal-400'
-    : 'bg-amber-300 dark:bg-amber-200'
+  const statusLabel = isRunning ? 'Working' : `Let's start`
+  const statusBg = isRunning ? 'bg-red-400' : 'bg-amber-300 dark:bg-amber-200'
 
   return (
     <section className="flex flex-col justify-center items-center">
@@ -51,7 +48,8 @@ const Pomodoro = () => {
       </div>
 
       <h2 className="text-3xl font-bold mb-2">
-        {getPomodoroTime(count * 1000)}
+        {isRunning && getPomodoroTime(count * 1000)}
+        {!isRunning && `${formatTimeFromMinutes(workTime)}`}
       </h2>
       <div className="flex flex-row md:justify-center">
         {!isRunning ? (
@@ -69,11 +67,6 @@ const Pomodoro = () => {
           </>
         ) : (
           <>
-            <ButtonSecondary
-              variant="error"
-              text="Pause"
-              action={handlePause}
-            />
             <ButtonSecondary text="Reset" action={handleReset} style="ml-4" />
           </>
         )}
@@ -81,12 +74,8 @@ const Pomodoro = () => {
 
       {showConfig && (
         <PomodoroConfigSection
-          workTime={workTime}
-          breakTime={breakTime}
-          actions={{
-            handleWorkTimeChange: handleWorkTimeChange,
-            handleBreakTimeChange: handleBreakTimeChange,
-          }}
+          timer={workTime}
+          handleTimeChange={handleWorkTimeChange}
         />
       )}
     </section>
@@ -96,36 +85,21 @@ const Pomodoro = () => {
     if (Notification.permission !== 'granted') {
       Notification.requestPermission()
     }
-    if (!isWorking) {
-      setIsWorking(true)
-    }
-
-    setIsRunning(true)
+    setShowConfig(false)
+    resetCountdown()
     startCountdown()
-  }
-
-  function handlePause() {
-    stopCountdown()
-    setIsRunning(false)
+    setIsRunning(true)
+    updateTimerValue(`${workTime}`)
   }
 
   function handleReset() {
     setIsRunning(false)
-    setMinutes(workTime)
     resetCountdown()
   }
 
   function handleWorkTimeChange(value: string) {
     const parsedValue = parseInt(value, 10)
     setWorkTime(parsedValue)
-    if (!isRunning) {
-      handleReset()
-    }
-  }
-
-  function handleBreakTimeChange(value: string) {
-    const parsedValue = parseInt(value, 10)
-    setBreakTime(parsedValue)
   }
 
   function triggerNotification() {
@@ -133,15 +107,11 @@ const Pomodoro = () => {
       Notification.requestPermission(function (_status) {
         // status is "granted", if accepted by user
         new Notification('Pomodoro Timer', {
-          body: isWorking
-            ? 'Time to take a break!'
-            : 'Time to get back to work!',
+          body: 'Time to take a break!',
           icon: '/favicon.ico',
         })
       })
-      toast.success(
-        `${isWorking ? 'Time to take a break!' : 'Time to get back to work!'}`,
-      )
+      toast.success(`Time is up! Let's get a break.`)
     }
   }
 }

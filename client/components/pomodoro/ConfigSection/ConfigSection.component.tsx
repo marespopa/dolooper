@@ -3,50 +3,28 @@ import { POMODORO_CONFIG } from 'utils/constants'
 import TimeSelector from '../../forms/input/TimeSelector/TimeSelector'
 
 type Props = {
-  workTime: number
-  breakTime: number
-  actions: {
-    handleWorkTimeChange: (_v: string) => void
-    handleBreakTimeChange: (_v: string) => void
-  }
+  timer: number
+  handleTimeChange: (_v: string) => void
 }
 
-const PomodoroConfigSection = ({ workTime, breakTime, actions }: Props) => {
+const PomodoroConfigSection = ({ timer, handleTimeChange }: Props) => {
   return (
     <div className="mt-2 bg-white p-4 dark:bg-gray-500 dark:text-white transition-all duration-150 ease-in-out w-full">
       <div>
-        <h3>Work Time: {`${workTime}m`}</h3>
+        <h3>Timer: {`${timer}m`}</h3>
         <TimeSelector
-          name="workTimeTimer"
+          name="Timer"
           label={{
-            min: `${POMODORO_CONFIG.workTime.min}`,
-            max: `${POMODORO_CONFIG.workTime.max}`,
+            min: `${POMODORO_CONFIG.min}`,
+            max: `${POMODORO_CONFIG.max}`,
           }}
-          value={workTime}
+          value={timer}
           config={{
-            min: POMODORO_CONFIG.workTime.min,
-            max: POMODORO_CONFIG.workTime.max,
-            step: POMODORO_CONFIG.workTime.step,
+            min: POMODORO_CONFIG.min,
+            max: POMODORO_CONFIG.max,
+            step: POMODORO_CONFIG.step,
           }}
-          action={actions.handleWorkTimeChange}
-        />
-      </div>
-
-      <div className="my-3">
-        <h3>Break Time: {`${breakTime}m`}</h3>
-        <TimeSelector
-          name="breakTimeTimer"
-          label={{
-            min: `${POMODORO_CONFIG.breakTime.min}`,
-            max: `${POMODORO_CONFIG.breakTime.max}`,
-          }}
-          value={breakTime}
-          config={{
-            min: POMODORO_CONFIG.breakTime.min,
-            max: POMODORO_CONFIG.breakTime.max,
-            step: POMODORO_CONFIG.breakTime.step,
-          }}
-          action={actions.handleBreakTimeChange}
+          action={handleTimeChange}
         />
       </div>
     </div>

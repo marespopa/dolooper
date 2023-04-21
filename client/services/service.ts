@@ -5,6 +5,7 @@ const keys = {
   tasks: 'tasks',
   issue: 'issue',
   estimation: 'estimation',
+  timerDefault: 'timerDefault',
 }
 
 const MIN_VALID_FIELDS = 1
@@ -20,6 +21,23 @@ async function setDescription(description: string) {
 async function getDescription() {
   try {
     const value = await localforage.getItem(keys.issue)
+    return value as string
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function setPomodoroTimer(description: string) {
+  try {
+    return await localforage.setItem(keys.timerDefault, description)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function getPomodoroTimer() {
+  try {
+    const value = await localforage.getItem(keys.timerDefault)
     return value as string
   } catch (err) {
     console.error(err)
@@ -92,9 +110,10 @@ const service = {
   getTasks,
   setEstimation,
   getEstimation,
+  setPomodoroTimer,
+  getPomodoroTimer,
   resetAll,
   hasEntries,
-
   hasDescription,
 }
 

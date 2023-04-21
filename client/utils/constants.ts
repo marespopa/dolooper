@@ -14,18 +14,10 @@ export const ESTIMATION_CONFIG = {
 
 // values in config represent minutes
 export const POMODORO_CONFIG = {
-  workTime: {
-    min: 15,
-    max: 60,
-    step: 5,
-    default: 50,
-  },
-  breakTime: {
-    min: 5,
-    max: 30,
-    step: 5,
-    default: 15,
-  },
+  min: 15,
+  max: 60,
+  step: 5,
+  default: 50,
 }
 
 export const STATUSES = {
