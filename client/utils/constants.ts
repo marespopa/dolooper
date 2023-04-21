@@ -18,13 +18,13 @@ export const POMODORO_CONFIG = {
     min: 15,
     max: 60,
     step: 5,
-    default: 57,
+    default: 50,
   },
   breakTime: {
     min: 5,
     max: 30,
     step: 5,
-    default: 17,
+    default: 15,
   },
 }
 

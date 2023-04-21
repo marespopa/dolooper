@@ -49,7 +49,7 @@ export const formatTimeFromMS = (time: number) => {
   }
 
   const formattedString = formatDuration(duration, {
-    format: ['days', 'hours', 'minutes'],
+    format: ['days', 'hours', 'minutes', 'seconds'],
   })
 
   return formattedString
@@ -68,4 +68,22 @@ export const formatTimeFromMinutes = (time: number) => {
   const remainingMinutes = Math.round(minutes)
 
   return `${remainingHours}h ${remainingMinutes}m`
+}
+
+function padTo2Digits(num) {
+  return num.toString().padStart(2, '0')
+}
+
+export function getPomodoroTime(milliseconds) {
+  let seconds = Math.floor(milliseconds / 1000)
+  let minutes = Math.floor(seconds / 60)
+  let hours = Math.floor(minutes / 60)
+
+  seconds = seconds % 60
+  minutes = minutes % 60
+  hours = hours % 24
+
+  const hoursString = hours > 0 ? `${padTo2Digits(hours)}h ` : ''
+
+  return `${hoursString}${padTo2Digits(minutes)}m ${padTo2Digits(seconds)}s`
 }

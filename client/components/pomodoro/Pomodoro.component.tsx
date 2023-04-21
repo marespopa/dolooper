@@ -1,61 +1,57 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import ButtonSecondary from '../forms/buttons/ButtonSecondary'
 import PomodoroConfigSection from './ConfigSection'
 import { POMODORO_CONFIG } from 'utils/constants'
+import { toast } from 'react-toastify'
+import useCountdown from 'hooks/use-countdown'
+import { getPomodoroTime } from 'utils/functions'
 
 const Pomodoro = () => {
-  const [minutes, setMinutes] = useState(POMODORO_CONFIG.workTime.default)
-  const [seconds, setSeconds] = useState(0)
-  const [isWorking, setIsWorking] = useState(true)
-  const [isRunning, setIsRunning] = useState(false)
+  const [minutes, setMinutes] = useState<number>(
+    POMODORO_CONFIG.workTime.default,
+  )
   const [showConfig, setShowConfig] = useState(false)
+  const [isWorking, setIsWorking] = useState(false)
+  const [isRunning, setIsRunning] = useState(false)
   const [workTime, setWorkTime] = useState(POMODORO_CONFIG.workTime.default)
   const [breakTime, setBreakTime] = useState(POMODORO_CONFIG.breakTime.default)
 
-  useEffect(() => {
-    if (isRunning) {
-      if (minutes < 0) {
-        triggerNotification()
-        setIsRunning(false)
-        setIsWorking((prev) => !prev)
-        setMinutes(isWorking ? breakTime : workTime)
-        setSeconds(0)
-      } else {
-        const timerId = setTimeout(() => {
-          if (seconds === 0) {
-            setMinutes((prev) => prev - 1)
-            setSeconds(59)
-          } else {
-            setSeconds((prev) => prev - 1)
-          }
-        }, 1000)
+  const [count, { startCountdown, stopCountdown, resetCountdown }] =
+    useCountdown({
+      countStart: minutes * 60,
+    })
 
-        return () => clearTimeout(timerId)
-      }
+  useEffect(() => {
+    if (count === 0) {
+      triggerNotification()
+      setIsRunning(false)
+      /* TODO Reset minutes */
+      setMinutes(isWorking ? breakTime : workTime)
+      setIsWorking(!isWorking)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isRunning, minutes, seconds, isWorking, workTime, breakTime])
+  }, [count])
+
+  const statusLabel = isRunning
+    ? isWorking
+      ? 'Working'
+      : 'On a break'
+    : `Let's start`
+  const statusBg = isRunning
+    ? isWorking
+      ? 'bg-red-400'
+      : 'bg-teal-400'
+    : 'bg-amber-300 dark:bg-amber-200'
 
   return (
     <section className="flex flex-col justify-center items-center">
       <div className="mt-2 flex items-center">
-        <span
-          className={`w-4 h-4 rounded-full mr-2 ${
-            isRunning
-              ? isWorking
-                ? 'bg-red-500'
-                : 'bg-teal-500'
-              : 'bg-white dark:bg-amber-200'
-          }`}
-        ></span>
-        <span>
-          {isRunning ? (isWorking ? 'Working' : 'On Break') : "Let's start"}
-        </span>
+        <span className={`w-4 h-4 rounded-full mr-2 ${statusBg}`}></span>
+        <span>{statusLabel}</span>
       </div>
 
       <h2 className="text-3xl font-bold mb-2">
-        {minutes.toString().padStart(2, '0')}:
-        {seconds.toString().padStart(2, '0')}
+        {getPomodoroTime(count * 1000)}
       </h2>
       <div className="flex flex-row md:justify-center">
         {!isRunning ? (
@@ -100,24 +96,30 @@ const Pomodoro = () => {
     if (Notification.permission !== 'granted') {
       Notification.requestPermission()
     }
+    if (!isWorking) {
+      setIsWorking(true)
+    }
+
     setIsRunning(true)
+    startCountdown()
   }
 
   function handlePause() {
+    stopCountdown()
     setIsRunning(false)
   }
 
   function handleReset() {
     setIsRunning(false)
     setMinutes(workTime)
-    setSeconds(0)
+    resetCountdown()
   }
 
   function handleWorkTimeChange(value: string) {
     const parsedValue = parseInt(value, 10)
     setWorkTime(parsedValue)
     if (!isRunning) {
-      setMinutes(parsedValue)
+      handleReset()
     }
   }
 
@@ -137,6 +139,9 @@ const Pomodoro = () => {
           icon: '/favicon.ico',
         })
       })
+      toast.success(
+        `${isWorking ? 'Time to take a break!' : 'Time to get back to work!'}`,
+      )
     }
   }
 }
