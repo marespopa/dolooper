@@ -7,6 +7,7 @@ import Issue from '../planning/issue/Issue.component'
 import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
 import { formatTimeFromMinutes } from 'utils/functions'
+import Pomodoro from '../pomodoro/Pomodoro.component'
 type Props = {
   issue: {
     value: string
@@ -30,9 +31,9 @@ const OverviewSection = ({
   const sectionHeading = 'Currently working on'
   const estimationText = formatTimeFromMinutes(estimation)
   const taskDashboard = (
-    <div className="flex flex-col mb-6 md:md-0">
+    <div className="grid gap-4 my-4 md:md-0">
       <div
-        className={`${boxStyles} relative flex-auto w-full my-3 px-2 md:px-4 py-3`}
+        className={`${boxStyles} relative flex-auto w-full px-2 md:px-4 py-3 col-span-2`}
         onDoubleClick={() => {
           if (isIssueEditable) {
             return
@@ -55,14 +56,23 @@ const OverviewSection = ({
           ></ButtonIcon>
         </div>
       </div>
-      <div className={`${boxStyles} flex-auto w-full px-2 md:px-4 py-3`}>
+
+      <div className={`${boxStyles} bg-amber-100 col-span-2 px-2 md:px-4 py-3`}>
         <TasksList area="overview" />
+      </div>
+
+      <div
+        className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 col-span-2 md:col-span-1`}
+      >
+        <h2 className="font-bold mt-0 mb-3">Pomodoro Timer</h2>
+        <Pomodoro />
       </div>
 
       {!isLoading && (
         <div
-          className={`flex-auto w-full px-2 md:px-4 py-3 text-xs text-right`}
+          className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 col-span-2 md:col-span-1`}
         >
+          <h2 className="font-bold mt-0 mb-3">Initial Estimation</h2>
           <p>Estimated at {estimationText}</p>
         </div>
       )}

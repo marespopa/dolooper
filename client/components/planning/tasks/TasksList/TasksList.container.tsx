@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid'
 import React, { useEffect, useState } from 'react'
 import service from '../../../../services/service'
 import { Task, TaskArea } from '../../../../types/types'
-import ButtonDark from '../../../forms/buttons/ButtonDark'
+import ButtonSecondary from '../../../forms/buttons/ButtonSecondary'
 import TasksListComponent from './TasksList.component'
 
 interface Props {
@@ -92,7 +92,7 @@ const TasksList = ({ area }: Props) => {
         <div className="flex-auto">
           <Input id="task" value={task} action={setTask} label={taskAddLabel} />
         </div>
-        <ButtonDark
+        <ButtonSecondary
           action={() => handleAdd(task)}
           text="Add"
           isDisabled={isDisabled}

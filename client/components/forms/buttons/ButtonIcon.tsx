@@ -1,21 +1,29 @@
 import React from 'react'
-import DeleteSVG from '../../../icons/DeleteSVG'
-import LogSVG from '../../../icons/LogSVG'
-import PenSVG from '../../../icons/PenSVG'
-import ThreeDotsSVG from '../../../icons/ThreeDotsSVG'
+import PenSVG from 'icons/PenSVG'
+import DeleteSVG from 'icons/DeleteSVG'
+import LogSVG from 'icons/LogSVG'
+import ThreeDotsSVG from 'icons/ThreeDotsSVG'
+import PlaySVG from 'icons/PlaySVG'
+import PauseSVG from 'icons/PauseSVG'
+import SettingsSVG from 'icons/SettingsSVG'
+
+const ButtonIconVariants = {
+  delete: <DeleteSVG />,
+  edit: <PenSVG />,
+  more: <ThreeDotsSVG />,
+  log: <LogSVG />,
+  play: <PlaySVG />,
+  pause: <PauseSVG />,
+  settings: <SettingsSVG />,
+}
+
+type VariantValues = keyof typeof ButtonIconVariants
 
 interface Props {
-  variant: 'edit' | 'delete' | 'more' | 'log'
+  variant: VariantValues
   action: () => void
   isDisabled?: boolean
   style?: string
-}
-
-const typeToSvg = {
-  edit: <PenSVG />,
-  more: <ThreeDotsSVG />,
-  delete: <DeleteSVG />,
-  log: <LogSVG />,
 }
 
 const ButtonIcon = ({ variant, action, isDisabled, style = '' }: Props) => {
@@ -28,7 +36,7 @@ const ButtonIcon = ({ variant, action, isDisabled, style = '' }: Props) => {
       role="button"
       disabled={isDisabled}
     >
-      {typeToSvg[variant]}
+      {ButtonIconVariants[variant]}
     </button>
   )
 }
@@ -37,6 +45,6 @@ const buttonStyles = `ml-2 inline-block px-1 py-1.5 bg-gray-600 text-white font-
                         leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg
                         focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800
                         active:shadow-lg transition duration-150 ease-in-out items-center whitespace-nowrap
-                        dark:bg-gray-200 dark:text-gray-700`
+                        dark:bg-amber-200 dark:hover:bg-amber-300 dark:focus:bg-amber-300 dark:text-gray-700`
 
 export default ButtonIcon

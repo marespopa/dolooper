@@ -20,7 +20,8 @@
       "@/components/*": ["components/*"],
       "@/utils/*": ["/utils/*"],
       "@/hooks/*": ["/hooks/*"],
-      "@/types/*": ["/types/*"]
+      "@/types/*": ["/types/*"],
+      "@/icons/*": ["../icons"]
     },
     "plugins": [
       {
@@ -28,6 +29,12 @@
       }
     ]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules", "jest.config.js"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "pages/sw.js"
+  ],
+  "exclude": ["node_modules", "jest.config.js", "sw.js"]
 }

@@ -4,11 +4,28 @@ export const HOUR = MINUTE * 60
 export const DAY = HOUR * 24
 export const MIN_TIME_FOR_EXTENSION = MINUTE * 15
 
-export const SESSION_LENGTH = {
-  min: 15, //minutes
-  max: 60 * 5, //hours
+// values in config represent minutes
+export const ESTIMATION_CONFIG = {
+  min: 15,
+  max: 60 * 5,
   step: 15,
   default: 60 * 2.5,
+}
+
+// values in config represent minutes
+export const POMODORO_CONFIG = {
+  workTime: {
+    min: 15,
+    max: 60,
+    step: 5,
+    default: 57,
+  },
+  breakTime: {
+    min: 5,
+    max: 30,
+    step: 5,
+    default: 17,
+  },
 }
 
 export const STATUSES = {

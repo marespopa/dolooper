@@ -23,7 +23,7 @@ const ButtonDropdownMenu = ({
             <li
               key={item.id}
               onClick={() => item.action(item.id)}
-              className="text-gray-700 block px-4 py-2 text-sm hover:font-bold"
+              className="text-gray-700 block px-4 py-2 text-sm hover:font-bold dark:text-white"
               role="menuitem"
               id={`${labelledBy}-item-${index}`}
             >
@@ -37,6 +37,6 @@ const ButtonDropdownMenu = ({
 }
 
 const menuStyles = `absolute right-0 z-10 mt-2 w-32 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black 
-  ring-opacity-5 focus:outline-none`
+  ring-opacity-5 focus:outline-none dark:bg-gray-500`
 
 export default ButtonDropdownMenu

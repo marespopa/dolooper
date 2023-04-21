@@ -3,10 +3,26 @@ import { Montserrat } from '@next/font/google'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'
 import Script from 'next/script'
+import { useEffect } from 'react'
 
 const defaultFont = Montserrat({ subsets: ['latin'] })
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker
+          .register('/sw.js')
+          .then((reg) => {
+            console.log('Service worker registered', reg)
+          })
+          .catch((err) => {
+            console.log('Service worker registration failed', err)
+          })
+      })
+    }
+  }, [])
+
   return (
     <>
       <style jsx global>

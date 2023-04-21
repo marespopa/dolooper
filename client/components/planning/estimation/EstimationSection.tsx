@@ -1,7 +1,8 @@
 import React from 'react'
-import { SESSION_LENGTH } from 'utils/constants'
+import { ESTIMATION_CONFIG } from 'utils/constants'
 import { formatTimeFromMinutes } from 'utils/functions'
 import SectionHeading from '../common/SectionHeading.component'
+import TimeSelector from '@/components/forms/input/TimeSelector/TimeSelector'
 
 interface Props {
   countdownInterval: number
@@ -11,8 +12,8 @@ interface Props {
 const EstimationSection = ({ countdownInterval, handleTimeChange }: Props) => {
   const formattedTime = {
     selected: formatTimeFromMinutes(countdownInterval),
-    min: formatTimeFromMinutes(SESSION_LENGTH.min),
-    max: formatTimeFromMinutes(SESSION_LENGTH.max),
+    min: formatTimeFromMinutes(ESTIMATION_CONFIG.min),
+    max: formatTimeFromMinutes(ESTIMATION_CONFIG.max),
   }
 
   return (
@@ -24,24 +25,21 @@ const EstimationSection = ({ countdownInterval, handleTimeChange }: Props) => {
       />
       <div className="mb-3">
         <div className={`relative z-0 md:w-1/2 min-h-full`}>
-          <div className="price-range">
-            <span className="text-strong">{formattedTime.selected}</span>
-            <input
-              id="timer"
-              type="range"
-              min={SESSION_LENGTH.min}
-              max={SESSION_LENGTH.max}
-              value={countdownInterval}
-              step={SESSION_LENGTH.step}
-              placeholder={'Add time'}
-              onChange={(e) => handleTimeChange(e.target.value)}
-              className="w-full accent-gray-800 dark:accent-gray-600"
-            />
-            <div className="-mt-2 flex w-full justify-between">
-              <span className="text-sm text-gray-400">{formattedTime.min}</span>
-              <span className="text-sm text-gray-400">{formattedTime.max}</span>
-            </div>
-          </div>
+          <TimeSelector
+            name="timer"
+            label={{
+              min: formattedTime.min,
+              title: formattedTime.selected,
+              max: formattedTime.max,
+            }}
+            value={countdownInterval}
+            config={{
+              min: ESTIMATION_CONFIG.min,
+              max: ESTIMATION_CONFIG.max,
+              step: ESTIMATION_CONFIG.step,
+            }}
+            action={handleTimeChange}
+          />
         </div>
       </div>
     </section>
