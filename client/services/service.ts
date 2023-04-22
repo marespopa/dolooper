@@ -5,7 +5,8 @@ const keys = {
   tasks: 'tasks',
   issue: 'issue',
   estimation: 'estimation',
-  timerDefault: 'timerDefault',
+  startTime: 'startTimeForTimer',
+  elapsedTime: 'elapsedTimeForTimer',
 }
 
 const MIN_VALID_FIELDS = 1
@@ -27,18 +28,51 @@ async function getDescription() {
   }
 }
 
-async function setPomodoroTimer(description: string) {
+async function setStartTime(description: string) {
   try {
-    return await localforage.setItem(keys.timerDefault, description)
+    return await localforage.setItem(keys.startTime, description)
   } catch (err) {
     console.error(err)
   }
 }
 
-async function getPomodoroTimer() {
+async function getStartTime() {
   try {
-    const value = await localforage.getItem(keys.timerDefault)
+    const value = await localforage.getItem(keys.startTime)
     return value as string
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function removeStartTime() {
+  try {
+    return await localforage.removeItem(keys.startTime)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function setElapsedTime(description: string) {
+  try {
+    return await localforage.setItem(keys.elapsedTime, description)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function getElapsedTime() {
+  try {
+    const value = await localforage.getItem(keys.elapsedTime)
+    return value as string
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function removeElapsedTime() {
+  try {
+    return await localforage.removeItem(keys.elapsedTime)
   } catch (err) {
     console.error(err)
   }
@@ -110,8 +144,12 @@ const service = {
   getTasks,
   setEstimation,
   getEstimation,
-  setPomodoroTimer,
-  getPomodoroTimer,
+  setStartTime,
+  getStartTime,
+  removeStartTime,
+  getElapsedTime,
+  setElapsedTime,
+  removeElapsedTime,
   resetAll,
   hasEntries,
   hasDescription,

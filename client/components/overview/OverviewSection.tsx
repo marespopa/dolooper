@@ -7,7 +7,7 @@ import Issue from '../planning/issue/Issue.component'
 import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
 import { formatTimeFromMinutes } from 'utils/functions'
-import Pomodoro from '../pomodoro/Pomodoro.component'
+import Timer from '../timer'
 type Props = {
   issue: {
     value: string
@@ -31,7 +31,7 @@ const OverviewSection = ({
   const sectionHeading = 'Currently working on'
   const estimationText = formatTimeFromMinutes(estimation)
   const taskDashboard = (
-    <div className="grid gap-4 my-4 md:md-0">
+    <div className="my-4 md:md-0">
       <div
         className={`${boxStyles} relative flex-auto w-full px-2 md:px-4 py-3 col-span-2`}
         onDoubleClick={() => {
@@ -57,23 +57,26 @@ const OverviewSection = ({
         </div>
       </div>
 
-      <div className={`${boxStyles} bg-amber-100 col-span-2 px-2 md:px-4 py-3`}>
+      <div
+        className={`${boxStyles} bg-amber-100 col-span-2 px-2 md:px-4 py-3 my-4`}
+      >
         <TasksList area="overview" />
       </div>
 
-      <div
-        className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 col-span-2 md:col-span-1`}
-      >
-        <h2 className="font-bold mt-0 mb-3">Pomodoro Timer</h2>
-        <Pomodoro />
-      </div>
-
       {!isLoading && (
-        <div
-          className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 col-span-2 md:col-span-1`}
-        >
-          <h2 className="font-bold mt-0 mb-3">Initial Estimation</h2>
-          <p>Estimated at {estimationText}</p>
+        <div className="flex flex-row">
+          <section
+            className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 w-full md:w-1/2 my-4 mr-2`}
+          >
+            <h2 className="font-bold mt-0 mb-3">Timer</h2>
+            <Timer />
+          </section>
+          <section
+            className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 w-full md:w-1/2 my-4 ml-2`}
+          >
+            <h2 className="font-bold mt-0 mb-3">Initial Estimation</h2>
+            <p>Estimated at {estimationText}</p>
+          </section>
         </div>
       )}
     </div>
