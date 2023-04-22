@@ -64,7 +64,7 @@ const OverviewSection = ({
       </div>
 
       {!isLoading && (
-        <div className="flex flex-row">
+        <div className="flex flex-col md:flex-row">
           <section
             className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 w-full md:w-1/2 my-4 mr-2`}
           >
