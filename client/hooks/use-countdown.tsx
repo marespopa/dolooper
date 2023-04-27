@@ -73,10 +73,6 @@ function useCountdown(
     countStop: number | undefined
 
   if ('seconds' in countdownOption) {
-    console.warn(
-      '[useCountdown:DEPRECATED] new interface is already available (see https://usehooks-ts.com/react-hook/use-countdown), the old version will retire on usehooks-ts@3.',
-    )
-
     isDeprecated = true
     countStart = countdownOption.seconds
     intervalMs = countdownOption.interval

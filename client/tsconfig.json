@@ -21,7 +21,8 @@
       "@/utils/*": ["/utils/*"],
       "@/hooks/*": ["/hooks/*"],
       "@/types/*": ["/types/*"],
-      "@/icons/*": ["../icons"]
+      "@/icons/*": ["../icons"],
+      "@/assets/*": ["assets/*"]
     },
     "plugins": [
       {

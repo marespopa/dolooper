@@ -1,5 +1,5 @@
 import React from 'react'
-import { POMODORO_CONFIG } from 'utils/constants'
+import { TIMER_CONFIG } from 'utils/constants'
 import TimeSelector from '../../forms/input/TimeSelector/TimeSelector'
 
 type Props = {
@@ -7,22 +7,24 @@ type Props = {
   handleTimeChange: (_v: string) => void
 }
 
-const PomodoroConfigSection = ({ timer, handleTimeChange }: Props) => {
+const TimerConfigSection = ({ timer, handleTimeChange }: Props) => {
   return (
     <div className="mt-2 bg-white p-4 dark:bg-gray-500 dark:text-white transition-all duration-150 ease-in-out w-full">
       <div>
-        <h3>Timer: {`${timer}m`}</h3>
+        <h3>
+          Set timer for <span className="font-bold">{`${timer}m`}</span>
+        </h3>
         <TimeSelector
           name="Timer"
           label={{
-            min: `${POMODORO_CONFIG.min}`,
-            max: `${POMODORO_CONFIG.max}`,
+            min: `${TIMER_CONFIG.min}`,
+            max: `${TIMER_CONFIG.max}`,
           }}
           value={timer}
           config={{
-            min: POMODORO_CONFIG.min,
-            max: POMODORO_CONFIG.max,
-            step: POMODORO_CONFIG.step,
+            min: TIMER_CONFIG.min,
+            max: TIMER_CONFIG.max,
+            step: TIMER_CONFIG.step,
           }}
           action={handleTimeChange}
         />
@@ -31,4 +33,4 @@ const PomodoroConfigSection = ({ timer, handleTimeChange }: Props) => {
   )
 }
 
-export default PomodoroConfigSection
+export default TimerConfigSection

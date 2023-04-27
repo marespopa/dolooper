@@ -13,11 +13,11 @@ export const ESTIMATION_CONFIG = {
 }
 
 // values in config represent minutes
-export const POMODORO_CONFIG = {
-  min: 15,
+export const TIMER_CONFIG = {
+  min: 1,
   max: 60,
-  step: 5,
-  default: 50,
+  step: 1,
+  default: 40,
 }
 
 export const STATUSES = {

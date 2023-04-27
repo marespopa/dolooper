@@ -1,3 +1,3 @@
-import PomodoroConfigSection from './ConfigSection.component'
+import TimerConfigSection from './ConfigSection.component'
 
-export default PomodoroConfigSection
+export default TimerConfigSection

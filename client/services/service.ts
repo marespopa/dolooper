@@ -1,15 +1,21 @@
 import localforage from 'localforage'
 import { type Task } from '../types/types'
 
+type TimeVariants = 'start' | 'work'
+
 const keys = {
   tasks: 'tasks',
   issue: 'issue',
   estimation: 'estimation',
   startTime: 'startTimeForTimer',
-  elapsedTime: 'elapsedTimeForTimer',
+  workTime: 'workTimeForTimer',
 }
 
 const MIN_VALID_FIELDS = 1
+const timeKeyMap = {
+  start: keys.startTime,
+  work: keys.workTime,
+}
 
 async function setDescription(description: string) {
   try {
@@ -28,26 +34,26 @@ async function getDescription() {
   }
 }
 
-async function setStartTime(timeInMs: number) {
+async function setTime(variant: TimeVariants, timeInMs: number) {
   try {
-    return await localforage.setItem(keys.startTime, timeInMs)
+    return await localforage.setItem(timeKeyMap[variant], timeInMs)
   } catch (err) {
     console.error(err)
   }
 }
 
-async function getStartTime() {
+async function getTime(variant: TimeVariants) {
   try {
-    const value = await localforage.getItem(keys.startTime)
+    const value = await localforage.getItem(timeKeyMap[variant])
     return value as number
   } catch (err) {
     console.error(err)
   }
 }
 
-async function removeStartTime() {
+async function removeTime(variant: TimeVariants) {
   try {
-    return await localforage.removeItem(keys.startTime)
+    return await localforage.removeItem(timeKeyMap[variant])
   } catch (err) {
     console.error(err)
   }
@@ -119,9 +125,9 @@ const service = {
   getTasks,
   setEstimation,
   getEstimation,
-  setStartTime,
-  getStartTime,
-  removeStartTime,
+  setTime,
+  getTime,
+  removeTime,
   resetAll,
   hasEntries,
   hasDescription,

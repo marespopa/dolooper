@@ -21,7 +21,8 @@
     "react-countdown": "^2.3.5",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.6",
-    "react-toastify": "^9.1.1"
+    "react-toastify": "^9.1.1",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
