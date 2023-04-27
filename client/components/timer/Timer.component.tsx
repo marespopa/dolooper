@@ -119,15 +119,8 @@ function Timer() {
   }
 
   function triggerBreakNotification() {
-    if (!hasNotificationsSupport()) {
-      return
-    }
-
-    if (Notification.permission === 'granted') {
-      playSound()
-      new Notification('Time for a break!')
-      toast.info('Time for a break!')
-    }
+    playSound()
+    toast.info('Time for a break!')
   }
 
   function getStatusBgStyle() {
@@ -168,10 +161,6 @@ function Timer() {
     )
   }
 
-  function hasNotificationsSupport() {
-    return 'Notification' in window
-  }
-
   function handleStart() {
     if (intervalRef.current !== null) {
       return
@@ -180,7 +169,6 @@ function Timer() {
     setShowConfiguration(false)
     const currentTime = Date.now()
     setIsNotificationShown(false)
-    requestNotificationPermissions()
     setStartTime(currentTime)
     service.setTime('start', Date.now())
     startTimer()
@@ -215,16 +203,6 @@ function Timer() {
 
     setWorkTime(value)
     service.setTime('work', value)
-  }
-
-  function requestNotificationPermissions() {
-    if (!hasNotificationsSupport()) {
-      return
-    }
-
-    if (Notification.permission !== 'denied') {
-      Notification.requestPermission()
-    }
   }
 }
 
