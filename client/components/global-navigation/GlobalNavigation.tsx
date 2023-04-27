@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import Container from '../container/Container.component'
 
 import ThemeToggle from './ThemeToggle'
-import TwitterButton from './TwitterButton'
 import GlobalLogo from './GlobalLogo'
 
 const GlobalNavigation = () => {
@@ -25,7 +24,6 @@ const GlobalNavigation = () => {
               <GlobalLogo />
             </div>
             <div className="flex justify-center lg:justify-between py-3 md:py-5">
-              <TwitterButton />
               <ThemeToggle />
             </div>
           </div>
