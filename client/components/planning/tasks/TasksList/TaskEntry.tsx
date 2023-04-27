@@ -17,6 +17,27 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
   const isUpdateDisabled = !editValue || editValue.length === 0
   const isTogglable = isOverview
 
+  if (isEditMode) {
+    return (
+      <li key={task.key} className={`${taskEditStyle}`}>
+        {renderEditForm()}
+      </li>
+    )
+  }
+
+  return (
+    <li
+      key={task.key}
+      className={isOverview ? taskStyleOverview : taskStylePlanning}
+    >
+      {isTogglable && renderTaskWithCheckbox()}
+      {!isTogglable && (
+        <span className="text-sm font-medium">{task.value}</span>
+      )}
+      {renderControlPanel()}
+    </li>
+  )
+
   function handleEditValue(value: string) {
     setEditValue(value)
   }
@@ -32,80 +53,65 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
     setIsEditMode(!isEditMode)
   }
 
-  const taskWithCheckbox = (
-    <Checkbox
-      uuid={task.key}
-      label={task.value}
-      isChecked={task.isDone}
-      setIsChecked={(key) => actions.handleToggle(key)}
-    />
-  )
-
-  const controlPanel = (
-    <div className="ml-auto flex-end text-xs">
-      <ButtonDropdown
-        name={`task-${task.key}-dropdownMenu`}
-        label={''}
-        menuItems={[
-          {
-            id: task.key,
-            label: 'Edit',
-            action: handleEditToggle,
-          },
-          {
-            id: task.key,
-            label: 'Remove',
-            action: actions.handleDelete,
-          },
-        ]}
+  function renderTaskWithCheckbox() {
+    return (
+      <Checkbox
+        uuid={task.key}
+        label={task.value}
+        isChecked={task.isDone}
+        setIsChecked={(key) => actions.handleToggle(key)}
       />
-    </div>
-  )
+    )
+  }
 
-  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
+  function renderControlPanel() {
+    return (
+      <div className="ml-auto flex-end text-xs">
+        <ButtonDropdown
+          name={`task-${task.key}-dropdownMenu`}
+          label={''}
+          menuItems={[
+            {
+              id: task.key,
+              label: 'Edit',
+              action: handleEditToggle,
+            },
+            {
+              id: task.key,
+              label: 'Remove',
+              action: actions.handleDelete,
+            },
+          ]}
+        />
+      </div>
+    )
+  }
+
+  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
     e.preventDefault()
 
     handleUpdateTask(task.key, editValue)
   }
 
-  const editForm = (
-    <form onSubmit={handleSubmit} className="flex flex-row w-full">
-      <span className="flex-auto">
-        <Input
-          id={`task-${task.key}`}
-          value={editValue}
-          action={handleEditValue}
-          label={'Edit Task'}
-        />
-      </span>
-      <ButtonSecondary
-        action={() => handleUpdateTask(task.key, editValue)}
-        text="Save"
-        isDisabled={isUpdateDisabled}
-      />
-    </form>
-  )
-
-  if (isEditMode) {
+  function renderEditForm() {
     return (
-      <li key={task.key} className={`${taskEditStyle}`}>
-        {editForm}
-      </li>
+      <form onSubmit={handleSubmit} className="flex flex-row w-full">
+        <span className="flex-auto">
+          <Input
+            id={`task-${task.key}`}
+            value={editValue}
+            action={handleEditValue}
+            label={'Edit Task'}
+          />
+        </span>
+        <ButtonSecondary
+          action={() => handleUpdateTask(task.key, editValue)}
+          text="Save"
+          isDisabled={isUpdateDisabled}
+        />
+      </form>
     )
   }
-
-  return (
-    <li
-      key={task.key}
-      className={isOverview ? taskStyleOverview : taskStylePlanning}
-    >
-      {isTogglable && taskWithCheckbox}
-      {!isTogglable && (
-        <span className="text-sm font-medium">{task.value}</span>
-      )}
-      {controlPanel}
-    </li>
-  )
 }
 
 const taskEditStyle = `flex align-middle p-0 my-2

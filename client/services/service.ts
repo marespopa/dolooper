@@ -28,9 +28,9 @@ async function getDescription() {
   }
 }
 
-async function setStartTime(description: string) {
+async function setStartTime(timeInMs: number) {
   try {
-    return await localforage.setItem(keys.startTime, description)
+    return await localforage.setItem(keys.startTime, timeInMs)
   } catch (err) {
     console.error(err)
   }
@@ -39,7 +39,7 @@ async function setStartTime(description: string) {
 async function getStartTime() {
   try {
     const value = await localforage.getItem(keys.startTime)
-    return value as string
+    return value as number
   } catch (err) {
     console.error(err)
   }
@@ -48,31 +48,6 @@ async function getStartTime() {
 async function removeStartTime() {
   try {
     return await localforage.removeItem(keys.startTime)
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-async function setElapsedTime(description: string) {
-  try {
-    return await localforage.setItem(keys.elapsedTime, description)
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-async function getElapsedTime() {
-  try {
-    const value = await localforage.getItem(keys.elapsedTime)
-    return value as string
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-async function removeElapsedTime() {
-  try {
-    return await localforage.removeItem(keys.elapsedTime)
   } catch (err) {
     console.error(err)
   }
@@ -147,9 +122,6 @@ const service = {
   setStartTime,
   getStartTime,
   removeStartTime,
-  getElapsedTime,
-  setElapsedTime,
-  removeElapsedTime,
   resetAll,
   hasEntries,
   hasDescription,
