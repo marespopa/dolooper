@@ -25,3 +25,33 @@ export const STATUSES = {
   break: 'Break',
   work: 'Work',
 }
+
+export const helperTags = [
+  {
+    name: 'h1',
+    label: 'Title',
+    value: '# ',
+  },
+  {
+    name: 'h2',
+    label: 'Heading',
+    value: '## ',
+  },
+  {
+    name: 'h3',
+    label: 'Sub-Heading',
+    value: '### ',
+  },
+  {
+    name: 'p',
+    label: 'Paragraph',
+    value: '',
+  },
+  {
+    name: 'li',
+    label: 'List',
+    value: '- ',
+  },
+] as const
+
+export type HelperTags = (typeof helperTags)[number]['name']

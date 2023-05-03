@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { ComponentPropsWithoutRef } from 'react'
 
 export const defaultMeta = {
   title: 'Dolooper - Plan. Focus. Execute.',
@@ -65,7 +66,7 @@ export default function Seo(props: SeoProps) {
   )
 }
 
-const favicons: Array<React.ComponentPropsWithoutRef<'link'>> = [
+const favicons: Array<ComponentPropsWithoutRef<'link'>> = [
   {
     rel: 'apple-touch-icon',
     sizes: '180x180',

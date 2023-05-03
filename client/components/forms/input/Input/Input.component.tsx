@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FormEvent, MutableRefObject, forwardRef } from 'react'
 
 interface Props {
   action: (_arg: string) => void
@@ -9,8 +9,9 @@ interface Props {
   isDisabled?: boolean
 }
 
-const Input = ({ action, id, label, value, isDisabled = false }: Props) => {
-  const commonProps = {
+const Input = (props: Props, ref: MutableRefObject<HTMLInputElement>) => {
+  const { action, id, label, value, isDisabled = false } = props
+  const inputElProps = {
     id,
     disabled: isDisabled,
     placeholder: ' ',
@@ -20,9 +21,10 @@ const Input = ({ action, id, label, value, isDisabled = false }: Props) => {
   return (
     <div className="relative z-0 ">
       <input
-        {...commonProps}
+        ref={ref}
+        {...inputElProps}
         className={inputStyle}
-        onChange={(e: React.FormEvent<HTMLInputElement>) => {
+        onChange={(e: FormEvent<HTMLInputElement>) => {
           action(e.currentTarget.value)
         }}
       />
@@ -43,4 +45,4 @@ const labelStyles = `absolute text-sm text-gray-500 duration-400 transform
                      -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-gray-400
                      peer-placeholder-shown:scale-100 cursor: text; peer-placeholder-shown:translate-y-0
                      peer-focus:scale-75 peer-focus:-translate-y-4 dark:text-gray-400`
-export default Input
+export default forwardRef(Input)

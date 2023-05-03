@@ -1,6 +1,6 @@
 import React from 'react'
 
-type SecondaryButtonVariants = 'error' | 'default' | 'success'
+type SecondaryButtonVariants = 'error' | 'default' | 'success' | 'outline'
 
 interface Props {
   text: string
@@ -37,6 +37,8 @@ const buttonStyles = (variant: SecondaryButtonVariants) => {
       return successStyles
     case 'error':
       return errorStyles
+    case 'outline':
+      return outlineStyles
     default:
       return defaultStyles
   }
@@ -50,10 +52,17 @@ const commonStyles = `inline-block px-6 py-2.5 font-medium text-lg leading-tight
 
 const defaultStyles = `${commonStyles}
                         text-white
-                        border-gray-600 bg-gray-600
+                        border-gray-700 bg-gray-600
                         hover:bg-gray-800
                         focus:bg-gray-800
-                        dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-800`
+                        dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-800`
+
+const outlineStyles = `${commonStyles}
+                        text-gray-600
+                        border-gray-700 bg-transparent
+                        hover:bg-gray-300
+                        focus:bg-gray-300
+                        dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-900`
 
 const successStyles = `${commonStyles}
                         text-white

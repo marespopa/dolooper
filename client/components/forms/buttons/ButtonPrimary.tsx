@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
 interface Props {
-  text: string | React.ReactNode
+  text: string | ReactNode
   action: () => void
   isDisabled?: boolean
   style?: string

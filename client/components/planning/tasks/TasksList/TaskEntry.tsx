@@ -2,7 +2,7 @@ import ButtonSecondary from '@/components/forms/buttons/ButtonSecondary'
 import ButtonDropdown from '@/components/forms/buttons/ButtonDropdown'
 import Checkbox from '@/components/forms/input/Checkbox'
 import Input from '@/components/forms/input/Input'
-import React, { useState } from 'react'
+import React, { SyntheticEvent, useState } from 'react'
 import { Task, TaskActions } from 'types/types'
 
 type Props = {
@@ -87,7 +87,7 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
     )
   }
 
-  function handleSubmit(e: React.SyntheticEvent<HTMLFormElement>) {
+  function handleSubmit(e: SyntheticEvent<HTMLFormElement>) {
     e.preventDefault()
 
     handleUpdateTask(task.key, editValue)

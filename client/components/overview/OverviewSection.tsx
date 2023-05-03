@@ -45,7 +45,7 @@ const OverviewSection = ({
           <em className="italic">{sectionHeading}</em>
         </h2>
         <Issue
-          action={issue.action.onUpdate}
+          handleUpdateValue={issue.action.onUpdate}
           value={issue.value}
           isEdit={isIssueEditable}
         />

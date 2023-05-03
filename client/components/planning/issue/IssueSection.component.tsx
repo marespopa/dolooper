@@ -27,7 +27,11 @@ const IssueSection = () => {
         subHeading={'* You can use markdown for writing the description'}
       />
       <div className={`relative z-0 min-h-full py-2`}>
-        <Issue isEdit={true} value={issue} action={updateDescription} />
+        <Issue
+          isEdit={true}
+          value={issue}
+          handleUpdateValue={updateDescription}
+        />
       </div>
     </section>
   )
