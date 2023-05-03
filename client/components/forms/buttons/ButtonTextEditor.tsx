@@ -1,6 +1,6 @@
 import HeadingIconSVG from 'icons/editor/HeadingIconSVG'
 import ListIconSVG from 'icons/editor/ListIconSVG'
-import ParagraphIconSVG from 'icons/editor/PAragraphIconSVG'
+import ParagraphIconSVG from 'icons/editor/ParagraphIconSVG'
 import SubHeadingIconSVG from 'icons/editor/SubHeadingIconSVG'
 import TitleIconSVG from 'icons/editor/TitleIconSVG'
 import React from 'react'
