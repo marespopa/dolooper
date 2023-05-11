@@ -9,8 +9,8 @@ const FEATURES = [
   },
   {
     id: 2,
-    title: 'Time-Boxing',
-    description: `Set time estimates for tasks to fight procrastination, prioritize work, and accomplish more in less time.`,
+    title: 'Timer',
+    description: `Time-track your work to fight procrastination, prioritize work, and accomplish more in less time.`,
   },
   {
     id: 3,

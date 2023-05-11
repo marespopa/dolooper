@@ -6,7 +6,6 @@ type TimeVariants = 'start' | 'work'
 const keys = {
   tasks: 'tasks',
   issue: 'issue',
-  estimation: 'estimation',
   startTime: 'startTimeForTimer',
   workTime: 'workTimeForTimer',
 }
@@ -76,24 +75,6 @@ async function getTasks() {
   }
 }
 
-async function setEstimation(interval: number) {
-  try {
-    return await localforage.setItem(keys.estimation, interval)
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-async function getEstimation() {
-  try {
-    const value = await localforage.getItem(keys.estimation)
-
-    return value as number
-  } catch (err) {
-    console.error(err)
-  }
-}
-
 async function hasDescription() {
   try {
     const value = await localforage.getItem(keys.issue)
@@ -123,8 +104,6 @@ const service = {
   setDescription,
   setTasks,
   getTasks,
-  setEstimation,
-  getEstimation,
   setTime,
   getTime,
   removeTime,

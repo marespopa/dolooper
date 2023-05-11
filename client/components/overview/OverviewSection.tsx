@@ -6,7 +6,6 @@ import ButtonLink from '../forms/buttons/ButtonLink'
 import Issue from '../planning/issue/Issue.component'
 import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
-import { formatTimeFromMinutes } from 'utils/functions'
 import Timer from '../timer'
 type Props = {
   issue: {
@@ -15,21 +14,13 @@ type Props = {
       onUpdate: (_arg: string) => void
     }
   }
-  estimation: number
-  isLoading: boolean
   handleReset: () => void
 }
 
-const OverviewSection = ({
-  issue,
-  estimation,
-  isLoading,
-  handleReset,
-}: Props) => {
+const OverviewSection = ({ issue, handleReset }: Props) => {
   const [isIssueEditable, setIsIssueEditable] = useState(false)
   const pageTitle = 'Work - Dolooper'
   const sectionHeading = 'Currently working on'
-  const estimationText = formatTimeFromMinutes(estimation)
   const taskDashboard = (
     <div className="my-4 md:md-0">
       <div
@@ -63,22 +54,14 @@ const OverviewSection = ({
         <TasksList area="overview" />
       </div>
 
-      {!isLoading && (
-        <div className="flex flex-col md:flex-row">
-          <section
-            className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 w-full md:w-1/2 my-4 mr-2`}
-          >
-            <h2 className="font-bold mt-0 mb-3">Timer</h2>
-            <Timer />
-          </section>
-          <section
-            className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 w-full md:w-1/2 my-4 ml-2`}
-          >
-            <h2 className="font-bold mt-0 mb-3">Initial Estimation</h2>
-            <p>Estimated at {estimationText}</p>
-          </section>
-        </div>
-      )}
+      <div className="flex flex-col md:flex-row">
+        <section
+          className={`${boxStyles} bg-amber-100 px-2 md:px-4 py-3 w-full md:w-1/2 my-4 mr-2`}
+        >
+          <h2 className="font-bold mt-0 mb-3">Timer</h2>
+          <Timer />
+        </section>
+      </div>
     </div>
   )
 

@@ -40,7 +40,7 @@ const HeroSection = () => {
             with Dolooper. Streamline your productivity with{' '}
             <span className="font-bold">One Task Focus</span>,{' '}
             <span className="font-bold">Clear Planning</span>,{' '}
-            <span className="font-bold">Time-Boxing</span>, and{' '}
+            <span className="font-bold">Timer Widget</span>, and{' '}
             <span className="font-bold">Markdown support</span>.
           </p>
         </div>

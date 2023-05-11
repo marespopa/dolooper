@@ -5,7 +5,7 @@ import { ComponentPropsWithoutRef } from 'react'
 export const defaultMeta = {
   title: 'Dolooper - Plan. Focus. Execute.',
   siteName: 'Dolooper',
-  description: `Dolooper - Say goodbye to multitasking and hello to streamlined productivity with Dolooper. Streamline your productivity with One Task Focus, Clear Planning, Time-Boxing, and Markdown support.`,
+  description: `Dolooper - Say goodbye to multitasking and hello to streamlined productivity with Dolooper. Streamline your productivity with One Task Focus, Clear Planning, Timer Widget, and Markdown support.`,
   url: 'https://dolooper.netlify.app',
   type: 'website',
   robots: 'follow, index',

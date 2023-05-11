@@ -5,14 +5,6 @@ export const DAY = HOUR * 24
 export const MIN_TIME_FOR_EXTENSION = MINUTE * 15
 
 // values in config represent minutes
-export const ESTIMATION_CONFIG = {
-  min: 15,
-  max: 60 * 5,
-  step: 15,
-  default: 60 * 2.5,
-}
-
-// values in config represent minutes
 export const TIMER_CONFIG = {
   min: 1,
   max: 60,
