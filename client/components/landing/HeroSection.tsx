@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
 import service from '../../services/service'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
+import HeroImage from './HeroImage'
 
 const HeroSection = () => {
   const router = useRouter()
@@ -22,36 +23,32 @@ const HeroSection = () => {
   }, [])
 
   return (
-    <section className="py-8 sm:py-16 md:py-24 flex items-center justify-center">
-      <div className="mx-auto max-w-[43rem]">
-        <div className="text-center">
-          <p className="text-lg font-medium leading-8 text-gray-600 dark:text-gray-200">
-            Do one thing at a time, do it well with Dolooper.
-          </p>
-          <h1
-            className="my-3 sm:my-4 md:my-8 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-10 tracking-tight 
-          text-black dark:text-white"
-          >
-            Productivity tool for{' '}
-            <span className="text-blue-700 dark:text-blue-500">doers</span>
-          </h1>
-          <p className="text-lg leading-relaxed text-gray-800 dark:text-gray-100">
-            Say goodbye to multitasking and hello to streamlined productivity
-            with Dolooper. Streamline your productivity with{' '}
-            <span className="font-bold">One Task Focus</span>,{' '}
-            <span className="font-bold">Clear Planning</span>,{' '}
-            <span className="font-bold">Timer Widget</span>, and{' '}
-            <span className="font-bold">Markdown support</span>.
-          </p>
-        </div>
+    <section className="flex flex-col sm:flex-row justify-between">
+      <div className="relative py-16 pr-4 flex-1">
+        <h1 className="font-bold text-4xl sm:text-5xl leading-tight mb-6">
+          Streamline Your Work <span className="text-blue-500">One Task</span>{' '}
+          at a Time
+        </h1>
+        <h2 className="text-xl leading-relaxed mt-3">
+          Dolooper revolutionizes your workday by focusing on one task at a
+          time. Break down your tasks, utilize a customizable timer, and achieve
+          optimal productivity.
+        </h2>
 
-        <div className="mt-6 flex items-center justify-center gap-4">
+        <div className="mt-4 sm:mt-8 md:mt-10">
           {hasTaskInProgress ? (
             <ButtonPrimary text={`Continue`} action={goToOverview} />
           ) : (
-            <ButtonPrimary text={`Get started!`} action={goToPlanning} />
+            <ButtonPrimary
+              text={`Get Started for Free`}
+              action={goToPlanning}
+            />
           )}
         </div>
+      </div>
+
+      <div className="flex-1">
+        <HeroImage />
       </div>
     </section>
   )
