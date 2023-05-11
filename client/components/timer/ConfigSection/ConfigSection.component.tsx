@@ -9,7 +9,11 @@ type Props = {
 
 const TimerConfigSection = ({ timer, handleTimeChange }: Props) => {
   return (
-    <div className="mt-2 bg-white p-4 dark:bg-gray-500 dark:text-white transition-all duration-150 ease-in-out w-full">
+    <div
+      className="mt-2 bg-gray-100 border border-gray-600 p-4
+                 dark:bg-gray-700 dark:border-gray-600 dark:text-white
+                 transition-all duration-150 ease-in-out w-full"
+    >
       <div>
         <h3>
           Set timer for <span className="font-bold">{`${timer}m`}</span>

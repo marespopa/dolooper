@@ -23,6 +23,6 @@ const ButtonAlternate = ({ text, action, isDisabled, style = '' }: Props) => {
 }
 
 const buttonStyles = `bg-amber-200 hover:bg-amber-300 ml-4 0 px-4 py-2 transition-all duration-150 ease-in-out text-gray-700
-dark:bg-gray-700 dark:text-gray-400 dark:hover:bg-gray-800`
+                      dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-900`
 
 export default ButtonAlternate

@@ -8,7 +8,7 @@ type Props = { children: ReactNode; hasFlatBg?: boolean }
 
 const PublicLayout = ({ children, hasFlatBg = false }: Props) => {
   const bgColor = hasFlatBg
-    ? 'text-gray-800 bg-amber-50 dark:bg-gray-800 dark:text-white'
+    ? 'text-gray-800 bg-amber-100 dark:bg-gray-700 dark:text-white'
     : `text-gray-700 bg-gradient-to-b from-amber-50 via-stone-100 to-amber-100 
        dark:text-white dark:bg-gradient-to-b dark:from-gray-800 dark:via-gray-700 dark:to-gray-600`
 

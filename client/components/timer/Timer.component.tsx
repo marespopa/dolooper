@@ -128,7 +128,7 @@ function Timer() {
       ? showBreakMessage
         ? 'bg-red-500'
         : 'bg-amber-300 dark:bg-amber-200'
-      : 'bg-teal-300'
+      : 'bg-teal-500'
   }
 
   function getStatusLabel() {

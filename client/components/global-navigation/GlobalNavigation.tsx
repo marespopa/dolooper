@@ -16,7 +16,7 @@ const GlobalNavigation = () => {
   }
 
   return (
-    <header className="w-full text-gray-800 bg-amber-100 z-10 dark:bg-gray-600 dark:text-white">
+    <header className="w-full text-gray-800 bg-amber-100 z-10 dark:bg-gray-700 dark:text-white">
       <nav>
         <Container>
           <div className="justify-between mx-auto lg:max-w-7xl md:items-center md:flex">
