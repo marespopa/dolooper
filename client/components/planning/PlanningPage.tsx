@@ -5,9 +5,9 @@ import Container from '../container'
 import IssueSection from './issue/IssueSection.component'
 import TasksSection from './tasks/TasksSection.component'
 import { pagePadding } from '../common/common'
-import ButtonSecondary from '../forms/buttons/ButtonSecondary'
 import Alert from '../banners/Alert'
 import Greeting from './greeting/Greeting.component'
+import ButtonPrimary from '../forms/buttons/ButtonPrimary'
 
 const PlanningPage = () => {
   const router = useRouter()
@@ -34,7 +34,7 @@ const PlanningPage = () => {
         <IssueSection />
         <TasksSection />
         <div className="inline-flex my-8" role="group">
-          <ButtonSecondary
+          <ButtonPrimary
             action={handleCompletePlanning}
             text={'Complete Planning'}
           />

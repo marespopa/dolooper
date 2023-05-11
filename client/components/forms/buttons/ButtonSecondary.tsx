@@ -55,7 +55,7 @@ const defaultStyles = `${commonStyles}
                         border-gray-700 bg-gray-600
                         hover:bg-gray-800
                         focus:bg-gray-800
-                        dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-800`
+                        dark:bg-gray-800 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-900`
 
 const outlineStyles = `${commonStyles}
                         text-gray-600

@@ -45,7 +45,7 @@ const inputStyle = `bg-gray-100 block px-2.5 pb-2.5 pt-6 w-full text-sm text-gra
                     focus:outline-none focus:ring-0 focus:border-gray-800
                     peer disabled:opacity-25 disabled:cursor-none resize-none
                     transition-height duration-400 ease-in-out
-                    dark:bg-gray-700 dark:text-white dark:border-gray-600`
+                    dark:bg-gray-800 dark:text-white dark:border-gray-700`
 
 const labelStyles = `absolute text-sm text-gray-500 duration-400 transform
                      -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-gray-400
