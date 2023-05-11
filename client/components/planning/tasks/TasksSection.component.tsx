@@ -5,7 +5,7 @@ const TasksSection = () => {
   return (
     <section className="my-8 sm:my-16 md:my-20">
       <SectionHeading
-        title="Tasks"
+        title="Subtasks"
         description={`Breaking it into smaller chunks, gives a clear way to progress.`}
         subHeading={'* You can always do this later'}
       />

@@ -21,7 +21,7 @@ const TasksListComponent = ({
 
   return (
     <>
-      {showHeading && <h2 className="font-bold mt-0 mb-3">Tasks</h2>}
+      {showHeading && <h2 className="font-bold mt-0 mb-3">Subtasks</h2>}
       {tasks.length > 0 && (
         <ul className={`list-none mb-4`}>
           {tasks.map((task) => {
