@@ -19,6 +19,6 @@ const Feature = ({ title, description }: Props) => {
 }
 
 const containerStyle = `w-full md:w-1/2 px-4 text-center text-white`
-const divStyle = `bg-blue-500 rounded-md shadow-sm border border-gray-100 dark:bg-gray-600 dark:text-white dark:border-gray-600 relative flex flex-col
+const divStyle = `bg-white rounded-md shadow-md border border-gray-100 dark:bg-gray-600 dark:text-white dark:border-gray-600 relative flex flex-col
                     min-w-0 break-words w-full mb-8 `
 export default Feature
