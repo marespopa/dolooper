@@ -20,6 +20,8 @@ type Props = {
 
 const OverviewSection = ({ issue, handleReset }: Props) => {
   const [isIssueEditable, setIsIssueEditable] = useState(false)
+  const [isTimerMinimized, setIsTimerMinimized] = useState(false)
+
   const pageTitle = 'Work - Dolooper'
   const sectionHeading = 'Currently working on'
 
@@ -67,11 +69,24 @@ const OverviewSection = ({ issue, handleReset }: Props) => {
         </section>
 
         <section className={`${timerPopStyles}`}>
-          <h2 className="font-bold mt-0 mb-3">Timer</h2>
-          <Timer />
+          <h2
+            className="font-bold flex justify-between cursor-pointer"
+            onClick={() => toggleTimerWindow()}
+          >
+            <span>Timer</span>
+            <ButtonIcon
+              variant={isTimerMinimized ? 'maximize' : 'minimize'}
+              action={() => toggleTimerWindow()}
+            />
+          </h2>
+          {!isTimerMinimized && <Timer />}
         </section>
       </div>
     )
+  }
+
+  function toggleTimerWindow() {
+    setIsTimerMinimized(!isTimerMinimized)
   }
 
   function renderInfoMessages() {
@@ -88,5 +103,6 @@ const boxStyles = `bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
                    dark:bg-gray-600 dark:text-white dark:border-gray-600`
 const timerPopStyles = `bg-amber-200 shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
                         w-full sm:w-1/2 z-10 md:w-1/4 sm:fixed sm:right-4 sm:bottom-2
-                        dark:bg-gray-800 dark:text-white dark:border-gray-600 sm:opacity-90`
+                        dark:bg-gray-800 dark:text-white dark:border-gray-600 sm:opacity-95`
+
 export default OverviewSection

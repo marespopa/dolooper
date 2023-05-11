@@ -6,10 +6,14 @@ import ThreeDotsSVG from 'icons/ThreeDotsSVG'
 import PlaySVG from 'icons/PlaySVG'
 import PauseSVG from 'icons/PauseSVG'
 import SettingsSVG from 'icons/SettingsSVG'
+import MaximizeSVG from 'icons/MaximizeSVG'
+import MinimizeSVG from 'icons/MinimizeSVG'
 
 const ButtonIconVariants = {
   delete: <DeleteSVG />,
   edit: <PenSVG />,
+  maximize: <MaximizeSVG />,
+  minimize: <MinimizeSVG />,
   more: <ThreeDotsSVG />,
   log: <LogSVG />,
   play: <PlaySVG />,
