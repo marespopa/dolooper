@@ -23,8 +23,8 @@ const HeroSection = () => {
   }, [])
 
   return (
-    <section className="flex flex-col sm:flex-row justify-between">
-      <div className="relative py-16 pr-4 flex-1">
+    <section className="flex flex-col sm:flex-row justify-between mt-2 sm:mt-8 md:mt-16">
+      <div className="relative px-4 sm:px-0 py-16 pr-4 flex-1">
         <h1 className="font-bold text-4xl sm:text-5xl leading-tight mb-6">
           Streamline Your Work <span className="text-blue-500">One Task</span>{' '}
           at a Time
