@@ -3,10 +3,13 @@ import React, { useEffect, useState } from 'react'
 import service from '../../services/service'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
 import HeroImage from './HeroImage'
+import { toast } from 'react-toastify'
 
 const HeroSection = () => {
   const router = useRouter()
+  const TIME_TO_REROUTE = 5 * 1000 // ms
   const [hasTaskInProgress, setHasTaskInProgress] = useState(false)
+  const [messageShown, setMessageShown] = useState(false)
 
   const goToPlanning = () => {
     router.push('/planning')
@@ -19,8 +22,17 @@ const HeroSection = () => {
   useEffect(() => {
     service.hasEntries().then((isInProgress) => {
       setHasTaskInProgress(isInProgress ? true : false)
+      if (isInProgress) {
+        messageShown &&
+          toast.success('Existing task found. Taking you to the dashboard.')
+        setMessageShown(true)
+        setTimeout(() => {
+          goToOverview()
+        }, TIME_TO_REROUTE)
+      }
     })
-  }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [messageShown])
 
   return (
     <section className="flex flex-col sm:flex-row justify-between mt-2 sm:mt-8 md:mt-16">
