@@ -12,7 +12,7 @@ const Issue = (props: Props) => {
   const { value, handleUpdateValue } = props
 
   return (
-    <div className="grid grid-cols-2 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
       {renderEditField()}
       {renderDisplayField()}
     </div>
