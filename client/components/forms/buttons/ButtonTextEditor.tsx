@@ -18,7 +18,6 @@ type VariantValues = keyof typeof ButtonVariants
 
 interface Props {
   variant: VariantValues
-  label: string
   action: () => void
   isDisabled?: boolean
   style?: string
@@ -26,7 +25,6 @@ interface Props {
 
 const ButtonTextEditor = ({
   variant,
-  label,
   action,
   isDisabled,
   style = '',
@@ -41,7 +39,6 @@ const ButtonTextEditor = ({
       disabled={isDisabled}
     >
       {ButtonVariants[variant]}{' '}
-      <span className="pl-1 hidden md:inline-flex">{label}</span>
     </button>
   )
 }

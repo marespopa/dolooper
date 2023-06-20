@@ -14,9 +14,12 @@ const TasksList = ({ area }: Props) => {
   const [tasks, setTasks] = useState<Task[]>([])
   const [task, setTask] = useState<string>('')
   const showHeading = area === 'overview'
-  const showNoTasksInfo = area === 'overview'
   const taskAddLabel =
-    area === 'overview' ? 'Add another subtask' : 'Describe your subtask'
+    area === 'overview'
+      ? tasks.length > 0
+        ? 'Add another subtask'
+        : 'Add a subtask'
+      : 'Describe your subtask'
 
   const resetTask = () => {
     setTask('')
@@ -86,21 +89,6 @@ const TasksList = ({ area }: Props) => {
     handleAdd(task)
   }
 
-  const AddTaskForm = (
-    <form onSubmit={handleSubmit}>
-      <div className="flex">
-        <div className="flex-auto">
-          <Input id="task" value={task} action={setTask} label={taskAddLabel} />
-        </div>
-        <ButtonSecondary
-          action={() => handleAdd(task)}
-          text="Add"
-          isDisabled={isDisabled}
-        />
-      </div>
-    </form>
-  )
-
   return (
     <div className="w-full">
       <TasksListComponent
@@ -111,12 +99,33 @@ const TasksList = ({ area }: Props) => {
           handleToggle,
         }}
         showHeading={showHeading}
-        showNoTasksInfo={showNoTasksInfo}
         area={area}
       />
-      {AddTaskForm}
+      {renderAddTask()}
     </div>
   )
+
+  function renderAddTask() {
+    return (
+      <form onSubmit={handleSubmit}>
+        <div className="flex">
+          <div className="flex-auto">
+            <Input
+              id="task"
+              value={task}
+              action={setTask}
+              label={taskAddLabel}
+            />
+          </div>
+          <ButtonSecondary
+            action={() => handleAdd(task)}
+            text="Add"
+            isDisabled={isDisabled}
+          />
+        </div>
+      </form>
+    )
+  }
 }
 
 export default TasksList

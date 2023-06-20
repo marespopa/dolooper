@@ -6,7 +6,6 @@ interface Props {
   tasks: Task[]
   actions: TaskActions
   showHeading?: boolean
-  showNoTasksInfo?: boolean
   area: TaskArea
 }
 
@@ -14,7 +13,6 @@ const TasksListComponent = ({
   tasks,
   actions,
   showHeading = false,
-  showNoTasksInfo = false,
   area,
 }: Props) => {
   const isOverview = area === 'overview'
@@ -35,9 +33,6 @@ const TasksListComponent = ({
             )
           })}
         </ul>
-      )}
-      {tasks.length === 0 && showNoTasksInfo && (
-        <p className="py-2 sm:py-4">No tasks.</p>
       )}
     </>
   )

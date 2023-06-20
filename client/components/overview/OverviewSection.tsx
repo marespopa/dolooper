@@ -19,11 +19,9 @@ type Props = {
 }
 
 const OverviewSection = ({ issue, handleReset }: Props) => {
-  const [isIssueEditable, setIsIssueEditable] = useState(false)
   const [isTimerMinimized, setIsTimerMinimized] = useState(false)
 
   const pageTitle = 'Work - Dolooper'
-  const sectionHeading = 'Currently working on'
 
   return (
     <>
@@ -39,29 +37,11 @@ const OverviewSection = ({ issue, handleReset }: Props) => {
   function renderTaskDashboard() {
     return (
       <div className="my-4 md:md-0">
-        <section
-          className={`${boxStyles} relative`}
-          onDoubleClick={() => {
-            if (isIssueEditable) {
-              return
-            }
-            setIsIssueEditable(!isIssueEditable)
-          }}
-        >
-          <h2 className="text-xs mt-0 mb-1 flex justify-between text-gray-500 dark:text-gray-300">
-            <em className="italic">{sectionHeading}</em>
-          </h2>
+        <section>
           <Issue
             handleUpdateValue={issue.action.onUpdate}
             value={issue.value}
-            isEdit={isIssueEditable}
           />
-          <div className="absolute -top-2 -right-2 opacity-90">
-            <ButtonIcon
-              variant="edit"
-              action={() => setIsIssueEditable(!isIssueEditable)}
-            ></ButtonIcon>
-          </div>
         </section>
 
         <section className={boxStyles}>

@@ -18,32 +18,27 @@ export const STATUSES = {
   work: 'Work',
 }
 
-export const helperTags = [
+export const HELPER_TAGS = [
   {
     name: 'h1',
-    label: 'Title',
     value: '# ',
   },
   {
     name: 'h2',
-    label: 'Heading',
     value: '## ',
   },
   {
     name: 'h3',
-    label: 'Sub-Heading',
     value: '### ',
   },
   {
     name: 'p',
-    label: 'Paragraph',
     value: '',
   },
   {
     name: 'li',
-    label: 'List',
     value: '- ',
   },
 ] as const
 
-export type HelperTags = (typeof helperTags)[number]['name']
+export type HelperTags = (typeof HELPER_TAGS)[number]['name']

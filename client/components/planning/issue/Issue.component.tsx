@@ -1,55 +1,58 @@
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
 import Textarea from '@/components/forms/input/Textarea'
-import React, { useRef } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
-import { HelperTags, helperTags } from 'utils/constants'
+import { HelperTags, HELPER_TAGS } from 'utils/constants'
 
 type Props = {
-  isEdit: boolean
   value: string
   handleUpdateValue: (_arg: string) => void
 }
 
 const Issue = (props: Props) => {
-  const { isEdit, value, handleUpdateValue } = props
-  const ref = useRef(null)
+  const { value, handleUpdateValue } = props
 
-  const displayField = (
-    <div className={fieldStyle}>
-      <ReactMarkdown>{value}</ReactMarkdown>
+  return (
+    <div className="grid grid-cols-2 gap-8">
+      {renderEditField()}
+      {renderDisplayField()}
     </div>
   )
 
-  return <div>{isEdit ? renderEditField() : displayField}</div>
+  function renderDisplayField() {
+    return (
+      <div className={previewStyles}>
+        <ReactMarkdown>{value}</ReactMarkdown>
+      </div>
+    )
+  }
 
   function renderEditField() {
     return (
-      <>
+      <div className={`${editorStyles}`}>
         <Textarea
-          ref={ref}
           handleChange={handleUpdateValue}
           id={'issue'}
           label={'Description'}
           value={value}
+          customStyles="max-h-screen"
         />
         <div className="flex flex-wrap gap-2 mt-4">
-          {helperTags.map((tag) => {
+          {HELPER_TAGS.map((tag) => {
             return (
               <ButtonTextEditor
                 key={tag.name}
                 variant={tag.name}
-                label={tag.label}
                 action={() => addElement(tag.name)}
               />
             )
           })}
         </div>
-      </>
+      </div>
     )
   }
 
   function addElement(option: HelperTags) {
-    const selectedHelperTag = helperTags.find((item) => item.name === option)
+    const selectedHelperTag = HELPER_TAGS.find((item) => item.name === option)
 
     if (!selectedHelperTag) {
       return
@@ -61,13 +64,15 @@ const Issue = (props: Props) => {
       valueToBeAdded = '\n' + valueToBeAdded
     }
     handleUpdateValue(value + valueToBeAdded)
-
-    ref.current.focus()
   }
 }
 
-const fieldStyle = `prose prose-neutral prose-h1:mb-4 prose-h2:my-2 
-   prose-p:px-0 max-w-fit prose-li:marker:text-amber-500
-   dark:prose-invert dark:prose-li:marker:text-amber-200`
+const previewStyles = `px-4 py-2 prose prose-neutral prose-h1:text-center  w-full
+   prose-li:marker:text-amber-500
+   dark:prose-invert dark:prose-li:marker:text-amber-200 bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
+   dark:bg-gray-600 dark:text-white dark:border-gray-600 break-words max-h-screen overflow-y-auto`
+
+const editorStyles = `bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
+   dark:bg-gray-600 dark:text-white dark:border-gray-600`
 
 export default Issue
