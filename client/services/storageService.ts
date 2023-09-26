@@ -116,7 +116,7 @@ function resetAll() {
   localforage.clear()
 }
 
-const service = {
+const StorageService = {
   getDescription,
   setDescription,
   setTasks,
@@ -131,4 +131,4 @@ const service = {
   hasDescription,
 }
 
-export default service
+export default StorageService

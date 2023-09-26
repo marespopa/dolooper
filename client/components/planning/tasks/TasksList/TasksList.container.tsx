@@ -1,7 +1,7 @@
 import Input from '@/components/forms/input/Input'
 import { nanoid } from 'nanoid'
 import React, { useEffect, useState } from 'react'
-import service from '../../../../services/service'
+import StorageService from '../../../../services/storageService'
 import { Task, TaskArea } from '../../../../types/types'
 import ButtonSecondary from '../../../forms/buttons/ButtonSecondary'
 import TasksListComponent from './TasksList.component'
@@ -26,7 +26,7 @@ const TasksList = ({ area }: Props) => {
   }
 
   useEffect(() => {
-    service.getTasks().then((results) => {
+    StorageService.getTasks().then((results) => {
       if (!results) {
         return
       }
@@ -46,7 +46,7 @@ const TasksList = ({ area }: Props) => {
     ]
 
     setTasks(updatedTasks)
-    service.setTasks(updatedTasks)
+    StorageService.setTasks(updatedTasks)
     resetTask()
   }
 
@@ -60,13 +60,13 @@ const TasksList = ({ area }: Props) => {
     })
 
     setTasks(nextTasks)
-    service.setTasks(nextTasks)
+    StorageService.setTasks(nextTasks)
   }
   const handleDelete = (taskUUID: string) => {
     const arr = tasks.filter((item) => item.key !== taskUUID)
 
     setTasks(arr)
-    service.setTasks(arr)
+    StorageService.setTasks(arr)
   }
 
   function handleToggle(key: string) {
@@ -79,7 +79,7 @@ const TasksList = ({ area }: Props) => {
     })
 
     setTasks(nextTasks)
-    service.setTasks(nextTasks)
+    StorageService.setTasks(nextTasks)
   }
 
   const isDisabled = task.length === 0

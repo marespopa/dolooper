@@ -1,5 +1,6 @@
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
 import Textarea from '@/components/forms/input/Textarea'
+import Tabs from '@/components/tabs/Tabs'
 import { useState } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { HelperTags, HELPER_TAGS } from 'utils/constants'
@@ -14,11 +15,19 @@ const Issue = (props: Props) => {
   const [isEdit, setIsEdit] = useState(true)
 
   return (
-    <div className={`grid grid-cols-1 ${isEdit && 'md:grid-cols-2'} gap-8`}>
+    <div>
+      <Tabs
+        activeTab={isEdit ? 'edit' : 'preview'}
+        handleTabChange={onTabChange}
+      />
       {isEdit && renderEditField()}
-      {renderDisplayField()}
+      {!isEdit && renderDisplayField()}
     </div>
   )
+
+  function onTabChange(tab) {
+    setIsEdit(tab === 'edit')
+  }
 
   function renderDisplayField() {
     return (
@@ -71,10 +80,10 @@ const Issue = (props: Props) => {
 
 const previewStyles = `px-4 py-2 prose prose-neutral max-w-none prose-h1:text-center w-full
    prose-li:marker:text-amber-500
-   dark:prose-invert dark:prose-li:marker:text-amber-200 bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
+   dark:prose-invert dark:prose-li:marker:text-amber-200 bg-white shadow-sm px-2 md:px-4 py-3 rounded-b-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600 break-words max-h-screen overflow-y-auto`
 
-const editorStyles = `bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
+const editorStyles = `bg-white shadow-sm px-2 md:px-4 py-3 rounded-b-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600`
 
 export default Issue

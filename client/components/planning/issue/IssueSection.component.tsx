@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import service from '../../../services/service'
+import StorageService from '../../../services/storageService'
 import SectionHeading from '../common/SectionHeading.component'
 import Issue from './Issue.component'
 
@@ -7,7 +7,7 @@ const IssueSection = () => {
   const [issue, setDescription] = useState(``)
 
   useEffect(() => {
-    service.getDescription().then((results) => {
+    StorageService.getDescription().then((results) => {
       if (results) {
         setDescription(results)
       }
@@ -16,7 +16,7 @@ const IssueSection = () => {
 
   function updateDescription(value: string) {
     setDescription(value)
-    service.setDescription(value)
+    StorageService.setDescription(value)
   }
 
   return (

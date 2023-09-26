@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import service from '../../services/service'
+import StorageService from '../../services/storageService'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
 import HeroImage from './HeroImage'
 
@@ -17,7 +17,7 @@ const HeroSection = () => {
   }
 
   useEffect(() => {
-    service.hasEntries().then((isInProgress) => {
+    StorageService.hasEntries().then((isInProgress) => {
       setHasTaskInProgress(isInProgress ? true : false)
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps

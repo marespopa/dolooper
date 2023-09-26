@@ -1,36 +1,39 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
-    "skipLibCheck": true,
-    "strict": false,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
+    "alwaysStrict": true,
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "lib": ["dom", "dom.iterable", "esnext"],
     "module": "esnext",
     "moduleResolution": "node",
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "incremental": true,
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "@/constants/*": ["/utils/constants/*"],
-      "@/components/*": ["components/*"],
-      "@/utils/*": ["/utils/*"],
-      "@/hooks/*": ["/hooks/*"],
-      "@/types/*": ["/types/*"],
-      "@/icons/*": ["../icons/*"],
-      "@/assets/*": ["assets/*"],
-      "@/public/*": ["../public/*"]
-    },
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ]
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext"
   },
+  "baseUrl": ".",
+  "paths": {
+    "@/constants/*": ["/utils/constants/*"],
+    "@/components/*": ["components/*"],
+    "@/utils/*": ["/utils/*"],
+    "@/hooks/*": ["/hooks/*"],
+    "@/types/*": ["/types/*"],
+    "@/icons/*": ["../icons/*"],
+    "@/assets/*": ["assets/*"],
+    "@/public/*": ["../public/*"]
+  },
+  "plugins": [
+    {
+      "name": "next"
+    }
+  ],
   "include": [
     "next-env.d.ts",
     "**/*.ts",

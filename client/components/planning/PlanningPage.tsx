@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useState } from 'react'
-import service from '../../services/service'
+import StorageService from '../../services/storageService'
 import Container from '../container'
 import IssueSection from './issue/IssueSection.component'
 import TasksSection from './tasks/TasksSection.component'
@@ -17,7 +17,7 @@ const PlanningPage = () => {
   const hasError = error.length > 0
 
   const handleCompletePlanning = async () => {
-    const hasDescription = await service.hasDescription()
+    const hasDescription = await StorageService.hasDescription()
 
     if (hasDescription) {
       setError('')

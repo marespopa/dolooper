@@ -1,12 +1,12 @@
 import Textarea from '@/components/forms/input/Textarea'
 import React, { useEffect, useState } from 'react'
-import service from 'services/service'
+import StorageService from 'services/storageService'
 
 const NoteSection = () => {
   const [note, setNote] = useState(``)
 
   useEffect(() => {
-    service.getNote().then((result) => {
+    StorageService.getNote().then((result) => {
       if (result) {
         setNote(result)
       }
@@ -15,7 +15,7 @@ const NoteSection = () => {
 
   function updateNote(value: string) {
     setNote(value)
-    service.setNote(value)
+    StorageService.setNote(value)
   }
 
   return (

@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import service from '../../services/service'
+import StorageService from '../../services/storageService'
 import Container from '../container/Container.component'
 import OverviewSection from './OverviewSection'
 
@@ -9,7 +9,7 @@ const OverviewPage = () => {
   const router = useRouter()
 
   useEffect(() => {
-    service.getDescription().then((results) => {
+    StorageService.getDescription().then((results) => {
       if (results) {
         setIssue(results)
       }
@@ -33,13 +33,13 @@ const OverviewPage = () => {
   )
 
   function handleReset() {
-    service.resetAll()
+    StorageService.resetAll()
     router.push('/planning')
   }
 
   function handleUpdateIssue(value: string) {
     setIssue(value)
-    service.setDescription(value)
+    StorageService.setDescription(value)
   }
 }
 

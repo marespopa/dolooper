@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { getFormattedTimeFromMs } from 'utils/functions'
 import ButtonSecondary from '../forms/buttons/ButtonSecondary'
-import service from 'services/service'
+import StorageService from 'services/storageService'
 import TimerConfigSection from './ConfigSection'
 import { TIMER_CONFIG } from 'utils/constants'
 import { toast } from 'react-toastify'
@@ -22,7 +22,10 @@ function Timer() {
   const isTimeForABreak = isRunning && counter > workTimeInMs
 
   useEffect(() => {
-    const promises = [service.getTime('start'), service.getTime('work')]
+    const promises = [
+      StorageService.getTime('start'),
+      StorageService.getTime('work'),
+    ]
     setIsLoading(true)
     Promise.all(promises).then((results) => {
       const startTime = results[0]
@@ -170,7 +173,7 @@ function Timer() {
     const currentTime = Date.now()
     setIsNotificationShown(false)
     setStartTime(currentTime)
-    service.setTime('start', Date.now())
+    StorageService.setTime('start', Date.now())
     startTimer()
   }
 
@@ -179,7 +182,7 @@ function Timer() {
       window.clearInterval(intervalRef.current)
       setCurrentTime(null)
       setStartTime(null)
-      service.removeTime('start')
+      StorageService.removeTime('start')
       intervalRef.current = null
       setIsRunning(false)
       setShowConfiguration(true)
@@ -202,7 +205,7 @@ function Timer() {
     const value = +time
 
     setWorkTime(value)
-    service.setTime('work', value)
+    StorageService.setTime('work', value)
   }
 }
 
