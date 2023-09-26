@@ -9,7 +9,7 @@ import Seo from '../Seo'
 import Timer from '../timer'
 import Greeting from '../planning/greeting/Greeting.component'
 import NoteSection from '../planning/note/NoteSection'
-import ButtonAlternate from '../forms/buttons/ButtonAlternate'
+import ButtonSecondary from '../forms/buttons/ButtonSecondary'
 type Props = {
   issue: {
     value: string
@@ -52,10 +52,9 @@ const OverviewSection = ({ issue, handleReset }: Props) => {
         </section>
 
         <section className={boxStyles}>
-          <ButtonAlternate
+          <ButtonSecondary
             text={`${showNotepad ? 'Hide' : 'Show'} Notepad`}
             action={() => setShowNotepad(!showNotepad)}
-            style="ml-0"
           />
           {showNotepad && <NoteSection />}
         </section>
