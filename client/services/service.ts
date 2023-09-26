@@ -8,12 +8,29 @@ const keys = {
   issue: 'issue',
   startTime: 'startTimeForTimer',
   workTime: 'workTimeForTimer',
+  note: 'note',
 }
 
 const MIN_VALID_FIELDS = 1
 const timeKeyMap = {
   start: keys.startTime,
   work: keys.workTime,
+}
+async function setNote(note: string) {
+  try {
+    return await localforage.setItem(keys.note, note)
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+async function getNote() {
+  try {
+    const value = await localforage.getItem(keys.note)
+    return value as string
+  } catch (err) {
+    console.error(err)
+  }
 }
 
 async function setDescription(description: string) {
@@ -104,6 +121,8 @@ const service = {
   setDescription,
   setTasks,
   getTasks,
+  setNote,
+  getNote,
   setTime,
   getTime,
   removeTime,

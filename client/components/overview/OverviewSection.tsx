@@ -8,6 +8,8 @@ import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
 import Timer from '../timer'
 import Greeting from '../planning/greeting/Greeting.component'
+import NoteSection from '../planning/note/NoteSection'
+import ButtonAlternate from '../forms/buttons/ButtonAlternate'
 type Props = {
   issue: {
     value: string
@@ -20,6 +22,7 @@ type Props = {
 
 const OverviewSection = ({ issue, handleReset }: Props) => {
   const [isTimerMinimized, setIsTimerMinimized] = useState(false)
+  const [showNotepad, setShowNotepad] = useState(true)
 
   const pageTitle = 'Work - Dolooper'
 
@@ -46,6 +49,15 @@ const OverviewSection = ({ issue, handleReset }: Props) => {
 
         <section className={boxStyles}>
           <TasksList area="overview" />
+        </section>
+
+        <section className={boxStyles}>
+          <ButtonAlternate
+            text={`${showNotepad ? 'Hide' : 'Show'} Notepad`}
+            action={() => setShowNotepad(!showNotepad)}
+            style="ml-0"
+          />
+          {showNotepad && <NoteSection />}
         </section>
 
         <section className={`${timerPopStyles}`}>

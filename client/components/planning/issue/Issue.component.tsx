@@ -1,5 +1,6 @@
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
 import Textarea from '@/components/forms/input/Textarea'
+import { useState } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { HelperTags, HELPER_TAGS } from 'utils/constants'
 
@@ -10,17 +11,18 @@ type Props = {
 
 const Issue = (props: Props) => {
   const { value, handleUpdateValue } = props
+  const [isEdit, setIsEdit] = useState(false)
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-      {renderEditField()}
+    <div className={`grid grid-cols-1 ${isEdit && 'md:grid-cols-2'} gap-8`}>
+      {isEdit && renderEditField()}
       {renderDisplayField()}
     </div>
   )
 
   function renderDisplayField() {
     return (
-      <div className={previewStyles}>
+      <div className={previewStyles} onDoubleClick={() => setIsEdit(!isEdit)}>
         <ReactMarkdown>{value}</ReactMarkdown>
       </div>
     )
@@ -67,7 +69,7 @@ const Issue = (props: Props) => {
   }
 }
 
-const previewStyles = `px-4 py-2 prose prose-neutral prose-h1:text-center  w-full
+const previewStyles = `px-4 py-2 prose prose-neutral max-w-none prose-h1:text-center w-full
    prose-li:marker:text-amber-500
    dark:prose-invert dark:prose-li:marker:text-amber-200 bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600 break-words max-h-screen overflow-y-auto`

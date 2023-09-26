@@ -12,7 +12,14 @@ interface Props {
 const DEFAULT_TEXTAREA_ROWS = 4
 
 const Textarea = (props: Props) => {
-  const { handleChange, id, label, value, isDisabled = false } = props
+  const {
+    handleChange,
+    id,
+    label,
+    value,
+    customStyles,
+    isDisabled = false,
+  } = props
   const commonProps = {
     id,
     disabled: isDisabled,
@@ -28,10 +35,11 @@ const Textarea = (props: Props) => {
       <textarea
         ref={ref}
         {...commonProps}
-        className={inputStyle}
+        className={`${inputStyle} ${customStyles}`}
         onChange={(e: FormEvent<HTMLTextAreaElement>) => {
           handleChange(e.currentTarget.value)
         }}
+        autoComplete="off"
         rows={DEFAULT_TEXTAREA_ROWS}
       />
       <label htmlFor={id} className={labelStyles}>
