@@ -1,6 +1,6 @@
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
 import Textarea from '@/components/forms/input/Textarea'
-import Tabs from '@/components/tabs/Tabs'
+import Tabs, { TabVariant } from '@/components/tabs/Tabs'
 import { useState } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { HelperTags, HELPER_TAGS } from 'utils/constants'
@@ -25,7 +25,7 @@ const Issue = (props: Props) => {
     </div>
   )
 
-  function onTabChange(tab) {
+  function onTabChange(tab: TabVariant) {
     setIsEdit(tab === 'edit')
   }
 

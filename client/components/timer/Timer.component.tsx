@@ -12,11 +12,11 @@ function Timer() {
   const [isLoading, setIsLoading] = useState(true)
   const [isRunning, setIsRunning] = useState(false)
   const [showConfiguration, setShowConfiguration] = useState(true)
-  const [startTime, setStartTime] = useState(Date.now())
+  const [startTime, setStartTime] = useState<number | null>(Date.now())
   const [workTime, setWorkTime] = useState(TIMER_CONFIG.default)
   const workTimeInMs = workTime * 60 * 1000
-  const [currentTime, setCurrentTime] = useState(startTime)
-  const counter = currentTime - startTime
+  const [currentTime, setCurrentTime] = useState<number | null>(startTime)
+  const counter = (currentTime || 0) - (startTime || 0)
   const intervalRef = useRef<number | null>(null)
   const [isNotificationShown, setIsNotificationShown] = useState(false)
   const isTimeForABreak = isRunning && counter > workTimeInMs

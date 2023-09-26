@@ -1,8 +1,10 @@
 import React from 'react'
 
+export type TabVariant = 'edit' | 'preview'
+
 type Props = {
-  activeTab: 'edit' | 'preview'
-  handleTabChange: (_arg: string) => void
+  activeTab: TabVariant
+  handleTabChange: (_arg: TabVariant) => void
 }
 
 const Tabs = ({ activeTab, handleTabChange }: Props) => {

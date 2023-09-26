@@ -16,24 +16,21 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext"
-  },
-  "baseUrl": ".",
-  "paths": {
-    "@/constants/*": ["/utils/constants/*"],
-    "@/components/*": ["components/*"],
-    "@/utils/*": ["/utils/*"],
-    "@/hooks/*": ["/hooks/*"],
-    "@/types/*": ["/types/*"],
-    "@/icons/*": ["../icons/*"],
-    "@/assets/*": ["assets/*"],
-    "@/public/*": ["../public/*"]
-  },
-  "plugins": [
-    {
-      "name": "next"
+    "target": "esnext",
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "react": ["./node_modules/@types/react"],
+      "@/constants/*": ["/utils/constants/*"],
+      "@/components/*": ["components/*"],
+      "@/utils/*": ["/utils/*"],
+      "@/hooks/*": ["/hooks/*"],
+      "@/types/*": ["/types/*"],
+      "@/icons/*": ["../icons/*"],
+      "@/assets/*": ["assets/*"],
+      "@/public/*": ["../public/*"]
     }
-  ],
+  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",

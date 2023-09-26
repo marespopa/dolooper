@@ -26,7 +26,7 @@ const Textarea = (props: Props) => {
     placeholder: ' ',
     value,
   }
-  const ref = useRef()
+  const ref = useRef<HTMLTextAreaElement>(null)
 
   useAutoResizeTextArea(ref, commonProps.value)
 

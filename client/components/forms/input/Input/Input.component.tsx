@@ -1,4 +1,4 @@
-import React, { FormEvent, MutableRefObject, forwardRef } from 'react'
+import React, { FormEvent, ForwardedRef, forwardRef } from 'react'
 
 interface Props {
   action: (_arg: string) => void
@@ -9,7 +9,7 @@ interface Props {
   isDisabled?: boolean
 }
 
-const Input = (props: Props, ref: MutableRefObject<HTMLInputElement>) => {
+const Input = (props: Props, ref: ForwardedRef<HTMLInputElement>) => {
   const { action, id, label, value, isDisabled = false } = props
   const inputElProps = {
     id,
@@ -45,4 +45,5 @@ const labelStyles = `absolute text-sm text-gray-500 duration-400 transform
                      -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-gray-400
                      peer-placeholder-shown:scale-100 cursor: text; peer-placeholder-shown:translate-y-0
                      peer-focus:scale-75 peer-focus:-translate-y-4 dark:text-gray-400`
+
 export default forwardRef(Input)

@@ -1,4 +1,4 @@
-import { MutableRefObject, forwardRef } from 'react'
+import { ForwardedRef, forwardRef } from 'react'
 
 interface Props {
   uuid: string
@@ -8,7 +8,7 @@ interface Props {
   isDisabled?: boolean
 }
 
-const Checkbox = (props: Props, ref: MutableRefObject<HTMLInputElement>) => {
+const Checkbox = (props: Props, ref: ForwardedRef<HTMLInputElement>) => {
   const { uuid, label, isChecked, setIsChecked } = props
   const elementId = `checkbox-${uuid}`
   const labelValue = isChecked ? (
