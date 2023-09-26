@@ -11,7 +11,7 @@ type Props = {
 
 const Issue = (props: Props) => {
   const { value, handleUpdateValue } = props
-  const [isEdit, setIsEdit] = useState(false)
+  const [isEdit, setIsEdit] = useState(true)
 
   return (
     <div className={`grid grid-cols-1 ${isEdit && 'md:grid-cols-2'} gap-8`}>
