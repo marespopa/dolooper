@@ -8,7 +8,8 @@ import { toast } from 'react-toastify'
 import useSound from 'use-sound'
 
 function Timer() {
-  const [playSound] = useSound('resources/sounds/boop.mp3')
+  const [playStopSound] = useSound('resources/sounds/boop.mp3')
+  const [playStartSound] = useSound('resources/sounds/start-tick.wav')
   const [isLoading, setIsLoading] = useState(true)
   const [isRunning, setIsRunning] = useState(false)
   const [showConfiguration, setShowConfiguration] = useState(true)
@@ -122,7 +123,7 @@ function Timer() {
   }
 
   function triggerBreakNotification() {
-    playSound()
+    playStopSound()
     toast.info('Time for a break!')
   }
 
@@ -175,6 +176,7 @@ function Timer() {
     setStartTime(currentTime)
     StorageService.setTime('start', Date.now())
     startTimer()
+    playStartSound()
   }
 
   function handleStop() {

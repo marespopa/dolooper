@@ -23,7 +23,7 @@ const IssueSection = () => {
     <section>
       <SectionHeading
         title="Let's start!"
-        description="What are you trying to achieve today?"
+        description="What are you trying to achieve in this session?"
         subHeading={'* You can use markdown for writing the description'}
       />
       <div className={`relative z-0 min-h-full py-2`}>

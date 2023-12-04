@@ -30,9 +30,12 @@ const Issue = (props: Props) => {
   }
 
   function renderDisplayField() {
+    const hasText = value && value.length > 0
+
     return (
       <div className={previewStyles} onDoubleClick={() => setIsEdit(!isEdit)}>
-        <ReactMarkdown>{value}</ReactMarkdown>
+        {!hasText && <p>Add some text in the editor first...</p>}
+        {hasText && <ReactMarkdown>{value}</ReactMarkdown>}
       </div>
     )
   }
