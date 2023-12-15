@@ -19,12 +19,12 @@ type Props = {
   }
   handleReset: () => void
 }
+export const OVERVIEW_PAGE_TITLE = 'One Task - Dolooper'
 
 const OverviewSection = ({ issue, handleReset }: Props) => {
   const [isTimerMinimized, setIsTimerMinimized] = useState(false)
   const [showNotepad, setShowNotepad] = useState(true)
-
-  const pageTitle = 'Work - Dolooper'
+  const pageTitle = OVERVIEW_PAGE_TITLE
 
   return (
     <>

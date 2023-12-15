@@ -6,6 +6,8 @@ import TimerConfigSection from './ConfigSection'
 import { TIMER_CONFIG } from 'utils/constants'
 import { toast } from 'react-toastify'
 import useSound from 'use-sound'
+import { useDocumentTitle } from 'hooks/use-document-title'
+import { OVERVIEW_PAGE_TITLE } from '../overview/OverviewSection'
 
 function Timer() {
   const [playStopSound] = useSound('resources/sounds/boop.mp3')
@@ -21,30 +23,54 @@ function Timer() {
   const intervalRef = useRef<number | null>(null)
   const [isNotificationShown, setIsNotificationShown] = useState(false)
   const isTimeForABreak = isRunning && counter > workTimeInMs
+  const [_, setDocumentTitle] = useDocumentTitle(OVERVIEW_PAGE_TITLE)
 
   useEffect(() => {
-    const promises = [
-      StorageService.getTime('start'),
-      StorageService.getTime('work'),
-    ]
-    setIsLoading(true)
-    Promise.all(promises).then((results) => {
-      const startTime = results[0]
-      const workTime = results[1]
+    const fetchData = async () => {
+      try {
+        setIsLoading(true)
 
-      if (startTime && startTime > 0) {
-        setStartTime(startTime)
-        startTimer()
-        setShowConfiguration(false)
+        const results = await Promise.all([
+          StorageService.getTime('start'),
+          StorageService.getTime('work'),
+        ])
+
+        const startTime = results[0]
+        const workTime = results[1]
+
+        if (startTime && startTime > 0) {
+          setStartTime(startTime)
+          startTimer()
+          setShowConfiguration(false)
+        }
+
+        if (workTime && workTime > 0) {
+          setWorkTime(workTime)
+        }
+
+        setIsLoading(false)
+      } catch (error) {
+        // Handle errors here
+        console.error('Error fetching data:', error)
+        setIsLoading(false)
       }
+    }
 
-      if (workTime && workTime > 0) {
-        setWorkTime(workTime)
-      }
-
-      setIsLoading(false)
-    })
+    fetchData()
   }, [])
+
+  useEffect(() => {
+    const isWorking = isRunning && counter > 0 && counter < workTimeInMs
+    const isBreak = isRunning && counter > workTimeInMs
+
+    if (isWorking) {
+      setDocumentTitle(`${getFormattedTimeFromMs(counter)} - Working`)
+    } else if (isBreak) {
+      setDocumentTitle(`Timer expired`)
+    } else {
+      setDocumentTitle(OVERVIEW_PAGE_TITLE)
+    }
+  }, [counter, isRunning, setDocumentTitle, workTimeInMs])
 
   useEffect(() => {
     return () => {
