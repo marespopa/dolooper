@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import StorageService from '../../../services/storageService'
 import SectionHeading from '../common/SectionHeading.component'
 import Issue from './Issue.component'
+import { INITIAL_DESCRIPTION } from './INITIAL_DESCRIPTION'
 
 const IssueSection = () => {
-  const [issue, setDescription] = useState(``)
+  const [description, setDescription] = useState(INITIAL_DESCRIPTION)
 
   useEffect(() => {
     StorageService.getDescription().then((results) => {
@@ -27,7 +28,7 @@ const IssueSection = () => {
         subHeading={'* You can use markdown for writing the description'}
       />
       <div className={`relative z-0 min-h-full py-2`}>
-        <Issue value={issue} handleUpdateValue={updateDescription} />
+        <Issue value={description} handleUpdateValue={updateDescription} />
       </div>
     </section>
   )

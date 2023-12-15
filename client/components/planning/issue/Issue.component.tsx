@@ -34,7 +34,7 @@ const Issue = (props: Props) => {
 
     return (
       <div className={previewStyles} onDoubleClick={() => setIsEdit(!isEdit)}>
-        {!hasText && <p>Add some text in the editor first...</p>}
+        {!hasText && <p>Describe the task first...</p>}
         {hasText && <ReactMarkdown>{value}</ReactMarkdown>}
       </div>
     )
