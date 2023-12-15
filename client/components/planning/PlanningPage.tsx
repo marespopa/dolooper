@@ -8,12 +8,10 @@ import { pagePadding } from '../common/common'
 import Alert from '../banners/Alert'
 import Greeting from './greeting/Greeting.component'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
-import ButtonLink from '../forms/buttons/ButtonLink'
 
 const PlanningPage = () => {
   const router = useRouter()
   const [error, setError] = useState('')
-  const [showTasks, setShowTasks] = useState(false)
   const hasError = error.length > 0
 
   const handleCompletePlanning = async () => {
@@ -34,14 +32,8 @@ const PlanningPage = () => {
       <Container>
         <Greeting />
         <IssueSection />
-        <div className={`flex ${!showTasks && 'my-8'}`} role="group">
-          {!showTasks && (
-            <ButtonLink
-              action={() => setShowTasks(!showTasks)}
-              text={'Want to add subtasks?'}
-            />
-          )}
-          {showTasks && <TasksSection />}
+        <div className={`flex my-8'}`} role="group">
+          <TasksSection />
         </div>
 
         <div className="inline-flex my-8" role="group">
