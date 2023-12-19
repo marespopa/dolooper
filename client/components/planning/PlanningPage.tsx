@@ -23,7 +23,7 @@ const PlanningPage = () => {
           <TasksSection />
         </div>
 
-        <div className="inline-flex my-8" role="group">
+        <div className="inline-flex my-8 z-20" role="button">
           <ButtonPrimary
             action={handleCompletePlanning}
             text={'Complete Planning'}
