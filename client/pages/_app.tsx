@@ -1,4 +1,6 @@
 import '../styles/globals.scss'
+import '../node_modules/highlight.js/styles/nord.css'
+
 import { Montserrat } from 'next/font/google'
 import type { AppProps } from 'next/app'
 import { ThemeProvider } from 'next-themes'

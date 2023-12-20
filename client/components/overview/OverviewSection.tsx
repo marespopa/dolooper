@@ -8,8 +8,8 @@ import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
 import Timer from '../timer'
 import Greeting from '../planning/greeting/Greeting.component'
-import NoteSection from '../planning/note/NoteSection'
-import ButtonSecondary from '../forms/buttons/ButtonSecondary'
+import SnippetsSection from '../planning/snippets/SnippetsSection'
+import { Provider, createStore } from 'jotai'
 type Props = {
   issue: {
     value: string
@@ -23,18 +23,18 @@ export const OVERVIEW_PAGE_TITLE = 'One Task - Dolooper'
 
 const OverviewSection = ({ issue, handleReset }: Props) => {
   const [isTimerMinimized, setIsTimerMinimized] = useState(false)
-  const [showNotepad, setShowNotepad] = useState(true)
   const pageTitle = OVERVIEW_PAGE_TITLE
+  const myStore = createStore()
 
   return (
-    <>
+    <Provider store={myStore}>
       <Seo title={pageTitle} />
       <section className={`${pagePadding}`}>
         <Greeting />
         {renderTaskDashboard()}
         {renderInfoMessages()}
       </section>
-    </>
+    </Provider>
   )
 
   function renderTaskDashboard() {
@@ -51,14 +51,7 @@ const OverviewSection = ({ issue, handleReset }: Props) => {
           <TasksList area="overview" />
         </section>
 
-        <section className={boxStyles}>
-          <ButtonSecondary
-            text={`${showNotepad ? 'Hide' : 'Show'} Notepad`}
-            action={() => setShowNotepad(!showNotepad)}
-          />
-          {showNotepad && <NoteSection />}
-        </section>
-
+        <SnippetsSection />
         <section className={`${timerPopStyles}`}>
           <h2
             className="font-bold flex justify-between cursor-pointer"
@@ -90,7 +83,7 @@ const OverviewSection = ({ issue, handleReset }: Props) => {
   }
 }
 
-const boxStyles = `bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
+export const boxStyles = `bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
                    dark:bg-gray-600 dark:text-white dark:border-gray-600`
 const timerPopStyles = `bg-amber-200 shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
                         w-full sm:w-1/2 z-10 md:w-1/4 sm:fixed sm:right-4 sm:bottom-2
