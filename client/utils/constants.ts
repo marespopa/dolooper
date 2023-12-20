@@ -22,22 +22,27 @@ export const HELPER_TAGS = [
   {
     name: 'h1',
     value: '# ',
+    description: 'Title',
   },
   {
     name: 'h2',
     value: '## ',
+    description: 'Heading',
   },
   {
     name: 'h3',
     value: '### ',
+    description: 'Sub Heading',
   },
   {
     name: 'p',
     value: '',
+    description: 'Paragraph',
   },
   {
     name: 'li',
     value: '- ',
+    description: 'List',
   },
 ] as const
 

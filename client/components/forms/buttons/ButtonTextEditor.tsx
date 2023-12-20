@@ -19,12 +19,14 @@ type VariantValues = keyof typeof ButtonVariants
 interface Props {
   variant: VariantValues
   action: () => void
+  label: string // Describe what the button is doing
   isDisabled?: boolean
   style?: string
 }
 
 const ButtonTextEditor = ({
   variant,
+  label,
   action,
   isDisabled,
   style = '',
@@ -36,6 +38,7 @@ const ButtonTextEditor = ({
       data-mdb-ripple-color="light"
       onClick={action}
       role="button"
+      title={label}
       disabled={isDisabled}
     >
       {ButtonVariants[variant]}{' '}

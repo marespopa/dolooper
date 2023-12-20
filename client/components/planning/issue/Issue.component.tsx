@@ -54,9 +54,10 @@ const Issue = (props: Props) => {
           {HELPER_TAGS.map((tag) => {
             return (
               <ButtonTextEditor
+                label={tag.description}
                 key={tag.name}
                 variant={tag.name}
-                action={() => addElement(tag.name)}
+                action={() => handleEditorAction(tag.name)}
               />
             )
           })}
@@ -65,7 +66,7 @@ const Issue = (props: Props) => {
     )
   }
 
-  function addElement(option: HelperTags) {
+  function handleEditorAction(option: HelperTags) {
     const selectedHelperTag = HELPER_TAGS.find((item) => item.name === option)
 
     if (!selectedHelperTag) {
