@@ -31,7 +31,7 @@ export default function SnippetsSection({}: Props) {
       <div className="py-4">
         {list.length === 0 && 'No snippets added yet.'}
 
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {list.map((el) => (
             <SnippetItem
               key={el.id}
