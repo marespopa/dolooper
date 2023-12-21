@@ -18,7 +18,7 @@ type Props = {
 
 const TimeSelector = ({ name, label, value, config, action }: Props) => {
   return (
-    <div className={`relative z-0 min-h-full`}>
+    <div className={`relative sm:z-0 min-h-full`}>
       <div>
         {label?.title && <span className="text-strong">{label.title}</span>}
         <input

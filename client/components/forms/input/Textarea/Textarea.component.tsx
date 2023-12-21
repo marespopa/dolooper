@@ -31,7 +31,7 @@ const Textarea = (props: Props) => {
   useAutoResizeTextArea(ref, commonProps.value)
 
   return (
-    <div className="relative z-0 ">
+    <div className="relative sm:z-0 ">
       <textarea
         ref={ref}
         {...commonProps}

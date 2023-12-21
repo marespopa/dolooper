@@ -40,18 +40,6 @@ const OverviewSection = ({ issue, handleReset }: Props) => {
   function renderTaskDashboard() {
     return (
       <div className="my-4 md:md-0">
-        <section>
-          <Issue
-            handleUpdateValue={issue.action.onUpdate}
-            value={issue.value}
-          />
-        </section>
-
-        <section className={boxStyles}>
-          <TasksList area="overview" />
-        </section>
-
-        <SnippetsSection />
         <section className={`${timerPopStyles}`}>
           <h2
             className="font-bold flex justify-between cursor-pointer"
@@ -65,6 +53,19 @@ const OverviewSection = ({ issue, handleReset }: Props) => {
           </h2>
           {!isTimerMinimized && <Timer />}
         </section>
+
+        <section>
+          <Issue
+            handleUpdateValue={issue.action.onUpdate}
+            value={issue.value}
+          />
+        </section>
+
+        <section className={boxStyles}>
+          <TasksList area="overview" />
+        </section>
+
+        <SnippetsSection />
       </div>
     )
   }

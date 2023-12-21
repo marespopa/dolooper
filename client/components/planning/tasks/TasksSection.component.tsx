@@ -9,7 +9,7 @@ const TasksSection = () => {
         description={`Breaking it into smaller chunks, gives a clear way to progress.`}
         subHeading={'* You can always do this later'}
       />
-      <div className={`relative z-0 min-h-full w-full md:w-1/2`}>
+      <div className={`sm:relative sm:z-0 min-h-full w-full md:w-1/2`}>
         <TasksList area="planning" />
       </div>
     </section>

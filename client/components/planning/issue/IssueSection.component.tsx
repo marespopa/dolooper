@@ -27,7 +27,7 @@ const IssueSection = () => {
         description="What are you trying to achieve in this session?"
         subHeading={'* You can use markdown for writing the description'}
       />
-      <div className={`relative z-0 min-h-full py-2`}>
+      <div className={`sm:relative sm:z-0 min-h-full py-2`}>
         <Issue value={description} handleUpdateValue={updateDescription} />
       </div>
     </section>

@@ -19,7 +19,7 @@ const Input = (props: Props, ref: ForwardedRef<HTMLInputElement>) => {
   }
 
   return (
-    <div className="relative z-0 ">
+    <div className="relative sm:z-0 ">
       <input
         ref={ref}
         {...inputElProps}
