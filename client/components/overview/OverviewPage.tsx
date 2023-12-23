@@ -1,28 +1,18 @@
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
-import StorageService from '../../services/storageService'
+import React from 'react'
 import Container from '../container/Container.component'
 import OverviewSection from './OverviewSection'
+import { atom_description, atom_snippets, atom_subTasks } from 'jotai/atoms'
+import { useAtom } from 'jotai'
+import { RESET } from 'jotai/utils'
 
 const OverviewPage = () => {
-  const [issue, setIssue] = useState('')
   const router = useRouter()
-
-  useEffect(() => {
-    StorageService.getDescription().then((results) => {
-      if (results) {
-        setIssue(results)
-      }
-    })
-  }, [])
+  const [, setTasks] = useAtom(atom_subTasks)
+  const [, setDescription] = useAtom(atom_description)
+  const [, setSnippets] = useAtom(atom_snippets)
 
   const sectionProps = {
-    issue: {
-      value: issue,
-      action: {
-        onUpdate: handleUpdateIssue,
-      },
-    },
     handleReset,
   }
 
@@ -33,13 +23,10 @@ const OverviewPage = () => {
   )
 
   function handleReset() {
-    StorageService.resetAll()
     router.push('/planning')
-  }
-
-  function handleUpdateIssue(value: string) {
-    setIssue(value)
-    StorageService.setDescription(value)
+    setTasks(RESET)
+    setDescription(RESET)
+    setSnippets(RESET)
   }
 }
 

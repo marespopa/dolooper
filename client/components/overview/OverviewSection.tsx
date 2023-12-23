@@ -3,25 +3,19 @@ import Alert from '../banners/Alert'
 import { pagePadding } from '../common/common'
 import ButtonIcon from '../forms/buttons/ButtonIcon'
 import ButtonLink from '../forms/buttons/ButtonLink'
-import Issue from '../planning/issue/Issue.component'
 import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
 import Timer from '../timer'
 import Greeting from '../planning/greeting/Greeting.component'
 import SnippetsSection from '../planning/snippets/SnippetsSection'
 import { Provider, createStore } from 'jotai'
+import IssueSection from '../planning/issue/IssueSection.component'
 type Props = {
-  issue: {
-    value: string
-    action: {
-      onUpdate: (_arg: string) => void
-    }
-  }
   handleReset: () => void
 }
 export const OVERVIEW_PAGE_TITLE = 'One Task - Dolooper'
 
-const OverviewSection = ({ issue, handleReset }: Props) => {
+const OverviewSection = ({ handleReset }: Props) => {
   const [isTimerMinimized, setIsTimerMinimized] = useState(false)
   const pageTitle = OVERVIEW_PAGE_TITLE
   const myStore = createStore()
@@ -55,10 +49,7 @@ const OverviewSection = ({ issue, handleReset }: Props) => {
         </section>
 
         <section>
-          <Issue
-            handleUpdateValue={issue.action.onUpdate}
-            value={issue.value}
-          />
+          <IssueSection isOverview={true} />
         </section>
 
         <section className={boxStyles}>

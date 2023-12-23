@@ -1,30 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import StorageService from '../../../services/storageService'
+import React from 'react'
 import SectionHeading from '../common/SectionHeading.component'
 import Issue from './Issue.component'
-import { INITIAL_DESCRIPTION } from './INITIAL_DESCRIPTION'
+import { useAtom } from 'jotai'
+import { atom_description } from 'jotai/atoms'
 
-const IssueSection = () => {
-  const [description, setDescription] = useState(INITIAL_DESCRIPTION)
+interface Props {
+  isOverview?: boolean
+}
 
-  useEffect(() => {
-    StorageService.getDescription().then((results) => {
-      if (results) {
-        setDescription(results)
-      }
-    })
-  }, [])
+const IssueSection = ({ isOverview = false }: Props) => {
+  const [description, setDescription] = useAtom(atom_description)
+  const headingContent = {
+    title: isOverview ? 'Working on' : "Let's start",
+    description: isOverview
+      ? ''
+      : 'What are you trying to achieve in this session?',
+  }
 
   function updateDescription(value: string) {
     setDescription(value)
-    StorageService.setDescription(value)
   }
 
   return (
     <section>
       <SectionHeading
-        title="Let's start!"
-        description="What are you trying to achieve in this session?"
+        title={headingContent.title}
+        description={headingContent.description}
         subHeading={'* You can use markdown for writing the description'}
       />
       <div className={`sm:relative sm:z-0 min-h-full py-2`}>

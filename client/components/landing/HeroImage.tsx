@@ -6,6 +6,7 @@ export default function HeroImage() {
     <Image
       src={profilePic}
       alt="Your Workflow in your workspace"
+      priority
       // width={500} automatically provided
       // height={500} automatically provided
       // blurDataURL="data:..." automatically provided

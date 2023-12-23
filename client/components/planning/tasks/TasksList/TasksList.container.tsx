@@ -1,17 +1,18 @@
 import Input from '@/components/forms/input/Input'
 import { nanoid } from 'nanoid'
-import React, { useEffect, useState } from 'react'
-import StorageService from '../../../../services/storageService'
-import { Task, TaskArea } from '../../../../types/types'
+import React, { useState } from 'react'
+import { TaskArea } from '../../../../types/types'
 import ButtonSecondary from '../../../forms/buttons/ButtonSecondary'
 import TasksListComponent from './TasksList.component'
+import { useAtom } from 'jotai'
+import { atom_subTasks } from 'jotai/atoms'
 
 interface Props {
   area: TaskArea
 }
 
 const TasksList = ({ area }: Props) => {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useAtom(atom_subTasks)
   const [task, setTask] = useState<string>('')
   const showHeading = area === 'overview'
   const taskAddLabel =
@@ -25,16 +26,6 @@ const TasksList = ({ area }: Props) => {
     setTask('')
   }
 
-  useEffect(() => {
-    StorageService.getTasks().then((results) => {
-      if (!results) {
-        return
-      }
-
-      setTasks(results)
-    })
-  }, [])
-
   const handleAdd = (taskMessage: string) => {
     const updatedTasks = [
       ...tasks,
@@ -46,7 +37,6 @@ const TasksList = ({ area }: Props) => {
     ]
 
     setTasks(updatedTasks)
-    StorageService.setTasks(updatedTasks)
     resetTask()
   }
 
@@ -60,13 +50,12 @@ const TasksList = ({ area }: Props) => {
     })
 
     setTasks(nextTasks)
-    StorageService.setTasks(nextTasks)
   }
+
   const handleDelete = (taskUUID: string) => {
     const arr = tasks.filter((item) => item.key !== taskUUID)
 
     setTasks(arr)
-    StorageService.setTasks(arr)
   }
 
   function handleToggle(key: string) {
@@ -79,7 +68,6 @@ const TasksList = ({ area }: Props) => {
     })
 
     setTasks(nextTasks)
-    StorageService.setTasks(nextTasks)
   }
 
   const isDisabled = task.length === 0

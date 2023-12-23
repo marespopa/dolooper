@@ -1,27 +1,14 @@
 import { useRouter } from 'next/router'
-import React, { useEffect, useState } from 'react'
-import StorageService from '../../services/storageService'
+import React from 'react'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
 import HeroImage from './HeroImage'
 
 const HeroSection = () => {
   const router = useRouter()
-  const [hasTaskInProgress, setHasTaskInProgress] = useState(false)
 
   const goToPlanning = () => {
     router.push('/planning')
   }
-
-  const goToOverview = () => {
-    router.push('/overview')
-  }
-
-  useEffect(() => {
-    StorageService.hasEntries().then((isInProgress) => {
-      setHasTaskInProgress(isInProgress ? true : false)
-    })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <section className="flex flex-col sm:flex-row justify-between mt-2 sm:mt-8 md:mt-16">
@@ -37,14 +24,7 @@ const HeroSection = () => {
         </h2>
 
         <div className="mt-4 sm:mt-8 md:mt-10">
-          {hasTaskInProgress ? (
-            <ButtonPrimary text={`Continue`} action={goToOverview} />
-          ) : (
-            <ButtonPrimary
-              text={`Get Started for Free`}
-              action={goToPlanning}
-            />
-          )}
+          <ButtonPrimary text={`Try now for free`} action={goToPlanning} />
         </div>
       </div>
 
