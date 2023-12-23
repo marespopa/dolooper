@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import React from 'react'
 import Container from '../container'
-import IssueSection from './issue/IssueSection.component'
+import DescriptionSection from './description/DescriptionSection.component'
 import TasksSection from './tasks/TasksSection.component'
 import { pagePadding } from '../common/common'
 import Greeting from './greeting/Greeting.component'
@@ -18,7 +18,7 @@ const PlanningPage = () => {
     <div className={`py-5 ${pagePadding}`}>
       <Container>
         <Greeting />
-        <IssueSection />
+        <DescriptionSection />
         <div className={`flex my-8'}`} role="group">
           <TasksSection />
         </div>

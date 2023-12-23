@@ -9,7 +9,7 @@ type Props = {
 
 const Tabs = ({ activeTab, handleTabChange }: Props) => {
   return (
-    <ul className="flex flex-wrap text-sm px-4 py-2 rounded-t-md font-medium text-center text-gray-500 dark:text-gray-400 dark:bg-gray-600 bg-white">
+    <ul className="flex flex-wrap text-sm px-4 py-2 rounded-t-md font-medium text-center text-gray-500 dark:text-gray-400 dark:bg-gray-600 bg-gray-200">
       <li className="mr-2">
         <a
           href="#"

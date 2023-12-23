@@ -9,7 +9,7 @@ import Timer from '../timer'
 import Greeting from '../planning/greeting/Greeting.component'
 import SnippetsSection from '../planning/snippets/SnippetsSection'
 import { Provider, createStore } from 'jotai'
-import IssueSection from '../planning/issue/IssueSection.component'
+import DescriptionSection from '../planning/description/DescriptionSection.component'
 type Props = {
   handleReset: () => void
 }
@@ -48,9 +48,7 @@ const OverviewSection = ({ handleReset }: Props) => {
           {!isTimerMinimized && <Timer />}
         </section>
 
-        <section>
-          <IssueSection isOverview={true} />
-        </section>
+        <DescriptionSection isOverview={true} />
 
         <section className={boxStyles}>
           <TasksList area="overview" />

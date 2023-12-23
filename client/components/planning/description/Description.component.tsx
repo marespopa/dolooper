@@ -1,5 +1,7 @@
+'use client'
+
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
-import Textarea from '@/components/forms/input/Textarea'
+import Highlight from '@/components/forms/input/Highlight'
 import Tabs, { TabVariant } from '@/components/tabs/Tabs'
 import { useState } from 'react'
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
@@ -10,9 +12,10 @@ type Props = {
   handleUpdateValue: (_arg: string) => void
 }
 
-const Issue = (props: Props) => {
+const Description = (props: Props) => {
   const { value, handleUpdateValue } = props
   const [isEdit, setIsEdit] = useState(true)
+  const [cursorPosition, setCursorPosition] = useState(0)
 
   return (
     <div>
@@ -43,14 +46,14 @@ const Issue = (props: Props) => {
   function renderEditField() {
     return (
       <div className={`${editorStyles}`}>
-        <Textarea
+        <Highlight
           handleChange={handleUpdateValue}
           id={'issue'}
-          label={'Description'}
           value={value}
           customStyles="max-h-screen"
+          handleCursorPositionUpdate={(pos: number) => setCursorPosition(pos)}
         />
-        <div className="flex flex-wrap gap-2 mt-4">
+        <div className="flex flex-wrap gap-2 my-4 px-2 md:px-4">
           {HELPER_TAGS.map((tag) => {
             return (
               <ButtonTextEditor
@@ -73,12 +76,11 @@ const Issue = (props: Props) => {
       return
     }
 
-    let valueToBeAdded = selectedHelperTag.value as string
+    let textBeforeCursorPosition = value.substring(0, cursorPosition)
+    let textAfterCursorPosition = value.substring(cursorPosition, value.length)
+    const newContent = `${textBeforeCursorPosition}${selectedHelperTag.value}${textAfterCursorPosition}`
 
-    if (value.length > 0) {
-      valueToBeAdded = '\n' + valueToBeAdded
-    }
-    handleUpdateValue(value + valueToBeAdded)
+    handleUpdateValue(newContent)
   }
 }
 
@@ -87,7 +89,7 @@ const previewStyles = `px-4 py-2 prose prose-neutral max-w-none prose-h1:text-ce
    dark:prose-invert dark:prose-li:marker:text-amber-200 bg-white shadow-sm px-2 md:px-4 py-3 rounded-b-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600 break-words max-h-screen overflow-y-auto`
 
-const editorStyles = `bg-white shadow-sm px-2 md:px-4 py-3 rounded-b-md
+const editorStyles = `bg-gray-200 shadow-sm py-1 rounded-b-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600`
 
-export default Issue
+export default Description
