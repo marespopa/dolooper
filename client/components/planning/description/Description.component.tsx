@@ -2,9 +2,7 @@
 
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
 import Highlight from '@/components/forms/input/Highlight'
-import Tabs, { TabVariant } from '@/components/tabs/Tabs'
 import { useState } from 'react'
-import { ReactMarkdown } from 'react-markdown/lib/react-markdown'
 import { HelperTags, HELPER_TAGS } from 'utils/constants'
 
 type Props = {
@@ -14,34 +12,9 @@ type Props = {
 
 const Description = (props: Props) => {
   const { value, handleUpdateValue } = props
-  const [isEdit, setIsEdit] = useState(true)
   const [cursorPosition, setCursorPosition] = useState(0)
 
-  return (
-    <div>
-      <Tabs
-        activeTab={isEdit ? 'edit' : 'preview'}
-        handleTabChange={onTabChange}
-      />
-      {isEdit && renderEditField()}
-      {!isEdit && renderDisplayField()}
-    </div>
-  )
-
-  function onTabChange(tab: TabVariant) {
-    setIsEdit(tab === 'edit')
-  }
-
-  function renderDisplayField() {
-    const hasText = value && value.length > 0
-
-    return (
-      <div className={previewStyles} onDoubleClick={() => setIsEdit(!isEdit)}>
-        {!hasText && <p>Describe the task first...</p>}
-        {hasText && <ReactMarkdown>{value}</ReactMarkdown>}
-      </div>
-    )
-  }
+  return <div>{renderEditField()}</div>
 
   function renderEditField() {
     return (
@@ -64,6 +37,14 @@ const Description = (props: Props) => {
               />
             )
           })}
+
+          <ButtonTextEditor
+            style="ml-auto"
+            label={'Export'}
+            key={'export'}
+            variant={'export'}
+            action={() => exportFile()}
+          />
         </div>
       </div>
     )
@@ -82,14 +63,19 @@ const Description = (props: Props) => {
 
     handleUpdateValue(newContent)
   }
+
+  function exportFile(): void {
+    const fileData = value
+    const blob = new Blob([fileData], { type: 'text/markdown' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.download = 'task.md'
+    link.href = url
+    link.click()
+  }
 }
 
-const previewStyles = `px-4 py-2 prose prose-neutral max-w-none prose-h1:text-center w-full
-   prose-li:marker:text-amber-500
-   dark:prose-invert dark:prose-li:marker:text-amber-200 bg-white shadow-sm px-2 md:px-4 py-3 rounded-b-md
-   dark:bg-gray-600 dark:text-white dark:border-gray-600 break-words max-h-screen overflow-y-auto`
-
-const editorStyles = `bg-gray-200 shadow-sm py-1 rounded-b-md
+const editorStyles = `bg-gray-200 shadow-sm pb-1 rounded-b-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600`
 
 export default Description

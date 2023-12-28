@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Alert from '../banners/Alert'
 import { pagePadding } from '../common/common'
-import ButtonIcon from '../forms/buttons/ButtonIcon'
 import ButtonLink from '../forms/buttons/ButtonLink'
 import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
@@ -16,7 +15,6 @@ type Props = {
 export const OVERVIEW_PAGE_TITLE = 'One Task - Dolooper'
 
 const OverviewSection = ({ handleReset }: Props) => {
-  const [isTimerMinimized, setIsTimerMinimized] = useState(false)
   const pageTitle = OVERVIEW_PAGE_TITLE
   const myStore = createStore()
 
@@ -34,20 +32,7 @@ const OverviewSection = ({ handleReset }: Props) => {
   function renderTaskDashboard() {
     return (
       <div className="my-4 md:md-0">
-        <section className={`${timerPopStyles}`}>
-          <h2
-            className="font-bold flex justify-between cursor-pointer"
-            onClick={() => toggleTimerWindow()}
-          >
-            <span>Timer</span>
-            <ButtonIcon
-              variant={isTimerMinimized ? 'maximize' : 'minimize'}
-              action={() => toggleTimerWindow()}
-            />
-          </h2>
-          {!isTimerMinimized && <Timer />}
-        </section>
-
+        <Timer />
         <DescriptionSection isOverview={true} />
 
         <section className={boxStyles}>
@@ -57,10 +42,6 @@ const OverviewSection = ({ handleReset }: Props) => {
         <SnippetsSection />
       </div>
     )
-  }
-
-  function toggleTimerWindow() {
-    setIsTimerMinimized(!isTimerMinimized)
   }
 
   function renderInfoMessages() {
@@ -75,8 +56,5 @@ const OverviewSection = ({ handleReset }: Props) => {
 
 export const boxStyles = `bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
                    dark:bg-gray-600 dark:text-white dark:border-gray-600`
-const timerPopStyles = `bg-amber-200 shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
-                        w-full sm:w-1/2 z-10 md:w-1/4 sm:fixed sm:right-4 sm:bottom-2
-                        dark:bg-gray-800 dark:text-white dark:border-gray-600 sm:opacity-95`
 
 export default OverviewSection

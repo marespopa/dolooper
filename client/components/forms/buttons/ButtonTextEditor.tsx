@@ -4,6 +4,7 @@ import ParagraphIconSVG from 'icons/editor/ParagraphIconSVG'
 import SubHeadingIconSVG from 'icons/editor/SubHeadingIconSVG'
 import TitleIconSVG from 'icons/editor/TitleIconSVG'
 import React from 'react'
+import { FaFileExport } from 'react-icons/fa'
 
 const buttonHeight = 24
 const ButtonVariants = {
@@ -12,6 +13,7 @@ const ButtonVariants = {
   h3: <SubHeadingIconSVG height={buttonHeight} />,
   p: <ParagraphIconSVG height={buttonHeight} />,
   li: <ListIconSVG height={buttonHeight} />,
+  export: <FaFileExport height={buttonHeight} />,
 }
 
 type VariantValues = keyof typeof ButtonVariants

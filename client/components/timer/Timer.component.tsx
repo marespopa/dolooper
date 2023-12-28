@@ -8,6 +8,7 @@ import { toast } from 'react-toastify'
 import useSound from 'use-sound'
 import { useDocumentTitle } from 'hooks/use-document-title'
 import { OVERVIEW_PAGE_TITLE } from '../overview/OverviewSection'
+import ButtonIcon from '../forms/buttons/ButtonIcon'
 
 function Timer() {
   const [playStopSound] = useSound('resources/sounds/boop.mp3')
@@ -24,6 +25,9 @@ function Timer() {
   const [isNotificationShown, setIsNotificationShown] = useState(false)
   const isTimeForABreak = isRunning && counter > workTimeInMs
   const [_, setDocumentTitle] = useDocumentTitle(OVERVIEW_PAGE_TITLE)
+
+  const isWorking = isRunning && counter > 0 && counter < workTimeInMs
+  const isBreak = isRunning && counter > workTimeInMs
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,17 +64,15 @@ function Timer() {
   }, [])
 
   useEffect(() => {
-    const isWorking = isRunning && counter > 0 && counter < workTimeInMs
-    const isBreak = isRunning && counter > workTimeInMs
-
-    if (isWorking) {
-      setDocumentTitle(`${getFormattedTimeFromMs(counter)} - Working`)
-    } else if (isBreak) {
-      setDocumentTitle(`Timer expired`)
-    } else {
-      setDocumentTitle(OVERVIEW_PAGE_TITLE)
+    const obtainTitle = () => {
+      return getTitle(isWorking, isBreak)
     }
-  }, [counter, isRunning, setDocumentTitle, workTimeInMs])
+
+    const title = obtainTitle()
+    setDocumentTitle(title)
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isBreak, isWorking, counter, isRunning, setDocumentTitle, workTimeInMs])
 
   useEffect(() => {
     return () => {
@@ -94,6 +96,7 @@ function Timer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTimeForABreak, isNotificationShown, isRunning, workTime, counter])
 
+  const [isTimerMinimized, setIsTimerMinimized] = useState(false)
   const isStarted = isRunning && counter > 0
   const isTimerStarting = isRunning && counter <= 0
   const showBreakMessage = isRunning && counter > workTimeInMs
@@ -115,18 +118,49 @@ function Timer() {
   }
 
   return (
-    <section className="flex flex-col justify-center items-center">
-      {renderStatus()}
-      {renderControlButtons()}
-      {isStarted && !isTimeForABreak && workTimeInfo}
-      {showConfiguration && (
-        <TimerConfigSection
-          timer={workTime}
-          handleTimeChange={handleWorkTimeChange}
+    <section className={`${timerPopStyles}`}>
+      <h2
+        className="font-bold flex justify-between cursor-pointer"
+        onClick={() => toggleTimerWindow()}
+      >
+        <span>{getTitle(isWorking, isBreak)}</span>
+        <ButtonIcon
+          variant={isTimerMinimized ? 'maximize' : 'minimize'}
+          action={() => toggleTimerWindow()}
         />
+      </h2>
+
+      {!isTimerMinimized && (
+        <div className="flex flex-col justify-center items-center">
+          {renderStatus()}
+          {renderControlButtons()}
+          {isStarted && !isTimeForABreak && workTimeInfo}
+          {showConfiguration && (
+            <TimerConfigSection
+              timer={workTime}
+              handleTimeChange={handleWorkTimeChange}
+            />
+          )}
+        </div>
       )}
     </section>
   )
+
+  function toggleTimerWindow() {
+    setIsTimerMinimized(!isTimerMinimized)
+  }
+
+  function getTitle(isWorking: boolean, isBreak: boolean) {
+    if (isWorking) {
+      return `${getFormattedTimeFromMs(counter)} - Working`
+    }
+
+    if (isBreak) {
+      return `Timer expired`
+    }
+
+    return OVERVIEW_PAGE_TITLE
+  }
 
   function renderStatus() {
     return (
@@ -232,5 +266,9 @@ function Timer() {
     StorageService.setTime('work', value)
   }
 }
+
+const timerPopStyles = `bg-amber-200 shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
+                        w-full sm:w-1/2 z-10 md:w-1/4 sm:fixed sm:right-4 sm:bottom-2
+                        dark:bg-gray-800 dark:text-white dark:border-gray-600 sm:opacity-95`
 
 export default Timer

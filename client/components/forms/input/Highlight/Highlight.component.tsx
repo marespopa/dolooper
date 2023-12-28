@@ -43,7 +43,7 @@ const Highlight = (props: Props) => {
   useLayoutEffect(() => {
     if (textareaRef.current?.clientHeight && highlightRef.current) {
       const textareaHeight = textareaRef.current.scrollHeight || 100
-      const updatedHeight = textareaHeight > 320 ? 320 : textareaHeight
+      const updatedHeight = textareaHeight > 360 ? 360 : textareaHeight
 
       highlightRef.current.style.height = `${updatedHeight}px`
     }
@@ -65,7 +65,7 @@ const Highlight = (props: Props) => {
   }
 
   return (
-    <div className="relative sm:z-0 h-[320px]">
+    <div className="relative sm:z-0 h-[360px]">
       <div className="absolute top-0 left-0 w-full" ref={highlightRef}>
         <SyntaxHighlighter
           language="markdown"
@@ -106,7 +106,7 @@ const Highlight = (props: Props) => {
   )
 }
 
-const inputStyle = `absolute top-0 left-0 w-full h-[320px] overflow-y-scroll text-transparent bg-transparent caret-slate-500
+const inputStyle = `absolute top-0 left-0 w-full h-[360px] overflow-y-scroll text-transparent bg-transparent caret-slate-500
                     font-mono px-2 py-4 outline-none resize-none`
 
 export default Highlight

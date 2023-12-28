@@ -70,8 +70,6 @@ const SnippetItem = ({ item, actions }: Props) => {
 
   return (
     <code className="w-full font-mono text-sm sm:text-base flex flex-nowrap text-left space-x-4 bg-gray-200 border-slate-200 dark:bg-gray-800 text-gray-700 dark:text-white rounded-lg p-4 pl-6 dark:border-slate-700 border-2 outline-none">
-      <span className="shrink-0 text-gray-500 flex-none">$</span>
-
       <span className="flex-auto col-span-9 border-b border-gray-400 dark:border-white min-w-[64px]">
         <ContentEditable
           className="outline-none border-0"

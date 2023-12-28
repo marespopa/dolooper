@@ -1,20 +1,20 @@
-export const INITIAL_DESCRIPTION = `## 🚀 Task Title
+export const INITIAL_DESCRIPTION = `# 🚀 Task Title
 
-### 🎯 Objective
+## 🎯 Objective
 The main goal of this task is to [briefly describe the objective].
 
-### ✅ Requirements
+## ✅ Requirements
 - [List specific requirements or functionalities needed]
 - [Mention any technologies, frameworks, or tools to be used]
 
-### 📦 Deliverables
+## 📦 Deliverables
 - [Specify the expected deliverables or outcomes]
 
-### ⏰ Timeline
+## ⏰ Timeline
 - **Start Date:** [Insert start date]
 - **Deadline:** [Insert deadline]
 
-### 📝 Additional Information
+## 📝 Additional Information
 - [Provide any additional context, resources, or references relevant to the task]
 
 ---
