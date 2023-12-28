@@ -36,7 +36,7 @@ export const HELPER_TAGS = [
   },
   {
     name: 'p',
-    value: '',
+    value: '\n',
     description: 'Paragraph',
   },
   {

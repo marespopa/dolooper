@@ -1,10 +1,9 @@
 import HeadingIconSVG from 'icons/editor/HeadingIconSVG'
-import ListIconSVG from 'icons/editor/ListIconSVG'
 import ParagraphIconSVG from 'icons/editor/ParagraphIconSVG'
 import SubHeadingIconSVG from 'icons/editor/SubHeadingIconSVG'
 import TitleIconSVG from 'icons/editor/TitleIconSVG'
 import React from 'react'
-import { FaFileExport } from 'react-icons/fa'
+import { FaFileExport, FaListUl } from 'react-icons/fa'
 
 const buttonHeight = 24
 const ButtonVariants = {
@@ -12,7 +11,7 @@ const ButtonVariants = {
   h2: <HeadingIconSVG height={buttonHeight} />,
   h3: <SubHeadingIconSVG height={buttonHeight} />,
   p: <ParagraphIconSVG height={buttonHeight} />,
-  li: <ListIconSVG height={buttonHeight} />,
+  li: <FaListUl height={buttonHeight} />,
   export: <FaFileExport height={buttonHeight} />,
 }
 
