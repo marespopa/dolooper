@@ -107,6 +107,6 @@ const Highlight = (props: Props) => {
 }
 
 const inputStyle = `absolute top-0 left-0 w-full h-[320px] overflow-y-scroll text-transparent bg-transparent caret-slate-500
-                    font-mono px-2 py-4 outline-none`
+                    font-mono px-2 py-4 outline-none resize-none`
 
 export default Highlight

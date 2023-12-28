@@ -3,7 +3,7 @@ import React from 'react'
 type SecondaryButtonVariants = 'error' | 'default' | 'success' | 'outline'
 
 interface Props {
-  text: string
+  children: any
   variant?: SecondaryButtonVariants
   action: () => void
   isDisabled?: boolean
@@ -11,7 +11,7 @@ interface Props {
 }
 
 const ButtonSecondary = ({
-  text,
+  children,
   variant = 'default',
   action,
   isDisabled,
@@ -19,14 +19,16 @@ const ButtonSecondary = ({
 }: Props) => {
   return (
     <button
-      className={`${buttonStyles(variant)} ${style}`}
+      className={`${buttonStyles(
+        variant,
+      )} ${style} flex gap-2 justify-center items-center`}
       data-mdb-ripple="true"
       data-mdb-ripple-color="light"
       onClick={action}
       role="button"
       disabled={isDisabled}
     >
-      {text}
+      {children}
     </button>
   )
 }

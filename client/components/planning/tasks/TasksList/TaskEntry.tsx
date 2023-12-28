@@ -106,9 +106,10 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
         </span>
         <ButtonSecondary
           action={() => handleUpdateTask(task.key, editValue)}
-          text="Save"
           isDisabled={isUpdateDisabled}
-        />
+        >
+          Save
+        </ButtonSecondary>
       </form>
     )
   }

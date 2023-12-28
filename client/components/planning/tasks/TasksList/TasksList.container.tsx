@@ -107,9 +107,10 @@ const TasksList = ({ area }: Props) => {
           </div>
           <ButtonSecondary
             action={() => handleAdd(task)}
-            text="Add"
             isDisabled={isDisabled}
-          />
+          >
+            Add
+          </ButtonSecondary>
         </div>
       </form>
     )

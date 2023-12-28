@@ -7,7 +7,6 @@ import { FaPlusCircle } from 'react-icons/fa'
 
 import React, { useState } from 'react'
 import { nanoid } from 'nanoid'
-import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 
 type Props = {}
 
@@ -17,10 +16,9 @@ export default function SnippetsSection({}: Props) {
 
   return (
     <section className={boxStyles}>
-      <ButtonSecondary
-        text={`${showSection ? 'Hide' : 'Show'} Snippets`}
-        action={() => setShowSection(!showSection)}
-      />
+      <ButtonSecondary action={() => setShowSection(!showSection)}>
+        {`${showSection ? 'Hide' : 'Show'} Snippets`}
+      </ButtonSecondary>
 
       {showSection && renderList()}
     </section>
@@ -44,9 +42,11 @@ export default function SnippetsSection({}: Props) {
           ))}
         </div>
         <div className="mt-4">
-          <ButtonFontIcon action={() => handleAddSnippet()}>
-            <FaPlusCircle />
-          </ButtonFontIcon>
+          <ButtonSecondary action={() => handleAddSnippet()}>
+            <>
+              <FaPlusCircle /> Add
+            </>
+          </ButtonSecondary>
         </div>
       </div>
     )

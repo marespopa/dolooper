@@ -173,19 +173,15 @@ function Timer() {
     return (
       <div className="flex flex-row md:justify-center">
         {!isRunning && (
-          <ButtonSecondary
-            text="Start"
-            variant="success"
-            action={handleStart}
-          />
+          <ButtonSecondary variant="success" action={handleStart}>
+            Start
+          </ButtonSecondary>
         )}
 
         {isRunning && (
-          <ButtonSecondary
-            text={showBreakMessage ? 'Take a break' : 'Stop'}
-            variant="error"
-            action={handleStop}
-          />
+          <ButtonSecondary variant="error" action={handleStop}>
+            {showBreakMessage ? 'Take a break' : 'Stop'}
+          </ButtonSecondary>
         )}
       </div>
     )

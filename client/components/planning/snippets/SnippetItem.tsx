@@ -32,7 +32,7 @@ const SnippetItem = ({ item, actions }: Props) => {
   )
 
   const copyIcon = (
-    <span className="flex-none cursor-pointer transition text-gray-500 hover:text-white">
+    <span className={iconStyle}>
       <svg
         className="shrink-0 h-5 w-5 "
         xmlns="http://www.w3.org/2000/svg"
@@ -47,10 +47,7 @@ const SnippetItem = ({ item, actions }: Props) => {
   )
 
   const deleteIcon = (
-    <span
-      className="flex-none cursor-pointer transition text-gray-500 hover:text-white"
-      onClick={() => handleDelete(item.id)}
-    >
+    <span className={iconStyle} onClick={() => handleDelete(item.id)}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
@@ -87,5 +84,8 @@ const SnippetItem = ({ item, actions }: Props) => {
     </code>
   )
 }
+
+const iconStyle =
+  'flex-none cursor-pointer transition text-gray-500 hover:text-gray-600 focus:text-gray-600 dark:hover:text-gray-400 dark:focus:text-gray-400'
 
 export default SnippetItem
