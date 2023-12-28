@@ -32,7 +32,7 @@ const SnippetItem = ({ item, actions }: Props) => {
   )
 
   const copyIcon = (
-    <span className={iconStyle}>
+    <span className={iconStyle} title="Copy Text">
       <svg
         className="shrink-0 h-5 w-5 "
         xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,11 @@ const SnippetItem = ({ item, actions }: Props) => {
   )
 
   const deleteIcon = (
-    <span className={iconStyle} onClick={() => handleDelete(item.id)}>
+    <span
+      className={iconStyle}
+      onClick={() => handleDelete(item.id)}
+      title="Delete"
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="16"
