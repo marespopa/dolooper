@@ -39,7 +39,7 @@ const Description = (props: Props) => {
           })}
 
           <ButtonTextEditor
-            style="ml-auto"
+            style="sm:ml-auto"
             label={'Export'}
             key={'export'}
             variant={'export'}
