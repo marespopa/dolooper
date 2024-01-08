@@ -1,8 +1,12 @@
 'use client'
 
+import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
 import Highlight from '@/components/forms/input/Highlight'
 import { useState } from 'react'
+import { FaFileExport } from 'react-icons/fa'
+import { IoRefreshCircle } from 'react-icons/io5'
+
 import { HelperTags, HELPER_TAGS } from 'utils/constants'
 
 type Props = {
@@ -37,14 +41,21 @@ const Description = (props: Props) => {
               />
             )
           })}
+        </div>
 
-          <ButtonTextEditor
-            style="sm:ml-auto"
-            label={'Export'}
-            key={'export'}
-            variant={'export'}
-            action={() => exportFile()}
-          />
+        <div className="flex flex-wrap gap-2 my-2 px-2 md:px-4">
+          <ButtonFontIcon key={'export'} action={() => exportFile()}>
+            <FaFileExport height={32} />
+            Export
+          </ButtonFontIcon>
+          <ButtonFontIcon
+            key={'clear'}
+            action={() => clearContent()}
+            isDisabled={value?.length === 0}
+          >
+            <IoRefreshCircle height={32} />
+            Clear
+          </ButtonFontIcon>
         </div>
       </div>
     )
@@ -72,6 +83,10 @@ const Description = (props: Props) => {
     link.download = 'task.md'
     link.href = url
     link.click()
+  }
+
+  function clearContent() {
+    handleUpdateValue('')
   }
 }
 
