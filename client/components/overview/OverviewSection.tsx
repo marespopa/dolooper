@@ -12,7 +12,7 @@ import DescriptionSection from '../planning/description/DescriptionSection.compo
 type Props = {
   handleReset: () => void
 }
-export const OVERVIEW_PAGE_TITLE = 'One Task - Dolooper'
+export const OVERVIEW_PAGE_TITLE = 'Dolooper - Focus Session'
 
 const OverviewSection = ({ handleReset }: Props) => {
   const pageTitle = OVERVIEW_PAGE_TITLE
