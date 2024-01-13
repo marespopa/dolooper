@@ -30,6 +30,7 @@ const DescriptionSection = ({ isOverview = false }: Props) => {
       />
       <div className={`sm:relative sm:z-0 min-h-full py-2`}>
         <Description
+          hasPreview={isOverview}
           value={description}
           handleUpdateValue={updateDescription}
         />

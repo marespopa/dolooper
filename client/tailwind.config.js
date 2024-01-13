@@ -9,6 +9,11 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      colors: {
+        gunmetal: {
+          500: '#2e3440',
+        },
+      },
       fontFamily: {
         primary: ['var(--default-font)', ...fontFamily.sans],
       },

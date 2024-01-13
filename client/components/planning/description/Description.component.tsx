@@ -3,23 +3,52 @@
 import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
 import Highlight from '@/components/forms/input/Highlight'
+import Tabs, { TabVariant } from '@/components/tabs/Tabs'
 import { useState } from 'react'
 import { FaFileExport } from 'react-icons/fa'
 import { IoRefreshCircle } from 'react-icons/io5'
+import ReactMarkdown from 'react-markdown'
 
 import { HelperTags, HELPER_TAGS } from 'utils/constants'
 
 type Props = {
   value: string
   handleUpdateValue: (_arg: string) => void
+  hasPreview?: boolean
 }
 
-const Description = (props: Props) => {
-  const { value, handleUpdateValue } = props
+const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
   const [cursorPosition, setCursorPosition] = useState(0)
+  const [activeTab, setActiveTab] = useState<TabVariant>(
+    hasPreview ? 'preview' : 'edit',
+  )
+
+  if (hasPreview) {
+    return (
+      <div>
+        <Tabs
+          activeTab={activeTab}
+          handleTabChange={() =>
+            setActiveTab(activeTab === 'preview' ? 'edit' : 'preview')
+          }
+        />
+        {activeTab === 'preview' && <div>{renderPreviewField()}</div>}
+        {activeTab === 'edit' && <div>{renderEditField()}</div>}
+      </div>
+    )
+  }
 
   return <div>{renderEditField()}</div>
 
+  function renderPreviewField() {
+    return (
+      <div className={`${previewStyles}`}>
+        <article className="prose dark:prose-invert">
+          <ReactMarkdown>{value}</ReactMarkdown>
+        </article>
+      </div>
+    )
+  }
   function renderEditField() {
     return (
       <div className={`${editorStyles}`}>
@@ -92,5 +121,8 @@ const Description = (props: Props) => {
 
 const editorStyles = `bg-gray-200 shadow-sm pb-1 rounded-b-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600`
+
+const previewStyles = `p-4 md:p-4 bg-white shadow-sm rounded-b-md
+  dark:bg-gunmetal-500 dark:text-white dark:border-gray-600`
 
 export default Description
