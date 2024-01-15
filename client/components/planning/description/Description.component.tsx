@@ -76,6 +76,7 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
       </div>
     )
   }
+
   function renderEditField() {
     return (
       <div className={`${editorStyles}`}>
@@ -150,6 +151,6 @@ const editorStyles = `bg-gray-200 shadow-sm pb-1 rounded-b-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600`
 
 const previewStyles = `p-4 md:p-4 bg-white shadow-sm rounded-b-md
-  dark:bg-gunmetal-500 dark:text-white dark:border-gray-600 max-h-full`
+  dark:bg-gunmetal-500 dark:text-white dark:border-gray-600 max-h-screen overflow-y-auto`
 
 export default Description
