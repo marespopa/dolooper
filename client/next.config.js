@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  transpilePackages: ['react-gfm', 'react-syntax-highlighter'],
+  transpilePackages: ['react-gfm'],
   swcMinify: true,
   images: {
     remotePatterns: [

@@ -1,8 +1,8 @@
-'use client'
+//'use client'
 
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { nord } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 import ReactMarkdown from 'react-markdown'
 
 import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'

@@ -1,12 +1,22 @@
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import React from 'react'
 import Container from '../container'
-import DescriptionSection from './description/DescriptionSection.component'
-import TasksSection from './tasks/TasksSection.component'
 import { pagePadding } from '../common/common'
 import Greeting from './greeting/Greeting.component'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
 import Seo from '../Seo'
+import Loading from '../loading/Loading'
+
+const DescriptionSection = dynamic(
+  () => import('./description/DescriptionSection.component'),
+  {
+    loading: () => <Loading />,
+  },
+)
+const TasksSection = dynamic(() => import('./tasks/TasksSection.component'), {
+  loading: () => <Loading />,
+})
 
 export const PLANNING_PAGE_TITLE = 'Dolooper - Plan Your Session'
 

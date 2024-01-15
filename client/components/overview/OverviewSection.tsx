@@ -1,14 +1,33 @@
 import React from 'react'
+import dynamic from 'next/dynamic'
 import Alert from '../banners/Alert'
 import { pagePadding } from '../common/common'
 import ButtonLink from '../forms/buttons/ButtonLink'
-import TasksList from '../planning/tasks/TasksList'
 import Seo from '../Seo'
-import Timer from '../timer'
 import Greeting from '../planning/greeting/Greeting.component'
-import SnippetsSection from '../planning/snippets/SnippetsSection'
 import { Provider, createStore } from 'jotai'
-import DescriptionSection from '../planning/description/DescriptionSection.component'
+import Loading from '../loading/Loading'
+
+const TasksList = dynamic(() => import('../planning/tasks/TasksList'), {
+  loading: () => <Loading />,
+})
+
+const Timer = dynamic(() => import('../timer'), {
+  loading: () => <Loading />,
+})
+const SnippetsSection = dynamic(
+  () => import('../planning/snippets/SnippetsSection'),
+  {
+    loading: () => <Loading />,
+  },
+)
+const DescriptionSection = dynamic(
+  () => import('../planning/description/DescriptionSection.component'),
+  {
+    loading: () => <Loading />,
+  },
+)
+
 type Props = {
   handleReset: () => void
 }
