@@ -53,15 +53,12 @@ const Highlight = (props: Props) => {
     const { scrollTop } = e.target
 
     if (textareaRef.current && highlightRef.current) {
-      console.dir(highlightRef.current)
       const code = highlightRef.current.querySelector('code')
 
       if (code) {
-        console.log(`scroll to ${scrollTop}`)
         code.scrollTop = scrollTop
       }
     }
-    // Additional logic based on scroll position can be added here
   }
 
   return (
@@ -73,7 +70,7 @@ const Highlight = (props: Props) => {
           customStyle={{
             overflowY: 'hidden',
             height: '100%',
-            padding: '0',
+            padding: '0 16px 0 0',
           }}
           wrapLines={true}
           wrapLongLines={true}
