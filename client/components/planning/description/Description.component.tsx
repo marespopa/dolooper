@@ -1,5 +1,10 @@
 'use client'
 
+import remarkGfm from 'remark-gfm'
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { nord } from 'react-syntax-highlighter/dist/esm/styles/prism'
+import ReactMarkdown from 'react-markdown'
+
 import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
 import Highlight from '@/components/forms/input/Highlight'
@@ -7,7 +12,6 @@ import Tabs, { TabVariant } from '@/components/tabs/Tabs'
 import { useState } from 'react'
 import { FaFileExport } from 'react-icons/fa'
 import { IoRefreshCircle } from 'react-icons/io5'
-import ReactMarkdown from 'react-markdown'
 
 import { HelperTags, HELPER_TAGS } from 'utils/constants'
 
@@ -44,7 +48,30 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
     return (
       <div className={`${previewStyles}`}>
         <article className="prose dark:prose-invert">
-          <ReactMarkdown>{value}</ReactMarkdown>
+          <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              code(props) {
+                const { children, className, ...rest } = props
+                const match = /language-(\w+)/.exec(className || '')
+                return match ? (
+                  <SyntaxHighlighter
+                    style={nord}
+                    language={match[1]}
+                    PreTag="div"
+                  >
+                    {String(children).replace(/\n$/, '')}
+                  </SyntaxHighlighter>
+                ) : (
+                  <code {...rest} className={className}>
+                    {children}
+                  </code>
+                )
+              },
+            }}
+          >
+            {value}
+          </ReactMarkdown>
         </article>
       </div>
     )
@@ -123,6 +150,6 @@ const editorStyles = `bg-gray-200 shadow-sm pb-1 rounded-b-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600`
 
 const previewStyles = `p-4 md:p-4 bg-white shadow-sm rounded-b-md
-  dark:bg-gunmetal-500 dark:text-white dark:border-gray-600`
+  dark:bg-gunmetal-500 dark:text-white dark:border-gray-600 max-h-full`
 
 export default Description
