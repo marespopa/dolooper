@@ -24,7 +24,7 @@ const HeroSection = () => {
         </h2>
 
         <div className="mt-4 sm:mt-8 md:mt-10">
-          <ButtonPrimary text={`Try now for free`} action={goToPlanning} />
+          <ButtonPrimary text={`Start a Task`} action={goToPlanning} />
         </div>
       </div>
 
