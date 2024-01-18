@@ -151,6 +151,6 @@ const editorStyles = `bg-gray-200 shadow-sm pb-1 rounded-b-md
    dark:bg-gray-600 dark:text-white dark:border-gray-600`
 
 const previewStyles = `p-4 md:p-4 bg-white shadow-sm rounded-b-md
-  dark:bg-gunmetal-500 dark:text-white dark:border-gray-600 max-h-screen overflow-y-auto`
+  dark:bg-gunmetal-500 dark:text-white dark:border-gray-600 max-h-[80vh] overflow-y-auto`
 
 export default Description
