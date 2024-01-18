@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import dynamic from 'next/dynamic'
 import { pagePadding } from '../common/common'
 import ConfettiExplosion from 'react-confetti-explosion'
 
@@ -9,30 +8,10 @@ import ButtonLink from '../forms/buttons/ButtonLink'
 import Alert from '../banners/Alert'
 import Seo from '../Seo'
 import Greeting from '../planning/greeting/Greeting.component'
-import Loading from '../loading/Loading'
-
-const TasksSection = dynamic(
-  () => import('../planning/tasks/TasksSection.component'),
-  {
-    loading: () => <Loading />,
-  },
-)
-
-const Timer = dynamic(() => import('../timer'), {
-  loading: () => <Loading />,
-})
-const SnippetsSection = dynamic(
-  () => import('../planning/snippets/SnippetsSection'),
-  {
-    loading: () => <Loading />,
-  },
-)
-const DescriptionSection = dynamic(
-  () => import('../planning/description/DescriptionSection.component'),
-  {
-    loading: () => <Loading />,
-  },
-)
+import DescriptionSection from '../planning/description/DescriptionSection.component'
+import SnippetsSection from '../planning/snippets/SnippetsSection'
+import TasksSection from '../planning/tasks/TasksSection.component'
+import Timer from '../timer'
 
 type Props = {
   handleReset: () => void
@@ -51,7 +30,9 @@ const OverviewSection = ({ handleReset }: Props) => {
       <Seo title={pageTitle} />
       <section className={`${pagePadding}`}>
         <Greeting />
-        {renderTaskDashboard()}
+        <div className={`${showConfetti && 'opacity-30'}`}>
+          {renderTaskDashboard()}
+        </div>
         {renderInfoMessages()}
       </section>
     </Provider>

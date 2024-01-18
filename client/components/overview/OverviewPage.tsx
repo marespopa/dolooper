@@ -1,10 +1,16 @@
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import React from 'react'
 import Container from '../container/Container.component'
-import OverviewSection from './OverviewSection'
+
 import { atom_description, atom_snippets, atom_subTasks } from 'jotai/atoms'
 import { useAtom } from 'jotai'
 import { RESET } from 'jotai/utils'
+import Loading from '../loading/Loading'
+
+const OverviewSection = dynamic(() => import('./OverviewSection'), {
+  loading: () => <Loading />,
+})
 
 const OverviewPage = () => {
   const router = useRouter()
