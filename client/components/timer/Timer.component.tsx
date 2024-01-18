@@ -110,11 +110,7 @@ function Timer() {
   )
 
   if (isLoading) {
-    return (
-      <div className="flex flex-col justify-center items-center">
-        <h3 className="text-xl p-16">Loading...</h3>
-      </div>
-    )
+    return <></>
   }
 
   return (
