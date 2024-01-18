@@ -78,11 +78,15 @@ const OverviewSection = ({ handleReset }: Props) => {
 
     return (
       <Alert style="info">
-        {`Completed this task? `}
-        <ButtonLink
-          action={() => markTaskAsCompleted()}
-          text={'Start a new one'}
-        ></ButtonLink>
+        {showConfetti
+          ? 'Congratulations! Starting up a new one...'
+          : `Completed this task? `}
+        {!showConfetti && (
+          <ButtonLink
+            action={() => markTaskAsCompleted()}
+            text={'Start a new one'}
+          ></ButtonLink>
+        )}
         {showConfetti && <ConfettiExplosion {...confettiConfigProps} />}
       </Alert>
     )

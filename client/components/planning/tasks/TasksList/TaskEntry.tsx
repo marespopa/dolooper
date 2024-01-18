@@ -38,7 +38,7 @@ const TaskEntry = ({ task, actions, provided, isDragged }: Props) => {
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}
-      className={`${taskStyle} ${isDragged && taskIsDragging}`}
+      className={getTaskStyle(isDragged)}
     >
       {renderTaskWithCheckbox()}
       {renderControlPanel()}
@@ -73,7 +73,7 @@ const TaskEntry = ({ task, actions, provided, isDragged }: Props) => {
 
   function renderControlPanel() {
     return (
-      <div className="ml-auto flex-end text-xs">
+      <div className={`ml-auto flex-end text-xs ${isDragged && 'hidden'}`}>
         <ButtonDropdown
           name={`task-${task.key}-dropdownMenu`}
           label={''}
@@ -126,10 +126,13 @@ const taskEditStyle = `flex align-middle p-0 my-2
                        transition duration-400 ease-in-out`
 
 const taskStyle = `first:mt-0 my-1 rounded-md my-4 flex align-middle px-4 py-2
-                  focus:cursor-pointer transition-colors duration-400 ease-in-out
-                  border border-gray-200 dark:border-gray-600
-                  bg-amber-200 dark:bg-gray-800`
+                  focus:cursor-pointer transition-colors duration-400 ease-in-ou`
 
-const taskIsDragging = 'bg-amber-300 dark:bg-gray-900'
+const getTaskStyle = (isDragged: boolean) => {
+  const background = isDragged
+    ? 'bg-blue-200 dark:bg-blue-300 dark:text-gray-700'
+    : 'bg-white dark:bg-gray-800 dark:text-gray-200'
+  return `${taskStyle} ${background}`
+}
 
 export default TaskEntry
