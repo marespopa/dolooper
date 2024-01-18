@@ -14,10 +14,6 @@ const DescriptionSection = dynamic(
     loading: () => <Loading />,
   },
 )
-const TasksSection = dynamic(() => import('./tasks/TasksSection.component'), {
-  loading: () => <Loading />,
-})
-
 export const PLANNING_PAGE_TITLE = 'Dolooper - Plan Your Session'
 
 const PlanningPage = () => {
@@ -34,10 +30,6 @@ const PlanningPage = () => {
       <Container>
         <Greeting />
         <DescriptionSection />
-        <div className={`flex my-8'}`} role="group">
-          <TasksSection />
-        </div>
-
         <div className="inline-flex my-8" role="button">
           <ButtonPrimary
             action={handleCompletePlanning}

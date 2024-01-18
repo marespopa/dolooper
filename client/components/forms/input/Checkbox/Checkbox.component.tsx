@@ -39,6 +39,6 @@ const Checkbox = (props: Props, ref: ForwardedRef<HTMLInputElement>) => {
 
 const inputStyle = `w-4 h-4 text-gray-600 bg-gray-100 border-gray-300 focus:ring-gray-500
                     focus:ring-2 accent-amber-200 dark:bg-gray-700 dark:text-white`
-const labelStyle = `cursor-pointer ml-2 text-sm font-medium text-gray-800 dark:text-gray-300`
+const labelStyle = `cursor-pointer ml-4 text-md font-medium text-gray-800 dark:text-gray-300`
 
 export default forwardRef(Checkbox)

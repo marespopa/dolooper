@@ -10,9 +10,13 @@ import Alert from '../banners/Alert'
 import Seo from '../Seo'
 import Greeting from '../planning/greeting/Greeting.component'
 import Loading from '../loading/Loading'
-const TasksList = dynamic(() => import('../planning/tasks/TasksList'), {
-  loading: () => <Loading />,
-})
+
+const TasksSection = dynamic(
+  () => import('../planning/tasks/TasksSection.component'),
+  {
+    loading: () => <Loading />,
+  },
+)
 
 const Timer = dynamic(() => import('../timer'), {
   loading: () => <Loading />,
@@ -58,11 +62,7 @@ const OverviewSection = ({ handleReset }: Props) => {
       <div className="my-4 md:md-0">
         <Timer />
         <DescriptionSection isOverview={true} />
-
-        <section className={boxStyles}>
-          <TasksList area="overview" />
-        </section>
-
+        <TasksSection />
         <SnippetsSection />
       </div>
     )
@@ -93,8 +93,5 @@ const OverviewSection = ({ handleReset }: Props) => {
     setTimeout(() => handleReset(), CONFETTI_TIMER - 1000)
   }
 }
-
-export const boxStyles = `bg-white shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
-                   dark:bg-gray-600 dark:text-white dark:border-gray-600`
 
 export default OverviewSection

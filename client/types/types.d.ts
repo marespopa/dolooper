@@ -6,8 +6,9 @@ export type Task = {
 
 export type TaskActions = {
   handleDelete: (_key: string) => void
-  handleEdit: (_key: string, newValue: string) => void
+  handleEdit: (_key: string, _newValue: string) => void
   handleToggle: (_key: string) => void
+  handleReorder: (_sourceIndex: number, _destinationIndex: number) => void
 }
 
 const test = Object.entries({

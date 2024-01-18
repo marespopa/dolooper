@@ -1,33 +1,38 @@
 import ButtonSecondary from '@/components/forms/buttons/ButtonSecondary'
-import { boxStyles } from '@/components/overview/OverviewSection'
 import { useAtom } from 'jotai'
 import { Snippet, atom_snippets } from 'jotai/atoms'
 import SnippetItem from './SnippetItem'
 import { FaPlusCircle } from 'react-icons/fa'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { nanoid } from 'nanoid'
+import SectionHeading from '../common/SectionHeading.component'
 
 type Props = {}
 
 export default function SnippetsSection({}: Props) {
-  const [showSection, setShowSection] = useState(true)
   const [list, setList] = useAtom(atom_snippets)
+  const hasSnippets = list.length > 0
 
   return (
-    <section className={boxStyles}>
-      <ButtonSecondary action={() => setShowSection(!showSection)}>
-        {`${showSection ? 'Hide' : 'Show'} Snippets`}
-      </ButtonSecondary>
-
-      {showSection && renderList()}
+    <section className="my-8 sm:my-16 md:my-20">
+      <>
+        <SectionHeading
+          title="Snippets"
+          description={'A list of reusable blocks of content'}
+          subHeading={
+            '* Think of a snippet as a paragraph in a textbook: you sometimes want to save it for later'
+          }
+        />
+        {renderList()}
+      </>
     </section>
   )
 
   function renderList() {
     return (
       <div className="py-4">
-        {list.length === 0 && 'No snippets added yet.'}
+        {!hasSnippets && 'No snippets added yet.'}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
           {list.map((el) => (
@@ -44,7 +49,7 @@ export default function SnippetsSection({}: Props) {
         <div className="mt-4">
           <ButtonSecondary action={() => handleAddSnippet()}>
             <>
-              <FaPlusCircle /> Add
+              <FaPlusCircle /> {hasSnippets ? 'Add' : 'Add your first snippet'}
             </>
           </ButtonSecondary>
         </div>

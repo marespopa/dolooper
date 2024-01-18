@@ -1,26 +1,15 @@
 import Input from '@/components/forms/input/Input'
 import { nanoid } from 'nanoid'
 import React, { useState } from 'react'
-import { TaskArea } from '../../../../types/types'
 import ButtonSecondary from '../../../forms/buttons/ButtonSecondary'
 import TasksListComponent from './TasksList.component'
 import { useAtom } from 'jotai'
 import { atom_subTasks } from 'jotai/atoms'
 
-interface Props {
-  area: TaskArea
-}
-
-const TasksList = ({ area }: Props) => {
+const TasksList = () => {
   const [tasks, setTasks] = useAtom(atom_subTasks)
   const [task, setTask] = useState<string>('')
-  const showHeading = area === 'overview'
-  const taskAddLabel =
-    area === 'overview'
-      ? tasks.length > 0
-        ? 'Add another subtask'
-        : 'Add a subtask'
-      : 'Describe your subtask'
+  const taskAddLabel = 'Describe your subtask'
 
   const resetTask = () => {
     setTask('')
@@ -50,6 +39,14 @@ const TasksList = ({ area }: Props) => {
     })
 
     setTasks(nextTasks)
+  }
+
+  const handleReorder = (sourceIndex: number, destinationIndex: number) => {
+    const result = Array.from(tasks)
+    const [removed] = result.splice(sourceIndex, 1)
+    result.splice(destinationIndex, 0, removed)
+
+    setTasks(result)
   }
 
   const handleDelete = (taskUUID: string) => {
@@ -85,9 +82,8 @@ const TasksList = ({ area }: Props) => {
           handleEdit,
           handleDelete,
           handleToggle,
+          handleReorder,
         }}
-        showHeading={showHeading}
-        area={area}
       />
       {renderAddTask()}
     </div>

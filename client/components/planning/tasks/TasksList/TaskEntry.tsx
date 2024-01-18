@@ -4,22 +4,29 @@ import Checkbox from '@/components/forms/input/Checkbox'
 import Input from '@/components/forms/input/Input'
 import React, { SyntheticEvent, useState } from 'react'
 import { Task, TaskActions } from 'types/types'
+import { DraggableProvided } from 'react-beautiful-dnd'
 
 type Props = {
   task: Task
-  isOverview: boolean
   actions: TaskActions
+  provided: DraggableProvided
+  isDragged: boolean
 }
 
-const TaskEntry = ({ task, isOverview, actions }: Props) => {
+const TaskEntry = ({ task, actions, provided, isDragged }: Props) => {
   const [isEditMode, setIsEditMode] = useState(false)
   const [editValue, setEditValue] = useState(task.value)
   const isUpdateDisabled = !editValue || editValue.length === 0
-  const isTogglable = isOverview
 
   if (isEditMode) {
     return (
-      <li key={task.key} className={`${taskEditStyle}`}>
+      <li
+        key={task.key}
+        ref={provided.innerRef}
+        {...provided.draggableProps}
+        {...provided.dragHandleProps}
+        className={`${taskEditStyle}`}
+      >
         {renderEditForm()}
       </li>
     )
@@ -28,12 +35,12 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
   return (
     <li
       key={task.key}
-      className={isOverview ? taskStyleOverview : taskStylePlanning}
+      ref={provided.innerRef}
+      {...provided.draggableProps}
+      {...provided.dragHandleProps}
+      className={`${taskStyle} ${isDragged && taskIsDragging}`}
     >
-      {isTogglable && renderTaskWithCheckbox()}
-      {!isTogglable && (
-        <span className="text-sm font-medium">{task.value}</span>
-      )}
+      {renderTaskWithCheckbox()}
       {renderControlPanel()}
     </li>
   )
@@ -116,16 +123,13 @@ const TaskEntry = ({ task, isOverview, actions }: Props) => {
 }
 
 const taskEditStyle = `flex align-middle p-0 my-2
-                       transition-all duration-400 ease-in-out`
+                       transition duration-400 ease-in-out`
 
-const taskStyleOverview = `bg-amber-50 my-4 flex align-middle px-4 py-2
-                           dark:bg-gray-700`
+const taskStyle = `first:mt-0 my-1 rounded-md my-4 flex align-middle px-4 py-2
+                  focus:cursor-pointer transition-colors duration-400 ease-in-out
+                  border border-gray-200 dark:border-gray-600
+                  bg-amber-200 dark:bg-gray-800`
 
-const taskStylePlanning = `flex align-middle p-4
-                  hover:text-b-900
-                  focus:cursor-pointer
-                  transition-all duration-400 ease-in-out
-                  first:mt-0 my-2 bg-white border border-gray-200
-                  dark:bg-gray-700 dark:border-gray-600`
+const taskIsDragging = 'bg-amber-300 dark:bg-gray-900'
 
 export default TaskEntry
