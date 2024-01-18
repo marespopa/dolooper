@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import dynamic from 'next/dynamic'
-import Alert from '../banners/Alert'
 import { pagePadding } from '../common/common'
+import ConfettiExplosion from 'react-confetti-explosion'
+
+import { Provider, createStore } from 'jotai'
+
 import ButtonLink from '../forms/buttons/ButtonLink'
+import Alert from '../banners/Alert'
 import Seo from '../Seo'
 import Greeting from '../planning/greeting/Greeting.component'
-import { Provider, createStore } from 'jotai'
 import Loading from '../loading/Loading'
-
 const TasksList = dynamic(() => import('../planning/tasks/TasksList'), {
   loading: () => <Loading />,
 })
@@ -31,11 +33,14 @@ const DescriptionSection = dynamic(
 type Props = {
   handleReset: () => void
 }
+
 export const OVERVIEW_PAGE_TITLE = 'Dolooper - Focus Session'
 
 const OverviewSection = ({ handleReset }: Props) => {
+  const CONFETTI_TIMER = 5000
   const pageTitle = OVERVIEW_PAGE_TITLE
   const myStore = createStore()
+  const [showConfetti, setShowConfetti] = useState(false)
 
   return (
     <Provider store={myStore}>
@@ -64,12 +69,28 @@ const OverviewSection = ({ handleReset }: Props) => {
   }
 
   function renderInfoMessages() {
+    const confettiConfigProps = {
+      force: 1.2,
+      duration: CONFETTI_TIMER,
+      particleCount: 250,
+      width: 1600,
+    }
+
     return (
       <Alert style="info">
         {`Completed this task? `}
-        <ButtonLink action={handleReset} text={'Start a new one'}></ButtonLink>
+        <ButtonLink
+          action={() => markTaskAsCompleted()}
+          text={'Start a new one'}
+        ></ButtonLink>
+        {showConfetti && <ConfettiExplosion {...confettiConfigProps} />}
       </Alert>
     )
+  }
+
+  function markTaskAsCompleted() {
+    setShowConfetti(true)
+    setTimeout(() => handleReset(), CONFETTI_TIMER - 1000)
   }
 }
 
