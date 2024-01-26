@@ -27,22 +27,18 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
     hasPreview ? 'preview' : 'edit',
   )
 
-  if (hasPreview) {
-    return (
-      <div>
-        <Tabs
-          activeTab={activeTab}
-          handleTabChange={() =>
-            setActiveTab(activeTab === 'preview' ? 'edit' : 'preview')
-          }
-        />
-        {activeTab === 'preview' && <div>{renderPreviewField()}</div>}
-        {activeTab === 'edit' && <div>{renderEditField()}</div>}
-      </div>
-    )
-  }
-
-  return <div>{renderEditField()}</div>
+  return (
+    <div>
+      <Tabs
+        activeTab={activeTab}
+        handleTabChange={() =>
+          setActiveTab(activeTab === 'preview' ? 'edit' : 'preview')
+        }
+      />
+      {activeTab === 'preview' && <div>{renderPreviewField()}</div>}
+      {activeTab === 'edit' && <div>{renderEditField()}</div>}
+    </div>
+  )
 
   function renderPreviewField() {
     return (
