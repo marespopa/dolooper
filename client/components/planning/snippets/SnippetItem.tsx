@@ -116,7 +116,6 @@ const SnippetItem = ({ item, actions }: Props) => {
         />
       </span>
       <div className="flex items-center gap-4">
-        <code>{item.value}</code>
         <CopyToClipboard text={item.value} options={{ format: 'text/plain' }}>
           {copyIcon}
         </CopyToClipboard>
