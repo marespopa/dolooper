@@ -11,10 +11,8 @@ interface Props {
 const DescriptionSection = ({ isOverview = false }: Props) => {
   const [description, setDescription] = useAtom(atom_description)
   const headingContent = {
-    title: isOverview ? 'Working on' : "Let's start",
-    description: isOverview
-      ? ''
-      : 'What are you trying to achieve in this session?',
+    title: isOverview ? 'Your Task Overview' : 'Ready to dive in?',
+    description: isOverview ? '' : `What's your goal for this session?`,
   }
 
   function updateDescription(value: string) {
@@ -26,7 +24,9 @@ const DescriptionSection = ({ isOverview = false }: Props) => {
       <SectionHeading
         title={headingContent.title}
         description={headingContent.description}
-        subHeading={'* You can use markdown for writing the description'}
+        subHeading={
+          isOverview ? '' : '* You can use markdown for writing the description'
+        }
       />
       <div className={`sm:relative sm:z-0 min-h-full py-2`}>
         <Description
