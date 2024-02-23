@@ -56,7 +56,10 @@ const SnippetItem = ({ item, actions }: Props) => {
 
   const onChange = useCallback(
     (evt: { currentTarget: { textContent: string } }) => {
-      const newValue = sanitizeHtml(evt.currentTarget.textContent)
+      const newValue = sanitizeHtml(evt.currentTarget.textContent).replace(
+        /&amp;/g,
+        '&',
+      )
 
       setSaveStatus('idle')
       setValue(newValue)
@@ -94,7 +97,7 @@ const SnippetItem = ({ item, actions }: Props) => {
       >
         <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z" />{' '}
         <path
-          fill-rule="evenodd"
+          fillRule="evenodd"
           d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"
         />{' '}
       </svg>
@@ -113,7 +116,10 @@ const SnippetItem = ({ item, actions }: Props) => {
         />
       </span>
       <div className="flex items-center gap-4">
-        <CopyToClipboard text={item.value}>{copyIcon}</CopyToClipboard>
+        <code>{item.value}</code>
+        <CopyToClipboard text={item.value} options={{ format: 'text/plain' }}>
+          {copyIcon}
+        </CopyToClipboard>
         {deleteIcon}
       </div>
     </code>
@@ -121,14 +127,13 @@ const SnippetItem = ({ item, actions }: Props) => {
 }
 
 const snippetStyle = (saveStatus: SaveStatus) =>
-  `w-full font-mono text-sm sm:text-base flex flex-nowrap text-left
-  space-x-4 bg-white border-slate-100 dark:bg-gray-800 text-gray-700
-  dark:text-white rounded-lg p-4 pl-6 dark:border-slate-700 border-2 outline-none
-  ${
-    saveStatus === 'saved'
-      ? 'bg-emerald-100 border-emerald-200 dark:bg-emerald-800 dark:border-emerald-900'
-      : ''
-  }`
+  saveStatus === 'saved'
+    ? `w-full font-mono text-sm sm:text-base flex flex-nowrap text-left
+      space-x-4 text-gray-700 dark:text-white rounded-lg p-4 pl-6 border-2 outline-none
+      bg-emerald-100 border-emerald-200 dark:bg-emerald-800 dark:border-emerald-900`
+    : `w-full font-mono text-sm sm:text-base flex flex-nowrap text-left
+      space-x-4 bg-white border-slate-100 dark:bg-gray-800 text-gray-700
+      dark:text-white rounded-lg p-4 pl-6 dark:border-slate-700 border-2 outline-none`
 
 const iconStyle =
   'flex-none cursor-pointer transition text-gray-500 hover:text-gray-600 focus:text-gray-600 dark:hover:text-gray-400 dark:focus:text-gray-400'
