@@ -9,9 +9,9 @@ import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
 import Highlight from '@/components/forms/input/Highlight'
 import Tabs, { TabVariant } from '@/components/tabs/Tabs'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { FaFileExport } from 'react-icons/fa'
-import { IoRefreshCircle } from 'react-icons/io5'
+import { usePathname } from 'next/navigation'
 
 import { HelperTags, HELPER_TAGS } from 'utils/constants'
 
@@ -26,23 +26,32 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
   const [activeTab, setActiveTab] = useState<TabVariant>(
     hasPreview ? 'preview' : 'edit',
   )
+  const pathname = usePathname()
+  const isOverview = pathname === 'planning'
+  const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   return (
     <div>
-      <Tabs
-        activeTab={activeTab}
-        handleTabChange={() =>
-          setActiveTab(activeTab === 'preview' ? 'edit' : 'preview')
-        }
-      />
-      {activeTab === 'preview' && <div>{renderPreviewField()}</div>}
-      {activeTab === 'edit' && <div>{renderEditField()}</div>}
+      <div className={containerStyle}>
+        <label className={labelStyle} htmlFor="taskDescription">
+          Description
+        </label>
+        <Tabs
+          activeTab={activeTab}
+          handleTabChange={() =>
+            setActiveTab(activeTab === 'preview' ? 'edit' : 'preview')
+          }
+        />
+      </div>
+      {activeTab === 'preview' && renderPreviewField()}
+      {activeTab === 'edit' && renderEditField()}
     </div>
   )
 
   function renderPreviewField() {
     return (
       <div className={`${previewStyles}`}>
+        <h1></h1>
         <article className="prose dark:prose-invert">
           <ReactMarkdown
             remarkPlugins={[remarkGfm]}
@@ -75,14 +84,18 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
 
   function renderEditField() {
     return (
-      <div className={`${editorStyles}`}>
-        <Highlight
-          handleChange={handleUpdateValue}
-          id={'issue'}
-          value={value}
-          customStyles="max-h-screen"
-          handleCursorPositionUpdate={(pos: number) => setCursorPosition(pos)}
-        />
+      <section className="relative">
+        <div className={`${editorStyles} description-component`}>
+          <Highlight
+            ref={textareaRef}
+            handleChange={handleUpdateValue}
+            id="taskDescription"
+            value={value}
+            customStyles="max-h-screen"
+            handleCursorPositionUpdate={(pos: number) => setCursorPosition(pos)}
+          />
+        </div>
+
         <div className="flex flex-wrap gap-2 my-4 px-2 md:px-4">
           {HELPER_TAGS.map((tag) => {
             return (
@@ -95,22 +108,15 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
             )
           })}
         </div>
-
-        <div className="flex flex-wrap gap-2 my-2 px-2 md:px-4">
-          <ButtonFontIcon key={'export'} action={() => exportFile()}>
-            <FaFileExport height={32} />
-            Export
-          </ButtonFontIcon>
-          <ButtonFontIcon
-            key={'clear'}
-            action={() => clearContent()}
-            isDisabled={value?.length === 0}
-          >
-            <IoRefreshCircle height={32} />
-            Clear
-          </ButtonFontIcon>
-        </div>
-      </div>
+        {isOverview && (
+          <div className="absolute top-4 -right-8 md:right-24 flex flex-wrap gap-2 my-2 px-2 md:px-4 opacity-80">
+            <ButtonFontIcon key={'export'} action={() => exportFile()}>
+              <FaFileExport height={32} />
+              Export
+            </ButtonFontIcon>
+          </div>
+        )}
+      </section>
     )
   }
 
@@ -126,6 +132,7 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
     const newContent = `${textBeforeCursorPosition}${selectedHelperTag.value}${textAfterCursorPosition}`
 
     handleUpdateValue(newContent)
+    textareaRef.current?.focus()
   }
 
   function exportFile(): void {
@@ -137,16 +144,22 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
     link.href = url
     link.click()
   }
-
-  function clearContent() {
-    handleUpdateValue('')
-  }
 }
 
-const editorStyles = `bg-gray-200 shadow-sm pb-1 rounded-b-md
-   dark:bg-gray-600 dark:text-white dark:border-gray-600`
+const labelStyle = `ml-2 text-xs scale-75 text-gray-500 duration-400 z-10 peer-focus:text-gray-400
+dark:text-gray-400`
 
-const previewStyles = `p-4 md:p-4 bg-white shadow-sm rounded-b-md
-  dark:bg-gunmetal-500 dark:text-white dark:border-gray-600 max-h-[80vh] overflow-y-auto`
+const containerStyle = `bg-gray-100 w-full text-gray-800
+border border-gray-600 border-b-0 dark:text-white dark:bg-gray-800 dark:border-gray-700
+rounded-t-md font-medium pb-2`
+
+const editorStyles = `text-gray-800
+  border border-gray-600 appearance-none border-t-gray-300
+  focus:outline-none focus:ring-0 focus:border-gray-800
+  peer disabled:opacity-25 disabled:cursor-none
+  dark:text-white dark:bg-gray-800 dark:border-gray-700`
+
+const previewStyles = `p-4 md:p-4 bg-white shadow-sm rounded-b-md border border-gray-600 border-t-gray-300
+  dark:bg-gunmetal-500 dark:text-white dark:border-gray-700 max-h-[80vh] overflow-y-auto`
 
 export default Description

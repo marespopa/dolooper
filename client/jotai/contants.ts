@@ -1,6 +1,6 @@
-export const INITIAL_DESCRIPTION = `# 📌 Task Title
+export const INITIAL_TASK_TITLE = `Task Title 📌`
 
-## 🚀 Objective & Requirements
+export const INITIAL_TASK_DESCRIPTION = `## 🚀 Objective & Requirements
 Briefly describe the main goal of this task and list specific requirements or functionalities needed.
 
 ## ⏰ Timeline

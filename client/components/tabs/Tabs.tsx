@@ -26,9 +26,9 @@ const Tabs = ({ activeTab, handleTabChange }: Props) => {
   )
 }
 
-const tabContainerStyle =
-  'flex flex-wrap gap-2 text-sm px-4 rounded-t-md font-medium text-center border-b-2 border-gray-100 text-gray-600 dark:border-gray-700 dark:text-white py-2 bg-white dark:bg-gray-600'
-const tabStyles = `px-4 py-2`
-const activeTabStyles = `${tabStyles} text-gray-700 bg-blue-200 dark:text-gray-700 dark:bg-blue-300 rounded-md`
+const tabContainerStyle = `flex flex-wrap gap-2 text-sm m-2`
+
+const tabStyles = `px-4 py-2 text-gray-700 bg-blue-200 dark:text-white dark:bg-slate-700 rounded-md`
+const activeTabStyles = `px-4 py-2 text-gray-700 bg-blue-300 dark:text-gray-700 dark:bg-blue-300 rounded-md`
 
 export default Tabs

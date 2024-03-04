@@ -19,6 +19,7 @@ const ButtonIconVariants = {
   play: <PlaySVG />,
   pause: <PauseSVG />,
   settings: <SettingsSVG />,
+  unlock: <span title="Unlock Scroll">🔓</span>,
 }
 
 type VariantValues = keyof typeof ButtonIconVariants
