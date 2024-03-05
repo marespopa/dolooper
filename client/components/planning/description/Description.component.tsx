@@ -7,13 +7,13 @@ import ReactMarkdown from 'react-markdown'
 
 import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 import ButtonTextEditor from '@/components/forms/buttons/ButtonTextEditor'
-import Highlight from '@/components/forms/input/Highlight'
 import Tabs, { TabVariant } from '@/components/tabs/Tabs'
 import { useRef, useState } from 'react'
 import { FaFileExport } from 'react-icons/fa'
 import { usePathname } from 'next/navigation'
 
 import { HelperTags, HELPER_TAGS } from 'utils/constants'
+import Textarea from '@/components/forms/input/Textarea'
 
 type Props = {
   value: string
@@ -86,13 +86,21 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
     return (
       <section className="relative">
         <div className={`${editorStyles} description-component`}>
-          <Highlight
+          {/* <Highlight
             ref={textareaRef}
             handleChange={handleUpdateValue}
             id="taskDescription"
             value={value}
             customStyles="max-h-screen"
             handleCursorPositionUpdate={(pos: number) => setCursorPosition(pos)}
+          /> */}
+          <Textarea
+            handleChange={handleUpdateValue}
+            ref={textareaRef}
+            id="taskDescription"
+            label=""
+            value={value}
+            customStyles="border-none"
           />
         </div>
 

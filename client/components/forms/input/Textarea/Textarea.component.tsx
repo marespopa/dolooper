@@ -1,5 +1,5 @@
 import useAutoResizeTextArea from 'hooks/use-autoresize'
-import React, { FormEvent, useRef } from 'react'
+import React, { FormEvent, forwardRef } from 'react'
 
 interface Props {
   handleChange: (_arg: string) => void
@@ -11,7 +11,7 @@ interface Props {
 }
 const DEFAULT_TEXTAREA_ROWS = 4
 
-const Textarea = (props: Props) => {
+const Textarea = forwardRef(function Textarea(props: Props, ref: any) {
   const {
     handleChange,
     id,
@@ -26,7 +26,6 @@ const Textarea = (props: Props) => {
     placeholder: ' ',
     value,
   }
-  const ref = useRef<HTMLTextAreaElement>(null)
 
   useAutoResizeTextArea(ref, commonProps.value)
 
@@ -47,7 +46,7 @@ const Textarea = (props: Props) => {
       </label>
     </div>
   )
-}
+})
 
 const inputStyle = `bg-gray-100 block px-2.5 pb-2.5 pt-6 w-full text-sm text-gray-800
                     border border-gray-600 appearance-none
