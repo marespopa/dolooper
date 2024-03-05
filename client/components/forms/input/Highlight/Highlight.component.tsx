@@ -68,10 +68,7 @@ const Highlight = forwardRef(function Highlight(
   }
 
   return (
-    <div
-      className={`relative sm:z-0 h-[${TEXTAREA_HEIGHT}px]`}
-      ref={containerRef}
-    >
+    <div className={containerStyle} ref={containerRef}>
       <div className="absolute top-0 left-0 w-full" ref={highlightRef}>
         <SyntaxHighlighter
           language="markdown"
@@ -146,7 +143,8 @@ const Highlight = forwardRef(function Highlight(
   }
 })
 
-const inputStyle = `absolute top-0 left-0 w-full h-[${TEXTAREA_HEIGHT}px] overflow-y-scroll text-transparent bg-transparent caret-slate-500
+const containerStyle = `relative sm:z-0 h-[380px]`
+const inputStyle = `absolute top-0 left-0 w-full h-[380px] overflow-y-scroll text-transparent bg-transparent caret-slate-500
                     font-mono px-2 py-4 outline-none resize-none`
 
 export default Highlight
