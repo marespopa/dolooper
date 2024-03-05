@@ -8,6 +8,7 @@ interface Props {
   value: string
   customStyles?: string
   isDisabled?: boolean
+  handleCursorPositionUpdate: (_position: number) => void
 }
 const DEFAULT_TEXTAREA_ROWS = 4
 
@@ -40,6 +41,9 @@ const Textarea = forwardRef(function Textarea(props: Props, ref: any) {
         }}
         autoComplete="off"
         rows={DEFAULT_TEXTAREA_ROWS}
+        onBlur={(e) =>
+          props.handleCursorPositionUpdate(e.target.selectionStart)
+        }
       />
       <label htmlFor={id} className={labelStyles}>
         {label}

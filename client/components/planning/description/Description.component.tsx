@@ -100,6 +100,7 @@ const Description = ({ value, handleUpdateValue, hasPreview }: Props) => {
             id="taskDescription"
             label=""
             value={value}
+            handleCursorPositionUpdate={(pos: number) => setCursorPosition(pos)}
             customStyles="border-none"
           />
         </div>
