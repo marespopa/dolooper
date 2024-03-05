@@ -18,8 +18,7 @@ interface Props {
   customStyles?: string
   isDisabled?: boolean
 }
-const DEFAULT_TEXTAREA_ROWS = 4
-const TEXTAREA_HEIGHT = 380
+const DEFAULT_TEXTAREA_ROWS = 2
 
 const Highlight = forwardRef(function Highlight(
   props: Props,
@@ -51,7 +50,7 @@ const Highlight = forwardRef(function Highlight(
 
   useLayoutEffect(() => {
     if (textareaRef.current?.clientHeight && highlightRef.current) {
-      highlightRef.current.style.height = `${TEXTAREA_HEIGHT}px`
+      highlightRef.current.style.height = `400px`
     }
   }, [textareaRef.current?.clientHeight, textareaRef])
 
@@ -62,6 +61,16 @@ const Highlight = forwardRef(function Highlight(
       const code = highlightRef.current.querySelector('code')
 
       if (code) {
+        if (
+          textareaRef.current.offsetHeight + textareaRef.current.scrollTop >=
+          textareaRef.current.scrollHeight
+        ) {
+          code.scrollTop = scrollTop
+          textareaRef.current.style.paddingBottom = '0'
+
+          return
+        }
+
         code.scrollTop = scrollTop
       }
     }
@@ -143,7 +152,7 @@ const Highlight = forwardRef(function Highlight(
   }
 })
 
-const containerStyle = `relative sm:z-0 h-[380px]`
+const containerStyle = `relative rounded-md shadow-sm sm:z-0 h-[390px] bg-white appearance-none border-t-0 dark:text-white dark:bg-gray-800 dark:border-gray-700`
 const inputStyle = `absolute top-0 left-0 w-full h-[380px] overflow-y-scroll text-transparent bg-transparent caret-slate-500
                     font-mono px-2 py-4 outline-none resize-none`
 
