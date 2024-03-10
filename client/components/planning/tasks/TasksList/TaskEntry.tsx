@@ -107,7 +107,7 @@ const TaskEntry = ({ task, actions, provided, isDragged }: Props) => {
           <Input
             id={`task-${task.key}`}
             value={editValue}
-            action={handleEditValue}
+            handleChange={handleEditValue}
             label={'Edit Task'}
           />
         </span>

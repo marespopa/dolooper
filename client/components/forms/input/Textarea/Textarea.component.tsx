@@ -6,6 +6,7 @@ interface Props {
   id: string
   label: string
   value: string
+  helpText?: string
   customStyles?: string
   isDisabled?: boolean
   handleCursorPositionUpdate: (_position: number) => void
@@ -31,7 +32,7 @@ const Textarea = forwardRef(function Textarea(props: Props, ref: any) {
   useAutoResizeTextArea(ref, commonProps.value)
 
   return (
-    <div className="relative sm:z-0 ">
+    <div className="relative sm:z-0">
       <textarea
         ref={ref}
         {...commonProps}
@@ -48,6 +49,11 @@ const Textarea = forwardRef(function Textarea(props: Props, ref: any) {
       <label htmlFor={id} className={labelStyles}>
         {label}
       </label>
+      {props.helpText && (
+        <span className="text-xs ml-2 -mt-2 text-gray-700 dark:text-gray-300">
+          {props.helpText}
+        </span>
+      )}
     </div>
   )
 })

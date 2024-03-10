@@ -1,16 +1,16 @@
 import React, { FormEvent, ForwardedRef, forwardRef } from 'react'
 
 interface Props {
-  action: (_arg: string) => void
+  handleChange: (_arg: string) => void
   id: string
   label: string
   value: string
-  customStyles?: string
+  helpText?: string
   isDisabled?: boolean
 }
 
 const Input = (props: Props, ref: ForwardedRef<HTMLInputElement>) => {
-  const { action, id, label, value, isDisabled = false } = props
+  const { handleChange, id, label, value, isDisabled = false } = props
   const inputElProps = {
     id,
     disabled: isDisabled,
@@ -25,12 +25,17 @@ const Input = (props: Props, ref: ForwardedRef<HTMLInputElement>) => {
         {...inputElProps}
         className={inputStyle}
         onChange={(e: FormEvent<HTMLInputElement>) => {
-          action(e.currentTarget.value)
+          handleChange(e.currentTarget.value)
         }}
       />
       <label htmlFor={id} className={labelStyles}>
         {label}
       </label>
+      {props.helpText && (
+        <span className="text-xs ml-2 -mt-2 text-gray-700 dark:text-gray-300">
+          {props.helpText}
+        </span>
+      )}
     </div>
   )
 }

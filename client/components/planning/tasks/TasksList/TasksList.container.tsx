@@ -97,7 +97,7 @@ const TasksList = () => {
             <Input
               id="task"
               value={task}
-              action={setTask}
+              handleChange={setTask}
               label={taskAddLabel}
             />
           </div>

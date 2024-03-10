@@ -15,17 +15,15 @@ export default function SnippetsSection({}: Props) {
   const hasSnippets = list.length > 0
 
   return (
-    <section className="my-8 sm:my-16 md:my-20">
-      <>
-        <SectionHeading
-          title="Snippets"
-          description={'A list of reusable blocks of content'}
-          subHeading={
-            '* Think of a snippet as a paragraph in a textbook: you sometimes want to save it for later'
-          }
-        />
-        {renderList()}
-      </>
+    <section>
+      <SectionHeading
+        title="Snippets"
+        description={'A list of reusable blocks of content'}
+        subHeading={
+          '* Think of a snippet as a paragraph in a textbook: you sometimes want to save it for later'
+        }
+      />
+      {renderList()}
     </section>
   )
 

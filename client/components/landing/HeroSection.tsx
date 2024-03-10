@@ -24,7 +24,10 @@ const HeroSection = () => {
         </h2>
 
         <div className="mt-4 sm:mt-8 md:mt-10">
-          <ButtonPrimary text={`Start Your Task`} action={goToPlanning} />
+          <ButtonPrimary action={goToPlanning}>
+            Get started now{' '}
+            <span className="text-xs align-super rotate-45">for free</span>
+          </ButtonPrimary>
         </div>
       </div>
 

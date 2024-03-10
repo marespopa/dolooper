@@ -2,12 +2,12 @@ import SectionHeading from '../common/SectionHeading.component'
 import TasksList from './TasksList'
 
 const TasksSection = () => {
-  const description = `Breaking it into smaller chunks, gives a clear way to progress.`
+  const description = ` List smaller, actionable items that need to be completed to achieve the main task.`
   const subHeading =
-    '* Each sub-task should be small enough to be completed in a short period of time'
+    '* This helps in making progress on larger tasks more manageable and trackable.'
 
   return (
-    <section className="my-8 sm:my-16 md:my-20">
+    <section>
       <SectionHeading
         title="Subtasks"
         description={description}
