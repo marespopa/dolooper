@@ -76,7 +76,7 @@ const OverviewSection = ({ handleReset }: Props) => {
         />
         <Timer />
         {activeTab === 'details' && <MarkdownPreview />}
-        {activeTab === 'edit' && <TaskDetails showHeading={false} />}
+        {activeTab === 'edit' && <TaskDetails />}
         {activeTab === 'subtasks' && <TasksSection />}
         {activeTab === 'snippets' && <SnippetsSection />}
       </div>

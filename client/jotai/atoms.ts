@@ -1,6 +1,6 @@
 import { atomWithStorage } from 'jotai/utils'
-import { INITIAL_TASK_DESCRIPTION, INITIAL_TASK_TITLE } from './contants'
 import { type Task } from '../types/types'
+import { DEFAULT_TEMPLATES } from '@/components/planning/TemplateSection/contants'
 
 export type Snippet = {
   id: string
@@ -15,9 +15,12 @@ const KEYS = {
 }
 
 export const atom_snippets = atomWithStorage<Array<Snippet>>(KEYS.snippets, [])
-export const atom_title = atomWithStorage(KEYS.title, INITIAL_TASK_TITLE)
+export const atom_title = atomWithStorage(
+  KEYS.title,
+  DEFAULT_TEMPLATES.generic.title,
+)
 export const atom_description = atomWithStorage(
   KEYS.description,
-  INITIAL_TASK_DESCRIPTION,
+  DEFAULT_TEMPLATES.generic.description,
 )
 export const atom_subTasks = atomWithStorage<Array<Task>>(KEYS.subTasks, [])
