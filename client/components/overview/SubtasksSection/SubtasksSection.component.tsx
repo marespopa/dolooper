@@ -1,7 +1,7 @@
-import SectionHeading from '../common/SectionHeading.component'
-import TasksList from './TasksList'
+import SectionHeading from '@/components/planning/common/SectionHeading.component'
+import SubtasksList from './SubtasksList'
 
-const TasksSection = () => {
+const SubtasksSection = () => {
   const description = ` List smaller, actionable items that need to be completed to achieve the main task.`
   const subHeading =
     '* This helps in making progress on larger tasks more manageable and trackable.'
@@ -14,10 +14,10 @@ const TasksSection = () => {
         subHeading={subHeading}
       />
       <div className={`sm:relative sm:z-0 min-h-full w-full md:w-1/2`}>
-        <TasksList />
+        <SubtasksList />
       </div>
     </section>
   )
 }
 
-export default TasksSection
+export default SubtasksSection

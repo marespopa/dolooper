@@ -1,7 +1,7 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import ButtonPrimary from '../forms/buttons/ButtonPrimary'
-import Greeting from './greeting/Greeting.component'
+import Greeting from './Greeting/Greeting.component'
 import TaskDetails from './TaskDetails'
 import TemplateSection from './TemplateSection'
 import SectionHeading from './common/SectionHeading.component'

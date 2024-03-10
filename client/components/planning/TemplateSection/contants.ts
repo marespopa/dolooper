@@ -1,35 +1,44 @@
+import { getCurrentDate } from 'utils/functions'
+
+const currentDate = getCurrentDate() // MM/DD/YYYY
+
 export const DEFAULT_TEMPLATES = {
   feature: {
-    title: '✨ Feature Development: [Feature Name]',
-    description: `## 📈 Quick Summary
+    title: '✨ Feature: [Feature Name]',
+    description: `## Overview
 
-### 🎯 Objective
-- Detail what this feature aims to achieve and its expected impact.
+### 🎯 Goal
+What does this feature aim to achieve?
 
-### 📖 User Stories
-- As a [type of user], I want [some goal] so that [some reason].
-
-### 🔧 Technical Specifications
-- Include technical requirements and constraints.
+### ✅ Key Requirements
+- Requirement 1: Brief description
+- Requirement 2: Brief description
 
 ### 🛠 Implementation Steps
-1. Define the feature's UI/UX.
-2. Develop the backend logic.
-3. Integrate the frontend with the backend.
+1. **Step 1:** Short description
+2. **Step 2:** Short description
 
-### 🔗 Dependencies
-- External APIs or services required.
-- Internal modules or components.
+### 🔍 Technical Considerations
+Any significant technical considerations or decisions?
 
-### ⏳ Time Estimate
-- [X] hours/days
+### 🚦 Dependencies
+List any critical internal or external dependencies.
 
-### 🏷 Priority
-- High/Medium/Low
+### ⏳ Estimated Effort
+Rough time estimate for completion.
+
+### 📊 Impact & Metrics
+How will we measure success?
+
+### 📅 Milestones
+- **Start Date:** ${currentDate}
+- **End Date:** ${currentDate}
+
+### 🚀 Launch Plan
+High-level overview of rollout strategy.
 
 ### 📝 Notes
-- Any known issues or challenges.
-`,
+Any additional notes or important concerns.`,
   },
   bug: {
     title: '🐞 Bug Fix: [Bug Title] ',
@@ -95,7 +104,7 @@ export const DEFAULT_TEMPLATES = {
 Briefly describe the main goal of this task and list specific requirements or functionalities needed.
 
 ## ⏰ Timeline
-- **Deadline:** [Insert deadline]
+- **Deadline:** ${currentDate}
 
 ## 🔗 Links
 - [Link 1](URL)

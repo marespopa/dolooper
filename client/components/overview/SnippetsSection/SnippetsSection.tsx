@@ -6,7 +6,7 @@ import { FaPlusCircle } from 'react-icons/fa'
 
 import React from 'react'
 import { nanoid } from 'nanoid'
-import SectionHeading from '../common/SectionHeading.component'
+import SectionHeading from '../../planning/common/SectionHeading.component'
 
 type Props = {}
 

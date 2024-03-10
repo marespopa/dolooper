@@ -1,12 +1,12 @@
-import Input from '@/components/forms/input/Input'
 import { nanoid } from 'nanoid'
 import React, { useState } from 'react'
 import ButtonSecondary from '../../../forms/buttons/ButtonSecondary'
-import TasksListComponent from './TasksList.component'
+import SubtasksListComponent from './SubtasksList.component'
 import { useAtom } from 'jotai'
 import { atom_subTasks } from 'jotai/atoms'
+import Input from '@/components/forms/input/Input'
 
-const TasksList = () => {
+const SubtasksList = () => {
   const [tasks, setTasks] = useAtom(atom_subTasks)
   const [task, setTask] = useState<string>('')
   const taskAddLabel = 'Describe your subtask'
@@ -76,7 +76,7 @@ const TasksList = () => {
 
   return (
     <div className="w-full">
-      <TasksListComponent
+      <SubtasksListComponent
         tasks={tasks}
         actions={{
           handleEdit,
@@ -113,4 +113,4 @@ const TasksList = () => {
   }
 }
 
-export default TasksList
+export default SubtasksList

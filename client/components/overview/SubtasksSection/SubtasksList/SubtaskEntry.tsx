@@ -13,7 +13,7 @@ type Props = {
   isDragged: boolean
 }
 
-const TaskEntry = ({ task, actions, provided, isDragged }: Props) => {
+const SubtaskEntry = ({ task, actions, provided, isDragged }: Props) => {
   const [isEditMode, setIsEditMode] = useState(false)
   const [editValue, setEditValue] = useState(task.value)
   const isUpdateDisabled = !editValue || editValue.length === 0
@@ -135,4 +135,4 @@ const getTaskStyle = (isDragged: boolean) => {
   return `${taskStyle} ${background}`
 }
 
-export default TaskEntry
+export default SubtaskEntry

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Task, TaskActions } from '../../../../types/types'
-import TaskEntry from './TaskEntry'
+import SubtaskEntry from './SubtaskEntry'
 import { DragDropContext, Draggable } from 'react-beautiful-dnd'
 import { StrictModeDroppable } from '@/components/strict-mode-droppable/StrictModeDroppable'
 
@@ -9,7 +9,7 @@ interface Props {
   actions: TaskActions
 }
 
-const TasksListComponent = ({ tasks, actions }: Props) => {
+const SubtasksListComponent = ({ tasks, actions }: Props) => {
   const onDragEnd = (result: any) => {
     // Dropped outside the list
     if (!result.destination) {
@@ -38,7 +38,7 @@ const TasksListComponent = ({ tasks, actions }: Props) => {
                       index={index}
                     >
                       {(provided, snapshot) => (
-                        <TaskEntry
+                        <SubtaskEntry
                           isDragged={snapshot.isDragging}
                           provided={provided}
                           key={task.key}
@@ -59,4 +59,4 @@ const TasksListComponent = ({ tasks, actions }: Props) => {
   )
 }
 
-export default TasksListComponent
+export default SubtasksListComponent

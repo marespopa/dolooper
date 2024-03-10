@@ -22,7 +22,6 @@ const HeroSection = () => {
           time. Break down your tasks, utilize a customizable timer, and achieve
           optimal productivity.
         </h2>
-
         <div className="mt-4 sm:mt-8 md:mt-10">
           <ButtonPrimary action={goToPlanning}>
             Get started now{' '}

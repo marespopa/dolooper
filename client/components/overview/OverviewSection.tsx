@@ -7,14 +7,14 @@ import { Provider, createStore } from 'jotai'
 import ButtonLink from '../forms/buttons/ButtonLink'
 import Alert from '../banners/Alert'
 import Seo from '../Seo'
-import Greeting from '../planning/greeting/Greeting.component'
-import SnippetsSection from '../planning/snippets/SnippetsSection'
-import TasksSection from '../planning/tasks/TasksSection.component'
+import Greeting from '../planning/Greeting/Greeting.component'
+import SnippetsSection from './SnippetsSection/SnippetsSection'
 import Timer from '../timer'
 import MarkdownPreview from './MarkdownPreview'
 import Tabs from '../tabs'
 import { Tab, TabVariant } from '../tabs/Tabs'
 import TaskDetails from '../planning/TaskDetails'
+import SubtasksSection from './SubtasksSection/SubTasksSection.component'
 
 type Props = {
   handleReset: () => void
@@ -77,7 +77,7 @@ const OverviewSection = ({ handleReset }: Props) => {
         <Timer />
         {activeTab === 'details' && <MarkdownPreview />}
         {activeTab === 'edit' && <TaskDetails />}
-        {activeTab === 'subtasks' && <TasksSection />}
+        {activeTab === 'subtasks' && <SubtasksSection />}
         {activeTab === 'snippets' && <SnippetsSection />}
       </div>
     )

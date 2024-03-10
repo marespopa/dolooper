@@ -8,6 +8,18 @@ import {
   isToday,
 } from 'date-fns'
 
+export function getCurrentDate() {
+  const currentDate = new Date()
+  const dateFormatter = new Intl.DateTimeFormat('en-US', {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+  })
+  const formattedDate = dateFormatter.format(currentDate)
+
+  return formattedDate
+}
+
 function getDateFormat(date: Date) {
   const today = Date.now()
 
