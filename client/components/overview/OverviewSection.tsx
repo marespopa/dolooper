@@ -14,7 +14,7 @@ import Tabs from '../tabs'
 import { Tab, TabVariant } from '../tabs/Tabs'
 import TaskDetails from '../planning/TaskDetails'
 import SubtasksSection from './SubtasksSection'
-import Greeting from '../planning/Greeting'
+import Greeting from '../common/Greeting'
 
 type Props = {
   handleReset: () => void
