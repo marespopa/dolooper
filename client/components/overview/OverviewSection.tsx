@@ -7,7 +7,6 @@ import { Provider, createStore } from 'jotai'
 import ButtonLink from '../forms/buttons/ButtonLink'
 import Alert from '../banners/Alert'
 import Seo from '../Seo'
-import Greeting from '../planning/Greeting/Greeting.component'
 import SnippetsSection from './SnippetsSection/SnippetsSection'
 import Timer from '../timer'
 import MarkdownPreview from './MarkdownPreview'
@@ -15,6 +14,7 @@ import Tabs from '../tabs'
 import { Tab, TabVariant } from '../tabs/Tabs'
 import TaskDetails from '../planning/TaskDetails'
 import SubtasksSection from './SubtasksSection'
+import Greeting from '../planning/Greeting'
 
 type Props = {
   handleReset: () => void
