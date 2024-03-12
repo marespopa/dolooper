@@ -8,7 +8,7 @@ import Container from '../container'
 const PlanningSection = dynamic(() => import('./PlanningSection'), {
   loading: () => <Loading />,
 })
-export const PLANNING_PAGE_TITLE = 'Dolooper - Plan Your Session'
+export const PLANNING_PAGE_TITLE = 'Dolooper - Plan Your Task'
 
 const PlanningPage = () => {
   const pageTitle = PLANNING_PAGE_TITLE

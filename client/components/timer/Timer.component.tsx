@@ -9,6 +9,8 @@ import useSound from 'use-sound'
 import { useDocumentTitle } from 'hooks/use-document-title'
 import { OVERVIEW_PAGE_TITLE } from '../overview/OverviewSection'
 import ButtonIcon from '../forms/buttons/ButtonIcon'
+import { useAtom } from 'jotai'
+import { atom_title } from 'jotai/atoms'
 
 function Timer() {
   const [playStopSound] = useSound('resources/sounds/boop.mp3')
@@ -18,6 +20,7 @@ function Timer() {
   const [showConfiguration, setShowConfiguration] = useState(true)
   const [startTime, setStartTime] = useState<number | null>(Date.now())
   const [workTime, setWorkTime] = useState(TIMER_CONFIG.default)
+  const [title] = useAtom(atom_title)
   const workTimeInMs = workTime * 60 * 1000
   const [currentTime, setCurrentTime] = useState<number | null>(startTime)
   const counter = (currentTime || 0) - (startTime || 0)
@@ -105,7 +108,9 @@ function Timer() {
   const workTimeInfo = (
     <div className="text-xs p-2 mt-4">
       Timer set at {` `}
-      <span className="font-bold">{workTime} minutes</span>
+      <span className="font-bold">
+        {workTime} {workTime <= 1 ? 'minute' : 'minutes'}
+      </span>
     </div>
   )
 
@@ -119,7 +124,7 @@ function Timer() {
         className="font-bold flex justify-between cursor-pointer"
         onClick={() => toggleTimerWindow()}
       >
-        <span>{getTitle(isWorking, isBreak)}</span>
+        <span className="font-mono">{getTitle(isWorking, isBreak)}</span>
         <ButtonIcon
           variant={isTimerMinimized ? 'maximize' : 'minimize'}
           action={() => toggleTimerWindow()}
@@ -148,7 +153,7 @@ function Timer() {
 
   function getTitle(isWorking: boolean, isBreak: boolean) {
     if (isWorking) {
-      return `${getFormattedTimeFromMs(counter)} - Working`
+      return `${getFormattedTimeFromMs(counter)} - ${title}`
     }
 
     if (isBreak) {
@@ -187,7 +192,7 @@ function Timer() {
     return isStarted
       ? showBreakMessage
         ? 'bg-red-500'
-        : 'bg-amber-300 dark:bg-amber-200'
+        : 'bg-blue-400 dark:bg-blue-200'
       : 'bg-teal-500'
   }
 
@@ -195,7 +200,7 @@ function Timer() {
     return isStarted
       ? showBreakMessage
         ? 'Should have taken a break...'
-        : 'Working...'
+        : 'Timer running for...'
       : `Let's start`
   }
 

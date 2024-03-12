@@ -1,17 +1,16 @@
 import localforage from 'localforage'
 
-type TimeVariants = 'start' | 'work'
+type TimeVariants = 'start' | 'work' | 'break'
 
 const keys = {
-  tasks: 'tasks',
-  issue: 'issue',
   startTime: 'startTimeForTimer',
-  workTime: 'workTimeForTimer',
-  note: 'note',
+  workTime: 'workIntervalForTimer',
+  breakTime: 'breakIntervalForTimer',
 }
 
 const timeKeyMap = {
   start: keys.startTime,
+  break: keys.breakTime,
   work: keys.workTime,
 }
 

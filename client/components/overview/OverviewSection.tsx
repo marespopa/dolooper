@@ -14,7 +14,7 @@ import MarkdownPreview from './MarkdownPreview'
 import Tabs from '../tabs'
 import { Tab, TabVariant } from '../tabs/Tabs'
 import TaskDetails from '../planning/TaskDetails'
-import SubtasksSection from './SubtasksSection/SubTasksSection.component'
+import SubtasksSection from './SubtasksSection'
 
 type Props = {
   handleReset: () => void
