@@ -9,8 +9,6 @@ import useSound from 'use-sound'
 import { useDocumentTitle } from 'hooks/use-document-title'
 import { OVERVIEW_PAGE_TITLE } from '../overview/OverviewSection'
 import ButtonIcon from '../forms/buttons/ButtonIcon'
-import { useAtom } from 'jotai'
-import { atom_title } from 'jotai/atoms'
 
 function Timer() {
   const [playStopSound] = useSound('resources/sounds/boop.mp3')
@@ -20,7 +18,6 @@ function Timer() {
   const [showConfiguration, setShowConfiguration] = useState(true)
   const [startTime, setStartTime] = useState<number | null>(Date.now())
   const [workTime, setWorkTime] = useState(TIMER_CONFIG.default)
-  const [title] = useAtom(atom_title)
   const workTimeInMs = workTime * 60 * 1000
   const [currentTime, setCurrentTime] = useState<number | null>(startTime)
   const counter = (currentTime || 0) - (startTime || 0)
