@@ -29,7 +29,13 @@ const DescriptionField = () => {
         helpText="A brief overview of what needs to be accomplished, in which you can
         use markdown for detailed formatting."
       />
-      <div className="flex flex-wrap gap-2 my-4 px-2 md:px-4">
+      {renderEditorHelper()}
+    </section>
+  )
+
+  function renderEditorHelper() {
+    return (
+      <div className="flex flex-wrap gap-2 my-4">
         {HELPER_TAGS.map((tag) => {
           return (
             <ButtonTextEditor
@@ -41,8 +47,8 @@ const DescriptionField = () => {
           )
         })}
       </div>
-    </section>
-  )
+    )
+  }
 
   function handleEditorAction(value: string, option: HelperTags) {
     const selectedHelperTag = HELPER_TAGS.find((item) => item.name === option)
