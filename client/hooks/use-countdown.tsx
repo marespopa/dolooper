@@ -1,4 +1,3 @@
-// TODO: example and test
 import { useCallback } from 'react'
 import useBoolean from './use-boolean'
 import useCounter from './use-counter'
