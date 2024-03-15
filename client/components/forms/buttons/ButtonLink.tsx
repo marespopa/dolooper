@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 
 interface Props {
-  text: string
+  children: string | ReactElement
   action: () => void
   isDisabled?: boolean
   style?: string
 }
 
-const ButtonLink = ({ text, action, isDisabled, style = '' }: Props) => {
+const ButtonLink = ({ children, action, isDisabled, style = '' }: Props) => {
   return (
     <button
       className={`${buttonStyles} ${style}`}
@@ -15,7 +15,7 @@ const ButtonLink = ({ text, action, isDisabled, style = '' }: Props) => {
       onClick={action}
       disabled={isDisabled}
     >
-      {text}
+      {children}
     </button>
   )
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { getFormattedTimeFromMs } from 'utils/functions'
 import ButtonSecondary from '../forms/buttons/ButtonSecondary'
 import StorageService from 'services/storageService'
@@ -9,6 +9,7 @@ import useSound from 'use-sound'
 import { useDocumentTitle } from 'hooks/use-document-title'
 import { OVERVIEW_PAGE_TITLE } from '../overview/OverviewSection'
 import ButtonIcon from '../forms/buttons/ButtonIcon'
+import ButtonLink from '../forms/buttons/ButtonLink'
 
 function Timer() {
   const [playStopSound] = useSound('resources/sounds/boop.mp3')
@@ -64,11 +65,7 @@ function Timer() {
   }, [])
 
   useEffect(() => {
-    const obtainTitle = () => {
-      return getTitle(isWorking, isBreak)
-    }
-
-    const title = obtainTitle()
+    const title = getTitle(isWorking, isBreak)
     setDocumentTitle(title)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -111,6 +108,21 @@ function Timer() {
     </div>
   )
 
+  const getTitle = useCallback(
+    (isWorking: boolean, isBreak: boolean) => {
+      if (isWorking) {
+        return getFormattedTimeFromMs(counter)
+      }
+
+      if (isBreak) {
+        return `Timer expired`
+      }
+
+      return OVERVIEW_PAGE_TITLE
+    },
+    [counter],
+  )
+
   if (isLoading) {
     return <></>
   }
@@ -122,6 +134,13 @@ function Timer() {
         onClick={() => toggleTimerWindow()}
       >
         <span className="font-mono">{getTitle(isWorking, isBreak)}</span>
+
+        {isTimerMinimized && isRunning && (
+          <ButtonLink action={handleStop}>
+            {showBreakMessage ? 'Take a break' : 'Stop'}
+          </ButtonLink>
+        )}
+
         <ButtonIcon
           variant={isTimerMinimized ? 'maximize' : 'minimize'}
           action={() => toggleTimerWindow()}
@@ -146,18 +165,6 @@ function Timer() {
 
   function toggleTimerWindow() {
     setIsTimerMinimized(!isTimerMinimized)
-  }
-
-  function getTitle(isWorking: boolean, isBreak: boolean) {
-    if (isWorking) {
-      return getFormattedTimeFromMs(counter)
-    }
-
-    if (isBreak) {
-      return `Timer expired`
-    }
-
-    return OVERVIEW_PAGE_TITLE
   }
 
   function renderStatus() {

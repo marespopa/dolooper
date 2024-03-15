@@ -1,13 +1,13 @@
 import React, { ReactNode } from 'react'
 
 interface Props {
-  text: string | ReactNode
+  children: string | ReactNode
   action: () => void
   isDisabled?: boolean
   style?: string
 }
 
-const ButtonText = ({ text, action, isDisabled, style = '' }: Props) => {
+const ButtonText = ({ children, action, isDisabled, style = '' }: Props) => {
   return (
     <button
       className={`${buttonStyles} ${style}`}
@@ -17,7 +17,7 @@ const ButtonText = ({ text, action, isDisabled, style = '' }: Props) => {
       role="button"
       disabled={isDisabled}
     >
-      {text}
+      {children}
     </button>
   )
 }

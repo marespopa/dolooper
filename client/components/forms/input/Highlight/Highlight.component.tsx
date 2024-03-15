@@ -122,12 +122,13 @@ const Highlight = forwardRef(function Highlight(
       {isLocked && (
         <ButtonText
           style="absolute bottom-4 right-4 border-0 text-lg"
-          text={<span title="Unlock Scroll">🔓</span>}
           action={() => {
             unlock()
             document.body.focus()
           }}
-        ></ButtonText>
+        >
+          <span title="Unlock Scroll">🔓</span>
+        </ButtonText>
       )}
     </div>
   )
