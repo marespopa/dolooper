@@ -13,7 +13,7 @@ const MarkdownPreview = () => {
 
   return (
     <div className={`${previewStyles}`}>
-      <article className="prose dark:prose-invert">
+      <article className="prose max-w-[100ch] dark:prose-invert mx-auto">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{

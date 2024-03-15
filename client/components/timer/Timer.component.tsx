@@ -150,9 +150,7 @@ function Timer() {
 
   function getTitle(isWorking: boolean, isBreak: boolean) {
     if (isWorking) {
-      return isTimerMinimized
-        ? `${getFormattedTimeFromMs(counter)}`
-        : OVERVIEW_PAGE_TITLE
+      return getFormattedTimeFromMs(counter)
     }
 
     if (isBreak) {

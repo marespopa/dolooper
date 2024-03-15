@@ -4,7 +4,7 @@ type Props = {}
 
 function Loading({}: Props) {
   return (
-    <div role="status" className="w-full flex justify-center items-center">
+    <div role="status" className="w-full flex justify-center items-center mt-4">
       <svg
         aria-hidden="true"
         className="inline w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-amber-400"
