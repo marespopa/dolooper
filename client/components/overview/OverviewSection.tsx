@@ -48,12 +48,12 @@ const OverviewSection = ({ handleReset }: Props) => {
       {
         id: 1,
         name: 'details',
-        label: 'Details',
+        label: 'Preview',
       },
       {
         id: 2,
         name: 'edit',
-        label: 'Edit',
+        label: 'Markdown',
       },
       {
         id: 3,

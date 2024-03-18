@@ -1,6 +1,6 @@
 import { atomWithStorage } from 'jotai/utils'
 import { type Task } from '../types/types'
-import { DEFAULT_TEMPLATES } from '@/components/planning/TemplateSection/contants'
+import { DEFAULT_TEMPLATES } from '@/components/planning/TemplateSection/templates'
 
 export type Snippet = {
   id: string

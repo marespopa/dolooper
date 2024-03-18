@@ -2,9 +2,9 @@ import ButtonSecondary from '@/components/forms/buttons/ButtonSecondary'
 import { useAtom } from 'jotai'
 import { atom_description, atom_title } from 'jotai/atoms'
 import React from 'react'
-import { DEFAULT_TEMPLATES } from './contants'
+import { DEFAULT_TEMPLATES } from './templates'
 
-type TemplateVariant = 'feature' | 'bug' | 'code_review' | 'generic'
+type TemplateVariant = 'feature' | 'bug' | 'code_review' | 'daily' | 'generic'
 
 type Template = {
   id: number
@@ -25,22 +25,27 @@ const TemplateSection = () => {
     {
       id: 0,
       name: 'generic',
-      label: 'Generic Task',
+      label: 'Generic',
     },
     {
       id: 1,
       name: 'feature',
-      label: 'Feature Implementation',
+      label: 'Feature',
     },
     {
       id: 2,
       name: 'bug',
-      label: 'Bug Fix',
+      label: 'Bug',
     },
     {
       id: 3,
+      name: 'daily',
+      label: 'Daily Standup',
+    },
+    {
+      id: 4,
       name: 'code_review',
-      label: 'Code Review Checklist ',
+      label: 'Code Review ',
     },
   ]
 
