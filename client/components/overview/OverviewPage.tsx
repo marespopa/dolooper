@@ -12,6 +12,7 @@ import {
 import { useAtom } from 'jotai'
 import { RESET } from 'jotai/utils'
 import Loading from '../loading/Loading'
+import StorageService from 'services/storageService'
 
 const OverviewSection = dynamic(() => import('./OverviewSection'), {
   loading: () => <Loading />,
@@ -36,6 +37,7 @@ const OverviewPage = () => {
 
   function handleReset() {
     router.push('/planning')
+    StorageService.removeTime('start')
     setTasks(RESET)
     setTitle(RESET)
     setDescription(RESET)
