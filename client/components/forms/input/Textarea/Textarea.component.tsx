@@ -50,7 +50,7 @@ const Textarea = forwardRef(function Textarea(props: Props, ref: any) {
         {label}
       </label>
       {props.helpText && (
-        <span className="text-xs ml-2 -mt-2 text-gray-700 dark:text-gray-300">
+        <span className="text-xs sm:ml-2 -mt-2 text-gray-700 dark:text-gray-300">
           {props.helpText}
         </span>
       )}
