@@ -189,7 +189,7 @@ function Timer() {
 
   function triggerBreakNotification() {
     playStopSound()
-    toast.info('Time for a break!')
+    toast.info('The timer has expired.')
   }
 
   function getStatusBgStyle() {
