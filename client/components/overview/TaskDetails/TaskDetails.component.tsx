@@ -1,6 +1,6 @@
 import React from 'react'
-import DescriptionField from '../DescriptionField'
 import TitleField from '../TitleField'
+import DescriptionField from '../DescriptionField'
 
 const TaskDetails = () => {
   return (

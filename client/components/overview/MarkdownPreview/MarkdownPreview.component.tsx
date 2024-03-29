@@ -9,7 +9,11 @@ import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 const MarkdownPreview = () => {
   const [title] = useAtom(atom_title)
   const [description] = useAtom(atom_description)
-  const value = `# ${title} \n ${description}`
+  const hasNoDefinition = title.length === 0 || description.length === 0
+
+  const value = hasNoDefinition
+    ? `## Start by defining your task in the Plan & Write tab!`
+    : `# ${title} \n ${description}`
 
   return (
     <div className={`${previewStyles}`}>

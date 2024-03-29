@@ -6,7 +6,7 @@ export type Tab = {
   label: string
 }
 
-export type TabVariant = 'details' | 'edit' | 'subtasks' | 'snippets'
+export type TabVariant = 'preview' | 'edit'
 
 type Props = {
   tabs: Array<Tab>

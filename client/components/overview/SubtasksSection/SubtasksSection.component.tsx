@@ -1,4 +1,4 @@
-import SectionHeading from '@/components/planning/common/SectionHeading.component'
+import SectionHeading from '@/components/overview/common/SectionHeading.component'
 import SubtasksList from './SubtasksList'
 
 const SubtasksSection = () => {

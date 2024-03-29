@@ -6,6 +6,7 @@ interface Props {
   id: string
   label: string
   value: string
+  placeholder?: string
   helpText?: string
   customStyles?: string
   isDisabled?: boolean
@@ -25,7 +26,7 @@ const Textarea = forwardRef(function Textarea(props: Props, ref: any) {
   const commonProps = {
     id,
     disabled: isDisabled,
-    placeholder: ' ',
+    placeholder: '',
     value,
   }
 

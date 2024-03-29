@@ -91,4 +91,8 @@ Briefly describe the issue.
 
 ## 📝 Notes/Thoughts`,
   },
+  blank: {
+    title: '',
+    description: ``,
+  },
 }

@@ -12,10 +12,10 @@ import Timer from '../timer'
 import MarkdownPreview from './MarkdownPreview'
 import Tabs from '../tabs'
 import { Tab, TabVariant } from '../tabs/Tabs'
-import TaskDetails from '../planning/TaskDetails'
+import TaskDetails from './TaskDetails'
 import SubtasksSection from './SubtasksSection'
 import Greeting from '../common/Greeting'
-import TemplateSection from '../planning/TemplateSection'
+import TemplateSection from './TemplateSection'
 
 type Props = {
   handleReset: () => void
@@ -48,20 +48,25 @@ const OverviewSection = ({ handleReset }: Props) => {
       {
         id: 1,
         name: 'edit',
-        label: 'Markdown',
+        label: 'Plan & Write',
       },
       {
         id: 2,
-        name: 'details',
-        label: 'Preview',
+        name: 'preview',
+        label: 'Focused Task',
       },
     ]
 
     return (
       <div className="my-4 md:md-0">
-        <TemplateSection />
-        {activeTab === 'edit' && <TaskDetails />}
-        {activeTab === 'details' && <MarkdownPreview />}
+        {activeTab === 'edit' && (
+          <>
+            <TemplateSection />
+            <TaskDetails />
+          </>
+        )}
+        {activeTab === 'preview' && <MarkdownPreview />}
+
         <Tabs
           tabs={tabList}
           activeTab={activeTab}

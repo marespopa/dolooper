@@ -5,7 +5,7 @@ import React from 'react'
 import { DEFAULT_TEMPLATES } from './templates'
 import SectionHeading from '../common/SectionHeading.component'
 
-type TemplateVariant = 'feature' | 'bug' | 'code_review' | 'generic'
+type TemplateVariant = 'feature' | 'bug' | 'code_review' | 'generic' | 'blank'
 
 type Template = {
   id: number
@@ -43,12 +43,17 @@ const TemplateSection = () => {
       name: 'code_review',
       label: 'Code Review ',
     },
+    {
+      id: 4,
+      name: 'blank',
+      label: 'Blank',
+    },
   ]
 
   const headingContent = {
-    title: 'Define the Task',
-    description: `What type of task are you trying to accomplish?`,
-    subHeading: `Let's start from a template!`,
+    title: 'Ready for a focused session?',
+    description: `Define your task.`,
+    subHeading: `Need a jump start? Start by clicking on a template below`,
   }
 
   return (
