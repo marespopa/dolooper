@@ -4,7 +4,7 @@ import { atom_description, atom_title } from 'jotai/atoms'
 import React from 'react'
 import { DEFAULT_TEMPLATES } from './templates'
 
-type TemplateVariant = 'feature' | 'bug' | 'code_review' | 'daily' | 'generic'
+type TemplateVariant = 'feature' | 'bug' | 'code_review' | 'generic'
 
 type Template = {
   id: number
@@ -39,11 +39,6 @@ const TemplateSection = () => {
     },
     {
       id: 3,
-      name: 'daily',
-      label: 'Daily Standup',
-    },
-    {
-      id: 4,
       name: 'code_review',
       label: 'Code Review ',
     },

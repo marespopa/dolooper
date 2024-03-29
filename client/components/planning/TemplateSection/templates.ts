@@ -67,24 +67,6 @@ Briefly describe the issue.
 - [Related_Docs](#)
 - [Similar_Issues](#)`,
   },
-  daily: {
-    title: '🌅 Daily Stand-up Update',
-    description: `## ✅ Yesterday's Achievements
-- Completed task 1
-- Reviewed PR from colleague
-
-## 🎯 Today's Goals
-- Start working on feature X
-- Fix bug reported by QA
-
-## ❌ Blockers
-- Awaiting design assets for feature Y
-- Need clarification on API endpoint
-
-## 🔗 Links
-- [Yesterday's_PR](#)
-- [Bug_Report](#)`,
-  },
   code_review: {
     title: '🔍 Code Review: [Feature/Bugfix Name]',
     description: `## 🛠 Functionality
@@ -105,17 +87,6 @@ Briefly describe the issue.
 A brief description of what this task entails and its purpose.
 
 ## 🎯 Objective
-Clearly state what success looks like for this task.
-
-## ⏱ Estimated Time
-Rough estimate to complete.
-
-## 📌 Steps to Completion
-List the key steps in order, if applicable.
-
-## 🔗 Resources
-- [Documentation](#)
-- [Design_Mockups](#)
-- [Relevant_Tickets](#)`,
+Clearly state what success looks like for this task.`,
   },
 }
