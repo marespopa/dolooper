@@ -82,11 +82,13 @@ Briefly describe the issue.
 - [ ] Is the task adequately tested?`,
   },
   generic: {
-    title: '📌 Task Title',
-    description: `## 📖 Overview
-A brief description of what this task entails and its purpose.
+    title: '🎯 Focus Session ',
+    description: `## 📝 Task
 
-## 🎯 Objective
-Clearly state what success looks like for this task.`,
+## 🎯 Goal
+
+## ⛔ Potential Blockers
+
+## 📝 Notes/Thoughts`,
   },
 }
