@@ -43,7 +43,7 @@ const MarkdownPreview = () => {
   )
 }
 
-const previewStyles = `p-4 md:p-4 bg-white shadow-sm border border-gray-600
+const previewStyles = `mt-4 p-4 md:p-4 bg-white shadow-sm border border-gray-600
   dark:bg-gunmetal-500 dark:text-white dark:border-gray-700 max-h-[80vh] overflow-y-auto`
 
 export default MarkdownPreview

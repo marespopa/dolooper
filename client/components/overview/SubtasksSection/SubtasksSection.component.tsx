@@ -7,7 +7,7 @@ const SubtasksSection = () => {
     '* This helps in making progress on larger tasks more manageable and trackable.'
 
   return (
-    <section>
+    <section className="mt-8">
       <SectionHeading
         title="Subtasks"
         description={description}

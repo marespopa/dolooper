@@ -15,6 +15,7 @@ import { Tab, TabVariant } from '../tabs/Tabs'
 import TaskDetails from '../planning/TaskDetails'
 import SubtasksSection from './SubtasksSection'
 import Greeting from '../common/Greeting'
+import TemplateSection from '../planning/TemplateSection'
 
 type Props = {
   handleReset: () => void
@@ -27,7 +28,7 @@ const OverviewSection = ({ handleReset }: Props) => {
   const pageTitle = OVERVIEW_PAGE_TITLE
   const myStore = createStore()
   const [showConfetti, setShowConfetti] = useState(false)
-  const [activeTab, setActiveTab] = useState<TabVariant>('details')
+  const [activeTab, setActiveTab] = useState<TabVariant>('edit')
 
   return (
     <Provider store={myStore}>
@@ -35,7 +36,6 @@ const OverviewSection = ({ handleReset }: Props) => {
       <section className={`${pagePadding}`}>
         <Greeting />
         <div className={`${showConfetti && 'opacity-30'}`}>
-          <span className="text-xs">Working on...</span>
           {renderTaskDashboard()}
         </div>
         {renderInfoMessages()}
@@ -47,38 +47,29 @@ const OverviewSection = ({ handleReset }: Props) => {
     const tabList: Array<Tab> = [
       {
         id: 1,
-        name: 'details',
-        label: 'Preview',
-      },
-      {
-        id: 2,
         name: 'edit',
         label: 'Markdown',
       },
       {
-        id: 3,
-        name: 'subtasks',
-        label: 'Subtasks',
-      },
-      {
-        id: 4,
-        name: 'snippets',
-        label: 'Snippets',
+        id: 2,
+        name: 'details',
+        label: 'Preview',
       },
     ]
 
     return (
       <div className="my-4 md:md-0">
+        <TemplateSection />
+        {activeTab === 'edit' && <TaskDetails />}
+        {activeTab === 'details' && <MarkdownPreview />}
         <Tabs
           tabs={tabList}
           activeTab={activeTab}
           handleTabChange={(tab) => setActiveTab(tab)}
         />
+        <SubtasksSection />
+        <SnippetsSection />
         <Timer />
-        {activeTab === 'details' && <MarkdownPreview />}
-        {activeTab === 'edit' && <TaskDetails />}
-        {activeTab === 'subtasks' && <SubtasksSection />}
-        {activeTab === 'snippets' && <SnippetsSection />}
       </div>
     )
   }
@@ -110,7 +101,10 @@ const OverviewSection = ({ handleReset }: Props) => {
 
   function markTaskAsCompleted() {
     setShowConfetti(true)
-    setTimeout(() => handleReset(), CONFETTI_TIMER - 1000)
+    setTimeout(() => {
+      handleReset()
+      setShowConfetti(false)
+    }, CONFETTI_TIMER - 1000)
   }
 }
 

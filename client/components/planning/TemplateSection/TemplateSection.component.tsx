@@ -3,6 +3,7 @@ import { useAtom } from 'jotai'
 import { atom_description, atom_title } from 'jotai/atoms'
 import React from 'react'
 import { DEFAULT_TEMPLATES } from './templates'
+import SectionHeading from '../common/SectionHeading.component'
 
 type TemplateVariant = 'feature' | 'bug' | 'code_review' | 'generic'
 
@@ -44,17 +45,30 @@ const TemplateSection = () => {
     },
   ]
 
+  const headingContent = {
+    title: 'Define the Task',
+    description: `What type of task are you trying to accomplish?`,
+    subHeading: `Let's start from a template!`,
+  }
+
   return (
-    <div className="my-2 flex flex-wrap gap-2">
-      {templateList.map((template) => (
-        <ButtonSecondary
-          key={template.id}
-          action={() => loadTemplate(template.name)}
-        >
-          {template.label}
-        </ButtonSecondary>
-      ))}
-    </div>
+    <>
+      <SectionHeading
+        title={headingContent.title}
+        description={headingContent.description}
+        subHeading={headingContent.subHeading}
+      />
+      <div className="my-2 flex flex-wrap gap-2">
+        {templateList.map((template) => (
+          <ButtonSecondary
+            key={template.id}
+            action={() => loadTemplate(template.name)}
+          >
+            {template.label}
+          </ButtonSecondary>
+        ))}
+      </div>
+    </>
   )
 }
 

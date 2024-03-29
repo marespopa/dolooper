@@ -42,7 +42,10 @@ const Greeting = () => {
 
   return (
     <div className="w-full">
-      <h2 className="text-lg text-gray-700 dark:text-gray-100 font-bold mt-3 mb-3">
+      <h2
+        id="greeting"
+        className="text-lg text-gray-700 dark:text-gray-100 font-bold mt-3 mb-3"
+      >
         {greetingMessage}
       </h2>
     </div>

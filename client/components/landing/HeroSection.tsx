@@ -6,8 +6,8 @@ import HeroImage from './HeroImage'
 const HeroSection = () => {
   const router = useRouter()
 
-  const goToPlanning = () => {
-    router.push('/planning')
+  const goToTask = () => {
+    router.push('/overview')
   }
 
   return (
@@ -23,7 +23,7 @@ const HeroSection = () => {
           optimal productivity.
         </h2>
         <div className="mt-4 sm:mt-8 md:mt-10">
-          <ButtonPrimary action={goToPlanning}>
+          <ButtonPrimary action={goToTask}>
             Get started now{' '}
             <span className="text-xs align-super rotate-45">for free</span>
           </ButtonPrimary>

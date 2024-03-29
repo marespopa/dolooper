@@ -28,8 +28,8 @@ const PlanningSection = () => {
       />
 
       <TemplateSection />
-
       <TaskDetails />
+
       <div className="inline-flex my-8" role="button">
         <ButtonPrimary action={handleCompletePlanning}>
           Complete Planning

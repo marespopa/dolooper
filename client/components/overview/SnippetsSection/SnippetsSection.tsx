@@ -15,7 +15,7 @@ export default function SnippetsSection({}: Props) {
   const hasSnippets = list.length > 0
 
   return (
-    <section>
+    <section className="mt-8">
       <SectionHeading
         title="Snippets"
         description={'A list of reusable blocks of content'}
