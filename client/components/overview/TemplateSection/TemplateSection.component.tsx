@@ -53,7 +53,7 @@ const TemplateSection = () => {
   const headingContent = {
     title: 'Ready for a focused session?',
     description: `Define your task.`,
-    subHeading: `Need a jump start? Start by clicking on a template below`,
+    subHeading: `Need a jump start? Start by clicking on a template below:`,
   }
 
   return (
