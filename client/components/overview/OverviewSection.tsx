@@ -30,7 +30,7 @@ type Props = {
   handleReset: () => void
 }
 
-export const OVERVIEW_PAGE_TITLE = 'Dolooper - Timer'
+export const OVERVIEW_PAGE_TITLE = 'Dolooper - Dashboard'
 
 const OverviewSection = ({ handleReset }: Props) => {
   const CONFETTI_TIMER = 5000
