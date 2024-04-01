@@ -6,7 +6,7 @@ const SubtasksSection = () => {
   const description = ` List smaller, actionable items that need to be completed to achieve the main task.`
   const subHeading =
     '* This helps in making progress on larger tasks more manageable and trackable.'
-  const [isExpanded, setisExpanded] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(true)
 
   return (
     <section className="mt-8">
@@ -15,7 +15,7 @@ const SubtasksSection = () => {
         description={description}
         subHeading={subHeading}
         isExpanded={isExpanded}
-        handleToggle={() => setisExpanded(!isExpanded)}
+        handleToggle={() => setIsExpanded(!isExpanded)}
       />
       {isExpanded && (
         <div className={`min-h-full w-full`}>

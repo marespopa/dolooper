@@ -9,7 +9,7 @@ type Props = {}
 
 export default function NotesSection({}: Props) {
   const [notes, setNotes] = useAtom(atom_notes)
-  const [isExpanded, setisExpanded] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(true)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
 
   return (
@@ -23,7 +23,7 @@ export default function NotesSection({}: Props) {
           '* Jot down distracting but important thoughts to revisit later.'
         }
         isExpanded={isExpanded}
-        handleToggle={() => setisExpanded(!isExpanded)}
+        handleToggle={() => setIsExpanded(!isExpanded)}
       />
       {isExpanded && renderTextarea()}
     </section>

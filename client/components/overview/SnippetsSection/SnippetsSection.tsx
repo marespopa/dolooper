@@ -12,7 +12,7 @@ type Props = {}
 
 export default function SnippetsSection({}: Props) {
   const [list, setList] = useAtom(atom_snippets)
-  const [isExpanded, setisExpanded] = useState(true)
+  const [isExpanded, setIsExpanded] = useState(true)
   const hasSnippets = list.length > 0
 
   return (
@@ -24,7 +24,7 @@ export default function SnippetsSection({}: Props) {
           '* Think of a snippet as a paragraph in a textbook: you sometimes want to save it for later'
         }
         isExpanded={isExpanded}
-        handleToggle={() => setisExpanded(!isExpanded)}
+        handleToggle={() => setIsExpanded(!isExpanded)}
       />
       {isExpanded && renderList()}
     </section>

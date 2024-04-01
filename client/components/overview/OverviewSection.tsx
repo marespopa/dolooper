@@ -17,6 +17,7 @@ import SubtasksSection from './SubtasksSection'
 import Greeting from '../common/Greeting'
 import TemplateSection from './TemplateSection'
 import NotesSection from './NotesSection'
+import TipsSection from './TipsSection'
 
 type Props = {
   handleReset: () => void
@@ -78,7 +79,10 @@ const OverviewSection = ({ handleReset }: Props) => {
           <SubtasksSection />
           <NotesSection />
         </div>
-        <SnippetsSection />
+        <div className="grid md:grid-cols-2	md:gap-8">
+          <SnippetsSection />
+          <TipsSection />
+        </div>
       </div>
     )
   }
@@ -111,6 +115,7 @@ const OverviewSection = ({ handleReset }: Props) => {
   function markTaskAsCompleted() {
     setShowConfetti(true)
     setTimeout(() => {
+      setActiveTab('edit')
       handleReset()
       setShowConfetti(false)
     }, CONFETTI_TIMER - 1000)
