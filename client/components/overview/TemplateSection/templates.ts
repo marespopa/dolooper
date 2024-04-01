@@ -1,3 +1,5 @@
+import { TemplateVariant } from './TemplateSection.component'
+
 export const DEFAULT_TEMPLATES = {
   feature: {
     title: '✨ Feature: [Feature Name]',
@@ -7,6 +9,12 @@ A concise description of what this feature is and its expected impact. Mention t
 ### 🎯 Goals
 - Main goal of the feature.
 - Secondary goals or benefits, if any.
+
+### Priority 🔝
+🔴🟡🟢(High/Medium/Low)
+
+### Due Date ⌛
+dd.mm.yyyy
 
 ## 📋 Requirements
 Briefly list the core requirements or conditions this feature must meet. Detailed requirements can be managed as subtasks.
@@ -44,23 +52,29 @@ Include any additional notes, open questions, or considerations here. This secti
     description: `## 🚨 Overview
 Briefly describe the issue.
 
-## 📍 Occurrence
-  Specify the part(s) of the app affected.
+### Priority 🔝
+🔴🟡🟢(High/Medium/Low)
 
-## 🕵️ Steps to Reproduce
+### Due Date ⌛
+dd.mm.yyyy
+
+### 📍 Occurrence
+Specify the part(s) of the app affected.
+
+### 🕵️ Steps to Reproduce
 1. First step
 2. Second step
 - **Frequency:** Always? Sometimes?
 
-## 🎯 Expected vs. Actual
+### 🎯 Expected vs. Actual
 - **Expected:** What should happen?
 - **Actual:** What actually happens?
 
-## 📸 Attachments
+### 📸 Attachments
 - **Screenshots/Videos:** [Link or attach]
 - **Logs:** [Link or attach]
 
-## 🛠 Suggested Fix (If any)
+### 🛠 Suggested Fix (If any)
 - **Your thoughts:** Brief idea on fixing it (optional).
 
 ## 🔗 Useful Links
@@ -91,7 +105,7 @@ One-sentence summary of what you want to achieve.
 ### Priority 🔝
 🔴🟡🟢(High/Medium/Low)
 
-### Due Date
+### Due Date ⌛
 dd.mm.yyyy`,
   },
   blank: {
@@ -144,3 +158,9 @@ dd.mm.yyyy`,
 7. **Click on Plan & Write to get started** ✨ `,
   },
 }
+
+export const TEMPLATES_WITH_DATES: Array<TemplateVariant> = [
+  'generic',
+  'feature',
+  'bug',
+]

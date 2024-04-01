@@ -19,8 +19,12 @@ import TemplateSection from './TemplateSection'
 import NotesSection from './NotesSection'
 import TipsSection from './TipsSection'
 import { atom_title, atom_description } from 'jotai/atoms'
-import { DEFAULT_TEMPLATES } from './TemplateSection/templates'
+import {
+  DEFAULT_TEMPLATES,
+  TEMPLATES_WITH_DATES,
+} from './TemplateSection/templates'
 import { TemplateVariant } from './TemplateSection/TemplateSection.component'
+import { getCurrentDate } from 'utils/functions'
 
 type Props = {
   handleReset: () => void
@@ -38,8 +42,15 @@ const OverviewSection = ({ handleReset }: Props) => {
   const [, setDescription] = useAtom(atom_description)
 
   function loadTemplate(variant: TemplateVariant) {
-    setTitle(DEFAULT_TEMPLATES[variant].title)
-    setDescription(DEFAULT_TEMPLATES[variant].description)
+    const title = DEFAULT_TEMPLATES[variant].title
+    let description = DEFAULT_TEMPLATES[variant].description
+
+    if (TEMPLATES_WITH_DATES.includes(variant)) {
+      description = description.replace('dd.mm.yyyy', getCurrentDate())
+    }
+
+    setTitle(title)
+    setDescription(description)
   }
 
   return (
