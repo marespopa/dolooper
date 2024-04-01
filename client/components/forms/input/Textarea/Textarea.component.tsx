@@ -10,7 +10,7 @@ interface Props {
   helpText?: string
   customStyles?: string
   isDisabled?: boolean
-  handleCursorPositionUpdate: (_position: number) => void
+  handleCursorPositionUpdate?: (_position: number) => void
 }
 const DEFAULT_TEXTAREA_ROWS = 4
 
@@ -44,6 +44,7 @@ const Textarea = forwardRef(function Textarea(props: Props, ref: any) {
         autoComplete="off"
         rows={DEFAULT_TEXTAREA_ROWS}
         onBlur={(e) =>
+          props.handleCursorPositionUpdate &&
           props.handleCursorPositionUpdate(e.target.selectionStart)
         }
       />

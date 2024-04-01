@@ -18,7 +18,7 @@ const SubtasksSection = () => {
         handleToggle={() => setisExpanded(!isExpanded)}
       />
       {isExpanded && (
-        <div className={`sm:relative sm:z-0 min-h-full w-full md:w-1/2`}>
+        <div className={`sm:relative sm:z-0 min-h-full w-full`}>
           <SubtasksList />
         </div>
       )}

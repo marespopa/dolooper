@@ -24,7 +24,7 @@ const DescriptionField = () => {
         label="Task Details"
         value={description}
         handleCursorPositionUpdate={(pos: number) => setCursorPosition(pos)}
-        helpText="A brief overview of what needs to be accomplished, in which you can
+        helpText="* A brief overview of what needs to be accomplished, in which you can
         use markdown for detailed formatting."
       />
     </section>

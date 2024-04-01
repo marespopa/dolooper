@@ -12,6 +12,7 @@ const KEYS = {
   description: 'description',
   snippets: 'snippets',
   subTasks: 'subtasks',
+  notes: 'notes',
 }
 
 export const atom_snippets = atomWithStorage<Array<Snippet>>(KEYS.snippets, [])
@@ -19,6 +20,7 @@ export const atom_title = atomWithStorage(
   KEYS.title,
   DEFAULT_TEMPLATES.blank.title,
 )
+export const atom_notes = atomWithStorage(KEYS.notes, '')
 export const atom_description = atomWithStorage(
   KEYS.description,
   DEFAULT_TEMPLATES.blank.description,

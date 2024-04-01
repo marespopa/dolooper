@@ -16,6 +16,7 @@ import TaskDetails from './TaskDetails'
 import SubtasksSection from './SubtasksSection'
 import Greeting from '../common/Greeting'
 import TemplateSection from './TemplateSection'
+import NotesSection from './NotesSection'
 
 type Props = {
   handleReset: () => void
@@ -72,7 +73,10 @@ const OverviewSection = ({ handleReset }: Props) => {
           activeTab={activeTab}
           handleTabChange={(tab) => setActiveTab(tab)}
         />
-        <SubtasksSection />
+        <div className="grid md:grid-cols-2	md:gap-8">
+          <SubtasksSection />
+          <NotesSection />
+        </div>
         <SnippetsSection />
         <Timer />
       </div>
