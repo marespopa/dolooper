@@ -13,7 +13,6 @@ import ButtonLink from '../forms/buttons/ButtonLink'
 
 function Timer() {
   const [playStopSound] = useSound('resources/sounds/boop.mp3')
-  const [playStartSound] = useSound('resources/sounds/start-tick.wav')
   const [isLoading, setIsLoading] = useState(true)
   const [isRunning, setIsRunning] = useState(false)
   const [showConfiguration, setShowConfiguration] = useState(true)
@@ -237,7 +236,6 @@ function Timer() {
     setStartTime(currentTime)
     StorageService.setTime('start', Date.now())
     startTimer()
-    playStartSound()
   }
 
   function handleStop() {

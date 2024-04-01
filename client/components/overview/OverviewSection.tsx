@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { pagePadding } from '../common/common'
 import ConfettiExplosion from 'react-confetti-explosion'
 
-import { Provider, createStore } from 'jotai'
+import { Provider, createStore, useAtom } from 'jotai'
 
 import ButtonLink from '../forms/buttons/ButtonLink'
 import Alert from '../banners/Alert'
@@ -18,6 +18,9 @@ import Greeting from '../common/Greeting'
 import TemplateSection from './TemplateSection'
 import NotesSection from './NotesSection'
 import TipsSection from './TipsSection'
+import { atom_title, atom_description } from 'jotai/atoms'
+import { DEFAULT_TEMPLATES } from './TemplateSection/templates'
+import { TemplateVariant } from './TemplateSection/TemplateSection.component'
 
 type Props = {
   handleReset: () => void
@@ -31,6 +34,13 @@ const OverviewSection = ({ handleReset }: Props) => {
   const myStore = createStore()
   const [showConfetti, setShowConfetti] = useState(false)
   const [activeTab, setActiveTab] = useState<TabVariant>('edit')
+  const [, setTitle] = useAtom(atom_title)
+  const [, setDescription] = useAtom(atom_description)
+
+  function loadTemplate(variant: TemplateVariant) {
+    setTitle(DEFAULT_TEMPLATES[variant].title)
+    setDescription(DEFAULT_TEMPLATES[variant].description)
+  }
 
   return (
     <Provider store={myStore}>
@@ -62,7 +72,20 @@ const OverviewSection = ({ handleReset }: Props) => {
       <div className="my-4 md:md-0">
         {activeTab === 'edit' && (
           <>
-            <TemplateSection />
+            <div className="w-full">
+              <h2 className="text-3xl font-bold mt-3 mb-3">
+                Ready for a focused session?
+              </h2>
+              <>
+                <p className="my-5 mx-auto text-xl">Define your task.</p>
+                <p className="text-xs text-gray-500 -mt-4 mb-4 dark:text-gray-400">
+                  <ButtonLink action={handleTutorialStart()}>
+                    Need help getting started?
+                  </ButtonLink>
+                </p>
+              </>
+            </div>
+            <TemplateSection handleTemplateChange={loadTemplate} />
             <TaskDetails />
           </>
         )}
@@ -85,6 +108,13 @@ const OverviewSection = ({ handleReset }: Props) => {
         </div>
       </div>
     )
+  }
+
+  function handleTutorialStart(): () => void {
+    return () => {
+      loadTemplate('tutorial')
+      setActiveTab('preview')
+    }
   }
 
   function renderInfoMessages() {

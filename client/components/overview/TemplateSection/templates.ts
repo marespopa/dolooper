@@ -82,17 +82,65 @@ Briefly describe the issue.
 - [ ] Is the task adequately tested?`,
   },
   generic: {
-    title: '🎯 Focus Session ',
-    description: `## 📝 Task
+    title: '📌 Focus Session ',
+    description: `## 📝 Task Title
 
-## 🎯 Goal
+### Goal 🎯
+One-sentence summary of what you want to achieve.
 
-## ⛔ Potential Blockers
+### Priority 🔝
+🔴🟡🟢(High/Medium/Low)
 
-## 📝 Notes/Thoughts`,
+### Due Date
+dd.mm.yyyy`,
   },
   blank: {
     title: '',
     description: ``,
+  },
+  tutorial: {
+    title: 'Tutorial 💻',
+    description: `Software engineering demands intense focus. Dolooper helps you cut through distractions and achieve flow state for complex problem-solving and coding tasks.
+
+**Tutorial: Supercharge Your Workflow with Dolooper**
+
+1.  **Choose a Template (or Go Blank!)** 🎨
+
+      * Dolooper provides pre-made templates to give your coding sessions structure:
+          * **Generic:** Start with a general task outline.
+          * **Feature:** Plan the development of a new feature.
+          * **Bug:**  Outline steps to reproduce and fix a bug. 
+          * **Code Review:** Create a checklist for thorough code analysis.
+          * **Blank:** Need maximum flexibility? Start with a blank slate.
+
+2.  **Define Your Task** 🎯
+
+    * **Plan & Write Section:**  
+        * Briefly outline the task at hand. What specific problem are you solving or feature are you building?
+        * Use Markdown to add basic formatting if needed (headings, code blocks, etc.).
+
+3. **Break It Down** 🔨
+
+    * **Subtasks Section:** 
+        * Divide the task into smaller, manageable steps.
+        * Prioritize subtasks if the order of completion matters.
+
+4. **Minimize Distractions** 🤫
+
+    * **Timer:**  Set Dolooper's built-in timer for focused work blocks. Experiment with different durations to find what works for you!
+    * **Close the Rest:** Before starting your timer, temporarily minimize anything that could pull your attention.
+
+5. **Code & Iterate** 🔁 
+
+    * **Plan & Write Section:** Use this space as your primary coding workspace. 
+    * **Preview Section:**  Toggle to the Preview to check code formatting and overall progress. 
+    * **Code Snippets Section:**  Store and reference reusable code snippets for efficiency.  
+
+6. **Boost Brain Power** 🧠
+
+    * **Tips Section:**
+        * Get actionable tips to optimize your focus, reduce coding errors, and problem-solve more effectively.  
+
+7. **Click on Plan & Write to get started** ✨ `,
   },
 }
