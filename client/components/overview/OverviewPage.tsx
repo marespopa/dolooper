@@ -4,6 +4,7 @@ import Container from '../container/Container.component'
 
 import {
   atom_description,
+  atom_notes,
   atom_snippets,
   atom_subTasks,
   atom_title,
@@ -23,8 +24,9 @@ const OverviewPage = () => {
   const [, setTitle] = useAtom(atom_title)
   const [, setDescription] = useAtom(atom_description)
   const [, setSnippets] = useAtom(atom_snippets)
-  const router = useRouter()
+  const [, setNotes] = useAtom(atom_notes)
 
+  const router = useRouter()
   const sectionProps = {
     handleReset,
   }
@@ -41,6 +43,7 @@ const OverviewPage = () => {
     setTitle(RESET)
     setDescription(RESET)
     setSnippets(RESET)
+    setNotes(RESET)
     router.push('/overview#greeting')
   }
 }
