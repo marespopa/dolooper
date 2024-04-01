@@ -73,12 +73,12 @@ const OverviewSection = ({ handleReset }: Props) => {
           activeTab={activeTab}
           handleTabChange={(tab) => setActiveTab(tab)}
         />
+        <Timer />
         <div className="grid md:grid-cols-2	md:gap-8">
           <SubtasksSection />
           <NotesSection />
         </div>
         <SnippetsSection />
-        <Timer />
       </div>
     )
   }

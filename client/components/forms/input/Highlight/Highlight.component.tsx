@@ -14,7 +14,6 @@ interface Props {
   handleChange: (_arg: string) => void
   id: string
   value: string
-  handleCursorPositionUpdate: (_position: number) => void
   customStyles?: string
   isDisabled?: boolean
 }
@@ -24,14 +23,7 @@ const Highlight = forwardRef(function Highlight(
   props: Props,
   textareaRef: any,
 ) {
-  const {
-    handleChange,
-    handleCursorPositionUpdate,
-    id,
-    value,
-    customStyles,
-    isDisabled = false,
-  } = props
+  const { handleChange, id, value, customStyles, isDisabled = false } = props
   const { isDarkTheme } = useDarkTheme()
   const hightlighterTheme = isDarkTheme ? nord : atomOneLight
   const commonProps = {
@@ -113,10 +105,7 @@ const Highlight = forwardRef(function Highlight(
         onScroll={handleScroll}
         autoComplete="off"
         rows={DEFAULT_TEXTAREA_ROWS}
-        onBlur={(e) => {
-          handleCursorPositionUpdate(e.target.selectionStart)
-          unlock()
-        }}
+        onBlur={unlock}
       />
 
       {isLocked && (
@@ -153,7 +142,7 @@ const Highlight = forwardRef(function Highlight(
   }
 })
 
-const containerStyle = `relative rounded-md shadow-sm sm:z-0 h-[390px] bg-white appearance-none border-t-0 dark:text-white dark:bg-gray-800 dark:border-gray-700`
+const containerStyle = `relative shadow-sm sm:z-0 h-[390px] bg-white appearance-none border border-gray-600 dark:text-white dark:bg-gray-800 dark:border-gray-700`
 const inputStyle = `absolute top-0 left-0 w-full h-[380px] overflow-y-scroll text-transparent bg-transparent caret-slate-500
                     font-mono px-2 py-4 outline-none resize-none`
 
