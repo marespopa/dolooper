@@ -39,7 +39,6 @@ const OverviewSection = ({ handleReset }: Props) => {
         <div className={`${showConfetti && 'opacity-30'}`}>
           {renderTaskDashboard()}
         </div>
-        {renderInfoMessages()}
       </section>
     </Provider>
   )
@@ -73,6 +72,7 @@ const OverviewSection = ({ handleReset }: Props) => {
           activeTab={activeTab}
           handleTabChange={(tab) => setActiveTab(tab)}
         />
+        {activeTab === 'preview' && renderInfoMessages()}
         <Timer />
         <div className="grid md:grid-cols-2	md:gap-8">
           <SubtasksSection />

@@ -12,7 +12,7 @@ type Props = {}
 
 export default function SnippetsSection({}: Props) {
   const [list, setList] = useAtom(atom_snippets)
-  const [isExpanded, setisExpanded] = useState(false)
+  const [isExpanded, setisExpanded] = useState(true)
   const hasSnippets = list.length > 0
 
   return (
