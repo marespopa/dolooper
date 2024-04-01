@@ -4,7 +4,7 @@ import { Snippet, atom_snippets } from 'jotai/atoms'
 import SnippetItem from './SnippetItem'
 import { FaPlusCircle } from 'react-icons/fa'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { nanoid } from 'nanoid'
 import SectionHeading from '../common/SectionHeading.component'
 
@@ -12,6 +12,7 @@ type Props = {}
 
 export default function SnippetsSection({}: Props) {
   const [list, setList] = useAtom(atom_snippets)
+  const [isExpanded, setisExpanded] = useState(false)
   const hasSnippets = list.length > 0
 
   return (
@@ -22,8 +23,10 @@ export default function SnippetsSection({}: Props) {
         subHeading={
           '* Think of a snippet as a paragraph in a textbook: you sometimes want to save it for later'
         }
+        isExpanded={isExpanded}
+        handleToggle={() => setisExpanded(!isExpanded)}
       />
-      {renderList()}
+      {isExpanded && renderList()}
     </section>
   )
 

@@ -3,7 +3,6 @@ import { useAtom } from 'jotai'
 import { atom_description, atom_title } from 'jotai/atoms'
 import React from 'react'
 import { DEFAULT_TEMPLATES } from './templates'
-import SectionHeading from '../common/SectionHeading.component'
 
 type TemplateVariant = 'feature' | 'bug' | 'code_review' | 'generic' | 'blank'
 
@@ -58,11 +57,15 @@ const TemplateSection = () => {
 
   return (
     <>
-      <SectionHeading
-        title={headingContent.title}
-        description={headingContent.description}
-        subHeading={headingContent.subHeading}
-      />
+      <div className="w-full">
+        <h2 className="text-3xl font-bold mt-3 mb-3">{headingContent.title}</h2>
+        <>
+          <p className="my-5 mx-auto text-xl">{headingContent.description}</p>
+          <p className="text-xs text-gray-500 -mt-4 mb-4 dark:text-gray-400">
+            {headingContent.subHeading}
+          </p>
+        </>
+      </div>
       <div className="my-2 flex flex-wrap gap-2">
         {templateList.map((template) => (
           <ButtonSecondary
