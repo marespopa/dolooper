@@ -150,6 +150,7 @@ const OverviewSection = ({ handleReset }: Props) => {
     setShowConfetti(true)
     setTimeout(() => {
       handleReset()
+      setIsPreview(false)
       setShowConfetti(false)
     }, CONFETTI_TIMER - 1000)
   }
