@@ -10,8 +10,6 @@ import Seo from '../Seo'
 import SnippetsSection from './SnippetsSection/SnippetsSection'
 import Timer from '../timer'
 import MarkdownPreview from './MarkdownPreview'
-import Tabs from '../tabs'
-import { Tab, TabVariant } from '../tabs/Tabs'
 import TaskDetails from './TaskDetails'
 import SubtasksSection from './SubtasksSection'
 import Greeting from '../common/Greeting'
@@ -25,6 +23,8 @@ import {
 } from './TemplateSection/templates'
 import { TemplateVariant } from './TemplateSection/TemplateSection.component'
 import { getCurrentDate } from 'utils/functions'
+import ButtonCircle from '../forms/buttons/ButtonCircle'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 type Props = {
   handleReset: () => void
@@ -37,7 +37,8 @@ const OverviewSection = ({ handleReset }: Props) => {
   const pageTitle = OVERVIEW_PAGE_TITLE
   const myStore = createStore()
   const [showConfetti, setShowConfetti] = useState(false)
-  const [activeTab, setActiveTab] = useState<TabVariant>('edit')
+  const [isPreview, setIsPreview] = useState(false)
+
   const [, setTitle] = useAtom(atom_title)
   const [, setDescription] = useAtom(atom_description)
 
@@ -66,48 +67,37 @@ const OverviewSection = ({ handleReset }: Props) => {
   )
 
   function renderTaskDashboard() {
-    const tabList: Array<Tab> = [
-      {
-        id: 1,
-        name: 'edit',
-        label: 'Plan & Write',
-      },
-      {
-        id: 2,
-        name: 'preview',
-        label: 'Focused Task',
-      },
-    ]
-
     return (
       <div className="my-4 md:md-0">
-        {activeTab === 'edit' && (
-          <>
-            <div className="w-full">
-              <h2 className="text-3xl font-bold mt-3 mb-3">
-                Ready for a focused session?
-              </h2>
-              <>
-                <p className="my-5 mx-auto text-xl">Define your task.</p>
-                <p className="text-xs text-gray-500 -mt-4 mb-4 dark:text-gray-400">
-                  <ButtonLink action={handleTutorialStart()}>
-                    Need help getting started?
-                  </ButtonLink>
-                </p>
-              </>
-            </div>
-            <TemplateSection handleTemplateChange={loadTemplate} />
-            <TaskDetails />
-          </>
-        )}
-        {activeTab === 'preview' && <MarkdownPreview />}
-
-        <Tabs
-          tabs={tabList}
-          activeTab={activeTab}
-          handleTabChange={(tab) => setActiveTab(tab)}
-        />
-        {activeTab === 'preview' && renderInfoMessages()}
+        <div>
+          <div className="w-full">
+            <h2 className="text-3xl font-bold mt-3 mb-3">
+              Ready for a focused session?
+            </h2>
+            <>
+              <p className="my-5 mx-auto text-xl">Define your task.</p>
+              <p className="text-xs text-gray-500 -mt-4 mb-4 dark:text-gray-400">
+                <ButtonLink action={handleTutorialStart()}>
+                  Need help getting started?
+                </ButtonLink>
+              </p>
+            </>
+          </div>
+          <div className="w-full flex gap-4 items-center justify-between">
+            <ButtonCircle action={() => setIsPreview(!isPreview)}>
+              {isPreview ? <FaEyeSlash /> : <FaEye />}
+            </ButtonCircle>
+            <TemplateSection
+              handleTemplateChange={(variant) => {
+                loadTemplate(variant)
+                setIsPreview(false)
+              }}
+            />
+          </div>
+          {!isPreview && <TaskDetails />}
+          {isPreview && <MarkdownPreview />}
+        </div>
+        {renderInfoMessages()}
         <Timer />
         <div className="grid md:grid-cols-2	md:gap-8">
           <SubtasksSection />
@@ -123,8 +113,8 @@ const OverviewSection = ({ handleReset }: Props) => {
 
   function handleTutorialStart(): () => void {
     return () => {
+      setIsPreview(true)
       loadTemplate('tutorial')
-      setActiveTab('preview')
     }
   }
 
@@ -137,7 +127,7 @@ const OverviewSection = ({ handleReset }: Props) => {
     }
 
     return (
-      <>
+      <section className="mt-4">
         <Alert style="info">
           {showConfetti
             ? 'Congratulations! Starting up a new one...'
@@ -149,14 +139,13 @@ const OverviewSection = ({ handleReset }: Props) => {
           )}
           {showConfetti && <ConfettiExplosion {...confettiConfigProps} />}
         </Alert>
-      </>
+      </section>
     )
   }
 
   function markTaskAsCompleted() {
     setShowConfetti(true)
     setTimeout(() => {
-      setActiveTab('edit')
       handleReset()
       setShowConfetti(false)
     }, CONFETTI_TIMER - 1000)

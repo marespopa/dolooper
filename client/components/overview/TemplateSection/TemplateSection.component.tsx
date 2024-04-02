@@ -1,5 +1,7 @@
+import Modal from '@/components/common/Modal'
+import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 import ButtonSecondary from '@/components/forms/buttons/ButtonSecondary'
-import React from 'react'
+import React, { useState } from 'react'
 
 export type TemplateVariant =
   | 'feature'
@@ -10,9 +12,9 @@ export type TemplateVariant =
   | 'tutorial'
 
 type Template = {
-  id: number
   name: TemplateVariant
   label: string
+  description: string
 }
 
 interface Props {
@@ -20,49 +22,92 @@ interface Props {
 }
 
 const TemplateSection = ({ handleTemplateChange }: Props) => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const templateList: Array<Template> = [
     {
-      id: 0,
       name: 'generic',
       label: 'Generic',
+      description: 'Provides a flexible outline for any coding task.',
     },
     {
-      id: 1,
       name: 'feature',
       label: 'Feature',
+      description: 'Plan the development of a new feature, step by step.',
     },
     {
-      id: 2,
       name: 'bug',
       label: 'Bug',
+      description:
+        'Document the steps to reproduce a bug and outline a potential fix.',
     },
     {
-      id: 3,
       name: 'code_review',
       label: 'Code Review ',
+      description: 'Create a systematic checklist for evaluating code quality.',
     },
     {
-      id: 4,
       name: 'blank',
       label: 'Blank',
+      description: 'Start with a clean slate for maximum customization.',
     },
   ]
 
   return (
     <>
-      <div className="my-2 flex flex-wrap gap-2">
-        {templateList.map((template) => (
-          <ButtonSecondary
-            key={template.id}
-            action={() => handleTemplateChange(template.name)}
-            style={template.name === 'tutorial' ? 'bg-blue-300' : ''}
-          >
-            {template.label}
-          </ButtonSecondary>
-        ))}
+      <div className="max-w-[250px]">
+        <ButtonSecondary action={() => setIsModalOpen(true)}>
+          Choose a template
+        </ButtonSecondary>
+        {renderModal()}
       </div>
     </>
   )
+
+  function renderModal() {
+    return (
+      <Modal isOpen={isModalOpen} onModalClose={() => setIsModalOpen(false)}>
+        <div className="my-2 flex flex-wrap gap-2">
+          <h2>Choose a Template</h2>
+          <table className="min-w-full divide-y divide-gray-200 dark:divide-slate-600">
+            <thead>
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider">
+                  Name
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium tracking-wider">
+                  Description
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {templateList.map((template) => (
+                <tr key={template.name}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <ButtonFontIcon
+                      action={() => {
+                        onTemplateSelect(template.name)
+                      }}
+                    >
+                      {template.label}
+                    </ButtonFontIcon>
+                  </td>
+                  <td className="px-6 py-4 whitespace-normal">
+                    {template.description}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </Modal>
+    )
+  }
+
+  function onTemplateSelect(variant: TemplateVariant) {
+    setIsModalOpen(false)
+    handleTemplateChange(variant)
+  }
 }
 
 export default TemplateSection

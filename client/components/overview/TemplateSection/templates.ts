@@ -155,7 +155,7 @@ dd.mm.yyyy`,
     * **Tips Section:**
         * Get actionable tips to optimize your focus, reduce coding errors, and problem-solve more effectively.  
 
-7. **Click on Plan & Write to get started** ✨ `,
+7. **Click on the "Choose a template" to get started** ✨ `,
   },
 }
 
