@@ -116,7 +116,7 @@ dd.mm.yyyy`,
     title: 'Tutorial 💻',
     description: `Software engineering demands intense focus. Dolooper helps you cut through distractions and achieve flow state for complex problem-solving and coding tasks.
 
-**Tutorial: Supercharge Your Workflow with Dolooper**
+**Power-up Your Workflow with Dolooper**
 
 1.  **Choose a Template (or Go Blank!)** 🎨
 
