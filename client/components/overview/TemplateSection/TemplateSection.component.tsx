@@ -68,8 +68,15 @@ const TemplateSection = ({ handleTemplateChange }: Props) => {
     return (
       <Modal isOpen={isModalOpen} onModalClose={() => setIsModalOpen(false)}>
         <div className="my-2 flex flex-wrap gap-2">
-          <h2>Choose a Template</h2>
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-slate-600">
+          <h2 className="text-xl leading-tight">
+            Start Your Coding Session with a Structure
+          </h2>
+          <p className="text-sm">
+            Whether you&apos;re tackling a new feature, debugging an issue, or
+            reviewing code, templates offer a proven framework to guide your
+            process and reduce decision fatigue.
+          </p>
+          <table className="min-w-full divide-y divide-gray-300 dark:divide-slate-500">
             <thead>
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium tracking-wider">
@@ -80,7 +87,7 @@ const TemplateSection = ({ handleTemplateChange }: Props) => {
                 </th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-200 dark:divide-slate-600">
               {templateList.map((template) => (
                 <tr key={template.name}>
                   <td className="px-6 py-4 whitespace-nowrap">

@@ -84,7 +84,10 @@ const OverviewSection = ({ handleReset }: Props) => {
             </>
           </div>
           <div className="w-full flex gap-4 items-center justify-between">
-            <ButtonCircle action={() => setIsPreview(!isPreview)}>
+            <ButtonCircle
+              action={() => setIsPreview(!isPreview)}
+              title={isPreview ? 'Edit' : 'Preview'}
+            >
               {isPreview ? <FaEyeSlash /> : <FaEye />}
             </ButtonCircle>
             <TemplateSection

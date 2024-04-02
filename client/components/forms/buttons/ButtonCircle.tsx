@@ -3,11 +3,18 @@ import React from 'react'
 interface Props {
   children: string | React.ReactElement
   action: () => void
+  title?: string
   isDisabled?: boolean
   style?: string
 }
 
-const ButtonCircle = ({ children, action, isDisabled, style = '' }: Props) => {
+const ButtonCircle = ({
+  children,
+  action,
+  isDisabled,
+  style = '',
+  title = '',
+}: Props) => {
   return (
     <button
       className={`${buttonStyles} ${style}`}
@@ -16,6 +23,7 @@ const ButtonCircle = ({ children, action, isDisabled, style = '' }: Props) => {
       onClick={action}
       role="button"
       disabled={isDisabled}
+      title={title}
     >
       {children}
     </button>
