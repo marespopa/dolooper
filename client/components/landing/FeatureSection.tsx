@@ -5,7 +5,7 @@ const FEATURES = [
   {
     id: 1,
     title: 'Effortless Task Management',
-    description: `Focus on one task at a time and break them down into manageable subtasks.`,
+    description: `Focus on one task at a time and break it down into manageable subtasks.`,
   },
   {
     id: 2,
