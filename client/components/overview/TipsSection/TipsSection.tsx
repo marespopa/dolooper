@@ -38,7 +38,7 @@ const TipsSection = () => {
       {isExpanded && (
         <blockquote className="p-4 my-4 border-s-4 border-gray-300 bg-gray-50 dark:border-gray-500 dark:bg-gray-800">
           <p className="text-md">{focusTips[currentTipIndex]}</p>
-          <p className="text-xs text-gray-600 dark:text-gray-400 mt-2">
+          <p className="text-xs text-gray-600 dark:text-gray-400 mt-2 font-mono">
             Next tip in: {timeUntilChange} seconds
           </p>
         </blockquote>
