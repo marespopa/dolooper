@@ -12,7 +12,9 @@ A concise description of what this feature is and its expected impact. Mention t
 - Secondary goals or benefits, if any.
 
 ### Priority 🔝
-🔴🟡🟢(High/Medium/Low)
+🔴 High
+🟡 Medium
+🟢 Low
 
 ### Due Date ⌛
 dd.mm.yyyy
@@ -55,7 +57,9 @@ Include any additional notes, open questions, or considerations here. This secti
 Briefly describe the issue.
 
 ### Priority 🔝
-🔴🟡🟢(High/Medium/Low)
+🔴 High
+🟡 Medium
+🟢 Low
 
 ### Due Date ⌛
 dd.mm.yyyy
@@ -99,17 +103,17 @@ Specify the part(s) of the app affected.
 - [ ] Is the task adequately tested?`,
   },
   generic: {
-    description: `# 📌 Focus Session
+    description: `# 📝 Task Title
 
-## 📝 Task Title
-
-### Goal 🎯
+## Goal 🎯
 One-sentence summary of what you want to achieve.
 
-### Priority 🔝
-🔴🟡🟢(High/Medium/Low)
+## Priority 🔝
+🔴 High
+🟡 Medium
+🟢 Low
 
-### Due Date ⌛
+## Due Date ⌛
 dd.mm.yyyy`,
   },
   blank: {
