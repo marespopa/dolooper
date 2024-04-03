@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai'
-import { atom_description, atom_title } from 'jotai/atoms'
+import { atom_description } from 'jotai/atoms'
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
@@ -7,13 +7,13 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 const MarkdownPreview = () => {
-  const [title] = useAtom(atom_title)
   const [description] = useAtom(atom_description)
-  const hasNoDefinition = title.length === 0 || description.length === 0
+  const hasNoDefinition = description.length === 0
 
   const value = hasNoDefinition
-    ? `## Start by defining your task in the Plan & Write tab!`
-    : `# ${title} \n ${description}`
+    ? `## Preview Mode
+Click the eye icon to switch to edit mode and start defining your task.`
+    : `${description}`
 
   return (
     <div className={`${previewStyles}`}>

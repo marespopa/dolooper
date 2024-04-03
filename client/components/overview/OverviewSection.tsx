@@ -16,7 +16,7 @@ import Greeting from '../common/Greeting'
 import TemplateSection from './TemplateSection'
 import NotesSection from './NotesSection'
 import TipsSection from './TipsSection'
-import { atom_title, atom_description } from 'jotai/atoms'
+import { atom_description } from 'jotai/atoms'
 import {
   DEFAULT_TEMPLATES,
   TEMPLATES_WITH_DATES,
@@ -39,18 +39,15 @@ const OverviewSection = ({ handleReset }: Props) => {
   const [showConfetti, setShowConfetti] = useState(false)
   const [isPreview, setIsPreview] = useState(false)
 
-  const [, setTitle] = useAtom(atom_title)
   const [, setDescription] = useAtom(atom_description)
 
   function loadTemplate(variant: TemplateVariant) {
-    const title = DEFAULT_TEMPLATES[variant].title
     let description = DEFAULT_TEMPLATES[variant].description
 
     if (TEMPLATES_WITH_DATES.includes(variant)) {
       description = description.replace('dd.mm.yyyy', getCurrentDate())
     }
 
-    setTitle(title)
     setDescription(description)
   }
 

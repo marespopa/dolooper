@@ -21,8 +21,23 @@ const DescriptionField = () => {
         handleChange={handleUpdateField}
         ref={textareaRef}
         id="taskDetails"
-        label="Task Details"
+        label="Start describing your task here..."
         value={description}
+        helpText={
+          <>
+            * Use{' '}
+            <a
+              href="https://www.markdownguide.org/getting-started/"
+              target="_blank"
+              referrerPolicy="no-referrer"
+              className="underline"
+            >
+              {' '}
+              Markdown
+            </a>{' '}
+            to add headings, lists, and more.
+          </>
+        }
         handleCursorPositionUpdate={(pos: number) => setCursorPosition(pos)}
       />
     </section>

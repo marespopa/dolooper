@@ -2,8 +2,9 @@ import { TemplateVariant } from './TemplateSection.component'
 
 export const DEFAULT_TEMPLATES = {
   feature: {
-    title: '✨ Feature: [Feature Name]',
-    description: `## 📖 Overview
+    description: `# ✨ Feature: [Feature Name]
+
+## 📖 Overview
 A concise description of what this feature is and its expected impact. Mention the key user benefit or problem it solves.
 
 ### 🎯 Goals
@@ -48,8 +49,9 @@ Provide a rough estimate for scheduling purposes. Update as the feature progress
 Include any additional notes, open questions, or considerations here. This section can be updated as the feature development evolves.`,
   },
   bug: {
-    title: '🐞 Bug Fix: [Bug Title] ',
-    description: `## 🚨 Overview
+    description: `# 🐞 Bug Fix: [Bug Title]
+
+## 🚨 Overview
 Briefly describe the issue.
 
 ### Priority 🔝
@@ -82,8 +84,9 @@ Specify the part(s) of the app affected.
 - [Similar_Issues](#)`,
   },
   code_review: {
-    title: '🔍 Code Review: [Feature/Bugfix Name]',
-    description: `## 🛠 Functionality
+    description: `# 🔍 Code Review: [Feature/Bugfix Name]
+
+## 🛠 Functionality
 - [ ] Does the code accomplish the task’s objective?
 
 ## 📏 Best Practices
@@ -96,8 +99,9 @@ Specify the part(s) of the app affected.
 - [ ] Is the task adequately tested?`,
   },
   generic: {
-    title: '📌 Focus Session ',
-    description: `## 📝 Task Title
+    description: `# 📌 Focus Session
+
+## 📝 Task Title
 
 ### Goal 🎯
 One-sentence summary of what you want to achieve.
@@ -109,12 +113,12 @@ One-sentence summary of what you want to achieve.
 dd.mm.yyyy`,
   },
   blank: {
-    title: '',
     description: ``,
   },
   tutorial: {
-    title: 'Tutorial 💻',
-    description: `Software engineering demands intense focus. Dolooper helps you cut through distractions and achieve flow state for complex problem-solving and coding tasks.
+    description: `# Tutorial 💻
+
+Software engineering demands intense focus. Dolooper helps you cut through distractions and achieve flow state for complex problem-solving and coding tasks.
 
 **Power-up Your Workflow with Dolooper**
 
@@ -129,13 +133,13 @@ dd.mm.yyyy`,
 
 2.  **Define Your Task** 🎯
 
-    * **Plan & Write Section:**  
+    * **Plan & Write Section:**
         * Briefly outline the task at hand. What specific problem are you solving or feature are you building?
         * Use Markdown to add basic formatting if needed (headings, code blocks, etc.).
 
 3. **Break It Down** 🔨
 
-    * **Subtasks Section:** 
+    * **Subtasks Section:**
         * Divide the task into smaller, manageable steps.
         * Prioritize subtasks if the order of completion matters.
 
@@ -144,11 +148,11 @@ dd.mm.yyyy`,
     * **Timer:**  Set Dolooper's built-in timer for focused work blocks. Experiment with different durations to find what works for you!
     * **Close the Rest:** Before starting your timer, temporarily minimize anything that could pull your attention.
 
-5. **Code & Iterate** 🔁 
+5. **Code & Iterate** 🔁
 
-    * **Plan & Write Section:** Use this space as your primary coding workspace. 
-    * **Preview Section:**  Toggle to the Preview to check code formatting and overall progress. 
-    * **Code Snippets Section:**  Store and reference reusable code snippets for efficiency.  
+    * **Plan & Write Section:** Use this space as your primary coding workspace.
+    * **Preview Section:**  Toggle to the Preview to check code formatting and overall progress.
+    * **Code Snippets Section:**  Store and reference reusable code snippets for efficiency.
 
 6. **Boost Brain Power** 🧠
 

@@ -7,7 +7,6 @@ import {
   atom_notes,
   atom_snippets,
   atom_subTasks,
-  atom_title,
 } from 'jotai/atoms'
 import { useAtom } from 'jotai'
 import { RESET } from 'jotai/utils'
@@ -21,7 +20,6 @@ const OverviewSection = dynamic(() => import('./OverviewSection'), {
 
 const OverviewPage = () => {
   const [, setTasks] = useAtom(atom_subTasks)
-  const [, setTitle] = useAtom(atom_title)
   const [, setDescription] = useAtom(atom_description)
   const [, setSnippets] = useAtom(atom_snippets)
   const [, setNotes] = useAtom(atom_notes)
@@ -40,7 +38,6 @@ const OverviewPage = () => {
   function handleReset() {
     StorageService.removeTime('start')
     setTasks(RESET)
-    setTitle(RESET)
     setDescription(RESET)
     setSnippets(RESET)
     setNotes(RESET)
