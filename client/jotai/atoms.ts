@@ -8,7 +8,6 @@ export type Snippet = {
 }
 
 const KEYS = {
-  title: 'title',
   description: 'description',
   snippets: 'snippets',
   subTasks: 'subtasks',
@@ -16,10 +15,6 @@ const KEYS = {
 }
 
 export const atom_snippets = atomWithStorage<Array<Snippet>>(KEYS.snippets, [])
-export const atom_title = atomWithStorage(
-  KEYS.title,
-  DEFAULT_TEMPLATES.blank.title,
-)
 export const atom_notes = atomWithStorage(KEYS.notes, '')
 export const atom_description = atomWithStorage(
   KEYS.description,
