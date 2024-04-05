@@ -32,14 +32,19 @@ Briefly list the core requirements or conditions this feature must meet. Detaile
 ## 🛠 Development Steps
 Outline the major steps or phases in development. Use subtasks to manage detailed tasks and changes.
 
-1. [General step 1]
-2. [General step 2]
-3. [Add more as needed]
+1. General step 1
+2. General step 2
+3. Add more as needed
 
 ## 🧪 Testing Strategy
-- **🔍 Unit Tests:** Key areas to cover.
-- **⚙️ Integration Tests:** Important interactions with other features or services.
-- **👥 User Acceptance Testing (UAT):** Criteria for UAT and key user scenarios.
+### 🔍 Unit Tests
+Key areas to cover.
+
+### ⚙️ Integration Tests
+Important interactions with other features or services.
+
+### 👥 User Acceptance Testing (UAT)
+Criteria for UAT and key user scenarios.
 
 ## 🔗 Dependencies
 List any internal or external dependencies that could affect this feature's development timeline.
@@ -81,7 +86,7 @@ Specify the part(s) of the app affected.
 - **Logs:** [Link or attach]
 
 ### 🛠 Suggested Fix (If any)
-- **Your thoughts:** Brief idea on fixing it (optional).
+Brief idea on fixing it (optional).
 
 ## 🔗 Useful Links
 - [Related_Docs](#)
@@ -114,7 +119,11 @@ One-sentence summary of what you want to achieve.
 🟢 Low
 
 ## Due Date ⌛
-dd.mm.yyyy`,
+dd.mm.yyyy
+
+## Steps 🗒️
+- Step 1
+- Step 2`,
   },
   blank: {
     description: ``,
@@ -146,7 +155,7 @@ Software engineering demands intense focus. Dolooper helps you cut through distr
     * **Subtasks Section:**
         * Divide the task into smaller, manageable steps.
         * Prioritize subtasks if the order of completion matters.
-
+        * If you have an existing list of steps in the textarea, select it and you can then use the "Convert to Subtasks" option to quickly move it into subtasks.
 4. **Minimize Distractions** 🤫
 
     * **Timer:**  Set Dolooper's built-in timer for focused work blocks. Experiment with different durations to find what works for you!

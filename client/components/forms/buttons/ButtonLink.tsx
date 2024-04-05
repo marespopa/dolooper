@@ -5,12 +5,19 @@ interface Props {
   action: () => void
   isDisabled?: boolean
   style?: string
+  showAsLink?: boolean
 }
 
-const ButtonLink = ({ children, action, isDisabled, style = '' }: Props) => {
+const ButtonLink = ({
+  children,
+  showAsLink = false,
+  action,
+  isDisabled,
+  style = '',
+}: Props) => {
   return (
     <button
-      className={`${buttonStyles} ${style}`}
+      className={`${buttonStyles(showAsLink)} ${style}`}
       role="link"
       onClick={action}
       disabled={isDisabled}
@@ -20,6 +27,12 @@ const ButtonLink = ({ children, action, isDisabled, style = '' }: Props) => {
   )
 }
 
-const buttonStyles = `text-gray-800 underline dark:text-gray-300`
+const buttonStyles = (showAsLink: boolean) => {
+  return `underline cursor-pointer ${
+    showAsLink
+      ? `text-blue-700 dark:text-blue-300 `
+      : `text-gray-800 dark:text-gray-300`
+  }`
+}
 
 export default ButtonLink

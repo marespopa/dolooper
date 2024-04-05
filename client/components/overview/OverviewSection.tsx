@@ -47,7 +47,6 @@ const OverviewSection = ({ handleReset }: Props) => {
     if (TEMPLATES_WITH_DATES.includes(variant)) {
       description = description.replace('dd.mm.yyyy', getCurrentDate())
     }
-
     setDescription(description)
   }
 
