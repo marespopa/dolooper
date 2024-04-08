@@ -8,6 +8,7 @@ export type TemplateVariant =
   | 'bug'
   | 'code_review'
   | 'generic'
+  | 'todo'
   | 'blank'
   | 'tutorial'
 
@@ -45,6 +46,11 @@ const TemplateSection = ({ handleTemplateChange }: Props) => {
       name: 'code_review',
       label: 'Code Review ',
       description: 'Create a systematic checklist for evaluating code quality.',
+    },
+    {
+      name: 'todo',
+      label: 'To Do List',
+      description: 'Your daily todo list.',
     },
     {
       name: 'blank',

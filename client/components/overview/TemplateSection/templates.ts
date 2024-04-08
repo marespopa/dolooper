@@ -125,6 +125,23 @@ dd.mm.yyyy
 - Step 1
 - Step 2`,
   },
+  todo: {
+    description: `# To-Do List ✏️
+- ⬜ Task 1
+- ⬜ Task 2
+- ⬜ Task 3
+- ⬜ Task 4
+- ⬜ Task 5
+- ⬜ Task 6
+
+## Priority Tasks 🎯
+- ⬜ High Priority Task
+- ⬜ Another High Priority Task
+
+## Completed Tasks 💯
+- ✅ Completed Task 1
+- ✅ Completed Task 2`,
+  },
   blank: {
     description: ``,
   },
