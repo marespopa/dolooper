@@ -25,6 +25,7 @@ import { TemplateVariant } from './TemplateSection/TemplateSection.component'
 import { getCurrentDate } from 'utils/functions'
 import ButtonCircle from '../forms/buttons/ButtonCircle'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import { useSearchParams } from 'next/navigation'
 
 type Props = {
   handleReset: () => void
@@ -40,6 +41,9 @@ const OverviewSection = ({ handleReset }: Props) => {
   const [isPreview, setIsPreview] = useState(false)
 
   const [, setDescription] = useAtom(atom_description)
+  const searchParams = useSearchParams()
+
+  const isDev = searchParams.get('dev') === 'true'
 
   function loadTemplate(variant: TemplateVariant) {
     let description = DEFAULT_TEMPLATES[variant].description
@@ -102,10 +106,12 @@ const OverviewSection = ({ handleReset }: Props) => {
           <SubtasksSection />
           <NotesSection />
         </div>
-        <div className="grid md:grid-cols-2	md:gap-8">
-          <SnippetsSection />
-          <TipsSection />
-        </div>
+        {isDev && (
+          <div className="grid md:grid-cols-2	md:gap-8">
+            <SnippetsSection />
+            <TipsSection />
+          </div>
+        )}
       </div>
     )
   }
