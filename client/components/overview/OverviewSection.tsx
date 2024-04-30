@@ -102,7 +102,7 @@ const OverviewSection = ({ handleReset }: Props) => {
         </div>
         {renderInfoMessages()}
         <Timer />
-        <div className="grid md:grid-cols-2	md:gap-8">
+        <div className="grid mb-16 md:grid-cols-2 md:gap-8">
           <SubtasksSection />
           <NotesSection />
         </div>
