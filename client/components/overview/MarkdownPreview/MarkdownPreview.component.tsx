@@ -5,6 +5,7 @@ import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nord } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import remarkFrontmatter from 'remark-frontmatter'
 
 const MarkdownPreview = () => {
   const [description] = useAtom(atom_description)
@@ -19,7 +20,7 @@ Click the eye icon to switch to edit mode and start defining your task.`
     <div className={`${previewStyles}`}>
       <article className="prose max-w-[100ch] dark:prose-invert mx-auto">
         <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
+          remarkPlugins={[remarkGfm, remarkFrontmatter]}
           components={{
             code(props) {
               const { children, className, ...rest } = props
