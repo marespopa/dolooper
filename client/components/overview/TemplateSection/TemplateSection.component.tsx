@@ -1,7 +1,7 @@
 import Modal from '@/components/common/Modal'
 import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
-import ButtonSecondary from '@/components/forms/buttons/ButtonSecondary'
 import React, { useState } from 'react'
+import { FaBook } from 'react-icons/fa'
 
 export type TemplateVariant =
   | 'feature'
@@ -60,14 +60,15 @@ const TemplateSection = ({ handleTemplateChange }: Props) => {
   ]
 
   return (
-    <>
-      <div className="max-w-[250px]">
-        <ButtonSecondary action={() => setIsModalOpen(true)}>
-          Choose a template
-        </ButtonSecondary>
-        {renderModal()}
-      </div>
-    </>
+    <div className="max-w-[250px]">
+      <ButtonFontIcon
+        action={() => setIsModalOpen(true)}
+        title="Select from a template"
+      >
+        <FaBook />
+      </ButtonFontIcon>
+      {renderModal()}
+    </div>
   )
 
   function renderModal() {

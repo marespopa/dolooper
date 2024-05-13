@@ -4,6 +4,7 @@ interface Props {
   action: () => void
   isDisabled?: boolean
   style?: string
+  title?: string
   children: ReactNode
 }
 
@@ -11,6 +12,7 @@ const ButtonFontIcon = ({
   children,
   action,
   isDisabled,
+  title = '',
   style = '',
 }: Props) => {
   return (
@@ -20,6 +22,7 @@ const ButtonFontIcon = ({
       data-mdb-ripple-color="light"
       onClick={action}
       role="button"
+      title={title}
       disabled={isDisabled}
     >
       {children}

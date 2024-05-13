@@ -24,8 +24,11 @@ import {
 import { TemplateVariant } from './TemplateSection/TemplateSection.component'
 import { getCurrentDate } from 'utils/functions'
 import ButtonCircle from '../forms/buttons/ButtonCircle'
-import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import { FaEye, FaEyeSlash, FaFile } from 'react-icons/fa'
 import { useSearchParams } from 'next/navigation'
+import OpenFileSection from './OpenFileSection'
+import ButtonFontIcon from '../forms/buttons/ButtonFontIcon'
+import SaveFileSection from './SaveFileSection'
 
 type Props = {
   handleReset: () => void
@@ -83,20 +86,7 @@ const OverviewSection = ({ handleReset }: Props) => {
               </p>
             </>
           </div>
-          <div className="w-full flex gap-4 items-center justify-between">
-            <ButtonCircle
-              action={() => setIsPreview(!isPreview)}
-              title={isPreview ? 'Edit' : 'Preview'}
-            >
-              {isPreview ? <FaEyeSlash /> : <FaEye />}
-            </ButtonCircle>
-            <TemplateSection
-              handleTemplateChange={(variant) => {
-                loadTemplate(variant)
-                setIsPreview(false)
-              }}
-            />
-          </div>
+          {renderDashboardNav()}
           {!isPreview && <TaskDetails />}
           {isPreview && <MarkdownPreview />}
         </div>
@@ -112,6 +102,43 @@ const OverviewSection = ({ handleReset }: Props) => {
             <TipsSection />
           </div>
         )}
+      </div>
+    )
+  }
+
+  function renderDashboardNav() {
+    return (
+      <div className="w-full flex gap-4 items-center justify-between">
+        <ButtonCircle
+          action={() => setIsPreview(!isPreview)}
+          title={isPreview ? 'Edit' : 'Preview'}
+        >
+          {isPreview ? <FaEyeSlash /> : <FaEye />}
+        </ButtonCircle>
+        <div className="flex ml-auto gap-2">
+          <ButtonFontIcon
+            title="New Task"
+            action={() => {
+              setDescription('')
+              setIsPreview(false)
+            }}
+          >
+            <FaFile />
+          </ButtonFontIcon>
+          <OpenFileSection
+            handleFileLoad={(fileContent) => {
+              setDescription(fileContent)
+              setIsPreview(false)
+            }}
+          />
+          <TemplateSection
+            handleTemplateChange={(variant) => {
+              loadTemplate(variant)
+              setIsPreview(false)
+            }}
+          />
+          <SaveFileSection />
+        </div>
       </div>
     )
   }
