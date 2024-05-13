@@ -17,7 +17,9 @@ const DescriptionField = () => {
   const [selectedText, setSelectedText] = useState('')
   const [isListSelected, setIsListSelected] = useState(false)
 
-  const handleMouseUp = () => {
+  document.addEventListener('selectionchange', handleTextareaSelection)
+
+  function handleTextareaSelection() {
     if (!textareaRef?.current) {
       return
     }
@@ -52,9 +54,6 @@ const DescriptionField = () => {
         id="taskDetails"
         label="Start describing your task here..."
         value={description}
-        handleEvents={{
-          mouseUp: handleMouseUp,
-        }}
         helpText={
           <>
             * Use{' '}

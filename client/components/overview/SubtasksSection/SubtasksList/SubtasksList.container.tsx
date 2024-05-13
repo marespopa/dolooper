@@ -5,6 +5,7 @@ import SubtasksListComponent from './SubtasksList.component'
 import { useAtom } from 'jotai'
 import { atom_subTasks } from 'jotai/atoms'
 import Input from '@/components/forms/input/Input'
+import { FaTrash } from 'react-icons/fa'
 
 const SubtasksList = () => {
   const [tasks, setTasks] = useAtom(atom_subTasks)
@@ -49,6 +50,10 @@ const SubtasksList = () => {
     setTasks(result)
   }
 
+  const handleDeleteAll = () => {
+    setTasks([])
+  }
+
   const handleDelete = (taskUUID: string) => {
     const arr = tasks.filter((item) => item.key !== taskUUID)
 
@@ -75,7 +80,7 @@ const SubtasksList = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full flex flex-col">
       <SubtasksListComponent
         tasks={tasks}
         actions={{
@@ -86,6 +91,14 @@ const SubtasksList = () => {
         }}
       />
       {renderAddTask()}
+
+      {tasks.length > 1 && (
+        <div className="ml-auto mt-4">
+          <ButtonSecondary action={() => handleDeleteAll()}>
+            <FaTrash /> Clear All
+          </ButtonSecondary>
+        </div>
+      )}
     </div>
   )
 

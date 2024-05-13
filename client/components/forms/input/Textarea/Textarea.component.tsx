@@ -10,9 +10,6 @@ interface Props {
   helpText?: string | React.ReactElement
   customStyles?: string
   isDisabled?: boolean
-  handleEvents?: {
-    mouseUp: (_arg: React.MouseEvent<HTMLTextAreaElement>) => void
-  }
   handleCursorPositionUpdate?: (_position: number) => void
 }
 const DEFAULT_TEXTAREA_ROWS = 4
@@ -25,7 +22,6 @@ const Textarea = forwardRef(function Textarea(props: Props, ref: any) {
     value,
     customStyles,
     isDisabled = false,
-    handleEvents,
   } = props
   const commonProps = {
     id,
@@ -45,7 +41,6 @@ const Textarea = forwardRef(function Textarea(props: Props, ref: any) {
         onChange={(e: FormEvent<HTMLTextAreaElement>) => {
           handleChange(e.currentTarget.value)
         }}
-        onMouseUp={(e) => handleEvents?.mouseUp(e)}
         autoComplete="off"
         rows={DEFAULT_TEXTAREA_ROWS}
         onBlur={(e) =>
