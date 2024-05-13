@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 
 import Textarea from '@/components/forms/input/Textarea'
 import { useAtom } from 'jotai'
@@ -17,7 +17,14 @@ const DescriptionField = () => {
   const [selectedText, setSelectedText] = useState('')
   const [isListSelected, setIsListSelected] = useState(false)
 
-  document.addEventListener('selectionchange', handleTextareaSelection)
+  useLayoutEffect(() => {
+    document.addEventListener('selectionchange', handleTextareaSelection)
+
+    return () => {
+      document.removeEventListener('selectionchange', handleTextareaSelection)
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   function handleTextareaSelection() {
     if (!textareaRef?.current) {

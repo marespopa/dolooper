@@ -27,7 +27,7 @@ const SubtasksListComponent = ({ tasks, actions }: Props) => {
             <StrictModeDroppable droppableId="droppable">
               {(provided) => (
                 <ul
-                  className={`list-none`}
+                  className={`list-none max-h-96 overflow-y-auto`}
                   {...provided.droppableProps}
                   ref={provided.innerRef}
                 >
