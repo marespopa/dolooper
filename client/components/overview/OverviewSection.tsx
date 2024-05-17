@@ -125,15 +125,15 @@ const OverviewSection = ({ handleReset }: Props) => {
           >
             <FaFile />
           </ButtonFontIcon>
-          <OpenFileSection
-            handleFileLoad={(fileContent) => {
-              setDescription(fileContent)
-              setIsPreview(false)
-            }}
-          />
           <TemplateSection
             handleTemplateChange={(variant) => {
               loadTemplate(variant)
+              setIsPreview(false)
+            }}
+          />
+          <OpenFileSection
+            handleFileLoad={(fileContent) => {
+              setDescription(fileContent)
               setIsPreview(false)
             }}
           />
