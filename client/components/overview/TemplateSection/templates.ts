@@ -173,23 +173,13 @@ Software engineering demands intense focus. Dolooper helps you cut through distr
         * Divide the task into smaller, manageable steps.
         * Prioritize subtasks if the order of completion matters.
         * If you have an existing list of steps in the textarea, select it and you can then use the "Convert to Subtasks" option to quickly move it into subtasks.
+        * If you select a markdown list, in the editor, you get the option to automatically create a subtask.
 4. **Minimize Distractions** 🤫
 
     * **Timer:**  Set Dolooper's built-in timer for focused work blocks. Experiment with different durations to find what works for you!
     * **Close the Rest:** Before starting your timer, temporarily minimize anything that could pull your attention.
 
-5. **Code & Iterate** 🔁
-
-    * **Plan & Write Section:** Use this space as your primary coding workspace.
-    * **Preview Section:**  Toggle to the Preview to check code formatting and overall progress.
-    * **Code Snippets Section:**  Store and reference reusable code snippets for efficiency.
-
-6. **Boost Brain Power** 🧠
-
-    * **Tips Section:**
-        * Get actionable tips to optimize your focus, reduce coding errors, and problem-solve more effectively.  
-
-7. **Click on "Choose a template" to get started** ✨ `,
+5. **Click on "Choose a template" to get started** ✨ `,
   },
 }
 
