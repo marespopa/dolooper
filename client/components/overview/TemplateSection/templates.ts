@@ -174,6 +174,7 @@ Software engineering demands intense focus. Dolooper helps you cut through distr
         * Prioritize subtasks if the order of completion matters.
         * If you have an existing list of steps in the textarea, select it and you can then use the "Convert to Subtasks" option to quickly move it into subtasks.
         * If you select a markdown list, in the editor, you get the option to automatically create a subtask.
+
 4. **Minimize Distractions** 🤫
 
     * **Timer:**  Set Dolooper's built-in timer for focused work blocks. Experiment with different durations to find what works for you!

@@ -4,7 +4,6 @@ import ButtonSecondary from '../forms/buttons/ButtonSecondary'
 import StorageService from 'services/storageService'
 import TimerConfigSection from './ConfigSection'
 import { TIMER_CONFIG } from 'utils/constants'
-import { toast } from 'react-toastify'
 import useSound from 'use-sound'
 import { useDocumentTitle } from 'hooks/use-document-title'
 import { OVERVIEW_PAGE_TITLE } from '../overview/OverviewSection'
@@ -136,7 +135,7 @@ function Timer() {
 
         {isTimerMinimized && isRunning && (
           <ButtonLink action={handleStop}>
-            {showBreakMessage ? 'Take a break' : 'Stop'}
+            {showBreakMessage ? 'Reset Timer' : 'Stop'}
           </ButtonLink>
         )}
 
@@ -188,7 +187,6 @@ function Timer() {
 
   function triggerBreakNotification() {
     playStopSound()
-    toast.info('The timer has expired.')
   }
 
   function getStatusBgStyle() {
@@ -202,7 +200,7 @@ function Timer() {
   function getStatusLabel() {
     return isStarted
       ? showBreakMessage
-        ? 'Should have taken a break...'
+        ? 'Timer has expired...'
         : 'Timer running for...'
       : `Let's start`
   }
@@ -218,7 +216,7 @@ function Timer() {
 
         {isRunning && (
           <ButtonSecondary variant="error" action={handleStop}>
-            {showBreakMessage ? 'Take a break' : 'Stop'}
+            {showBreakMessage ? 'Reset Timer' : 'Stop'}
           </ButtonSecondary>
         )}
       </div>
