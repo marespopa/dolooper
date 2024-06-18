@@ -28,32 +28,7 @@ Briefly list the core requirements or conditions this feature must meet. Detaile
 - **Design Resources:** [Link_to_design_resources_or_assets](#)
 - **API Documentation:** [Link_to_API_documentation](#)
 - **Other Relevant Links:** [Miscellaneous_links](#)
-
-## 🛠 Development Steps
-Outline the major steps or phases in development. Use subtasks to manage detailed tasks and changes.
-
-1. General step 1
-2. General step 2
-3. Add more as needed
-
-## 🧪 Testing Strategy
-### 🔍 Unit Tests
-Key areas to cover.
-
-### ⚙️ Integration Tests
-Important interactions with other features or services.
-
-### 👥 User Acceptance Testing (UAT)
-Criteria for UAT and key user scenarios.
-
-## 🔗 Dependencies
-List any internal or external dependencies that could affect this feature's development timeline.
-
-## ⏳ Time Estimate
-Provide a rough estimate for scheduling purposes. Update as the feature progresses.
-
-## 📝 Notes
-Include any additional notes, open questions, or considerations here. This section can be updated as the feature development evolves.`,
+`,
   },
   bug: {
     description: `# 🐞 Bug Fix: [Bug Title]
@@ -68,25 +43,6 @@ Briefly describe the issue.
 
 ### Due Date ⌛
 dd.mm.yyyy
-
-### 📍 Occurrence
-Specify the part(s) of the app affected.
-
-### 🕵️ Steps to Reproduce
-1. First step
-2. Second step
-- **Frequency:** Always? Sometimes?
-
-### 🎯 Expected vs. Actual
-- **Expected:** What should happen?
-- **Actual:** What actually happens?
-
-### 📸 Attachments
-- **Screenshots/Videos:** [Link or attach]
-- **Logs:** [Link or attach]
-
-### 🛠 Suggested Fix (If any)
-Brief idea on fixing it (optional).
 
 ## 🔗 Useful Links
 - [Related_Docs](#)
