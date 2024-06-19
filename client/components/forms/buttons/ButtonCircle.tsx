@@ -30,7 +30,7 @@ const ButtonCircle = ({
   )
 }
 
-const buttonStyles = `w-6 h-6 rounded-full text-white font-medium text-xs leading-tight
+const buttonStyles = `w-8 h-6 rounded-full text-white font-medium text-xs leading-tight
                       uppercase shadow-md cursor-pointer
                       border border-gray-800 dark:border-slate-600 bg-gray-600
                       hover:bg-gray-800 hover:shadow-lg hover:outline-none hover:ring-0

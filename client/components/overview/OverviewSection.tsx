@@ -24,11 +24,12 @@ import {
 import { TemplateVariant } from './TemplateSection/TemplateSection.component'
 import { getCurrentDate } from 'utils/functions'
 import ButtonCircle from '../forms/buttons/ButtonCircle'
-import { FaEye, FaEyeSlash, FaFile } from 'react-icons/fa'
+import { FaExpand, FaEye, FaEyeSlash, FaFile, FaTimes } from 'react-icons/fa'
 import { useSearchParams } from 'next/navigation'
 import OpenFileSection from './OpenFileSection'
 import ButtonFontIcon from '../forms/buttons/ButtonFontIcon'
 import SaveFileSection from './SaveFileSection'
+import Modal from '../common/Modal'
 
 type Props = {
   handleReset: () => void
@@ -40,6 +41,7 @@ const OverviewSection = ({ handleReset }: Props) => {
   const CONFETTI_TIMER = 5000
   const pageTitle = OVERVIEW_PAGE_TITLE
   const myStore = createStore()
+  const [isFocused, setIsFocused] = useState(false)
   const [showConfetti, setShowConfetti] = useState(false)
   const [isPreview, setIsPreview] = useState(false)
 
@@ -69,6 +71,16 @@ const OverviewSection = ({ handleReset }: Props) => {
     </Provider>
   )
 
+  function renderTask() {
+    return (
+      <>
+        {renderDashboardNav()}
+        {!isPreview && <TaskDetails />}
+        {isPreview && <MarkdownPreview />}
+      </>
+    )
+  }
+
   function renderTaskDashboard() {
     return (
       <div className="my-4 md:md-0">
@@ -86,9 +98,18 @@ const OverviewSection = ({ handleReset }: Props) => {
               </p>
             </>
           </div>
-          {renderDashboardNav()}
-          {!isPreview && <TaskDetails />}
-          {isPreview && <MarkdownPreview />}
+
+          {isFocused && (
+            <Modal
+              isOpen={isFocused}
+              onModalClose={() => setIsFocused(false)}
+              isMaxWidth={true}
+            >
+              {renderTask()}
+            </Modal>
+          )}
+
+          {!isFocused && renderTask()}
         </div>
         {renderInfoMessages()}
         <Timer />
@@ -109,12 +130,21 @@ const OverviewSection = ({ handleReset }: Props) => {
   function renderDashboardNav() {
     return (
       <div className="w-full flex gap-4 items-center justify-between">
-        <ButtonCircle
-          action={() => setIsPreview(!isPreview)}
-          title={isPreview ? 'Edit' : 'Preview'}
-        >
-          {isPreview ? <FaEyeSlash /> : <FaEye />}
-        </ButtonCircle>
+        <div className="flex gap-2">
+          <ButtonCircle
+            action={() => setIsFocused(!isFocused)}
+            title={isPreview ? 'Close' : 'Focus'}
+          >
+            {isFocused ? <FaTimes /> : <FaExpand />}
+          </ButtonCircle>
+
+          <ButtonCircle
+            action={() => setIsPreview(!isPreview)}
+            title={isPreview ? 'Edit' : 'Preview'}
+          >
+            {isPreview ? <FaEyeSlash /> : <FaEye />}
+          </ButtonCircle>
+        </div>
         <div className="flex ml-auto gap-2">
           <ButtonFontIcon
             title="New Task"
