@@ -2,7 +2,7 @@ import Modal from '@/components/common/Modal'
 import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 import FileInput from '@/components/forms/input/FileInput'
 import React, { useState } from 'react'
-import { FaUpload } from 'react-icons/fa'
+import { FaFolderOpen } from 'react-icons/fa'
 
 interface Props {
   handleFileLoad: (_arg: string) => void
@@ -17,7 +17,7 @@ const OpenFileSection = ({ handleFileLoad }: Props) => {
         action={() => setIsFileInputVisible(!isFileInputVisible)}
         title="Open from file"
       >
-        <FaUpload />
+        <FaFolderOpen />
       </ButtonFontIcon>
 
       {isFileInputVisible && (

@@ -1,7 +1,7 @@
 import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 import { useAtom } from 'jotai'
 import { atom_description } from 'jotai/atoms'
-import { FaDownload } from 'react-icons/fa'
+import { FaSave } from 'react-icons/fa'
 import { saveAs } from 'file-saver'
 
 const SaveFileSection = () => {
@@ -9,7 +9,7 @@ const SaveFileSection = () => {
 
   return (
     <ButtonFontIcon action={() => saveFile(description)} title="Export to file">
-      <FaDownload />
+      <FaSave />
     </ButtonFontIcon>
   )
 
