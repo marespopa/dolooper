@@ -91,7 +91,7 @@ function Timer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTimeForABreak, isNotificationShown, isRunning, workTime, counter])
 
-  const [isTimerMinimized, setIsTimerMinimized] = useState(false)
+  const [isTimerMinimized, setIsTimerMinimized] = useState(true)
   const isStarted = isRunning && counter > 0
   const isTimerStarting = isRunning && counter <= 0
   const showBreakMessage = isRunning && counter > workTimeInMs
