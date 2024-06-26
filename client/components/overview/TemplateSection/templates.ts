@@ -2,6 +2,7 @@ import { TemplateVariant } from './TemplateSection.component'
 
 export const DEFAULT_TEMPLATES = {
   feature: {
+    filename: 'feat-x.md',
     description: `# ✨ Feature: [Feature Name]
 
 ## 📖 Overview
@@ -31,6 +32,7 @@ Briefly list the core requirements or conditions this feature must meet. Detaile
 `,
   },
   bug: {
+    filename: 'bug-x.md',
     description: `# 🐞 Bug Fix: [Bug Title]
 
 ## 🚨 Overview
@@ -49,6 +51,7 @@ dd.mm.yyyy
 - [Similar_Issues](#)`,
   },
   code_review: {
+    filename: 'pr-x.md',
     description: `# 🔍 Code Review: [Feature/Bugfix Name]
 
 ## 🛠 Functionality
@@ -64,6 +67,7 @@ dd.mm.yyyy
 - [ ] Is the task adequately tested?`,
   },
   generic: {
+    filename: 'task.md',
     description: `# 📝 Task Title
 
 ## Goal 🎯
@@ -82,6 +86,7 @@ dd.mm.yyyy
 - Step 2`,
   },
   todo: {
+    filename: 'todo.md',
     description: `# To-Do List ✏️
 - ⬜ Task 1
 - ⬜ Task 2
@@ -99,9 +104,11 @@ dd.mm.yyyy
 - ✅ Completed Task 2`,
   },
   blank: {
+    filename: 'task.md',
     description: ``,
   },
   tutorial: {
+    filename: 'tutorial.md',
     description: `# Tutorial 💻
 
 Software engineering demands intense focus. Dolooper helps you cut through distractions and achieve flow state for complex problem-solving and coding tasks.

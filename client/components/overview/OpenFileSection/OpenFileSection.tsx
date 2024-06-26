@@ -5,7 +5,7 @@ import React, { useState } from 'react'
 import { FaFolderOpen } from 'react-icons/fa'
 
 interface Props {
-  handleFileLoad: (_arg: string) => void
+  handleFileLoad: (_filename: string, _content: string) => void
 }
 
 const OpenFileSection = ({ handleFileLoad }: Props) => {
@@ -74,7 +74,7 @@ const OpenFileSection = ({ handleFileLoad }: Props) => {
     }
 
     const content = await file.text()
-    handleFileLoad(content)
+    handleFileLoad(file?.name, content)
   }
 }
 

@@ -8,12 +8,14 @@ export type Snippet = {
 }
 
 const KEYS = {
+  filename: 'filename',
   description: 'description',
   snippets: 'snippets',
   subTasks: 'subtasks',
   notes: 'notes',
 }
 
+export const atom_filename = atomWithStorage(KEYS.filename, 'task.md')
 export const atom_snippets = atomWithStorage<Array<Snippet>>(KEYS.snippets, [])
 export const atom_notes = atomWithStorage(KEYS.notes, '')
 export const atom_description = atomWithStorage(

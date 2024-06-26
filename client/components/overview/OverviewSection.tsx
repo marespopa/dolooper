@@ -16,7 +16,7 @@ import Greeting from '../common/Greeting'
 import TemplateSection from './TemplateSection'
 import NotesSection from './NotesSection'
 import TipsSection from './TipsSection'
-import { atom_description } from 'jotai/atoms'
+import { atom_description, atom_filename } from 'jotai/atoms'
 import {
   DEFAULT_TEMPLATES,
   TEMPLATES_WITH_DATES,
@@ -30,6 +30,7 @@ import OpenFileSection from './OpenFileSection'
 import ButtonFontIcon from '../forms/buttons/ButtonFontIcon'
 import SaveFileSection from './SaveFileSection'
 import Modal from '../common/Modal'
+import TitleField from './TitleField/TitleField'
 
 type Props = {
   handleReset: () => void
@@ -45,6 +46,7 @@ const OverviewSection = ({ handleReset }: Props) => {
   const [showConfetti, setShowConfetti] = useState(false)
   const [isPreview, setIsPreview] = useState(false)
 
+  const [, setFilename] = useAtom(atom_filename)
   const [, setDescription] = useAtom(atom_description)
   const searchParams = useSearchParams()
 
@@ -52,10 +54,12 @@ const OverviewSection = ({ handleReset }: Props) => {
 
   function loadTemplate(variant: TemplateVariant) {
     let description = DEFAULT_TEMPLATES[variant].description
+    let title = DEFAULT_TEMPLATES[variant]?.filename || 'task.md'
 
     if (TEMPLATES_WITH_DATES.includes(variant)) {
       description = description.replace('dd.mm.yyyy', getCurrentDate())
     }
+    setFilename(title)
     setDescription(description)
   }
 
@@ -71,10 +75,11 @@ const OverviewSection = ({ handleReset }: Props) => {
     </Provider>
   )
 
-  function renderTask() {
+  function renderTask(isFocused: boolean) {
     return (
       <>
         {renderDashboardNav()}
+        {!isPreview && !isFocused && <TitleField />} 
         {!isPreview && <TaskDetails />}
         {isPreview && <MarkdownPreview />}
       </>
@@ -105,11 +110,11 @@ const OverviewSection = ({ handleReset }: Props) => {
               onModalClose={() => setIsFocused(false)}
               isMaxWidth={true}
             >
-              {renderTask()}
+              {renderTask(isFocused)}
             </Modal>
           )}
 
-          {!isFocused && renderTask()}
+          {!isFocused && renderTask(isFocused)}
         </div>
         {renderInfoMessages()}
         <Timer />
@@ -162,8 +167,9 @@ const OverviewSection = ({ handleReset }: Props) => {
             }}
           />
           <OpenFileSection
-            handleFileLoad={(fileContent) => {
-              setDescription(fileContent)
+            handleFileLoad={(name, content) => {
+              setFilename(name || 'task.md')
+              setDescription(content)
               setIsPreview(false)
             }}
           />

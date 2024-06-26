@@ -1,11 +1,12 @@
 import ButtonFontIcon from '@/components/forms/buttons/ButtonFontIcon'
 import { useAtom } from 'jotai'
-import { atom_description } from 'jotai/atoms'
+import { atom_description, atom_filename } from 'jotai/atoms'
 import { FaSave } from 'react-icons/fa'
 import { saveAs } from 'file-saver'
 
 const SaveFileSection = () => {
   const [description] = useAtom(atom_description)
+  const [filename] = useAtom(atom_filename);
 
   return (
     <ButtonFontIcon action={() => saveFile(description)} title="Export to file">
@@ -15,8 +16,7 @@ const SaveFileSection = () => {
 
   function saveFile(content: string) {
     const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' })
-
-    saveAs(blob, 'task.md')
+    saveAs(blob, filename || 'task.md')
   }
 }
 
