@@ -74,7 +74,7 @@ const OpenFileSection = ({ handleFileLoad }: Props) => {
     }
 
     const content = await file.text()
-    handleFileLoad(file?.name, content)
+    handleFileLoad(`${file?.name}.md`, content)
   }
 }
 

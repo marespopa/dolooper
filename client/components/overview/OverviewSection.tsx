@@ -54,7 +54,7 @@ const OverviewSection = ({ handleReset }: Props) => {
 
   function loadTemplate(variant: TemplateVariant) {
     let description = DEFAULT_TEMPLATES[variant].description
-    let title = DEFAULT_TEMPLATES[variant]?.filename || 'task.md'
+    let title = DEFAULT_TEMPLATES[variant]?.filename || 'task'
 
     if (TEMPLATES_WITH_DATES.includes(variant)) {
       description = description.replace('dd.mm.yyyy', getCurrentDate())
