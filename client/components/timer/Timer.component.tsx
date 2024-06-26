@@ -270,6 +270,6 @@ function Timer() {
 
 const timerPopStyles = `bg-amber-300 shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
                         w-full sm:w-1/2 z-10 md:w-1/4 sm:fixed sm:right-4 sm:bottom-2
-                        dark:bg-gray-800 dark:text-white dark:border-gray-600 sm:opacity-95`
+                        dark:bg-gray-600 dark:text-white dark:border-gray-600 sm:opacity-95`
 
 export default Timer
