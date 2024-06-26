@@ -23,8 +23,8 @@ const HeroSection = () => {
         </h2>
         <div className="mt-4 sm:mt-8 md:mt-10">
           <ButtonPrimary action={goToTask}>
-            Try Dolooper{' '}
-            <span className="text-xs align-super rotate-45">for free</span>
+            Start{' '}
+            <span className="text-xs align-super rotate-45">100% free</span>
           </ButtonPrimary>
         </div>
       </div>

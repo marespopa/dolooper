@@ -117,7 +117,7 @@ const OverviewSection = ({ handleReset }: Props) => {
           {!isFocused && renderTask(isFocused)}
         </div>
         {renderInfoMessages()}
-        <Timer />
+        {!isFocused && <Timer />}
         <div className="grid mb-16 md:grid-cols-2 md:gap-8">
           <SubtasksSection />
           <NotesSection />
@@ -137,7 +137,7 @@ const OverviewSection = ({ handleReset }: Props) => {
       <div className="w-full flex gap-4 items-center justify-between">
         <div className="flex gap-2">
           <ButtonCircle
-            action={() => setIsFocused(!isFocused)}
+            action={() => {setIsFocused(!isFocused);}}
             title={isPreview ? 'Close' : 'Focus'}
           >
             {isFocused ? <FaTimes /> : <FaExpand />}

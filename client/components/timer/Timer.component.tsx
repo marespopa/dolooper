@@ -107,7 +107,7 @@ function Timer() {
   )
 
   const getTitle = useCallback(
-    (isWorking: boolean, isBreak: boolean) => {
+    (isWorking: boolean, isBreak: boolean, isTimer = false ) => {
       if (isWorking) {
         return getFormattedTimeFromMs(counter)
       }
@@ -116,7 +116,7 @@ function Timer() {
         return `Timer expired`
       }
 
-      return OVERVIEW_PAGE_TITLE
+      return isTimer ? 'Timer' : OVERVIEW_PAGE_TITLE
     },
     [counter],
   )
@@ -131,7 +131,7 @@ function Timer() {
         className="font-bold flex justify-between cursor-pointer"
         onClick={() => toggleTimerWindow()}
       >
-        <span className="font-mono">{getTitle(isWorking, isBreak)}</span>
+        <span className="font-mono">{getTitle(isWorking, isBreak, true)}</span>
 
         {isTimerMinimized && isRunning && (
           <ButtonLink action={handleStop}>
@@ -140,7 +140,7 @@ function Timer() {
         )}
 
         <ButtonIcon
-          variant={isTimerMinimized ? 'maximize' : 'minimize'}
+          variant={isTimerMinimized ? 'minimize' : 'maximize'}
           action={() => toggleTimerWindow()}
         />
       </h2>
@@ -268,8 +268,8 @@ function Timer() {
   }
 }
 
-const timerPopStyles = `bg-amber-200 shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
-                        w-full sm:w-1/2 z-10 md:w-1/4 sm:fixed sm:right-4 sm:bottom-2
+const timerPopStyles = `bg-amber-300 shadow-sm px-2 md:px-4 py-3 my-4 rounded-md
+                        w-full sm:w-1/2 z-10 md:w-1/4 sm:fixed sm:mx-auto sm:inset-x-0 sm:top-1
                         dark:bg-gray-800 dark:text-white dark:border-gray-600 sm:opacity-95`
 
 export default Timer
