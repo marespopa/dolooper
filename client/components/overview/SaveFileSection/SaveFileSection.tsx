@@ -16,12 +16,14 @@ const SaveFileSection = () => {
 
   function saveFile(content: string) {
     const blob = new Blob([content], { type: 'text/markdown;charset=utf-8' })
-    
+    let title = `${filename}`;
+
     if (!filename.endsWith('.md')) {
-      setFilename(`${filename}.md`);
+      title = title + '.md';
+      setFilename(title);
     }
 
-    saveAs(blob, filename || 'task.md')
+    saveAs(blob, title || 'task.md')
   }
 }
 
