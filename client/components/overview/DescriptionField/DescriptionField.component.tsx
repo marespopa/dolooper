@@ -10,7 +10,11 @@ import { nanoid } from 'nanoid'
 import { Task } from 'types/types'
 import { FaInfo } from 'react-icons/fa'
 
-const DescriptionField = () => {
+interface Props {
+  isFocused: boolean;
+}
+
+const DescriptionField = ({ isFocused }: Props) => {
   const [, setCursorPosition] = useState(0)
   const [tasks, setTasks] = useAtom(atom_subTasks)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -78,7 +82,7 @@ const DescriptionField = () => {
         }
         handleCursorPositionUpdate={(pos: number) => setCursorPosition(pos)}
       />
-      {isListSelected && (
+      {!isFocused && isListSelected && (
         <div className="mt-2 text-xs text-blue-700 bg-white dark:bg-gray-600 dark:text-blue-300 px-2 py-4 items-center flex gap-2">
           <FaInfo />
           You selected a list.{' '}

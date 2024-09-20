@@ -22,7 +22,7 @@ const HeroSection = () => {
           structure to stay focused and deliver your best work.
         </h2>
         <h2 className="text-xl leading-relaxed mt-3">
-          And you don&quote;t even need to login. All the data is safely stored in your browser memory, making it incognito out of the box.
+          And you don&lsquo;t even need to login. All the data is safely stored in your browser memory, making it incognito out of the box.
         </h2>
         <div className="mt-4 sm:mt-8 md:mt-10">
           <ButtonPrimary action={goToTask}>

@@ -24,13 +24,13 @@ const PrivacyPolicy: NextPage = () => {
               we collect, use and safeguard the information you provide to us
               and to assist you in making informed decisions when using our
               Service. For purposes of this Agreement, “Site” refers to the
-              Company’s website, which can be accessed at marespopa.com
+              Company’s website, which can be accessed at https://dolooper.netlify.app/
               “Service” refers to the Company’s services accessed via the Site,
               in which users can send an email in order to obtain a quote. The
               terms “we,” “us,” and “our” refer to the Company. “You” refers to
               you, as a user of our Site or our Service. By accessing our Site
               or our Service, you accept our Privacy Policy and Terms of Use
-              (found here: https://marespopa.com/privacy-policy), and you
+              (found here: https://dolooper.netlify.app/privacy-policy), and you
               consent to our collection, storage, use and disclosure of your
               Personal Information as described in this Privacy Policy.
             </p>
@@ -73,7 +73,7 @@ const PrivacyPolicy: NextPage = () => {
               gathered personal information from anyone under the age of 13
               without the consent of a parent or guardian, we will delete that
               information as soon as possible. If you believe we have collected
-              such information, please contact us at contact@marespopa.com
+              such information, please contact us at office@marespopa.com
             </p>
             <h2 className={headingStyle}>
               II. HOW WE USE AND SHARE INFORMATION
@@ -166,7 +166,7 @@ const PrivacyPolicy: NextPage = () => {
             <p className={paragraphStyle}>
               If you have any questions regarding this Privacy Policy or the
               practices of this Site, please contact us by sending an email to
-              contact@marespopa.com. Last Updated: This Privacy Policy was last
+              office@marespopa.com. Last Updated: This Privacy Policy was last
               updated on {lastUpdated}.
             </p>
           </section>

@@ -80,7 +80,7 @@ const OverviewSection = ({ handleReset }: Props) => {
       <>
         {renderDashboardNav()}
         {!isPreview && !isFocused && <TitleField />} 
-        {!isPreview && <TaskDetails />}
+        {!isPreview && <TaskDetails isFocused={isFocused || false} />}
         {isPreview && <MarkdownPreview />}
       </>
     )
