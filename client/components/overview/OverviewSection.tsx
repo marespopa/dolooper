@@ -15,7 +15,6 @@ import SubtasksSection from './SubtasksSection'
 import Greeting from '../common/Greeting'
 import TemplateSection from './TemplateSection'
 import NotesSection from './NotesSection'
-import TipsSection from './TipsSection'
 import { atom_description, atom_filename } from 'jotai/atoms'
 import {
   DEFAULT_TEMPLATES,
@@ -29,8 +28,8 @@ import { useSearchParams } from 'next/navigation'
 import OpenFileSection from './OpenFileSection'
 import ButtonFontIcon from '../forms/buttons/ButtonFontIcon'
 import SaveFileSection from './SaveFileSection'
-import Modal from '../common/Modal'
 import TitleField from './TitleField/TitleField'
+import FullscreenModal from '../common/FullscreenModal/FullscreenModal'
 
 type Props = {
   handleReset: () => void
@@ -79,7 +78,7 @@ const OverviewSection = ({ handleReset }: Props) => {
     return (
       <>
         {renderDashboardNav()}
-        {!isPreview && !isFocused && <TitleField />} 
+        {!isPreview && !isFocused && <TitleField />}
         {!isPreview && <TaskDetails isFocused={isFocused || false} />}
         {isPreview && <MarkdownPreview />}
       </>
@@ -105,29 +104,21 @@ const OverviewSection = ({ handleReset }: Props) => {
           </div>
 
           {isFocused && (
-            <Modal
+            <FullscreenModal
+              title="Focus"
               isOpen={isFocused}
               onModalClose={() => setIsFocused(false)}
-              isMaxWidth={true}
             >
               {renderTask(isFocused)}
-            </Modal>
+            </FullscreenModal>
           )}
 
           {!isFocused && renderTask(isFocused)}
         </div>
         {renderInfoMessages()}
         {!isFocused && <Timer />}
-        <div className="grid mb-16 md:grid-cols-2 md:gap-8">
-          <SubtasksSection />
-          <NotesSection />
-        </div>
-        {isDev && (
-          <div className="grid md:grid-cols-2	md:gap-8">
-            <SnippetsSection />
-            <TipsSection />
-          </div>
-        )}
+        <SubtasksSection />
+        {isDev && <SnippetsSection />}
       </div>
     )
   }
@@ -137,7 +128,9 @@ const OverviewSection = ({ handleReset }: Props) => {
       <div className="w-full flex gap-4 items-center justify-between">
         <div className="flex gap-2">
           <ButtonCircle
-            action={() => {setIsFocused(!isFocused);}}
+            action={() => {
+              setIsFocused(!isFocused)
+            }}
             title={isPreview ? 'Close' : 'Focus'}
           >
             {isFocused ? <FaTimes /> : <FaExpand />}

@@ -58,7 +58,7 @@ const DescriptionField = ({ isFocused }: Props) => {
   }
 
   return (
-    <section className="relative">
+    <section className="relative overflow-y-auto mb-2">
       <Textarea
         handleChange={handleUpdateField}
         ref={textareaRef}
