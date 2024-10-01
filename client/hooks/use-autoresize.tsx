@@ -1,7 +1,7 @@
 import { RefObject } from 'react'
 import useIsomorphicLayoutEffect from './use-isomorphic-layout-effect'
 
-const MIN_HEIGHT = 150 //px
+const MIN_HEIGHT = 400 //px
 
 // Updates the height of a <textarea> when the value changes.
 const useAutoResizeTextArea = (
@@ -15,7 +15,10 @@ const useAutoResizeTextArea = (
   }, [textAreaRef, value])
 
   function resize(textAreaRef: HTMLTextAreaElement) {
-    if (textAreaRef.scrollHeight > MIN_HEIGHT) {
+    textAreaRef.style.height = "";
+    textAreaRef.style.height = textAreaRef.scrollHeight + 4 + "px";
+
+    if (textAreaRef.scrollHeight < MIN_HEIGHT) {
       textAreaRef.style.height = `${textAreaRef.scrollHeight}px`
     }
   }

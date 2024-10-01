@@ -28,7 +28,7 @@ function FullscreenModal({ isOpen, children, onModalClose }: Props) {
     >
       <div className="pointer-events-none relative w-auto transition-all duration-300 ease-in-out min-[0px]:m-0 min-[0px]:h-full min-[0px]:max-w-none">
         <div className="pointer-events-auto relative flex w-full flex-col rounded-md bg-white dark:bg-slate-700 bg-clip-padding text-current shadow-4 outline-none dark:bg-surface-dark min-[0px]:h-full min-[0px]:rounded-none min-[0px]:border-0">
-          <div className="relative p-4">
+          <div className="relative p-4 overflow-y-auto">
             {children}
           </div>
 
